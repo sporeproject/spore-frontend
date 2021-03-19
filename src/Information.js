@@ -21,7 +21,7 @@ function Information() {
                 first reflect tokens there to be.<br/> On every transaction, 3% of the rewards are burnt forever and 3% are
                 redistributed to all the owners.<br/> Earn frictionless rewards while your spores spread! Deflation reduces
                 the supply increasing the token value over time.
-                The vision of the project is the vision of the community. It is going to evole as spores spread.
+                The vision of the project is the vision of the community. It is going to evolve as spores spread.
             </div>
             <h1> Roadmap </h1>
             <ul>
