@@ -11,7 +11,7 @@ function Information() {
             <ul>
                 <li> Total Supply : 100,000,000,000,000,000 SPORE</li>
                 <li> Dev fund : 0%</li>
-                <React.Fragment><BurnedTokens/></React.Fragment>
+                <><BurnedTokens/></>
             </ul>
             <h1> What is Spore Finance </h1>
             <div>
