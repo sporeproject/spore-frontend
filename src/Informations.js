@@ -9,8 +9,6 @@ function Footer() {
       <h1> Tokeneconomics </h1>
         <ul> Total Supply : 100,000,000,000,000,000 SPORE </ul>
         <ul> Dev fund : 0% </ul>
-        <ul> Total Supply : </ul>
-        <ul> Total Supply : </ul>
       <h1> What is Spore Finance </h1>
         <ul> Amazed by the Avalanche Network first generation of pools, this is the first reflect token there to be. On every transaction, 3% of the rewards are burnt forever and 3% are redistributed to all the owners. Earn frictionless rewards while your spores spread! Deflation reduces the supply increasing the token value over time. </ul>
       <h1> Roadmap </h1>
@@ -26,6 +24,8 @@ function Footer() {
         <ul> <a href="https://cchain.explorer.avax.network/tx/0xe3e92326e2993a270a2fdd44a7301e6adccb7dd1b40bcc4ed9ed88ec963a22ab/token-transfers" target="_blank" rel="noopener noreferrer"> LP-burnt tx </a></ul>
         <ul> <a href="https://cchain.explorer.avax.network/address/0x88Dd784dFaaB1a7752d2CC81071Fcd12C1c4E1db/" target="_blank" rel="noopener noreferrer"> DEV wallet address </a></ul>
         <ul> <a href="https://cchain.explorer.avax.network/tx/0x5fa10181e6c9841aa2226b5468e2b92f0268feaf178626472428e9839ab76982/internal-transactions" target="_blank" rel="noopener noreferrer"> Renounced ownership tx </a></ul>
+        <ul> <a href="https://discord.gg/hYDnmyadJC" target="_blank" rel="noopener noreferrer"> Discord </a></ul>
+        <ul> <a href="https://t.me/joinchat/BN0YR2yy2cU1ZWJk" target="_blank" rel="noopener noreferrer"> Telegram </a></ul>
     </div>
   )
 }
