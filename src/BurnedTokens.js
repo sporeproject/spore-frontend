@@ -31,9 +31,10 @@ class BurnedTokens extends React.Component {
 
     async componentDidMount() {
         await this.getBurnedTokens()
+        // Will trigger a refresh every minutes
         setTimeout(async () => {
             await this.getBurnedTokens();
-        }, 5000)
+        }, 60000)
     }
 
     componentWillUnmount() {
@@ -45,8 +46,6 @@ class BurnedTokens extends React.Component {
             window.ethereum.enable();
             const sporeERC20 = new window.web3.eth.Contract(sporeABI, "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985")
             const burnedTokens = await sporeERC20.methods.balanceOf("0x000000000000000000000000000000000000dEaD").call()
-            console.log(sporeERC20);
-            console.log(burnedTokens);
             this.setState({numberOfBurnedTokens: (burnedTokens /10**9 )})
     }
 
