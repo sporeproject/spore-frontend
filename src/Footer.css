@@ -1,0 +1,13 @@
+.Footer {
+  justify-content: left;
+  font-size: calc(1px + 1vmin);
+  padding-left: 10px;
+  position: fixed;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}

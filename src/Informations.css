@@ -1,0 +1,18 @@
+.Informations {
+  display: flex;
+  flex-direction: column;
+  font-size: calc(1px + 1.5vmin);
+  color: white;
+  padding-left: 10px;
+  margin-top: 70px;
+}
+
+ul { margin: 2px;}
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+a:hover {
+  cursor: pointer;
+}
