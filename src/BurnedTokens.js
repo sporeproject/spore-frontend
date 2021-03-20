@@ -66,8 +66,6 @@ class BurnedTokens extends React.Component {
             'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999'
         );
 
-        console.log(res)
-
         if (res.data !== undefined && res.data.data !== undefined && res.data.data.items !== undefined) {
             const items = res.data.data.items;
             this.setState({
