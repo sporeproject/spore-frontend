@@ -39,12 +39,11 @@ class BurnedTokens extends React.Component {
         // Will trigger a refresh every minutes
         setTimeout(async () => {
             await this.getBurnedTokens();
+            await this.getTokenHolders();
         }, 60000)
     }
 
     async getBurnedTokens() {
-        // window.web3 = new Web3(window.ethereum);
-        // window.ethereum.enable();
         const res = await axios.get(
             'https://api.covalenthq.com/v1/43114/address/0x000000000000000000000000000000000000dEaD/balances_v2/?nft=false'
         );
@@ -63,8 +62,6 @@ class BurnedTokens extends React.Component {
     }
 
     async getTokenHolders() {
-        // window.web3 = new Web3(window.ethereum);
-        // window.ethereum.enable();
         const res = await axios.get(
             'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999'
         );
