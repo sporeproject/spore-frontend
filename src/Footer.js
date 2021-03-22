@@ -6,7 +6,10 @@ import React from 'react'
 function Footer() {
   return (
     <div className="Footer">
-      <h1>Made with &hearts;	by the Spore community</h1>
+      <h1><a
+          href="https://github.com/SporeFinance/Spore-frontend"
+          target="_blank" rel="noopener noreferrer"> Made with &hearts;	by the Spore community
+      </a></h1>
     </div>
   )
 }
