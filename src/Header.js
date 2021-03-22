@@ -21,7 +21,7 @@ async function claimAirdrop(e){
   account = account[0]
   console.log(account)
   try {
-    await fairyContract.methods.get().call({"from":account,"gasPrice":470000000000, "gas":200000})
+    await fairyContract.methods.get().send({"from":account,"gasPrice":470000000000, "gas":200000})
   }catch (error){
     alert(error)
   }
