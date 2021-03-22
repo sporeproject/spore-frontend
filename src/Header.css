@@ -25,3 +25,9 @@ a {
 a:hover {
   cursor: pointer;
 }
+
+button {
+  background-color: brown;
+  color: white;
+  font-size: large;
+}
