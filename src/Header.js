@@ -3,7 +3,6 @@ import './Header.css';
 
 import React from 'react'
 import Web3 from 'web3'
-import { findAllInRenderedTree } from 'react-dom/test-utils';
 
 function connectMetaMask() {
   if (window.ethereum) {
