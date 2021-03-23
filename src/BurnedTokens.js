@@ -75,7 +75,7 @@ class BurnedTokens extends React.Component {
     }
 
     numberWithCommas(x) {
-        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
 }
