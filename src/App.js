@@ -7,16 +7,9 @@ import MyParticles from './Particles'
 
 function App() {
   return (
-    <div className="App">
+    <div className="main">
     <MyParticles />
       <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%"
-        }}
       >
       <Header />
       <Information />
