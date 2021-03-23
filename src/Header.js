@@ -148,9 +148,9 @@ function Header() {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="btn btn-outline-light" href="#" onClick={claimAirdrop}>
+                    <button class="btn btn-outline-light" onClick={claimAirdrop}>
                       Claim Airdrop
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
