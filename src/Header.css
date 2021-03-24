@@ -1,33 +1,34 @@
-.Header {
-  justify-content: left;
-  font-size: calc(2px + 2vmin);
-  position: fixed;
-  width: 100%;
-  top: 10px;
-  display: inline-block;
+.navbar {
+  transition: all 0.4s;
+  background-color: #6B4E3B;
 }
 
-.SubHeader {
-  display: inline-block;
-  padding-left: 60%;
+.navbar .logo {
+  max-height: 50px;
+  margin-right: 10px;
 }
 
-#heading h1, h2 {
-   display: inline;
-   padding-left: 20px;
+.navbar .navbar-brand {
+  text-decoration: none;
+  font-size: 32px;
 }
 
-a {
-  font-size: calc(2px + 2vmin);
-  color: white;
-  text-decoration: underline;
-}
-a:hover {
-  cursor: pointer;
+.navbar .nav-item {
+  padding: 0 15px;
 }
 
-button {
-  background-color: brown;
-  color: white;
-  font-size: large;
+.navbar .nav-link, .navbar .btn {
+  text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+  text-decoration: none;
+  color: #EBD5C7;
+}
+
+.navbar a.btn:hover,
+.navbar a.btn:focus {
+  text-decoration: none;
+  color: #6B4E3B;
 }
