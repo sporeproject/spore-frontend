@@ -189,12 +189,7 @@ function Header() {
             <ul className='navbar-nav ml-auto'>
               <Link to='/' style={{ textDecoration: 'none' }}>
                 <li className='nav-item'>
-                  <a
-                    className='nav-link font-weight-bold'
-                    rel='noopener noreferrer'
-                  >
-                    Home
-                  </a>
+                  <span className='nav-link font-weight-bold'>Home</span>
                 </li>
               </Link>
               <li className='nav-item'>
@@ -219,22 +214,12 @@ function Header() {
               </li>
               <Link to='/nft' style={{ textDecoration: 'none' }}>
                 <li className='nav-item'>
-                  <a
-                    className='nav-link font-weight-bold'
-                    rel='noopener noreferrer'
-                  >
-                    NFT
-                  </a>
+                  <span className='nav-link font-weight-bold'>NFT</span>
                 </li>
               </Link>
               <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
                 <li className='nav-item'>
-                  <a
-                    className='nav-link font-weight-bold'
-                    rel='noopener noreferrer'
-                  >
-                    BSC Bridge
-                  </a>
+                  <span className='nav-link font-weight-bold'>BSC Bridge</span>
                 </li>
               </Link>
 
