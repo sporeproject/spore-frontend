@@ -3,6 +3,7 @@ import './Information.css';
 
 import React from 'react';
 import BurnedTokens from './BurnedTokens';
+import HowToBuyPDF from './utils/how_to_buy.pdf';
 
 function Information() {
   return (
@@ -314,6 +315,23 @@ function Information() {
               className='btn btn-primary mx-1 mb-2'
             >
               Telegram
+            </a>
+            <br />
+            <a
+              href='https://www.youtube.com/watch?v=wK4vvE44Pfw'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='btn btn-primary mx-1 mb-2'
+            >
+              How to buy (VIDEO)
+            </a>
+            <a
+              href={HowToBuyPDF}
+              download
+              rel='noopener noreferrer'
+              className='btn btn-primary mx-1 mb-2'
+            >
+              How to buy (PDF)
             </a>
           </div>
         </div>
