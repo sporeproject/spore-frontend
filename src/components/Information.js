@@ -3,7 +3,7 @@ import './Information.css';
 
 import React from 'react';
 import BurnedTokens from './BurnedTokens';
-import HowToBuyPDF from './utils/how_to_buy.pdf';
+import HowToBuyPDF from '../utils/how_to_buy.pdf';
 
 function Information() {
   return (
