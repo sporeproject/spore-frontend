@@ -187,6 +187,16 @@ function Header() {
           </button>
           <div id='navbarSupportedContent' className='collapse navbar-collapse'>
             <ul className='navbar-nav ml-auto'>
+              <Link to='/' style={{ textDecoration: 'none' }}>
+                <li className='nav-item'>
+                  <a
+                    className='nav-link font-weight-bold'
+                    rel='noopener noreferrer'
+                  >
+                    Home
+                  </a>
+                </li>
+              </Link>
               <li className='nav-item'>
                 <a
                   className='nav-link font-weight-bold'
