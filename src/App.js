@@ -1,20 +1,11 @@
 import './App.css';
 
-import Header from './Header'
-import Information from './Information'
-import Footer from './Footer'
-import MyParticles from './Particles'
+import Router from './Router';
 
 function App() {
   return (
-    <div className="main">
-    <MyParticles />
-      <div
-      >
-      <Header />
-      <Information />
-      <Footer />
-      </div>
+    <div className='main'>
+      <Router />
     </div>
   );
 }
