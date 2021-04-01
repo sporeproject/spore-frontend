@@ -3,6 +3,7 @@ import './Header.css';
 
 import React from 'react';
 import Web3 from 'web3';
+import { Link } from 'react-router-dom';
 
 function connectMetaMask() {
   if (window.ethereum) {
@@ -186,6 +187,11 @@ function Header() {
           </button>
           <div id='navbarSupportedContent' className='collapse navbar-collapse'>
             <ul className='navbar-nav ml-auto'>
+              <Link to='/' style={{ textDecoration: 'none' }}>
+                <li className='nav-item'>
+                  <span className='nav-link font-weight-bold'>Home</span>
+                </li>
+              </Link>
               <li className='nav-item'>
                 <a
                   className='nav-link font-weight-bold'
@@ -206,6 +212,17 @@ function Header() {
                   Analytics
                 </a>
               </li>
+              <Link to='/nft' style={{ textDecoration: 'none' }}>
+                <li className='nav-item'>
+                  <span className='nav-link font-weight-bold'>NFT</span>
+                </li>
+              </Link>
+              <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
+                <li className='nav-item'>
+                  <span className='nav-link font-weight-bold'>BSC Bridge</span>
+                </li>
+              </Link>
+
               <li className='nav-item'>
                 <button
                   className='btn btn-outline-light'
