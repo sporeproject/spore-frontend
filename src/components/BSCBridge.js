@@ -11,6 +11,15 @@ async function connectMetaMask() {
     }else{console.log("Already connected to MetaMask")}
   }
 
+async function getNetworkId(){
+    var networks = new Map();
+    networks.set("97", "BSC Testnet")
+    networks.set("56", "Binance Smart Chain")
+    networks.set("43114", "Avalanche")
+    networks.set("43113", "Fuji Testnet")
+    return "Network : "+ networks.get(window.ethereum.networkVersion);
+}
+
 async function approve(){
     const SporeAddress = "0x75e6Fb313DF2c9429457722e4Adf89e2a9b39cfF";
     const SporeABI = [{"type":"constructor","stateMutability":"nonpayable","inputs":[]},{"type":"event","name":"Approval","inputs":[{"type":"address","name":"owner","internalType":"address","indexed":true},{"type":"address","name":"spender","internalType":"address","indexed":true},{"type":"uint256","name":"value","internalType":"uint256","indexed":false}],"anonymous":false},{"type":"event","name":"OwnershipTransferred","inputs":[{"type":"address","name":"previousOwner","internalType":"address","indexed":true},{"type":"address","name":"newOwner","internalType":"address","indexed":true}],"anonymous":false},{"type":"event","name":"Transfer","inputs":[{"type":"address","name":"from","internalType":"address","indexed":true},{"type":"address","name":"to","internalType":"address","indexed":true},{"type":"uint256","name":"value","internalType":"uint256","indexed":false}],"anonymous":false},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"allowTradeAt","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"allowance","inputs":[{"type":"address","name":"owner","internalType":"address"},{"type":"address","name":"spender","internalType":"address"}]},{"type":"function","stateMutability":"nonpayable","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"approve","inputs":[{"type":"address","name":"spender","internalType":"address"},{"type":"uint256","name":"amount","internalType":"uint256"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"balanceOf","inputs":[{"type":"address","name":"account","internalType":"address"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint8","name":"","internalType":"uint8"}],"name":"decimals","inputs":[]},{"type":"function","stateMutability":"nonpayable","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"decreaseAllowance","inputs":[{"type":"address","name":"spender","internalType":"address"},{"type":"uint256","name":"subtractedValue","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"enableFairLaunch","inputs":[]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"excludeAccount","inputs":[{"type":"address","name":"account","internalType":"address"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"includeAccount","inputs":[{"type":"address","name":"account","internalType":"address"}]},{"type":"function","stateMutability":"nonpayable","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"increaseAllowance","inputs":[{"type":"address","name":"spender","internalType":"address"},{"type":"uint256","name":"addedValue","internalType":"uint256"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"isExcluded","inputs":[{"type":"address","name":"account","internalType":"address"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"string","name":"","internalType":"string"}],"name":"name","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"address","name":"","internalType":"address"}],"name":"owner","inputs":[]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"reflect","inputs":[{"type":"uint256","name":"tAmount","internalType":"uint256"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"reflectionFromToken","inputs":[{"type":"uint256","name":"tAmount","internalType":"uint256"},{"type":"bool","name":"deductTransferFee","internalType":"bool"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"renounceOwnership","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"string","name":"","internalType":"string"}],"name":"symbol","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"tokenFromReflection","inputs":[{"type":"uint256","name":"rAmount","internalType":"uint256"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"totalFees","inputs":[]},{"type":"function","stateMutability":"pure","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"totalSupply","inputs":[]},{"type":"function","stateMutability":"nonpayable","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"transfer","inputs":[{"type":"address","name":"recipient","internalType":"address"},{"type":"uint256","name":"amount","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[{"type":"bool","name":"","internalType":"bool"}],"name":"transferFrom","inputs":[{"type":"address","name":"sender","internalType":"address"},{"type":"address","name":"recipient","internalType":"address"},{"type":"uint256","name":"amount","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"transferOwnership","inputs":[{"type":"address","name":"newOwner","internalType":"address"}]}];
@@ -58,8 +67,9 @@ async function swapFromBSC(){
     var fees = ethers.BigNumber.from("5000000000000000")
     try {
         if (document.getElementById("checkbox").checked) {
+            var percent = 10 ;
             await BscBridgeContract.methods
-                .burn(account, amount)
+                .burnAndSwap(account, amount, percent)
                 .send({ from: account, value: fees});
         }else{
             await BscBridgeContract.methods
@@ -127,6 +137,7 @@ export default class BSCBridge extends React.Component {
         numberOfSporeBSC: 0,
         feesBNB:0.005,
         feesAVAX:0.03,
+        network:<button onClick={connectMetaMask} class="btn btn-light">Connect wallet </button>,
         };
     }
     async componentDidMount () {
@@ -137,9 +148,11 @@ export default class BSCBridge extends React.Component {
         connectMetaMask();
         var numberOfSporeAVAX = await getSporeInWalletAVAX()/10**9;
         var numberOfSporeBSC = await getSporeInWalletBSC()/10**9;
+        var nid = await getNetworkId();
         this.setState({
             numberOfSporeAVAX: numberOfSporeAVAX,
-            numberOfSporeBSC: numberOfSporeBSC
+            numberOfSporeBSC: numberOfSporeBSC,
+            network:nid
         })
     }
 
@@ -153,7 +166,7 @@ export default class BSCBridge extends React.Component {
                             <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
                         </div>
                         <div class="col-lg-4 text-right">
-                            <button onClick={connectMetaMask} class="btn btn-light">Connect wallet </button>
+                            {this.state.network}
                         </div>
                     </div>
                     <div class="wrapBridge pt-2">
