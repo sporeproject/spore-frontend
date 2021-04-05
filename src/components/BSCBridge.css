@@ -80,8 +80,25 @@
     font-size: 18px;
 }
 
+#bridge .avalanche{
+    background-color: #ff00006c;
+}
+
+#bridge .binance{
+    background-color: rgba(110, 110, 0, 0.507);
+}
+
+#bridge .white{
+    background-color: white;
+}
+
 #bridge #swap-btn {
     font-size: 28px;
+    
+}
+
+#bridge #approve-btn {
+    font-size: 14px;
     
 }
 
