@@ -38,7 +38,7 @@ async function swapFromAVAX(){
     var account = await window.web3.eth.getAccounts();
     account = account[0];
     var amount = ethers.BigNumber.from(document.getElementById("spores").value*10**9);
-    var fees = ethers.BigNumber.from(30000000000000000)
+    var fees = ethers.BigNumber.from("30000000000000000")
     try {
         await AvaxBridgeContract.methods
             .burn(amount)
@@ -55,11 +55,17 @@ async function swapFromBSC(){
     var account = await window.web3.eth.getAccounts();
     account = account[0];
     var amount = ethers.BigNumber.from(document.getElementById("spores2").value*10**9);
-    var fees = ethers.BigNumber.from(5000000000000000)
+    var fees = ethers.BigNumber.from("5000000000000000")
     try {
-        await BscBridgeContract.methods
-            .burn(account, amount)
-            .send({ from: account, value: fees});
+        if (document.getElementById("checkbox").checked) {
+            await BscBridgeContract.methods
+                .burn(account, amount)
+                .send({ from: account, value: fees});
+        }else{
+            await BscBridgeContract.methods
+                .burn(account, amount)
+                .send({ from: account, value: fees});
+        }
         } catch (error) {
         alert(error);
         }
@@ -196,7 +202,7 @@ export default class BSCBridge extends React.Component {
                                                 <button class="btn btn-outline-secondary white" type="button" onClick={setMaxSporeBSC}>MAX</button>
                                             </div>
                                         </div>
-                                        <label class="py-2"><input type="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX </label>
+                                        <label class="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX </label>
                                     </div>
                                 </div>
                             </div>
