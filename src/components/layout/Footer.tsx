@@ -3,7 +3,7 @@ import './Footer.css';
 
 import React from 'react';
 
-function Footer() {
+const Footer = () => {
   return (
     <div className='container-fluid footer pt-5'>
       <div className='row'>

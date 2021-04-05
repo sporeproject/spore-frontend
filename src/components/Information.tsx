@@ -3,9 +3,10 @@ import './Information.css';
 
 import React from 'react';
 import BurnedTokens from './BurnedTokens';
+//@ts-ignore
 import HowToBuyPDF from '../utils/how_to_buy.pdf';
 
-function Information() {
+const Information = () => {
   return (
     <>
       <div className='container information  py-5'>
@@ -337,7 +338,7 @@ function Information() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Information;
+export default Information
