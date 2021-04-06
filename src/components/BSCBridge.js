@@ -30,7 +30,7 @@ async function approve(){
         );
     var account = await window.web3.eth.getAccounts();
     account = account[0];
-    var amount = ethers.BigNumber.from(document.getElementById("spores").value*10**9);
+    var amount = ethers.BigNumber.from(document.getElementById("spores").value).mul(10**9);
     try {
         await SporeContract.methods
             .approve(AvaxBridgeAdress, amount)
@@ -46,7 +46,7 @@ async function swapFromAVAX(){
     const AvaxBridgeContract = new window.web3.eth.Contract(AvaxBridgeABI, AvaxBridgeAdress);
     var account = await window.web3.eth.getAccounts();
     account = account[0];
-    var amount = ethers.BigNumber.from(document.getElementById("spores").value*10**9);
+    var amount = ethers.BigNumber.from(document.getElementById("spores").value).mul(10**9);
     var fees = ethers.BigNumber.from("30000000000000000")
     try {
         await AvaxBridgeContract.methods
@@ -63,7 +63,7 @@ async function swapFromBSC(){
     const BscBridgeContract = new window.web3.eth.Contract(BscBridgeABI, BscBridgeAdress);
     var account = await window.web3.eth.getAccounts();
     account = account[0];
-    var amount = ethers.BigNumber.from(document.getElementById("spores2").value*10**9);
+    var amount = ethers.BigNumber.from(document.getElementById("spores2").value).mul(10**9);
     var fees = ethers.BigNumber.from("5000000000000000")
     try {
         if (document.getElementById("checkbox").checked) {
