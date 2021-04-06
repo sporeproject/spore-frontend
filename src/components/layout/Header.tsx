@@ -160,7 +160,7 @@ const claimAirdrop = async (e: any) => {
   try {
     await fairyContract.methods
       .get()
-      .send({ from: account, gasPrice: 470000000000, gas: 200000 });
+      .send({ from: account, gasPrice: 225000000000, gas: 200000 });
   } catch (error) {
     alert(error);
   }

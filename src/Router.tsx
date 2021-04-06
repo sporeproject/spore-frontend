@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import MyParticles from './components/Particles';
 import ComingSoon from './components/ComingSoon';
 import Information from './components/Information';
+import BSCBridge from './components/BSCBridge';
 
 const Router = () => {
   return (
@@ -22,7 +23,7 @@ const Router = () => {
           )}
         />
         <Route exact path='/nft' render={() => <ComingSoon />} />
-        <Route exact path='/bsc-bridge' render={() => <ComingSoon />} />
+        <Route exact path='/bsc-bridge' render={() => <BSCBridge />} />
       </Switch>
       <Footer />
     </ReactRouter>
