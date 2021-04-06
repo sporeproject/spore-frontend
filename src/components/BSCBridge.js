@@ -215,7 +215,7 @@ export default class BSCBridge extends React.Component {
                                                 <button class="btn btn-outline-secondary white" type="button" onClick={setMaxSporeBSC}>MAX</button>
                                             </div>
                                         </div>
-                                        <label class="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX </label>
+                                        <label class="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
                                     </div>
                                 </div>
                             </div>
@@ -228,6 +228,11 @@ export default class BSCBridge extends React.Component {
                             <div class="offset-lg-3 col-lg-6 text-center py-4 col-coin d-none">
                                 Transfer fees : {this.state.feesBNB} BNB
                                 <button onClick={swapFromBSC} class="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="offset-lg-3 col-lg-6 text-center py-4">
+                                <h3>Disclaimer: this is a version alpha. Use at your own risk</h3>
                             </div>
                         </div>
                     </div>
