@@ -137,8 +137,8 @@ const setMaxSporeBSC = async () => {
 const BSCBridge = () => {
     const [numberOfSporeAVAX, setNumberOfSporeAVAX] = useState(0)
     const [numberOfSporeBSC, setNumberOfSporeBSC] = useState(0)
-    const [feesBNB, setFeesBNB] = useState(0.005)
-    const [feesAVAX, setFeesAVAX] = useState(0.03)
+    const [feesBNB] = useState(0.005)
+    const [feesAVAX] = useState(0.03)
     const [network, setNetwork] = useState<any>(<button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>)
 
     // network: <button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>,
