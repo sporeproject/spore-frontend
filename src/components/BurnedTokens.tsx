@@ -15,7 +15,6 @@ win.web3 = new Web3('https://bsc-dataseed1.binance.org:443')
 const BurnedTokens = () => {
   const [numberOfBurnedTokens, setNumberOfBurnedTokens] = useState(-1)
   const [numberOfBurnedTokensBSC, setNumberOfBurnedTokensBSC] = useState(-1)
-  const [percentageOfBurnedTokens, setPercentageOfBurnedTokens] = useState(-1)
   const [numberOfTokenHolders, setNumberOfTokenHolders] = useState(-1)
   const [numberOfTokenHoldersBSC, setNumberOfTokenHoldersBSC] = useState(-1)
 
@@ -50,7 +49,6 @@ const BurnedTokens = () => {
       items.forEach((coin: any) => {
         if (coin.contract_address === '0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985') {
           setNumberOfBurnedTokens(coin.balance / (10 ** 9))
-          setPercentageOfBurnedTokens(coin.balance / (10 ** 9) / TOTAL_SUPPLY * 100)
         }
       })
     }
