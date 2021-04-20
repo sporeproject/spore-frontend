@@ -5,17 +5,18 @@ import React from 'react';
 import Web3 from 'web3';
 import { Link } from 'react-router-dom';
 
-function connectMetaMask() {
-  if (window.ethereum) {
-    window.web3 = new Web3(window.ethereum);
-    window.ethereum.enable();
+const win = window as any
+const connectMetaMask = () => {
+  if (win.ethereum) {
+    win.web3 = new Web3(win.ethereum);
+    win.ethereum.enable();
   }
 }
 
-async function claimAirdrop(e) {
+const claimAirdrop = async (e: any) => {
   e.preventDefault();
   connectMetaMask();
-  var ABI = [
+  const ABI = [
     {
       type: 'constructor',
       stateMutability: 'nonpayable',
@@ -149,11 +150,11 @@ async function claimAirdrop(e) {
       inputs: [{ type: 'uint256', name: '_amount', internalType: 'uint256' }]
     }
   ];
-  const fairyContract = new window.web3.eth.Contract(
+  const fairyContract = new win.web3.eth.Contract(
     ABI,
     '0xeAdf7D005596dbad55e067C1208080f83258D452'
   );
-  var account = await window.web3.eth.getAccounts();
+  var account = await win.web3.eth.getAccounts();
   account = account[0];
   console.log(account);
   try {
@@ -165,7 +166,7 @@ async function claimAirdrop(e) {
   }
 }
 
-function Header() {
+const Header = () => {
   return (
     <header className='header'>
       <nav className='navbar navbar-expand-lg py-3'>
@@ -236,7 +237,7 @@ function Header() {
         </div>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header
