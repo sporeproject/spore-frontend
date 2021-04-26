@@ -1,0 +1,34 @@
+.navbar {
+  transition: all 0.4s;
+  background-color: #6B4E3B;
+}
+
+.navbar .logo {
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+.navbar .navbar-brand {
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.navbar .nav-item {
+  padding: 0 15px;
+}
+
+.navbar .nav-link, .navbar .btn {
+  text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+  text-decoration: none;
+  color: #EBD5C7;
+}
+
+.navbar a.btn:hover,
+.navbar a.btn:focus {
+  text-decoration: none;
+  color: #6B4E3B;
+}
