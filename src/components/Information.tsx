@@ -95,7 +95,7 @@ const Information = () => {
             <div className='col-6 text-right'>
               <h5>Setting up Airdrops & Incentive program </h5>
               <p>
-                In Progress <i className='fa fa-spinner'></i>
+                <i className='fa fa-check'></i> 20 March 2021
               </p>
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
@@ -120,9 +120,9 @@ const Information = () => {
               <div className='circle font-weight-bold'>3</div>
             </div>
             <div className='col-6'>
-              <h5>Farming Partnerships </h5>
+              <h5>Second layer blockchain development + Bridge (Binance Smart Chain)</h5>
               <p>
-                <i className='fa fa-spinner'></i> In Progress{' '}
+              <i className='fa fa-check'></i> 6 April 2021
               </p>
             </div>
           </div>
@@ -141,15 +141,17 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>Algorithmically generated NFTs </h5>
+              <h5>Farming Partnerships</h5>
               <p>
-                Q2 2021 <i className='fa fa-spinner'></i>
+                <i className='fa fa-check'></i> 12 April 2021
               </p>
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>4</div>
             </div>
           </div>
+
+
 
           <div className='row timeline'>
             <div className='col-2'>
@@ -163,17 +165,19 @@ const Information = () => {
             </div>
           </div>
 
+
           <div className='row align-items-center how-it-works d-flex'>
             <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>5</div>
+                <div className='circle font-weight-bold'>5</div>
             </div>
-            <div className='col-6'>
-              <h5>Governance </h5>
-              <p>
-                Q2 2021 <i className='fa fa-spinner'></i>
-              </p>
-            </div>
-          </div>
+                <div className='col-6'>
+                  <h5>Algorithmically generated NFTs </h5>
+                  <p>
+                      In Progress <i className='fa fa-spinner'></i>
+                  </p>
+                </div>
+           </div>
+
 
           <div className='row timeline'>
             <div className='col-2'>
@@ -189,9 +193,9 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>Second layer blockchain development </h5>
+              <h5>Governance </h5>
               <p>
-                Q3 2021 <i className='fa fa-spinner'></i>
+                In Progress <i className='fa fa-spinner'></i>
               </p>
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
@@ -243,7 +247,7 @@ const Information = () => {
               </p>
             </div>
             <div className='col-2 text-center top-right d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>6</div>
+              <div className='circle font-weight-bold'>8</div>
             </div>
           </div>
         </div>
