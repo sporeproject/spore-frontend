@@ -47,7 +47,7 @@ const PriceToken = () => {
         </a>
       </span>      
       <span className="price larger">        
-          That's {priceToken.zeros} zeroes 🚀
+          That's {priceToken.zeros} zeros! 🚀
       </span>      
     </>
   );
