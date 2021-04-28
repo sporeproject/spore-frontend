@@ -34,10 +34,10 @@ const Information = () => {
             <dl className='lead'>
               
               <dd>On Every <img height="30px" width="30px" 
-                src="avalanche-logo.png" alt="Avalanche Network"></img> Transaction</dd>
+                src='avalanche-logo.png' alt='Avalanche Network'></img> Transaction</dd>
               <dt>3% of rewards are burnt</dt>
               <dt>3% are redistributed to hodlers</dt>
-              <dd>On Every <img height="30px" width="30px" src="bsc-logo.png" alt="Binance Smart Chain"></img> Transaction</dd>              
+              <dd>On Every <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> Transaction</dd>              
               <dt>6% of rewards are burnt</dt>
             </dl>
 
