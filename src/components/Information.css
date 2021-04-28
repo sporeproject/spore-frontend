@@ -109,3 +109,37 @@
 .card .card-body {
   color: #212121;
 }
+
+.center {
+  text-align:center;
+}
+
+.larger {
+  font-size: x-large;
+}
+
+dl {
+  margin-left: 20px;
+}
+
+dt {
+  margin-left: 60px;
+}
+
+dd {
+  margin-left: 40px;
+}
+
+ul.lead {
+  margin-bottom: 20px;
+}
+
+.price {
+  display: inline-block;
+  background-color: #6B4E3B; 
+  border-radius: 20px;
+  padding: 0px 10px 0 10px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+

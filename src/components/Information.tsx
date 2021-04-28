@@ -3,6 +3,7 @@ import './Information.css';
 
 import React from 'react';
 import BurnedTokens from './BurnedTokens';
+import PriceToken from './PriceToken';
 //@ts-ignore
 import HowToBuyPDF from '../utils/how_to_buy.pdf';
 
@@ -16,23 +17,33 @@ const Information = () => {
               What is <span>Spore Finance</span>
             </h2>
             <p className='lead'>
-              Spore Finance aims at creating an ecosystem combining{' '}
-              <b>reflect tokens</b>, <b>algorithmically generated NFTs</b> and
-              the first <b>NFT prediction market</b>.
+              Spore Finance aims to create an ecosystem combining 
             </p>
-            <p className='lead'>
-              Amazed by the <b>Avalanche Network</b> first generation of pools,
-              the first phase was to launch one of the first reflect tokens
-              there to be.
-            </p>
+            <ul className='lead'>
+                <li><b>reflect tokens</b></li>
+                <li><b>algorithmically generated NFTs</b></li>
+                <li><b>next-gen NFT prediction market</b></li>
+            </ul>    
+            <blockquote className='lead'>
+              Meet Spore <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
+            </blockquote>
+
+            <div className='lead larger'>
+              <PriceToken></PriceToken>
+            </div>            
+            <dl className='lead'>
+              
+              <dd>On Every <img height="30px" width="30px" 
+                src="https://powder.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png" alt="Avalanche Network"></img> Transaction</dd>
+              <dt>3% of rewards are burnt</dt>
+              <dt>3% are redistributed to hodlers</dt>
+              <dd>On Every <img height="30px" width="30px" src="bsc-logo.png" alt="Binance Smart Chain"></img> Transaction</dd>              
+              <dt>6% of rewards are burnt</dt>
+            </dl>
 
             <p className='lead'>
-              On every transaction, 3% of the rewards are burnt forever and 3%
-              are redistributed to all the owners.
-              <br /> Earn frictionless rewards while your spores spread!
-              Deflation reduces the supply increasing the token value over time.
-              The vision of the project is the vision of the community. It is
-              going to evolve as spores spread.
+              Earn frictionless rewards while spores spreads!
+              Deflation reduces the circulating supply increasing the token value over time.              
             </p>
           </div>
           <div className='col-md-5 text-right'>
@@ -270,8 +281,16 @@ const Information = () => {
               rel='noopener noreferrer'
               className='btn btn-primary mx-1 mb-2'
             >
-              Token address
+              AVAX Token address
             </a>
+            <a
+              href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='btn btn-primary mx-1 mb-2'
+            >
+              BSC Token address
+            </a>            
             <a
               href='https://cchain.explorer.avax.network/tx/0x7df1694004dd6e994d31f76c3978718e017fe6e6112482866051aca7ab90caa6/token-transfers'
               target='_blank'
