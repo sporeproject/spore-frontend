@@ -1,6 +1,7 @@
 // src/Footer.js
 import './Information.css';
 
+
 import React from 'react';
 import BurnedTokens from './BurnedTokens';
 import PriceToken from './PriceToken';
@@ -42,9 +43,11 @@ const Information = () => {
             </dl>
 
             <p className='lead'>
-              Earn frictionless rewards while spores spreads!
-              Deflation reduces the circulating supply increasing the token value over time.              
+              Earn frictionless rewards while spore spreads!              
             </p>
+            <p className='lead'>
+              BSC users enjoy ever decreasing circulating supply.
+            </p>            
           </div>
           <div className='col-md-5 text-right'>
             <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
