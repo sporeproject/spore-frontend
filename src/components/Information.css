@@ -134,12 +134,10 @@ ul.lead {
   margin-bottom: 20px;
 }
 
-.price {
+.price {  
   display: inline-block;
-  background-color: #6B4E3B; 
-  border-radius: 20px;
-  padding: 0px 10px 0 10px;
-  margin-left: 20px;
+  padding: 5px;
+  margin-left: 10px;
   margin-bottom: 10px;
 }
 

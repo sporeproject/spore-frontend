@@ -34,7 +34,7 @@ const Information = () => {
             <dl className='lead'>
               
               <dd>On Every <img height="30px" width="30px" 
-                src="https://powder.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png" alt="Avalanche Network"></img> Transaction</dd>
+                src="avalanche-logo.png" alt="Avalanche Network"></img> Transaction</dd>
               <dt>3% of rewards are burnt</dt>
               <dt>3% are redistributed to hodlers</dt>
               <dd>On Every <img height="30px" width="30px" src="bsc-logo.png" alt="Binance Smart Chain"></img> Transaction</dd>              
@@ -279,7 +279,7 @@ const Information = () => {
               href='https://cchain.explorer.avax.network/address/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/transactions'
               target='_blank'
               rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
+              className='btn btn-primary mx-1 mb-2 zeros'
             >
               AVAX Token address
             </a>

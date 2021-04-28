@@ -37,10 +37,17 @@ const PriceToken = () => {
   return (
     <>
       <span className="price">
-      💲{priceToken.price}
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          className='btn btn-primary mx-1 mb-2 larger' 
+          href="https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985">
+          <img height="15px" width="15px" src="avalanche-logo.png" alt="Avalanche Network"></img>
+          💲{priceToken.price}
+        </a>
       </span>      
-      <span className="price">
-      That's {priceToken.zeros} zeroes 🚀
+      <span className="price larger">        
+          That's {priceToken.zeros} zeroes 🚀
       </span>      
     </>
   );
