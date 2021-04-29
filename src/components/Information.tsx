@@ -7,6 +7,7 @@ import BurnedTokens from './BurnedTokens';
 import PriceToken from './PriceToken';
 //@ts-ignore
 import HowToBuyPDF from '../utils/how_to_buy.pdf';
+import Contributors from './contributors';
 
 const Information = () => {
   return (
@@ -263,6 +264,20 @@ const Information = () => {
             <div className='col-2 text-center top-right d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>8</div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className='bg-white pb-5'>
+        <div className='container information py-5'>
+          <div className='row py-4'>
+            <div className='col-md-12 text-center'>
+              <h2 className='feature'>Developers</h2>
+            </div>            
+          </div>
+          <div className='row'>
+            <>
+              <Contributors />
+            </>
           </div>
         </div>
       </section>

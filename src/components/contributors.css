@@ -1,0 +1,13 @@
+.contributor-style img{
+  width: 2em;
+}
+
+.contributor-style a{
+  text-decoration: none;
+  color: #6B4E3B;
+  font-size: 2em;
+}
+.contributor-style{
+  display: inline-block;
+  margin: 1em;
+}
