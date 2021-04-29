@@ -1,0 +1,96 @@
+.contributor-style img{
+  width: 2em;
+}
+
+.contributor-style a{
+  text-decoration: none;
+  color: #6B4E3B;
+  font-size: 2em;
+}
+.contributor-style{
+  display: inline-block;
+  margin: 1em;
+}
+
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  /* CSS */
+  .contributor-style img{
+    width: 1.8em;
+  }
+  
+  .contributor-style a{
+    font-size: 1.5em;
+  }
+
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /* CSS */
+  .contributor-style img{
+    width: 1.8em;
+  }
+  
+  .contributor-style a{
+    font-size: 1.5em;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  /* CSS */
+  .contributor-style img{
+    width: 1.8em;
+  }
+  
+  .contributor-style a{
+    font-size: 1.5em;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  /* CSS */
+  .contributor-style img{
+    width: 1.8em;
+  }
+  
+  .contributor-style a{
+    font-size: 1.5em;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  /* CSS */
+  .contributor-style img{
+    width: 1.8em;
+  }
+  
+  .contributor-style a{
+    font-size: 1.5em;
+  }
+}
