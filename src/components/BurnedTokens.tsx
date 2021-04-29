@@ -63,7 +63,7 @@ const BurnedTokens = () => {
     );
     try {
       const burned = await SporeContract.methods.burned().call()
-      setNumberOfBurnedTokensBSC(parseInt(burned) / (10 ** 9))
+      setNumberOfBurnedTokensBSC(burned / (10 ** 9))
 
     } catch (error) {
       console.log(error)
