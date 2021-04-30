@@ -134,6 +134,10 @@ ul.lead {
   margin-bottom: 20px;
 }
 
+.no-br {
+  white-space: nowrap;
+}
+
 .price {  
   display: inline-block;
   padding: 5px;

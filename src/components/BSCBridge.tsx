@@ -127,11 +127,13 @@ const getSporeInWalletBSC = async () => {
 const setMaxSporeAVAX = async () => {
     var maxSpores = await getSporeInWalletAVAX();
     docu.getElementById("spores").value = maxSpores / 10 ** 9;
+    docu.getElementById("spores").value = docu.getElementById("spores").value.split('.')[0]
 }
 
 const setMaxSporeBSC = async () => {
     var maxSpores = await getSporeInWalletBSC();
     docu.getElementById("spores2").value = maxSpores / 10 ** 9;
+    docu.getElementById("spores2").value = docu.getElementById("spores2").value.split('.')[0]
 }
 
 const BSCBridge = () => {
@@ -189,6 +191,9 @@ const BSCBridge = () => {
                                         <div className="offset-lg-3 col-lg-6 text-center py-1">
                                             <button onClick={approve} className="btn btn-primary" id="approve-btn">APPROVE</button>
                                         </div>
+                                        <div className="no-br">
+                                            0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985
+                                        </div>                                        
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +201,9 @@ const BSCBridge = () => {
                                 <div className="card px-lg-5 rounded-0 h-100 avalanche" id="reverted-1">
                                     <div className="card-body">
                                         <h5 className="card-title"><span>TO </span>  Avalanche </h5>
+                                        <div className="no-br">
+                                            0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985
+                                        </div>                                                                                
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +212,9 @@ const BSCBridge = () => {
                                 <div className="card px-lg-5 rounded-0 h-100 binance">
                                     <div className="card-body">
                                         <h5 className="card-title"><span>TO</span> Binance Smart Chain </h5>
-
+                                        <div className="no-br">
+                                            0x33a3d962955a3862c8093d1273344719f03ca17c
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +230,11 @@ const BSCBridge = () => {
                                             </div>
                                         </div>
                                         <label className="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
+                                        
                                     </div>
+                                    <div className="no-br">
+                                       0x33a3d962955a3862c8093d1273344719f03ca17c
+                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -236,7 +250,12 @@ const BSCBridge = () => {
                         </div>
                         <div className="row">
                             <div className="offset-lg-3 col-lg-6 text-center py-4">
-                                <h3>Disclaimer: this is a version alpha. Use at your own risk</h3>
+                                <h3>Disclaimer: this is a version alpha. Use at your own risk please come to discord if you have an issue.</h3>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="offset-lg-3 col-lg-6 text-center py-4">
+                                <h3><a target="_blank" href="https://docs.google.com/document/d/1MSCZk1ovPhUND0d42F5KuJbF6HxYH6WHm7IPQH1k7SM/edit">Yet Another Tip Sheet</a></h3>
                             </div>
                         </div>
                     </div>
