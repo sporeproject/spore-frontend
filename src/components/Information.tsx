@@ -288,17 +288,24 @@ const Information = () => {
               <div className="info">
                 <div className="row">
                   <a
-                    href='https://discord.gg/hYDnmyadJC'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='btn btn-primary mx-1 mb-2 fab fa-discord'
-                  >
-                  </a>
-                  <a
                     href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
+                  >
+                  </a>
+                  <a
+                    href='https://www.reddit.com/r/SporeFinance/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-reddit'
+                  >
+                  </a>
+                  <a
+                    href='https://discord.gg/hYDnmyadJC'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-discord'
                   >
                   </a>
                   <a
@@ -309,7 +316,7 @@ const Information = () => {
                   >
                   </a>
                   <a
-                    href='https://instagram.com'
+                    href='https://instagram.com/Sporefinance'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-instagram'
