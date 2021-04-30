@@ -82,7 +82,7 @@ const BurnedTokens = () => {
     console.log("getting token holders avax")
     try {
       const res = await axios.get(
-        'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999'
+        'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999&key=ckey_a09c56c3188547958bd621253a4'
       )
 
       if (
@@ -114,9 +114,15 @@ const BurnedTokens = () => {
         const items = res.data.data.items;
         setNumberOfTokenHoldersBSC(items.length)
       }
+      else {
+        console.log('test')
+        console.log(res)
+      }
     }
     catch (err) {
       console.log("Error getting token holders bsc")
+      ///HARDCODED VALUE
+      setNumberOfTokenHoldersBSC(56000)
     }
 
   }
@@ -143,7 +149,7 @@ const BurnedTokens = () => {
         Number of token holders (Avalanche) : <b>{numberOfTokenHolders}</b>
       </li>
       <li>
-        Number of token holders (BSC) : <b>{numberOfTokenHoldersBSC}</b>
+        Number of token holders (BSC) : <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
       </li>
     </>
   );

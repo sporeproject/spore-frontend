@@ -14,3 +14,8 @@ a {
 a:hover {
   cursor: pointer;
 }
+
+
+.bscLink{
+  color: grey;
+}
