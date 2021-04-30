@@ -7,15 +7,15 @@ const Contributors = () => {
 
   useEffect(() => {
     async function getContributors() {
-       getContributorsJson()
+      getContributorsJson()
     }
     getContributors()
   }, [])
-  
+
   const getContributorsJson = () => {
-     axios.get(
+    axios.get(
       'https://api.github.com/repos/SporeFinance/Spore-frontend/contributors'
-    ).then( res =>{
+    ).then(res => {
       setContributors(res.data);
     });
   }
@@ -24,18 +24,18 @@ const Contributors = () => {
     <>
       <div className='col-md-12'>
         {
-          contrib.map( (data:any) => {
-           return <div className='contributor-style'>
+          contrib.map((data: any) => {
+            return <div className='contributor-style' key={data.html_url}>
               <a href={data.html_url} target="_blank" rel="noreferrer">
-                <img src={data.avatar_url} alt=''/>
+                <img src={data.avatar_url} alt='' />
                 <span>{data.login}</span>
               </a>
             </div>
-          })          
+          })
         }
       </div>
     </>
   );
-  
+
 };
 export default Contributors;
