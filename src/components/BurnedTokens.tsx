@@ -22,8 +22,8 @@ const BurnedTokens = () => {
     async function getInfos() {
       await getBurnedTokens()
       await getTokenHolders()
-      await getTokenHoldersBSC()
       await getBurnedTokensBSC()
+      await getTokenHoldersBSC()
       setInterval(async () => {
         await getBurnedTokens()
         await getTokenHolders()
@@ -36,21 +36,28 @@ const BurnedTokens = () => {
   }, [])
 
   const getBurnedTokens = async () => {
-    const res = await axios.get(
-      'https://api.covalenthq.com/v1/43114/address/0x000000000000000000000000000000000000dEaD/balances_v2/?nft=false'
-    );
+    try {
+      console.log("getting burned tokens")
+      const res = await axios.get(
+        'https://api.covalenthq.com/v1/43114/address/0x000000000000000000000000000000000000dEaD/balances_v2/?nft=false'
+      );
 
-    if (
-      res.data !== undefined &&
-      res.data.data !== undefined &&
-      res.data.data.items !== undefined
-    ) {
-      const items = res.data.data.items;
-      items.forEach((coin: any) => {
-        if (coin.contract_address === '0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985') {
-          setNumberOfBurnedTokens(coin.balance / (10 ** 9))
-        }
-      })
+      if (
+        res.data !== undefined &&
+        res.data.data !== undefined &&
+        res.data.data.items !== undefined
+      ) {
+        const items = res.data.data.items;
+        items.forEach((coin: any) => {
+          if (coin.contract_address === '0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985') {
+            setNumberOfBurnedTokens(coin.balance / (10 ** 9))
+          }
+        })
+      }
+
+    }
+    catch (err) {
+      console.log("Error getting burned tokens avax")
     }
   }
   const getBurnedTokensBSC = async () => {
@@ -62,41 +69,62 @@ const BurnedTokens = () => {
       SporeAddress
     );
     try {
+      console.log("GETTING BURNED TOKENS BSC")
       const burned = await SporeContract.methods.burned().call()
       setNumberOfBurnedTokensBSC(burned / (10 ** 9))
 
     } catch (error) {
-      console.log(error)
+      console.log("CANNOT READ BURNED TOKENS BSC", error)
     }
   }
 
   const getTokenHolders = async () => {
-    const res = await axios.get(
-      'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999'
-    )
+    console.log("getting token holders avax")
+    try {
+      const res = await axios.get(
+        'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999&key=ckey_a09c56c3188547958bd621253a4'
+      )
 
-    if (
-      res.data !== undefined &&
-      res.data.data !== undefined &&
-      res.data.data.items !== undefined
-    ) {
-      const items = res.data.data.items;
-      setNumberOfTokenHolders(items.length)
+      if (
+        res.data !== undefined &&
+        res.data.data !== undefined &&
+        res.data.data.items !== undefined
+      ) {
+        const items = res.data.data.items;
+        setNumberOfTokenHolders(items.length)
+      }
+
     }
+    catch (err) {
+      console.log("errror getting holders avax", err)
+    }
+
   }
   const getTokenHoldersBSC = async () => {
-    const res = await axios.get(
-      'https://api.covalenthq.com/v1/56/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c/token_holders/?page-size=999999'
-    )
+    try {
+      const res = await axios.get(
+        'https://api.covalenthq.com/v1/56/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c/token_holders/?page-size=99999'
+      )
 
-    if (
-      res.data !== undefined &&
-      res.data.data !== undefined &&
-      res.data.data.items !== undefined
-    ) {
-      const items = res.data.data.items;
-      setNumberOfTokenHoldersBSC(items.length)
+      if (
+        res.data !== undefined &&
+        res.data.data !== undefined &&
+        res.data.data.items !== undefined
+      ) {
+        const items = res.data.data.items;
+        setNumberOfTokenHoldersBSC(items.length)
+      }
+      else {
+        console.log('test')
+        console.log(res)
+      }
     }
+    catch (err) {
+      console.log("Error getting token holders bsc")
+      ///HARDCODED VALUE
+      setNumberOfTokenHoldersBSC(56000)
+    }
+
   }
 
   const numberWithCommas = (x: number) => {
@@ -121,7 +149,7 @@ const BurnedTokens = () => {
         Number of token holders (Avalanche) : <b>{numberOfTokenHolders}</b>
       </li>
       <li>
-        Number of token holders (BSC) : <b>{numberOfTokenHoldersBSC}</b>
+        Number of token holders (BSC) : <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
       </li>
     </>
   );
