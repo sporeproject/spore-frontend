@@ -255,7 +255,7 @@ const BSCBridge = () => {
                         </div>
                         <div className="row">
                             <div className="offset-lg-3 col-lg-6 text-center py-4">
-                                <h3><a target="_blank" href="https://docs.google.com/document/d/1MSCZk1ovPhUND0d42F5KuJbF6HxYH6WHm7IPQH1k7SM/edit">Yet Another Tip Sheet</a></h3>
+                                <h3><a rel="noreferrer" target="_blank" href="https://docs.google.com/document/d/1MSCZk1ovPhUND0d42F5KuJbF6HxYH6WHm7IPQH1k7SM/edit">Yet Another Tip Sheet</a></h3>
                             </div>
                         </div>
                     </div>
