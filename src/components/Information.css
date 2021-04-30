@@ -141,3 +141,7 @@ ul.lead {
   margin-bottom: 10px;
 }
 
+.row {
+  display: flex;
+  justify-content: center;
+}
