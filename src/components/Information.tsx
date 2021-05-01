@@ -329,6 +329,13 @@ const Information = () => {
                     className='btn btn-primary mx-1 mb-2 fab fa-medium-m'
                   >
                   </a>
+                  <a
+                    href='https://github.com/SporeFinance'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-github'
+                  >
+                  </a>
                 </div>
                 <div className="row social-links">
                   <a
