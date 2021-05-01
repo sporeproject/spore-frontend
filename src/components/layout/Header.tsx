@@ -205,7 +205,7 @@ const Header = () => {
               </li>
               <li className="dropdown nav-item">
                 <a 
-                  href="#" 
+                  href="/" 
                   className="dropdown-toggle nav-link font-weight-bold"
                   data-toggle="dropdown"
                   role="button"
