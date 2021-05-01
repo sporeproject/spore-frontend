@@ -1,8 +1,8 @@
-# Spore Finance : A Greedless Ecosystem Bringing Innovative Minds Together
+# Spore Finance : a greedless ecosystem bringing innovative minds together
 
 ## Welcome to the Github Repo of [SporeFinance.co](http://sporefinance.co/)
 
-The ultra-deflationary inter-blockchain token that gives you 3% frictionless rewards + 3% burn in the Avalanche ecosystem , a bridge Avalanche/Binance Smart chain and an ultra deflationary 6% burn on every transaction on the Binance Smart chain ecosystem and many more features in development.
+The ultra-deflationary inter-blockchain token that gives you 3% frictionless rewards + 3% burn in the Avalanche ecosystem, a bridge Avalanche/Binance Smart Chain, an ultra deflationary 6% burn on every transaction on the Binance Smart chain ecosystem, and many more features in development.
 
 ### How can we develop so many things?
 
