@@ -316,6 +316,13 @@ const Information = () => {
                   >
                   </a>
                   <a
+                    href='https://www.facebook.com/SporeFinance/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-facebook'
+                  >
+                  </a>
+                  <a
                     href='https://instagram.com/Sporefinance'
                     target='_blank'
                     rel='noopener noreferrer'
