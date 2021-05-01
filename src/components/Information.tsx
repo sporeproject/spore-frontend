@@ -286,7 +286,7 @@ const Information = () => {
           <div className='col-md-12 text-center'>
             <h2 className='feature pb-4'>Links</h2>
               <div className="info">
-                <div className="row">
+                <div className="row social-links">
                   <a
                     href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
                     target='_blank'
@@ -330,7 +330,7 @@ const Information = () => {
                   >
                   </a>
                 </div>
-                <div className="row">
+                <div className="row social-links">
                   <a
                     href='https://cchain.explorer.avax.network/address/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/transactions'
                     target='_blank'
@@ -348,7 +348,7 @@ const Information = () => {
                   BSC Token address
                   </a>            
                 </div>
-                <div className="row">
+                <div className="row social-links">
                   <a
                     href='https://cchain.explorer.avax.network/tx/0x7df1694004dd6e994d31f76c3978718e017fe6e6112482866051aca7ab90caa6/token-transfers'
                     target='_blank'
@@ -366,7 +366,7 @@ const Information = () => {
                   LP-burnt tx
                   </a>
                 </div>
-                <div className="row">
+                <div className="row social-links">
                   <a
                     href='https://cchain.explorer.avax.network/address/0x88Dd784dFaaB1a7752d2CC81071Fcd12C1c4E1db/'
                     target='_blank'
@@ -384,7 +384,7 @@ const Information = () => {
                   Renounced ownership tx
                   </a>
                 </div>
-                <div className="row">
+                <div className="row social-links">
                   <a
                     href='https://www.youtube.com/watch?v=wK4vvE44Pfw'
                     target='_blank'
