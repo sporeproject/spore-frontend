@@ -32,3 +32,25 @@
   text-decoration: none;
   color: #6B4E3B;
 }
+
+.navbar a {
+  text-decoration: none;
+}
+
+.dropdown {
+  background-color: #6B4E3B;
+}
+
+.dropdown-menu {
+  background-color: #6B4E3B;
+  padding: 15px;
+  border: 1px solid white;
+}
+
+.dropdown-menu li {
+    margin: 2px;
+}
+
+.divider {
+    border: 1px solid white;
+}
