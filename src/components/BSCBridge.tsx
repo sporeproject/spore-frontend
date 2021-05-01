@@ -190,9 +190,6 @@ const BSCBridge = () => {
                                         </div>
                                         <div className="offset-lg-3 col-lg-6 text-center py-1">
                                             <button onClick={approve} className="btn btn-primary" id="approve-btn">APPROVE</button>
-                                        </div>
-                                        <div className="no-br">
-                                            0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985
                                         </div>                                        
                                     </div>
                                 </div>
@@ -200,10 +197,7 @@ const BSCBridge = () => {
                             <div className="col-lg-6 col-coin pr-lg-0 d-none">
                                 <div className="card px-lg-5 rounded-0 h-100 avalanche" id="reverted-1">
                                     <div className="card-body">
-                                        <h5 className="card-title"><span>TO </span>  Avalanche </h5>
-                                        <div className="no-br">
-                                            0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985
-                                        </div>                                                                                
+                                        <h5 className="card-title"><span>TO </span>  Avalanche </h5>                                        
                                     </div>
                                 </div>
                             </div>
@@ -212,9 +206,6 @@ const BSCBridge = () => {
                                 <div className="card px-lg-5 rounded-0 h-100 binance">
                                     <div className="card-body">
                                         <h5 className="card-title"><span>TO</span> Binance Smart Chain </h5>
-                                        <div className="no-br">
-                                            0x33a3d962955a3862c8093d1273344719f03ca17c
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -232,9 +223,6 @@ const BSCBridge = () => {
                                         <label className="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
                                         
                                     </div>
-                                    <div className="no-br">
-                                       0x33a3d962955a3862c8093d1273344719f03ca17c
-                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -255,14 +243,31 @@ const BSCBridge = () => {
                         </div>
                         <div className="row">
                             <div className="offset-lg-3 col-lg-6 text-center py-4">
-                                <h3><a rel="noreferrer" target="_blank" href="https://docs.google.com/document/d/1MSCZk1ovPhUND0d42F5KuJbF6HxYH6WHm7IPQH1k7SM/edit">Yet Another Tip Sheet</a></h3>
+                                <h3>Trust Wallet Steps</h3>
+
+                                <dl className="tips">                                    
+                                    <dt>Step 1 - Install metamask extension - please use chrome</dt>
+                                    <dt>Step 2 - Add both Avalanche and BSC chains</dt>
+                                    <dt>Step 3 - Add spore to both chains in metamask - add token - custom - paste</dt>
+                                    <dd>0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</dd>
+                                    <dd>0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</dd>
+                                    <dt>Step 4 - Send SPORE from Trust Wallet to Metamask</dt>
+                                    <dt>Step 5 - Send tiny bit of BNB from Trust Wallet to Metamask</dt>
+                                    <dd>Close your trust wallet - open your browser again</dd>
+                                    <dt>Step 6 - Goto spore bridge</dt>
+                                    <dt>Step 7 - Enable metamask</dt>
+                                    <dt>Step 8 - Click ‘Max’</dt>
+                                    <dt>Step 9 - Click ‘Transfer’</dt>
+                                    <dt>Step 10 - Flip to Avalanche chain</dt>
+                                    <dt>Step 11 - Wait for spore to arrive (couple of minutes)</dt>
+                                    <dt>Step 12 - Confirm spore is growing in wallet</dt>
+                                </dl>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
 
