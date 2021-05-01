@@ -285,96 +285,124 @@ const Information = () => {
         <div className='row py-5'>
           <div className='col-md-12 text-center'>
             <h2 className='feature pb-4'>Links</h2>
-            <a
-              href='https://sporefinance.medium.com/spore-finance-fair-launch-7f048d01e85d'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              Medium
-            </a>
-            <a
-              href='https://cchain.explorer.avax.network/address/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/transactions'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2 zeros'
-            >
-              AVAX Token address
-            </a>
-            <a
-              href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              BSC Token address
-            </a>            
-            <a
-              href='https://cchain.explorer.avax.network/tx/0x7df1694004dd6e994d31f76c3978718e017fe6e6112482866051aca7ab90caa6/token-transfers'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              2.5% of supply burnt tx
-            </a>
-            <a
-              href='https://cchain.explorer.avax.network/tx/0xe3e92326e2993a270a2fdd44a7301e6adccb7dd1b40bcc4ed9ed88ec963a22ab/token-transfers'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              LP-burnt tx
-            </a>
-            <br />
-            <a
-              href='https://cchain.explorer.avax.network/address/0x88Dd784dFaaB1a7752d2CC81071Fcd12C1c4E1db/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              DEV wallet address
-            </a>
-            <a
-              href='https://cchain.explorer.avax.network/tx/0x5fa10181e6c9841aa2226b5468e2b92f0268feaf178626472428e9839ab76982/internal-transactions'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              Renounced ownership tx
-            </a>
-            <a
-              href='https://discord.gg/hYDnmyadJC'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              Discord
-            </a>
-            <a
-              href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              Telegram
-            </a>
-            <br />
-            <a
-              href='https://www.youtube.com/watch?v=wK4vvE44Pfw'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              How to buy (VIDEO)
-            </a>
-            <a
-              href={HowToBuyPDF}
-              download
-              rel='noopener noreferrer'
-              className='btn btn-primary mx-1 mb-2'
-            >
-              How to buy (PDF)
-            </a>
+              <div className="info">
+                <div className="row">
+                  <a
+                    href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
+                  >
+                  </a>
+                  <a
+                    href='https://www.reddit.com/r/SporeFinance/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-reddit'
+                  >
+                  </a>
+                  <a
+                    href='https://discord.gg/hYDnmyadJC'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-discord'
+                  >
+                  </a>
+                  <a
+                    href='https://twitter.com/SporeFinance'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-twitter'
+                  >
+                  </a>
+                  <a
+                    href='https://instagram.com/Sporefinance'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-instagram'
+                  >
+                  </a>
+                  <a
+                    href='https://sporefinance.medium.com/spore-finance-fair-launch-7f048d01e85d'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 fab fa-medium-m'
+                  >
+                  </a>
+                </div>
+                <div className="row">
+                  <a
+                    href='https://cchain.explorer.avax.network/address/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/transactions'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2 zeros'
+                  >
+                  AVAX Token address
+                  </a>
+                  <a
+                    href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  BSC Token address
+                  </a>            
+                </div>
+                <div className="row">
+                  <a
+                    href='https://cchain.explorer.avax.network/tx/0x7df1694004dd6e994d31f76c3978718e017fe6e6112482866051aca7ab90caa6/token-transfers'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  2.5% of supply burnt tx
+                  </a>
+                  <a
+                    href='https://cchain.explorer.avax.network/tx/0xe3e92326e2993a270a2fdd44a7301e6adccb7dd1b40bcc4ed9ed88ec963a22ab/token-transfers'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  LP-burnt tx
+                  </a>
+                </div>
+                <div className="row">
+                  <a
+                    href='https://cchain.explorer.avax.network/address/0x88Dd784dFaaB1a7752d2CC81071Fcd12C1c4E1db/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  DEV wallet address
+                  </a>
+                  <a
+                    href='https://cchain.explorer.avax.network/tx/0x5fa10181e6c9841aa2226b5468e2b92f0268feaf178626472428e9839ab76982/internal-transactions'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  Renounced ownership tx
+                  </a>
+                </div>
+                <div className="row">
+                  <a
+                    href='https://www.youtube.com/watch?v=wK4vvE44Pfw'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  How to buy (VIDEO)
+                  </a>
+                  <a
+                    href={HowToBuyPDF}
+                    download
+                    rel='noopener noreferrer'
+                    className='btn btn-primary mx-1 mb-2'
+                  >
+                  How to buy (PDF)
+                  </a>
+                </div>
+              </div>
           </div>
         </div>
       </div>
