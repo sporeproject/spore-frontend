@@ -118,6 +118,10 @@
   font-size: x-large;
 }
 
+dt, dd {
+  white-space: nowrap;
+}
+
 dl {
   margin-left: 20px;
 }
@@ -132,6 +136,14 @@ dd {
 
 ul.lead {
   margin-bottom: 20px;
+}
+
+.tips dt, dd dl {
+  margin-left: 0
+}
+
+.tips {
+  text-align: left;
 }
 
 .price {  
