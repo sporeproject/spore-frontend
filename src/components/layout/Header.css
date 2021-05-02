@@ -1,16 +1,20 @@
 .navbar {
-  transition: all 0.4s;
-  background-color: #6B4E3B;
+    transition: all 0.4s;
+    background-color: #6B4E3B;
 }
 
 .navbar .logo {
-  max-height: 50px;
-  margin-right: 10px;
+    max-height: 50px;
+    margin-right: 10px;
 }
 
 .navbar .navbar-brand {
-  text-decoration: none;
-  font-size: 32px;
+    text-decoration: none;
+    font-size: 32px;
+}
+
+.imagenespeciada {
+    margin-left: 5px;
 }
 
 .navbar .nav-item {
@@ -25,12 +29,12 @@
 
 .navbar a:hover,
 .navbar a:focus {
-  text-decoration: none;
-  color: #EBD5C7;
+    text-decoration: none;
+    color: #EBD5C7;
 }
 
 .navbar a.btn:hover,
 .navbar a.btn:focus {
-  text-decoration: none;
-  color: #6B4E3B;
+    text-decoration: none;
+    color: #6B4E3B;
 }
