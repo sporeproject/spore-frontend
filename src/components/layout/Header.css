@@ -1,11 +1,11 @@
 .navbar {
-    transition: all 0.4s;
-    background-color: #6B4E3B;
+  transition: all 0.4s;
+  background-color: #6B4E3B;
 }
 
 .navbar .logo {
-    max-height: 50px;
-    margin-right: 10px;
+  max-height: 50px;
+  margin-right: 10px;
 }
 
 .navbar .navbar-brand {
@@ -29,12 +29,34 @@
 
 .navbar a:hover,
 .navbar a:focus {
-    text-decoration: none;
-    color: #EBD5C7;
+  text-decoration: none;
+  color: #EBD5C7;
 }
 
 .navbar a.btn:hover,
 .navbar a.btn:focus {
-    text-decoration: none;
-    color: #6B4E3B;
+  text-decoration: none;
+  color: #6B4E3B;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.dropdown {
+  background-color: #6B4E3B;
+}
+
+.dropdown-menu {
+  background-color: #6B4E3B;
+  padding: 15px;
+  border: 1px solid white;
+}
+
+.dropdown-menu li {
+    margin: 2px;
+}
+
+.divider {
+    border: 1px solid white;
 }

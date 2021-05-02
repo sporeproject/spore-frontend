@@ -223,15 +223,56 @@ const Header = () => {
                   Buy on  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img>
                 </a>
               </li>
-              <li className='nav-item'>
-                <a
-                  className='nav-link font-weight-bold'
-                  href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
-                  target='_blank'
-                  rel='noopener noreferrer'
+              <li className="dropdown nav-item">
+                <a 
+                  href="/" 
+                  className="dropdown-toggle nav-link font-weight-bold"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Analytics
+                  Analytics <span className="caret"></span>
                 </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <a 
+                      href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      Pangolin (AVAX)
+                    </a>
+                  </li>
+                  <li role="separator" className="divider"></li>
+                  <li>
+                    <a 
+                      href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      Bogged Finance (BSC)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      DexGuru (BSC)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href='https://poocoin.app/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      Poocoin (BSC)
+                    </a>
+                  </li>
+                </ul>
               </li>
               <Link to='/nft' style={{ textDecoration: 'none' }}>
                 <li className='nav-item'>
