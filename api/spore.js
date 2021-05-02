@@ -5,6 +5,7 @@ const { abi_erc20 } =  require('./abi/abi_erc20.js');
 const { dexprices } =  require('./libs/price.js');
 
 const pricefirst = async () => {
+    console.log(tokens);
     await dexprices(dexes.filter(d => d.symbol.toLowerCase() === 'png'))
     let spore = find_token(tokens, {key:'symbol', value: 'spore'})
     let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.burned().call()
