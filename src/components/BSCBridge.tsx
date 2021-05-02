@@ -246,23 +246,27 @@ const BSCBridge = () => {
                                 <h3>Trust Wallet Steps</h3>
 
                                 <dl className="tips">                                    
-                                    <dt>Step 1 - Install metamask extension - use chrome</dt>
+                                    <dt>Step 1 - Install <a 
+                                        target="_blank"  
+                                        rel='noopener noreferrer'                                    
+                                        href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">
+                                        metamask</a> extension - use chrome</dt>
                                     <dt>Step 2 - Add both <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
-                                       href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche">Avalanche</a> and 
-                                       <a 
+                                       href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche">Avalanche</a> and <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
                                        href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</dt>
-                                    <dt>Step 3 - Add spore to both chains in metamask - add token - custom - paste</dt>
+                                    <dt>Step 3 - Add spore to both chains in metamask</dt>
+                                    <dd>add token - custom - paste</dd>
                                     <dd>0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</dd>
                                     <dd>0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</dd>
                                     <dt>Step 4 - Send SPORE from Trust Wallet to Metamask</dt>
                                     <dt>Step 5 - Send tiny bit of BNB from Trust Wallet to Metamask</dt>
                                     <dd>Close your trust wallet - open your browser again</dd>
-                                    <dt>Step 6 - Goto spore bridge</dt>
-                                    <dt>Step 7 - Enable metamask</dt>
+                                    <dt>Step 6 - Goto Spore bridge</dt>
+                                    <dt>Step 7 - Enable Metamask</dt>
                                     <dt>Step 8 - Click ‘Max’</dt>
                                     <dt>Step 9 - Click ‘Transfer’</dt>
                                     <dt>Step 10 - Flip to Avalanche chain</dt>
