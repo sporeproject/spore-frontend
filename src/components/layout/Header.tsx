@@ -201,7 +201,8 @@ const Header = () => {
                   rel='noopener noreferrer'
                   title='Buy on Avalanche Network'
                 >
-                  Buy on Avalanche 
+                  Buy on  <img height="30px" width="30px" 
+                src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
                 </a>
               </li>
               <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
@@ -219,7 +220,7 @@ const Header = () => {
                   title='Buy on Binance SmartChain Network'
 
                 >
-                  Buy on BSC
+                  Buy on  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img>
                 </a>
               </li>
               <li className='nav-item'>
