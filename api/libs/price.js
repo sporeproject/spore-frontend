@@ -1,5 +1,5 @@
 const { dex_avaxprice, pair_contains, pair_token, find_token, get_price, refuse } = require('./util.js');
-const { tokens } = require('./statemachine.js');
+const { tokens } = require('./state.js');
 
 
 const nowish = new Date().getTime();
