@@ -227,17 +227,17 @@ const BSCBridge = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="offset-lg-3 col-lg-6 text-center py-4 col-coin">
+                            <div className="col-lg-6 text-center py-4 col-coin">
                                 Transfer fees : {feesAVAX} AVAX
                                 <button onClick={swapFromAVAX} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
                             </div>
-                            <div className="offset-lg-3 col-lg-6 text-center py-4 col-coin d-none">
+                            <div className="col-lg-6 text-center py-4 col-coin d-none">
                                 Transfer fees : {feesBNB} BNB
                                 <button onClick={swapFromBSC} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="offset-lg-3 col-lg-6 text-center py-4">
+                            <div className="col-lg-6 text-center py-4">
                                 <h3>Disclaimer: this is a version alpha. Use at your own risk please come to discord if you have an issue.</h3>
                             </div>
                         </div>
@@ -247,7 +247,10 @@ const BSCBridge = () => {
 
                                 <dl className="tips">                                    
                                     <dt>Step 1 - Install metamask extension - use chrome</dt>
-                                    <dt>Step 2 - Add both Avalanche and BSC chains</dt>
+                                    <dt>Step 2 - Add both <a 
+                                       target="_blank"  href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche">Avalanche</a> and 
+                                       <a 
+                                       target="_blank"  href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</dt>
                                     <dt>Step 3 - Add spore to both chains in metamask - add token - custom - paste</dt>
                                     <dd>0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</dd>
                                     <dd>0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</dd>
@@ -262,7 +265,8 @@ const BSCBridge = () => {
                                     <dt>Step 11 - Wait for spore to arrive (couple of minutes)</dt>
                                     <dt>Step 12 - Confirm spore is growing in wallet</dt>
                                 </dl>
-                            </div>                    
+                            </div>
+
                 </div>
             </div>
         </div>
