@@ -1,4 +1,4 @@
-const { dex_avaxprice, pair_contains, pair_token, find_token, get_price, refuse } = require('./util.js');
+const { dex_avaxprice, pair_contains, pair_token, find_token, get_price, refuse } = require('./utils.js');
 const { tokens } = require('./state.js');
 
 
