@@ -17,16 +17,17 @@ const PriceToken = () => {
   }, [])
 
   const getPriceToken = async () => {
-    const res2 = await axios.get('https://x-api.snowball.network/spore/price');
-    if ( res2.data !== undefined ) {
-      let ps = res2.data.toFixed(18)
-      let suffix = ps.split('.')[1]
-      let i = 0;
-      while ( suffix.substring(i, i + 1) === '0' ) {
-        i += 1;
-      }      
-      setPriceToken({ avax: res2.data.toFixed(18), zeros: i, bsc: 0 })
-    }
+    await axios.get('https://x-api.snowball.network/spore/price')
+    .then(res2 => {
+      const {data = null} = res2
+      if (data) {
+        const avax = data.toFixed(18)
+        const zeros = avax.match(/^0.(0)+/g) ? avax.match(/^0.(0)+/g)[0].length - 2 : 0
+        setPriceToken({ avax, zeros, bsc: 0 })
+      }
+    }).catch(error => {
+      console.error(error)
+    })
   }
 
   return (
