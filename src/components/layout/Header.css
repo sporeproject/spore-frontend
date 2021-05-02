@@ -14,11 +14,13 @@
 }
 
 .navbar .nav-item {
-  padding: 0 15px;
+    padding: 0 15px;
+    text-align: start;
 }
 
-.navbar .nav-link, .navbar .btn {
-  text-decoration: none;
+.navbar .nav-link,
+.navbar .btn {
+    text-decoration: none;
 }
 
 .navbar a:hover,
