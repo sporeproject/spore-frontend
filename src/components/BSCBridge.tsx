@@ -243,7 +243,7 @@ const BSCBridge = () => {
                         </div>
                     </div>
                     <div className="offset-lg-3 col-lg-6 text-center py-4">
-                                <h3>Trust Wallet Steps 😱 </h3>
+                                <h3>Trust Wallet Steps 😎 </h3>
 
                                 <dl className="tips">                                    
                                     <dt>Step 1 - Install <a 
