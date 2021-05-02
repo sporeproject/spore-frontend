@@ -1,5 +1,5 @@
 const { bsc, ava } =  require('./libs/web3.js');
-const { tokens, dexes } =  require('./libs/statemachine.js');
+const { tokens, dexes } =  require('./libs/state.js');
 const { find_token, pairnick, pair_contains } =  require('./libs/util.js');
 const { abi_erc20 } =  require('./abi/abi_erc20.js');
 const { dexprices } =  require('./libs/price.js');
