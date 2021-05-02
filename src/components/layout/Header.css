@@ -9,16 +9,22 @@
 }
 
 .navbar .navbar-brand {
-  text-decoration: none;
-  font-size: 32px;
+    text-decoration: none;
+    font-size: 32px;
+}
+
+.imagenespeciada {
+    margin-left: 5px;
 }
 
 .navbar .nav-item {
-  padding: 0 15px;
+    padding: 0 15px;
+    text-align: start;
 }
 
-.navbar .nav-link, .navbar .btn {
-  text-decoration: none;
+.navbar .nav-link,
+.navbar .btn {
+    text-decoration: none;
 }
 
 .navbar a:hover,

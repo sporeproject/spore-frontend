@@ -199,8 +199,28 @@ const Header = () => {
                   href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
                   target='_blank'
                   rel='noopener noreferrer'
+                  title='Buy on Avalanche Network'
                 >
-                  Buy Spore
+                  Buy on  <img height="30px" width="30px" 
+                src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
+                </a>
+              </li>
+              <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
+                <li className='nav-item'>
+                  <span className='nav-link font-weight-bold'  title='AVALANCHE / BSC SPORE BRIDGE'>Bridge</span>
+                </li>                 
+
+              </Link>
+              <li className='nav-item'>
+                <a
+                  className='nav-link font-weight-bold'
+                  href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  title='Buy on Binance SmartChain Network'
+
+                >
+                  Buy on  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img>
                 </a>
               </li>
               <li className="dropdown nav-item">
@@ -259,11 +279,7 @@ const Header = () => {
                   <span className='nav-link font-weight-bold'>NFT</span>
                 </li>
               </Link>
-              <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
-                <li className='nav-item'>
-                  <span className='nav-link font-weight-bold'>BSC Bridge</span>
-                </li>
-              </Link>
+
 
               <li className='nav-item'>
                 <button
