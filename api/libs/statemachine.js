@@ -1,9 +1,8 @@
-
-import { tokens, dexes } from './state.js'
-import { dex_avaxprice } from './utils.js'
-import { dexpairs } from './graph.js'
-import { ava as web3 } from './web3.js'
-import { abi_erc20 } from '../abi/abi_erc20.js'
+const { tokens, dexes } =  require('./state.js');
+const { dex_avaxprice } = require('./utils.js');
+const { dexpairs } = require('./graph.js');
+const { ava: web3 } = require('./web3.js');
+const { abi_erc20 } = require('../abi/abi_erc20.js');
 
 
 const populate = (token) => {
