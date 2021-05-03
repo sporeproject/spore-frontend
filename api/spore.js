@@ -1,8 +1,8 @@
-const { bsc, ava } =  require('./libs/web3.js');
-const { tokens, dexes } =  require('./libs/state.js');
-const { find_token, pairnick, pair_contains } =  require('./libs/utils.js');
-const { abi_erc20 } =  require('./abi/abi_erc20.js');
-const { dexprices } =  require('./libs/price.js');
+import { bsc, ava } from './libs/web3.js';
+import { tokens, dexes } from './libs/statemachine.js'
+import { find_token, pairnick, pair_contains } from './libs/utils.js'
+import { abi_erc20 } from './abi/abi_erc20.js'
+import { dexprices } from './libs/price.js'
 
 const pricefirst = async () => {
     console.log(tokens);

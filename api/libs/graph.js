@@ -1,4 +1,4 @@
-const { request, gql } = require('graphql-request');
+import { request, gql } from 'graphql-request';
 
 const pairsql = gql`query getPairs($skip: Int!) {  
     pairs(skip: $skip) {
