@@ -42,7 +42,8 @@ const populate = (token) => {
     })
 }
 
-const external = await Promise.all(Object.keys(tokens).map(k => { return tokens[k]}).map(async (token) => {
+const external = async () =>{
+  return await Promise.all(Object.keys(tokens).map(k => { return tokens[k]}).map(async (token) => {
     return populate(token)
 })).then(async (populated_tokens) => {
     
@@ -121,6 +122,6 @@ const external = await Promise.all(Object.keys(tokens).map(k => { return tokens[
         });        
     }));
     return dexes
-})
-
+  })
+}
 export { tokens, dexes }
