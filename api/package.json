@@ -2,7 +2,7 @@
   "type": "module",
   "name": "spore-api",
   "version": "1.0.0",
-  "main": "spore.js",
+  "main": "spore.cjs",
   "author": "badangrycloud",
   "license": "MIT",
   "dependencies": {
