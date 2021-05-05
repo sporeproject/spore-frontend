@@ -659,28 +659,28 @@ const userliquidity = async (endpoint, account, symbol0, symbol1, avaxprice, nic
 
 const populate = (token) => {
   return Promise.all([
-      new web3.eth.Contract(abi_erc20, token.id).methods.totalSupply().call().then( result => {
+      new ava.eth.Contract(abi_erc20, token.id).methods.totalSupply().call().then( result => {
           return parseInt(result)
       }).catch(err => {
           console.log('no supply:', err)
       }),
-      new web3.eth.Contract(abi_erc20, token.id).methods.decimals().call().then( result => {
+      new ava.eth.Contract(abi_erc20, token.id).methods.decimals().call().then( result => {
           token.decimals = parseInt(result)
       }).catch(err => {
           console.log('no decimals:', err)
       }),        
-      new web3.eth.Contract(abi_erc20, token.id).methods.name().call().then( result => {
+      new ava.eth.Contract(abi_erc20, token.id).methods.name().call().then( result => {
           token.name = result
       }),
-      new web3.eth.Contract(abi_erc20, token.id).methods.symbol().call().then( result => {
+      new ava.eth.Contract(abi_erc20, token.id).methods.symbol().call().then( result => {
           token.symbol = result
       }),
-      new web3.eth.Contract(abi_erc20, token.id).methods.owner().call().then( result => {
+      new ava.eth.Contract(abi_erc20, token.id).methods.owner().call().then( result => {
           token.owner = result
       }).catch(err => {
           //console.log('no owner:', err)            
       }),
-      new web3.eth.Contract(abi_erc20, token.id).methods.totalFees().call().then( result => {            
+      new ava.eth.Contract(abi_erc20, token.id).methods.totalFees().call().then( result => {            
           token.totalFees = result / 1e18
       }).catch(err => {
           //console.log('no total fees:', err)            
@@ -738,14 +738,14 @@ module.exports =  async (req, res) => {
             let avaxprice = dex_avaxprice(pairdex)[2]            
             return Promise.all(pair.accounts.map(account=> {                
                 if (['compound', 'stake'].includes(account.account_type) ) {                                        
-                    return new web3.eth.Contract(abi_erc20, account.id).methods.balanceOf(pair.strategy).call().then( result => {                        
+                    return new ava.eth.Contract(abi_erc20, account.id).methods.balanceOf(pair.strategy).call().then( result => {                        
                         account.locked = result / 1e18 / parseFloat(pair.totalSupply) * parseFloat(pair.reserveETH) * avaxprice
                         return account
                     }).catch(err => {
                         console.log(err)             
                     });                                        
                 } else if (['balance'].includes(account.account_type) ) {
-                    return new web3.eth.Contract(abi_erc20, pair.id).methods.balanceOf(account.id).call().then( result => {
+                    return new ava.eth.Contract(abi_erc20, pair.id).methods.balanceOf(account.id).call().then( result => {
                         account.locked = account.avax ? result / 1e18 / parseFloat(pair.totalSupply) * parseFloat(pair.reserveETH) * avaxprice :  result / 1e18
                         return account
                     }).catch(err => {
@@ -754,7 +754,7 @@ module.exports =  async (req, res) => {
                 } else if (['tokens'].includes(account.account_type) ) {
                     return Promise.all(Object.keys(pair).filter(k => k.startsWith('token') && k.length === 6).map(key => {
                         let divider = 10 ** pair[key].decimals                        
-                        return new web3.eth.Contract(abi_erc20, pair[key].id).methods.balanceOf(account.id).call().then( result => {
+                        return new ava.eth.Contract(abi_erc20, pair[key].id).methods.balanceOf(account.id).call().then( result => {
                             return account.avax ? result / divider / parseFloat(pair.totalSupply) * parseFloat(pair.reserveETH) * avaxprice :  result / divider
                         }).catch(err => {
                             console.log(err)                      
