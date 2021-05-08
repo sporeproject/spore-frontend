@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 
 const PriceToken = () => {
   const [usd, setUsd] = useState({ price: 0, zeros: 0})
-  const [avax, setAvax] = useState({ price: 0, zeros: 0})
-  const [bnb, setBnb] = useState({ price: 0, zeros: 0})
+  const [avax, setAvax] = useState({ price: '0', zeros: 0})
+  const [bnb, setBnb] = useState({ price: '0', zeros: 0})
   const [currency, setCurrency] = useState('usd')
 
   useEffect(() => {
@@ -51,16 +51,15 @@ const PriceToken = () => {
     .then(res2 => {
       const {data = null} = res2
       if (data) {
-        console.dir(data)
-        data.tickers.forEach((ticker: { target: string; }) => {
+        data.tickers.forEach((ticker: { target: string, last: number }) => {
           if (ticker.target === 'WBNB') {
-            const bnb = data.tickers[0].last.toFixed(18)
-            const zerosBnb = bnb.match(/^0.(0)+/g) ? bnb.match(/^0.(0)+/g)[0].length - 2 : 0
+            const bnb = ticker.last.toFixed(18)
+            const zerosBnb = bnb.match(/^0.(0)+/g) ? bnb.match(/^0.(0)+/g)![0].length - 2 : 0
             setBnb({ price: bnb, zeros: zerosBnb })
           }
           if (ticker.target === 'AVAX') {
-            const avax = data.tickers[1].last.toFixed(18)
-            const zerosAvax = avax.match(/^0.(0)+/g) ? avax.match(/^0.(0)+/g)[0].length - 2 : 0
+            const avax = ticker.last.toFixed(18)
+            const zerosAvax = avax.match(/^0.(0)+/g) ? avax.match(/^0.(0)+/g)![0].length - 2 : 0
             setAvax({ price: avax, zeros: zerosAvax })
           }
         });
