@@ -1,9 +1,8 @@
-import { NowRequest, NowResponse } from '@now/node';
 import { abi_erc20 } from './abi/abi';
 import Web3 from 'web3';
 
 const bsc = new Web3('https://bsc-dataseed1.binance.org');
-const ava = new Web3('wss://api.avax.network/ext/bc/C/ws');
+const ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
 
 const tokens = [   
    {
@@ -56,9 +55,7 @@ const find_token = (tokens, filter) => {
 }
 
 
-const handler = async (req: NowRequest, res: NowResponse) => {
-   await populate(tokens[0]);
-   res.json(tokens[0]);
-};
-
-export default handler;
+export default async function (req,res) {
+    await populate(tokens[0]);
+    res.json(tokens[0]);
+ };
