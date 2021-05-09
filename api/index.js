@@ -1,4 +1,3 @@
-import { NowRequest, NowResponse } from '@now/node';
 import { abi_erc20 } from './abi/abi';
 import Web3 from 'web3';
 
