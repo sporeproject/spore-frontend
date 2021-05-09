@@ -225,9 +225,7 @@ const populate = (token) => {
 
 const process_Values = async () =>
 {
-  await Promise.all(Object.keys(tokens).map(k => { return tokens[k]}).map(async (token) => {
-    return populate(token)
-  }))
+  await populate(tokens[0]);
 };
 
 module.exports = async (req, res) => {
