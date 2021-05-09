@@ -1,3 +1,4 @@
+import { NowRequest, NowResponse } from '@now/node';
 import { abi_erc20 } from './abi/abi';
 import Web3 from 'web3';
 
@@ -57,5 +58,22 @@ const find_token = (tokens, filter) => {
 
 export default async function (req,res) {
     await populate(tokens[0]);
-    res.json(tokens[0]);
+    let spore = find_token(tokens, {key:'symbol', value: 'spore'})
+    let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.burned().call();
+    let avaBurned = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avaburn).call();
+    
+    let report = {
+        bscBurned: bscBurned / 10 ** spore.decimals,
+        avaBurned: avaBurned / 10 ** spore.decimals
+    };
+
+    report.circulatingSupply = spore.totalSupply - report.avaBurned - report.bscBurned; // - spore.totalFees / 2
+    spore = Object.assign({}, spore, report);
+
+    delete spore.bsc;
+    delete spore.avaburn;
+    delete spore.decimals;
+    delete spore.owner;
+    delete spore.totalSupply;  
+    res.json(spore);
  };
