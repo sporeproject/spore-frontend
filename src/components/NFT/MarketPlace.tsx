@@ -21,28 +21,27 @@ export const MarketPlaceView = (props: Props) => {
 
     const [marketPlaceItems, setMarketPlaceItems] = useState<Array<MarketplaceItem>>([])
 
+    const buildMarketPlace = async () => {
+        const SporeMarketv1 = new win.web3.eth.Contract(
+            SPORE_MARKET_ABI,
+            ContractAddesses.AVAX_MARKET_FUJI
+        )
+        var builder = new Array<MarketplaceItem>()
+        for (let i = 0; i <= props.totalCharacters - 1; i++) {
+            if (props.bazaar[i] !== undefined && props.bazaar[i].price > 0) {
+                const URI = await SporeMarketv1.methods
+                    .tokenURI(i)
+                    .call()
+                builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 9, URI: URI } as MarketplaceItem);
+                console.log("BUILDER:", builder)
+            }
+        }
+        setMarketPlaceItems(builder)
+    }
 
     useEffect(() => {
-
-        async function buildMarketPlace() {
-            const SporeMarketv1 = new win.web3.eth.Contract(
-                SPORE_MARKET_ABI,
-                ContractAddesses.AVAX_MARKET_FUJI
-            )
-            var builder = new Array<MarketplaceItem>()
-            for (let i = 0; i <= props.totalCharacters - 1; i++) {
-                if (props.bazaar[i] !== undefined && props.bazaar[i].price > 0) {
-                    const URI = await SporeMarketv1.methods
-                        .tokenURI(props.bazaar[i][2])
-                        .call()
-                    builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 9, URI: URI } as MarketplaceItem);
-                    console.log("BUILDER:", builder)
-                    setMarketPlaceItems(builder)
-                }
-            }
-
-        }
         buildMarketPlace()
+
     })
 
     return (
