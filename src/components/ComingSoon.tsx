@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import comingSoon from '../utils/coming-soon.json';
+import comingSoon from '../assets/coming-soon.json';
 
 const defaultOptions = {
   loop: true,
