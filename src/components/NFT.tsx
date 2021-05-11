@@ -134,21 +134,26 @@ const NFT = (props: any) => {
         setTokensOfOwner(tokensOfOwnerTemp)
         console.log("Tokens of owner:", tokensOfOwnerTemp)
 
-        for (let i = 0; i <= totalCharacters - 1; i++) {
-          if (bazaar[i] !== undefined) {
-            console.log("bazaar ", i, bazaar[i])
-            if (bazaar[i].price > 0) {
-              console.log("ok");
-              console.log(bazaar[i]);
-              setMarketPlaceBuilder(prev => [...prev, [i, bazaar[i].price / 10 ** 9]]);
-            }
-
-          }
-        }
       });
     }
     startup()
   }, [])
+
+  useEffect(() => {
+    var builder = []
+    for (let i = 0; i <= totalCharacters - 1; i++) {
+      if (bazaar[i] !== undefined) {
+        console.log("bazaar ", i, bazaar[i])
+        if (bazaar[i].price > 0) {
+          console.log("ok");
+          console.log(bazaar[i]);
+          builder.push([i, bazaar[i].price / 10 ** 9]);
+        }
+        setMarketPlaceBuilder(builder)
+      }
+    }
+    console.log("MARKETPLACE BUILDER,", marketPlaceBuilder)
+  }, [bazaar])
 
   const MarketPlaceForSale = () => {
     if (marketPlaceBuilder.length > 0) {
