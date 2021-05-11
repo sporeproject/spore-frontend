@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Web3 from "web3";
-import InstallMetamask from "./InstallMetamask";
-import UnlockMetamask from "./UnlockMetamask";
+import InstallMetamask from "../InstallMetamask";
+import UnlockMetamask from "../UnlockMetamask";
 import ReturnTokenURI from "./ReturnTokenURI";
 import './NFT.css';
-import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../utils/SporeAbis';
+import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import { useState, useEffect } from 'react';
-import { ContractAddesses } from '../utils/addresses';
-import { approveContract } from '../utils/wallet';
+import { ContractAddesses } from '../../utils/addresses';
+import { approveContract } from '../../utils/wallet';
+import ReturnExternalURL from './ReturnExternalURL';
+import { MarketPlaceView } from "./MarketPlace";
 const win = window as any
 const docu = document as any
 
@@ -116,8 +118,6 @@ const NFT = (props: any) => {
       const totalSupply = await SporeMarketv1.methods.totalSupply().call();
       console.log(tokensOfOwnerTemp);
       const tokenCounter = await SporeMarketv1.methods.tokenCounter;
-      console.log("tokencounter is");
-      console.log(tokenCounter);
 
       const promises = [];
       for (let i = 0; i <= totalCharacters - 1; i++) {
@@ -126,56 +126,19 @@ const NFT = (props: any) => {
       }
 
       Promise.all(promises).then((values) => {
-        console.log("VALUES:", values);
         setBazaar(values)
         setTotalSupplyLeft(totalCharacters - totalSupply)
         setTokenCounter(tokenCounter)
         setBalance(balance)
         setTokensOfOwner(tokensOfOwnerTemp)
-        console.log("Tokens of owner:", tokensOfOwnerTemp)
 
       });
     }
     startup()
   }, [])
 
-  useEffect(() => {
-    var builder = []
-    for (let i = 0; i <= totalCharacters - 1; i++) {
-      if (bazaar[i] !== undefined) {
-        console.log("bazaar ", i, bazaar[i])
-        if (bazaar[i].price > 0) {
-          console.log("ok");
-          console.log(bazaar[i]);
-          builder.push([i, bazaar[i].price / 10 ** 9]);
-        }
-        setMarketPlaceBuilder(builder)
-      }
-    }
-    console.log("MARKETPLACE BUILDER,", marketPlaceBuilder)
-  }, [bazaar])
 
-  const MarketPlaceForSale = () => {
-    if (marketPlaceBuilder.length > 0) {
-      return (
-        marketPlaceBuilder.map((item: any) => (
-          <li key={item}>
-            <img className="rounded shadow" src={item} height="200" />
-            <p>ID: {item[0]}</p>
-            <p>Price: {item[1]} Avax</p>
 
-          </li>
-        ))
-      )
-    }
-    else {
-      return (
-        <> No NFTs for Sale </>
-      )
-    }
-  }
-
-  console.log(marketPlaceBuilder);
 
   if (balance > 0) {
     var image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
@@ -299,7 +262,7 @@ const NFT = (props: any) => {
                 </div>
                 <div className='col-md-12'>
                   <ul>
-                    {MarketPlaceForSale()}
+                    <MarketPlaceView bazaar={bazaar} totalCharacters={totalCharacters} />
                   </ul>
                   <br />
                   {" "}

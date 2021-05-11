@@ -1,9 +1,9 @@
 import React from "react";
 import Web3 from "web3";
 import { useState, useEffect } from 'react';
-import { SPORE_MARKET_ABI } from "../utils/SporeAbis";
-import { ContractAddesses } from '../utils/addresses';
-import { getAccount } from '../utils/wallet';
+import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
+import { ContractAddesses } from '../../utils/addresses';
+import { getAccount } from '../../utils/wallet';
 import ReturnExternalURL from './ReturnExternalURL';
 
 const win = window as any
@@ -41,21 +41,16 @@ const ReturnTokenURI = (props: Props) => {
         SPORE_MARKET_ABI,
         ContractAddesses.AVAX_MARKET_FUJI
       );
-      console.log("returntokenURI component");
-      console.log(props.tokensOfOwner);
       const promises = [];
 
       for (let i = 0; i < props.tokensOfOwner.length; i++) {
-        console.log("Getting URI for token:", i)
         const promisestokenURIs = await SporeMarketv1.methods
           .tokenURI(props.tokensOfOwner[i])
           .call();
         promises.push(promisestokenURIs);
       }
-      console.log("hi0");
 
       Promise.all(promises).then((values) => {
-        console.log("VALUES:", values);
         setData(values)
       });
     }
