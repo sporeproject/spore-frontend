@@ -172,8 +172,8 @@ const Header = () => {
       <nav className='navbar navbar-expand-lg py-3'>
         <div className='container-fluid'>
           <a href='/' className='navbar-brand font-weight-bold'>
-            <img src='spore_128.png' className='logo' alt='Spore Finance' />{' '}
-            Spore Finance
+            <img src='spore_128.png' className='logo' alt='Spore' />{' '}
+            Spore
           </a>
           <button
             type='button'
