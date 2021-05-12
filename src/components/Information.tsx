@@ -316,7 +316,7 @@ const Information = () => {
                   >
                   </a>
                   <a
-                    href='https://www.facebook.com/groups/sporefinanceofficial'
+                    href='https://www.facebook.com/groups/sporeproject'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-facebook'
