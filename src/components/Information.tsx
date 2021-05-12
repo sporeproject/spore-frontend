@@ -16,10 +16,10 @@ const Information = () => {
         <div className='row py-5'>
           <div className='col-md-7'>
             <h2 className='feature pb-4'>
-              What is <span>Spore Finance</span>
+              What is <span>Spore</span>
             </h2>
             <p className='lead'>
-              Spore Finance aims to create an ecosystem combining 
+              Spore is an ecosystem that includes 
             </p>
             <ul className='lead'>
                 <li><b>reflect tokens</b></li>
@@ -295,7 +295,7 @@ const Information = () => {
                   >
                   </a>
                   <a
-                    href='https://www.reddit.com/r/SporeFinance/'
+                    href='https://www.reddit.com/r/sporeproject/'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-reddit'
@@ -309,7 +309,7 @@ const Information = () => {
                   >
                   </a>
                   <a
-                    href='https://twitter.com/SporeFinance'
+                    href='https://twitter.com/sporeproject'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-twitter'
@@ -330,14 +330,14 @@ const Information = () => {
                   >
                   </a>
                   <a
-                    href='https://sporefinance.medium.com/spore-finance-fair-launch-7f048d01e85d'
+                    href='https://sporeproject.medium.com'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-medium-m'
                   >
                   </a>
                   <a
-                    href='https://github.com/SporeFinance'
+                    href='https://github.com/sporeproject'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fab fa-github'
@@ -351,7 +351,7 @@ const Information = () => {
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 zeros'
                   >
-                  AVAX Token address
+                  Avalanche token address
                   </a>
                   <a
                     href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
@@ -359,7 +359,7 @@ const Information = () => {
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2'
                   >
-                  BSC Token address
+                  BSC token address
                   </a>            
                 </div>
                 <div className="row social-links">
