@@ -16,7 +16,7 @@ const Information = () => {
         <div className='row py-5'>
           <div className='col-md-7'>
             <h2 className='feature pb-4'>
-              What is <span>Spore</span>
+              What is <span>Spore</span>?
             </h2>
             <p className='lead'>
               Spore is an ecosystem that includes 
