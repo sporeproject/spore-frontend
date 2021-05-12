@@ -288,7 +288,7 @@ const Information = () => {
               <div className="info">
                 <div className="row social-links">
                   <a
-                    href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
+                    href='https://t.me/sporefinanceofficial'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
