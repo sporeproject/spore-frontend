@@ -14,7 +14,7 @@ const Contributors = () => {
 
   const getContributorsJson = () => {
     axios.get(
-      'https://api.github.com/repos/SporeFinance/Spore-frontend/contributors'
+      'https://api.github.com/repos/sporeproject/Spore-frontend/contributors'
     ).then(res => {
       setContributors(res.data);
     });
