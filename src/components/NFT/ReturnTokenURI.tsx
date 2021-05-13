@@ -28,6 +28,24 @@ const putNFTForSale = async () => {
   }
 }
 
+const cancelNFTForSale = async () => {
+
+  const SporeMarketv1 = new win.web3.eth.Contract(
+    SPORE_MARKET_ABI,
+    ContractAddesses.AVAX_MARKET_FUJI
+  );
+  var _tokenIDforCancel = docu.getElementById("_tokenIDforCancel").value;
+
+  var account = await getAccount()
+  try {
+    await SporeMarketv1.methods
+      .cancelTokenSale(_tokenIDforCancel)
+      .send({ from: account, gasPrice: 225000000000 });
+  } catch (error) {
+    alert(error);
+  }
+}
+
 type Props = {
   tokensOfOwner: Array<any>
 }
@@ -75,6 +93,13 @@ const ReturnTokenURI = (props: Props) => {
           <input type="text" id="_price" className="form-control float-left" placeholder="Price" />
           <div className="input-group-append">
             <button onClick={putNFTForSale} className="btn btn-primary">Put NFT for Sale</button>
+          </div>
+        </div>
+        
+        <div className="input-group">
+          <input type="text" id="_tokenIDforCancel" className="form-control float-left" placeholder="NFT_ID" />
+          <div className="input-group-append">
+            <button onClick={cancelNFTForSale} className="btn btn-primary">Cancel NFT for Sale</button>
           </div>
         </div>
       </div>

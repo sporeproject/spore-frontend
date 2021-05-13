@@ -10,6 +10,7 @@ import { ContractAddesses } from '../../utils/addresses';
 import { approveContract } from '../../utils/wallet';
 import ReturnExternalURL from './ReturnExternalURL';
 import { MarketPlaceView } from "./MarketPlace";
+import { ethers } from "ethers";
 const win = window as any
 const docu = document as any
 
@@ -19,7 +20,7 @@ async function approve() {
   const SporeContract = new win.web3.eth.Contract(AVAX_SPORE_ABI, SporeAddress);
   var account = await win.web3.eth.getAccounts();
   account = account[0];
-  var amount = docu.getElementById("_approveFee").value;
+  var amount = ethers.BigNumber.from(docu.getElementById("_approveFee").value).mul(10 ** 9);
   // try {
   //   await SporeContract.methods
   //     .approve(SporeNFTMarketaddress, amount)
@@ -168,17 +169,17 @@ const NFT = (props: any) => {
                     <div className="box-rounded">
                       <h4>Objective</h4>
                       <p>The stepping stone in our road to decentralized governance.
-                        Burn an additional 1.328% of the totalsupply.
-                        Equivalent of 1328t (1.328e15) SPORE.
+                        Burn an additional 0.0578% of the totalsupply.
+                        Equivalent of 57t (0.057e15) SPORE.
                       </p>
                       <ul>
-                        <li>First 4 NFTs: 1t each </li>
-                        <li>Next 8 NFTs: 3.5t each </li>
-                        <li>Next 12 NFTs: 7t each </li>
-                        <li>Next 24 NFTs: 14t each </li>
-                        <li>Next 12 NFTs: 21t each </li>
-                        <li>Next 8 NFTs: 28t each </li>
-                        <li>Last 4 NFTs: 100t each </li>
+                        <li>First 4 NFTs: 1b each </li>  0.02
+                        <li>Next 8 NFTs:  2b each </li>  0.04 avax
+                        <li>Next 12 NFTs: 50b each </li> 1 avax
+                        <li>Next 24 NFTs: 100b each </li> 2 avax
+                        <li>Next 12 NFTs: 500b each </li>  5
+                        <li>Next 8 NFTs: 1t each </li> 1000b
+                        <li>Last 4 NFTs: 10t each </li> 10000b
                       </ul>
                       <p className='pt-4'>
                         This first generation of NFTs have a special meaning :
@@ -192,15 +193,18 @@ const NFT = (props: any) => {
                     <div className="box-rounded">
                       <h4>Fair Launch</h4>
                       <p>After the public announcement, a timelock will be
-                        activated allowing 24 hours to start buying the NFTs. All
-                        SPORE used to mint the NFTs will go to the BURN address.</p>
+                        activated allowing 24 hours to start buying the NFTs. 
+                        A sniper lock will not allow the first person claim the NFTs but will have 
+                        1 in 3 possibilities to unlock the contract, allowing the following people to
+                        claim the rest of the NFTs normally.
+                        All SPORE used to mint the NFTs will go to the BURN address.</p>
 
                       <p>
                         <b className="important">There is no "DEV" fund.</b> The NFTs can be traded at
-                        our marketplace using AVAX for settlement.</p>
+                        our marketplace using AVAX for settlement or in other marketplaces inside the Avalanche Ecosystem</p>
                       <p>A small SPORE
                         tax will be burnt every time anyone buys an NFT from the
-                        Marketplace (0.25t SPORE).</p>
+                        Marketplace (10 million SPORE).</p>
                     </div>
                   </div>
                   <div className="col-lg-4 col-sm-12">
@@ -209,11 +213,15 @@ const NFT = (props: any) => {
                       <p>100% of the pieces have been made by community contribution.</p>
                       <p>Here an non exhaustive list about our artists (many thanks to them):</p>
                       <ul>
-                        <li>Artist A : <i className="fab fa-twitter"></i> @artistA</li>
-                        <li>Artist B : <i className="fab fa-twitter"></i> @artistB</li>
-                        <li>Artist C : <i className="fab fa-twitter"></i> @artistC</li>
-                        <li>Artist D : <i className="fab fa-twitter"></i> @artistD</li>
-                        <li>Artist E : <i className="fab fa-twitter"></i> @artistE</li>
+                        <li>Papipaz </li>
+                        <li>Gamatar</li>
+                        <li>Tchoco</li>
+                        <li>JC </li>
+                        <li>Brotoshi</li>
+                        <li>Mlolotte</li>
+                        <li>Freelancer</li>
+                        <li>NightlyCatGirl</li>
+                        <li>OrionDeimos</li>
                       </ul>
                     </div>
                   </div>
@@ -235,8 +243,7 @@ const NFT = (props: any) => {
                       <input
                         type="number"
                         id="_approveFee"
-                        value="1000000000000000000000"
-                        placeholder="1000000000000000000000"
+                        defaultValue="10000000000000"
                         className="form-control"
                       />
                       <div className="input-group-append">
@@ -244,7 +251,7 @@ const NFT = (props: any) => {
                       </div>
                     </div>
                     <p className="text-muted">
-                      <b>*Note: </b>Values in wei. Default 100t SPORE.
+                      <b>*WARNING: </b> Only approve the SPORE that you are willing to spend. Default: 10t SPORE.
                     </p>
                     <p className="text-center">
                       <button onClick={claim} className="btn btn-secondary btn-lg px-5 py-2 text-uppercase">Claim your NFT</button>
@@ -278,7 +285,7 @@ const NFT = (props: any) => {
                     </div>
                   </div>
                   <p className="text-muted">
-                    <b>*Note: </b>Values in wei. Only necessary if you havent approved before.</p>
+                    <b>*Note: </b>Default is 10 million SPORE.</p>
                   <div className="input-group">
                     <input
                       type="text"
