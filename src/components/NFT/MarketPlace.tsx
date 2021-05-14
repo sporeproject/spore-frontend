@@ -13,8 +13,7 @@ export interface MarketplaceItem {
 }
 
 type Props = {
-    bazaar: Array<any>,
-    totalCharacters: number
+    bazaar: Array<any>
 }
 
 export const MarketPlaceView = (props: Props) => {
@@ -27,7 +26,7 @@ export const MarketPlaceView = (props: Props) => {
             ContractAddesses.AVAX_MARKET_FUJI
         )
         var builder = new Array<MarketplaceItem>()
-        for (let i = 0; i <= props.totalCharacters - 1; i++) {
+        for (let i = 0; i <= 72 - 1; i++) {
             if (props.bazaar[i] !== undefined && props.bazaar[i].price > 0) {
                 const URI = await SporeMarketv1.methods
                     .tokenURI(i)

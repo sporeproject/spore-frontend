@@ -70,23 +70,23 @@ async function NFTbuy() {
 
 const NFT = (props: any) => {
   const [bazaar, setBazaar] = useState(new Array<any>())
-  const [tokenCounter, setTokenCounter] = useState(new Array<any>())
-  const [totalCharacters, setTotalCharacters] = useState(72)
-  const [totalSupplyLeft, setTotalSupplyLeft] = useState(0)
-  const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>())
-  const [balance, setBalance] = useState(0)
-  const [marketPlaceBuilder, setMarketPlaceBuilder] = useState(new Array<any>())
-  const marketPlace = {}
-  console.log(tokenCounter, setTotalCharacters, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder )
-  const [isnetworkID, setisnetworkID] = useState({});
+  const [tokenCounter, setTokenCounter] = useState(new Array<any>());
+  //const [totalCharacters, setTotalCharacters] = useState(72);
+  const [totalSupplyLeft, setTotalSupplyLeft] = useState(0);
+  const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
+  const [balance, setBalance] = useState(0);
+  const [marketPlaceBuilder, setMarketPlaceBuilder] = useState(new Array<any>());
+  const marketPlace = {};
+  //const [isnetworkID, setisnetworkID] = useState({});
   const [web3Provider, setweb3Provider] = useState({});
+  console.log(tokenCounter, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder, web3Provider )
   const [isWeb3 , setisWeb3 ] = useState({});
 
 
   useEffect(() => {
     async function startup() {
 
-      
+      const totalCharacters = 72
       
       let web3 = win.web3;
       if (win.ethereum) {
@@ -102,11 +102,13 @@ const NFT = (props: any) => {
         setisWeb3({ isWeb3: true});
       }
       if (web3.currentProvider.chainId === "0xa869") {
-        setisnetworkID({ isnetworkID: true });
+        const isnetworkID = true;
+        console.log("webProvider:", isnetworkID);
       } else {
-        setisnetworkID({ isnetworkID: false });
+        const isnetworkID = false;
+        console.log("webProvider:", isnetworkID);
       };
-      console.log("webProvider:",  isnetworkID );
+      
 
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
@@ -276,7 +278,7 @@ const NFT = (props: any) => {
                 </div>
                 <div className='col-md-12'>
                   <ul>
-                    <MarketPlaceView bazaar={bazaar} totalCharacters={totalCharacters} />
+                    <MarketPlaceView bazaar={bazaar}  />
                   </ul>
                   <br />
                   {" "}
