@@ -328,11 +328,19 @@ const Information = () => {
                 >
                 </a>
                 <a
-                  href='https://instagram.com/Sporefinance'
+                  href='https://instagram.com/projectspore'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-instagram'
                   aria-label='Instagram'
+                >
+                </a>
+                <a
+                  href='https://tiktok.com/@sporeproject'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-tiktok'
+                  aria-label='TikTok'
                 >
                 </a>
                 <a
