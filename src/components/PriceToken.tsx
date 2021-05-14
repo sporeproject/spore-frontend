@@ -74,6 +74,7 @@ const PriceToken = () => {
       <span className='price'>
         <button
           className='btn btn-primary mx-1 mb-2 larger'
+          aria-label='Toggle currency'
           onClick={toggleCurrency}
           >
           <svg height='18px' viewBox='0 0 8 8' className='icon'>

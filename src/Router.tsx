@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as ReactRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as ReactRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import MyParticles from './components/Particles';

@@ -172,8 +172,8 @@ const Header = () => {
       <nav className='navbar navbar-expand-lg py-3'>
         <div className='container-fluid'>
           <a href='/' className='navbar-brand font-weight-bold'>
-            <img src='spore_128.png' className='logo' alt='Spore Finance' />{' '}
-            Spore Finance
+            <img src='spore_128.png' className='logo' alt='Spore' />{' '}
+            Spore
           </a>
           <button
             type='button'
@@ -188,11 +188,12 @@ const Header = () => {
           </button>
           <div id='navbarSupportedContent' className='collapse navbar-collapse'>
             <ul className='navbar-nav ml-auto'>
-              <Link to='/' style={{ textDecoration: 'none' }}>
-                <li className='nav-item'>
+
+              <li className='nav-item'>
+                <Link to='/' style={{ textDecoration: 'none' }}>
                   <span className='nav-link font-weight-bold'>Home</span>
-                </li>
-              </Link>
+                </Link>
+              </li>
               <li className='nav-item'>
                 <a
                   className='nav-link font-weight-bold'
@@ -201,16 +202,15 @@ const Header = () => {
                   rel='noopener noreferrer'
                   title='Buy on Avalanche Network'
                 >
-                  Buy on  <img height="30px" width="30px" 
-                src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
+                  Buy on  <img height="30px" width="30px"
+                    src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
                 </a>
               </li>
-              <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
-                <li className='nav-item'>
-                  <span className='nav-link font-weight-bold'  title='AVALANCHE / BSC SPORE BRIDGE'>Bridge</span>
-                </li>                 
-
-              </Link>
+              <li className='nav-item'>
+                <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
+                  <span className='nav-link font-weight-bold' title='AVALANCHE / BSC SPORE BRIDGE'>Bridge</span>
+                </Link>
+              </li>
               <li className='nav-item'>
                 <a
                   className='nav-link font-weight-bold'
@@ -224,8 +224,8 @@ const Header = () => {
                 </a>
               </li>
               <li className="dropdown nav-item">
-                <a 
-                  href="/" 
+                <a
+                  href="/"
                   className="dropdown-toggle nav-link font-weight-bold"
                   data-toggle="dropdown"
                   role="button"
@@ -236,7 +236,7 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a 
+                    <a
                       href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -246,7 +246,7 @@ const Header = () => {
                   </li>
                   <li role="separator" className="divider"></li>
                   <li>
-                    <a 
+                    <a
                       href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -255,7 +255,7 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a 
+                    <a
                       href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -264,7 +264,7 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a 
+                    <a
                       href='https://poocoin.app/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -274,11 +274,11 @@ const Header = () => {
                   </li>
                 </ul>
               </li>
-              <Link to='/nft' style={{ textDecoration: 'none' }}>
                 <li className='nav-item'>
-                  <span className='nav-link font-weight-bold'>NFT</span>
+                  <Link to='/nft' style={{ textDecoration: 'none' }}>
+                    <span className='nav-link font-weight-bold'>NFT</span>
+                  </Link>
                 </li>
-              </Link>
 
 
               <li className='nav-item'>

@@ -16,10 +16,14 @@ const Information = () => {
         <div className='row py-5'>
           <div className='col-md-7'>
             <h2 className='feature pb-4'>
-              What is <span>Spore Finance</span>
+              What is <span>Spore</span>?
             </h2>
             <p className='lead'>
+<<<<<<< HEAD
               Spore Finance aims to create an ecosystem combining
+=======
+              Spore is an ecosystem that includes
+>>>>>>> pr/1
             </p>
             <ul className='lead'>
               <li><b>reflect tokens</b></li>
@@ -88,7 +92,7 @@ const Information = () => {
               <div className='circle font-weight-bold'>1</div>
             </div>
             <div className='col-6'>
-              <h5>Fair and stealth launch </h5>
+              <span className='roadmap-text'>Fair and stealth launch </span>
               <p>
                 <i className='fa fa-check'></i> 18 March 2021
               </p>
@@ -108,7 +112,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>Setting up Airdrops & Incentive program </h5>
+              <span className='roadmap-text'>Setting up Airdrops & Incentive program </span>
               <p>
                 <i className='fa fa-check'></i> 20 March 2021
               </p>
@@ -135,7 +139,7 @@ const Information = () => {
               <div className='circle font-weight-bold'>3</div>
             </div>
             <div className='col-6'>
-              <h5>Second layer blockchain development + Bridge (Binance Smart Chain)</h5>
+              <span className='roadmap-text'>Second layer blockchain development + Bridge (Binance Smart Chain)</span>
               <p>
                 <i className='fa fa-check'></i> 6 April 2021
               </p>
@@ -156,7 +160,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>Farming Partnerships</h5>
+              <span className='roadmap-text'>Farming Partnerships</span>
               <p>
                 <i className='fa fa-check'></i> 12 April 2021
               </p>
@@ -186,7 +190,11 @@ const Information = () => {
               <div className='circle font-weight-bold'>5</div>
             </div>
             <div className='col-6'>
+<<<<<<< HEAD
               <h5>Algorithmically generated NFTs </h5>
+=======
+              <span className='roadmap-text'>Algorithmically generated NFTs </span>
+>>>>>>> pr/1
               <p>
                 In Progress <i className='fa fa-spinner'></i>
               </p>
@@ -208,7 +216,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>Governance </h5>
+            <span className='roadmap-text'>Governance</span>
               <p>
                 In Progress <i className='fa fa-spinner'></i>
               </p>
@@ -235,7 +243,7 @@ const Information = () => {
               <div className='circle font-weight-bold'>7</div>
             </div>
             <div className='col-6'>
-              <h5>Cross-chain compatibility</h5>
+              <span className='roadmap-text'>Cross-chain compatibility</span>
               <p>
                 Q3 2021 <i className='fa fa-spinner'></i>
               </p>
@@ -256,7 +264,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <h5>NFTs Prediction Market</h5>
+            <span className='roadmap-text'>NFTs Prediction Market</span>
               <p>
                 Q4 2021 <i className='fa fa-spinner'></i>
               </p>
@@ -288,6 +296,7 @@ const Information = () => {
             <div className="info">
               <div className="row social-links">
                 <a
+<<<<<<< HEAD
                   href='https://t.me/joinchat/BN0YR2yy2cU1ZWJk'
                   target='_blank'
                   rel='noopener noreferrer'
@@ -299,6 +308,21 @@ const Information = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-reddit'
+=======
+                  href='https://t.me/sporefinanceofficial'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
+                  aria-label='Telegram'
+                >
+                </a>
+                <a
+                  href='https://www.reddit.com/r/sporeproject/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-reddit'
+                  aria-label='Reddit'
+>>>>>>> pr/1
                 >
                 </a>
                 <a
@@ -306,6 +330,7 @@ const Information = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-discord'
+<<<<<<< HEAD
                 >
                 </a>
                 <a
@@ -341,6 +366,57 @@ const Information = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-github'
+=======
+                  aria-label='Discord'
+                >
+                </a>
+                <a
+                  href='https://twitter.com/sporeproject'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-twitter'
+                  aria-label='Twitter'
+                >
+                </a>
+                <a
+                  href='https://www.facebook.com/sporeearth'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-facebook'
+                  aria-label='Facebook'
+                >
+                </a>
+                <a
+                  href='https://instagram.com/projectspore'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-instagram'
+                  aria-label='Instagram'
+                >
+                </a>
+                <a
+                  href='https://tiktok.com/@sporeproject'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-tiktok'
+                  aria-label='TikTok'
+                >
+                </a>
+                <a
+                  href='https://sporeproject.medium.com'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-medium-m'
+                  aria-label='Medium'
+                >
+                </a>
+                <a
+                  href='https://github.com/sporeproject'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-github'
+                  aria-label='Github'
+>>>>>>> pr/1
                 >
                 </a>
               </div>
@@ -351,16 +427,26 @@ const Information = () => {
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 zeros'
                 >
+<<<<<<< HEAD
                   AVAX Token address
                 </a>
+=======
+                  Avalanche token address
+                  </a>
+>>>>>>> pr/1
                 <a
                   href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2'
                 >
+<<<<<<< HEAD
                   BSC Token address
                 </a>
+=======
+                  BSC token address
+                  </a>
+>>>>>>> pr/1
               </div>
               <div className="row social-links">
                 <a
@@ -370,7 +456,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   2.5% of supply burnt tx
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
                 <a
                   href='https://cchain.explorer.avax.network/tx/0xe3e92326e2993a270a2fdd44a7301e6adccb7dd1b40bcc4ed9ed88ec963a22ab/token-transfers'
                   target='_blank'
@@ -378,7 +468,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   LP-burnt tx
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
               </div>
               <div className="row social-links">
                 <a
@@ -388,7 +482,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   DEV wallet address
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
                 <a
                   href='https://cchain.explorer.avax.network/tx/0x5fa10181e6c9841aa2226b5468e2b92f0268feaf178626472428e9839ab76982/internal-transactions'
                   target='_blank'
@@ -396,7 +494,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   Renounced ownership tx
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
               </div>
               <div className="row social-links">
                 <a
@@ -406,7 +508,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   How to buy (VIDEO)
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
                 <a
                   href={HowToBuyPDF}
                   download
@@ -414,7 +520,11 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   How to buy (PDF)
+<<<<<<< HEAD
                 </a>
+=======
+                  </a>
+>>>>>>> pr/1
               </div>
             </div>
           </div>
