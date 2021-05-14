@@ -67,6 +67,7 @@ async function NFTbuy() {
   }
 }
 
+
 const NFT = (props: any) => {
   const [bazaar, setBazaar] = useState(new Array<any>())
   const [tokenCounter, setTokenCounter] = useState(new Array<any>())
@@ -173,13 +174,13 @@ const NFT = (props: any) => {
                         Equivalent of 57t (0.057e15) SPORE.
                       </p>
                       <ul>
-                        <li>First 4 NFTs: 1b each </li>  0.02
-                        <li>Next 8 NFTs:  2b each </li>  0.04 avax
-                        <li>Next 12 NFTs: 50b each </li> 1 avax
-                        <li>Next 24 NFTs: 100b each </li> 2 avax
-                        <li>Next 12 NFTs: 500b each </li>  5
-                        <li>Next 8 NFTs: 1t each </li> 1000b
-                        <li>Last 4 NFTs: 10t each </li> 10000b
+                        <li>First 4 NFTs: 1b each </li> 
+                        <li>Next 8 NFTs:  2b each </li>  
+                        <li>Next 12 NFTs: 50b each </li> 
+                        <li>Next 24 NFTs: 100b each </li> 
+                        <li>Next 12 NFTs: 500b each </li> 
+                        <li>Next 8 NFTs: 1t each </li> 
+                        <li>Last 4 NFTs: 10t each </li> 
                       </ul>
                       <p className='pt-4'>
                         This first generation of NFTs have a special meaning :
@@ -193,10 +194,11 @@ const NFT = (props: any) => {
                     <div className="box-rounded">
                       <h4>Fair Launch</h4>
                       <p>After the public announcement, a timelock will be
-                        activated allowing 24 hours to start buying the NFTs. 
-                        A sniper lock will not allow the first person claim the NFTs but will have 
+                        activated allowing 6 hours to start buying the NFTs. 
+                        A sniper lock will not allow the first person to claim the NFTs but will have 
                         1 in 3 possibilities to unlock the contract, allowing the following people to
                         claim the rest of the NFTs normally.
+                        Only 1 NFT allowed to claim per wallet!
                         All SPORE used to mint the NFTs will go to the BURN address.</p>
 
                       <p>
