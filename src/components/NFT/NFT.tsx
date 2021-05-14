@@ -147,12 +147,12 @@ const NFT = (props: any) => {
   }, [])
 
 
-
+  var image: any;
 
   if (balance > 0) {
-    var image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
+     image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
   } else {
-    var image = <> You dont own any NFTs yet! </>;
+     image = <> You dont own any NFTs yet! </>;
   }
 
   if (isWeb3) {
