@@ -320,7 +320,7 @@ const Information = () => {
                 >
                 </a>
                 <a
-                  href='https://www.facebook.com/sporeproject'
+                  href='https://www.facebook.com/sporeearth'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-facebook'
