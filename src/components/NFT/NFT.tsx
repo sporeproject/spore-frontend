@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+//import React, { useCallback } from "react";
 import Web3 from "web3";
 import InstallMetamask from "../InstallMetamask";
 import UnlockMetamask from "../UnlockMetamask";
@@ -8,7 +8,7 @@ import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../../utils/addresses';
 import { approveContract } from '../../utils/wallet';
-import ReturnExternalURL from './ReturnExternalURL';
+//import ReturnExternalURL from './ReturnExternalURL';
 import { MarketPlaceView } from "./MarketPlace";
 import { ethers } from "ethers";
 const win = window as any
@@ -17,9 +17,9 @@ const docu = document as any
 async function approve() {
   const SporeAddress = ContractAddesses.AVAX_SPORE_FUJI;
   const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_FUJI;
-  const SporeContract = new win.web3.eth.Contract(AVAX_SPORE_ABI, SporeAddress);
+  //const SporeContract = new win.web3.eth.Contract(AVAX_SPORE_ABI, SporeAddress);
   var account = await win.web3.eth.getAccounts();
-  account = account[0];
+  //account = account[0];
   var amount = ethers.BigNumber.from(docu.getElementById("_approveFee").value).mul(10 ** 9);
   // try {
   //   await SporeContract.methods
@@ -77,6 +77,7 @@ const NFT = (props: any) => {
   const [balance, setBalance] = useState(0)
   const [marketPlaceBuilder, setMarketPlaceBuilder] = useState(new Array<any>())
   const marketPlace = {}
+  console.log(tokenCounter, setTotalCharacters, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder )
   let isnetworkID = false
   let web3Provider: any = undefined
   let isWeb3 = true
