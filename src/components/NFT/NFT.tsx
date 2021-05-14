@@ -78,12 +78,16 @@ const NFT = (props: any) => {
   const [marketPlaceBuilder, setMarketPlaceBuilder] = useState(new Array<any>())
   const marketPlace = {}
   console.log(tokenCounter, setTotalCharacters, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder )
-  let isnetworkID = false
-  let web3Provider: any = undefined
-  let isWeb3 = true
+  const [isnetworkID, setisnetworkID] = useState({});
+  const [web3Provider, setweb3Provider] = useState({});
+  const [isWeb3 , setisWeb3 ] = useState({});
+
 
   useEffect(() => {
     async function startup() {
+
+      
+      
       let web3 = win.web3;
       if (win.ethereum) {
         win.web3 = new Web3(win.ethereum);
@@ -92,17 +96,17 @@ const NFT = (props: any) => {
       }
       if (typeof web3 !== "undefined") {
         // Use Mist/MetaMask's provider
-        web3Provider = web3.currentProvider;
+        setweb3Provider({ web3Provider: web3.currentProvider});
         web3 = new Web3(web3.currentProvider);
       } else {
-        isWeb3 = false;
+        setisWeb3({ isWeb3: true});
       }
-      if (web3Provider.chainId === "0xa869") {
-        isnetworkID = true;
+      if (web3.currentProvider.chainId === "0xa869") {
+        setisnetworkID({ isnetworkID: true });
       } else {
-        isnetworkID = false;
+        setisnetworkID({ isnetworkID: false });
       };
-      console.log("webProvider:", web3Provider.chainId, isnetworkID );
+      console.log("webProvider:",  isnetworkID );
 
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
