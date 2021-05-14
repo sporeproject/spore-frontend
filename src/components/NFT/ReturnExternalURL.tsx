@@ -28,7 +28,7 @@ const ReturnExternalURL = (props: Props) => {
 
         <>
             {data.map((image) => (
-                <div key={image} className="col-md-3 text-center"><img className="rounded shadow" src={image} height="200" /></div>
+                <div key={image} className="col-md-3 text-center"><img className="rounded shadow" src={image} alt="reload your page" height="200" /></div>
             ))}
         </>
 

@@ -18,7 +18,7 @@ async function approve() {
   const SporeAddress = ContractAddesses.AVAX_SPORE_FUJI;
   const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_FUJI;
   //const SporeContract = new win.web3.eth.Contract(AVAX_SPORE_ABI, SporeAddress);
-  var account = await win.web3.eth.getAccounts();
+  //var account = await win.web3.eth.getAccounts();
   //account = account[0];
   var amount = ethers.BigNumber.from(docu.getElementById("_approveFee").value).mul(10 ** 9);
   // try {
@@ -97,12 +97,12 @@ const NFT = (props: any) => {
       } else {
         isWeb3 = false;
       }
-      if (web3Provider.chainId == "0xa869") {
+      if (web3Provider.chainId === "0xa869") {
         isnetworkID = true;
       } else {
         isnetworkID = false;
       };
-      console.log("webProvider:", web3Provider.chainId);
+      console.log("webProvider:", web3Provider.chainId, isnetworkID );
 
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
