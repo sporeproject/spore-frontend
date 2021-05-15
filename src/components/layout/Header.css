@@ -13,6 +13,10 @@
     font-size: 32px;
 }
 
+.navbar-brand h1{
+  font-size: 32px;
+}
+
 .imagenespeciada {
     margin-left: 5px;
 }
