@@ -171,7 +171,7 @@ const NFT = (props: any) => {
                 <h2 className='feature pb-2 text-center'>
                   <span>NFT version 1</span> : Vision, Pricing & Fair Launch
                 </h2>
-                <h3 className="text-center pb-2">Welcome to out first generation of NFTs</h3>
+                <h3 className="text-center pb-2">Welcome to our first generation of NFTs</h3>
                 <div className="row">
                   <div className="col-lg-4 col-sm-12">
                     <div className="box-rounded">
