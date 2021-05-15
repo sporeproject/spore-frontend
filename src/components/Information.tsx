@@ -6,7 +6,7 @@ import React from 'react';
 import BurnedTokens from './BurnedTokens';
 import PriceToken from './PriceToken';
 //@ts-ignore
-import HowToBuyPDF from '../utils/how_to_buy.pdf';
+import HowToBuyPDF from '../assets/how_to_buy.pdf';
 import Contributors from './contributors';
 
 const Information = () => {
