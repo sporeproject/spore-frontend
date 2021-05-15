@@ -231,6 +231,7 @@ const NFT = (props: any) => {
                         <li>Freelancer</li>
                         <li>NightlyCatGirl</li>
                         <li>OrionDeimos</li>
+                        <li>Berserk</li>
                       </ul>
                     </div>
                   </div>
