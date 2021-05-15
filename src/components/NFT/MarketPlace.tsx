@@ -23,7 +23,7 @@ export const MarketPlaceView = (props: Props) => {
     const buildMarketPlace = async () => {
         const SporeMarketv1 = new win.web3.eth.Contract(
             SPORE_MARKET_ABI,
-            ContractAddesses.AVAX_MARKET_FUJI
+            ContractAddesses.AVAX_MARKET_MAINNET
         )
         var builder = new Array<MarketplaceItem>()
         for (let i = 0; i <= 72 - 1; i++) {

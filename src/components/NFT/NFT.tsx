@@ -15,8 +15,8 @@ const win = window as any
 const docu = document as any
 
 async function approve() {
-  const SporeAddress = ContractAddesses.AVAX_SPORE_FUJI;
-  const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_FUJI;
+  const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
+  const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_MAINNET;
   //const SporeContract = new win.web3.eth.Contract(AVAX_SPORE_ABI, SporeAddress);
   //var account = await win.web3.eth.getAccounts();
   //account = account[0];
@@ -34,7 +34,7 @@ async function approve() {
 async function claim() {
   const SporeMarketv1 = new win.web3.eth.Contract(
     SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_FUJI
+    ContractAddesses.AVAX_MARKET_MAINNET
   );
   var account = await win.web3.eth.getAccounts();
   account = account[0];
@@ -50,7 +50,7 @@ async function claim() {
 async function NFTbuy() {
   const SporeMarketv1 = new win.web3.eth.Contract(
     SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_FUJI
+    ContractAddesses.AVAX_MARKET_MAINNET
   );
   var _tokenID = docu.getElementById("_tokenID").value;
   var account = await win.web3.eth.getAccounts();
@@ -101,7 +101,7 @@ const NFT = (props: any) => {
       } else {
         setisWeb3({ isWeb3: true});
       }
-      if (web3.currentProvider.chainId === "0xa869") {
+      if (web3.currentProvider.chainId === "0xa86a") {
         const isnetworkID = true;
         console.log("webProvider:", isnetworkID);
       } else {
@@ -112,7 +112,7 @@ const NFT = (props: any) => {
 
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_FUJI
+        ContractAddesses.AVAX_MARKET_MAINNET
       );
 
       const accounts = await win.ethereum.request({ method: "eth_accounts" });
