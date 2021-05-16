@@ -6,11 +6,13 @@ import axios from 'axios';
 import { useState } from 'react';
 import Web3 from 'web3'
 import { useEffect } from 'react';
+import { AVAX_SPORE_ABI } from '../utils/SporeAbis';
 
 const TOTAL_SUPPLY = 100000000000000000;
 
 const win = window as any
-win.web3 = new Web3('https://bsc-dataseed1.binance.org:443')
+win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
 
 const BurnedTokens = () => {
   const [numberOfBurnedTokens, setNumberOfBurnedTokens] = useState(-1)
@@ -36,24 +38,32 @@ const BurnedTokens = () => {
   }, [])
 
   const getBurnedTokens = async () => {
-    try {
-      console.log("getting burned tokens")
-      const res = await axios.get(
-        'https://api.covalenthq.com/v1/43114/address/0x000000000000000000000000000000000000dEaD/balances_v2/?nft=false'
+    try {      
+      console.log("getting burned tokens");
+      const SporeAddress = "0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985";
+      const SporeContract = new win.ava.eth.Contract(
+        AVAX_SPORE_ABI,
+        SporeAddress
       );
 
-      if (
-        res.data !== undefined &&
-        res.data.data !== undefined &&
-        res.data.data.items !== undefined
-      ) {
-        const items = res.data.data.items;
-        items.forEach((coin: any) => {
-          if (coin.contract_address === '0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985') {
-            setNumberOfBurnedTokens(coin.balance / (10 ** 9))
-          }
-        })
-      }
+      const avaburn = await SporeContract.methods.balanceOf("0x000000000000000000000000000000000000dEaD").call();
+      setNumberOfBurnedTokens(avaburn / (10 ** 9));
+      // const res = await axios.get(
+      //   'https://api.covalenthq.com/v1/43114/address/0x000000000000000000000000000000000000dEaD/balances_v2/?nft=false'
+      // );
+
+      // if (
+      //   res.data !== undefined &&
+      //   res.data.data !== undefined &&
+      //   res.data.data.items !== undefined
+      // ) {
+      //   const items = res.data.data.items;
+      //   items.forEach((coin: any) => {
+      //     if (coin.contract_address === '0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985') {
+      //       setNumberOfBurnedTokens(coin.balance / (10 ** 9))
+      //     }
+      //   })
+      // }
 
     }
     catch (err) {
