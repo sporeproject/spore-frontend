@@ -79,15 +79,15 @@ const NFT = (props: any) => {
   const marketPlace = {};
   //const [isnetworkID, setisnetworkID] = useState({});
   const [web3Provider, setweb3Provider] = useState({});
-  console.log(tokenCounter, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder, web3Provider )
-  const [isWeb3 , setisWeb3 ] = useState({});
+  console.log(tokenCounter, marketPlaceBuilder, marketPlace, setMarketPlaceBuilder, web3Provider)
+  const [isWeb3, setisWeb3] = useState({});
 
 
   useEffect(() => {
     async function startup() {
 
       const totalCharacters = 72
-      
+
       let web3 = win.web3;
       if (win.ethereum) {
         win.web3 = new Web3(win.ethereum);
@@ -96,10 +96,10 @@ const NFT = (props: any) => {
       }
       if (typeof web3 !== "undefined") {
         // Use Mist/MetaMask's provider
-        setweb3Provider({ web3Provider: web3.currentProvider});
+        setweb3Provider({ web3Provider: web3.currentProvider });
         web3 = new Web3(web3.currentProvider);
       } else {
-        setisWeb3({ isWeb3: true});
+        setisWeb3({ isWeb3: true });
       }
       if (web3.currentProvider.chainId === "0xa86a") {
         const isnetworkID = true;
@@ -108,7 +108,7 @@ const NFT = (props: any) => {
         const isnetworkID = false;
         console.log("webProvider:", isnetworkID);
       };
-      
+
 
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
@@ -150,9 +150,9 @@ const NFT = (props: any) => {
   var image: any;
 
   if (balance > 0) {
-     image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
+    image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
   } else {
-     image = <> You dont own any NFTs yet! </>;
+    image = <> You dont own any NFTs yet! </>;
   }
 
   if (isWeb3) {
@@ -181,13 +181,13 @@ const NFT = (props: any) => {
                         Equivalent of 57t (0.057e15) SPORE.
                       </p>
                       <ul>
-                        <li>First 4 NFTs: 1b each </li> 
-                        <li>Next 8 NFTs:  2b each </li>  
-                        <li>Next 12 NFTs: 50b each </li> 
-                        <li>Next 24 NFTs: 100b each </li> 
-                        <li>Next 12 NFTs: 500b each </li> 
-                        <li>Next 8 NFTs: 1t each </li> 
-                        <li>Last 4 NFTs: 10t each </li> 
+                        <li>First 4 NFTs: 1b each </li>
+                        <li>Next 8 NFTs:  2b each </li>
+                        <li>Next 12 NFTs: 50b each </li>
+                        <li>Next 24 NFTs: 100b each </li>
+                        <li>Next 12 NFTs: 500b each </li>
+                        <li>Next 8 NFTs: 1t each </li>
+                        <li>Last 4 NFTs: 10t each </li>
                       </ul>
                       <p className='pt-4'>
                         This first generation of NFTs have a special meaning :
@@ -201,8 +201,8 @@ const NFT = (props: any) => {
                     <div className="box-rounded">
                       <h4>Fair Launch</h4>
                       <p>After the public announcement, a timelock will be
-                        activated allowing 6 hours to start buying the NFTs. 
-                        A sniper lock will not allow the first person to claim the NFTs but will have 
+                        activated allowing 6 hours to start buying the NFTs.
+                        A sniper lock will not allow the first person to claim the NFTs but will have
                         1 in 3 possibilities to unlock the contract, allowing the following people to
                         claim the rest of the NFTs normally.
                         Only 1 NFT allowed to claim per wallet!
@@ -279,7 +279,7 @@ const NFT = (props: any) => {
                 </div>
                 <div className='col-md-12'>
                   <ul>
-                    <MarketPlaceView bazaar={bazaar}  />
+                    <MarketPlaceView bazaar={bazaar} />
                   </ul>
                   <br />
                   {" "}

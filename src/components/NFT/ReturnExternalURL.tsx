@@ -14,9 +14,15 @@ const ReturnExternalURL = (props: Props) => {
 
             for (let i = 0; i < props.jsonData.length; i++) {
 
-                const res = await fetch(props.jsonData[i])
-                    .then(response => { return response.json() })
-                returnData.push(res.external_url)
+                try {
+                    const res = await fetch(props.jsonData[i], { mode: 'no-cors' })
+                        .then(response => { return response.json() })
+                    returnData.push(res.external_url)
+
+                }
+                catch (error) {
+                    console.log("ERROR FETCHING EXTERNAL URL:", error)
+                }
             }
             setData(returnData)
         }

@@ -41,7 +41,7 @@ export const MarketPlaceView = (props: Props) => {
     useEffect(() => {
         buildMarketPlace()
 
-    })
+    }, [props.bazaar])
 
     return (
         <>
