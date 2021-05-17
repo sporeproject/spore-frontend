@@ -1,10 +1,11 @@
 import React from "react";
-//import Web3 from "web3";
+import Web3 from "web3";
 import { useState, useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
 import { getAccount } from '../../utils/wallet';
 import ReturnExternalURL from './ReturnExternalURL';
+//import { ethers } from "ethers";
 
 const win = window as any
 const docu = document as any
@@ -16,7 +17,8 @@ const putNFTForSale = async () => {
     ContractAddesses.AVAX_MARKET_MAINNET
   );
   var _tokenIDforSale = docu.getElementById("_tokenIDforSale").value;
-  var _price = docu.getElementById("_price").value;
+  var _price  = Web3.utils.toWei(docu.getElementById("_price").value,'ether');
+  //var _price = docu.getElementById("_price").value;
 
   var account = await getAccount()
   try {
@@ -93,7 +95,7 @@ const ReturnTokenURI = (props: Props) => {
           <input type="text" id="_price" className="form-control float-left" placeholder="Price" />
           <div className="input-group-append">
             <button onClick={putNFTForSale} className="btn btn-primary">Put NFT for Sale</button>
-             <p> Note: AVAX has 18 decimals, so add 18 decimals to whatever price you want to add.</p>
+             <p> Note: put the amount in AVAX (decimal issue fixed)</p>
           </div>
         </div>
         
