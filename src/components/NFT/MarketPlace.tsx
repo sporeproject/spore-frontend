@@ -31,7 +31,7 @@ export const MarketPlaceView = (props: Props) => {
                 const URI = await SporeMarketv1.methods
                     .tokenURI(i)
                     .call()
-                builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 9, URI: URI } as MarketplaceItem);
+                builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 18, URI: URI } as MarketplaceItem);
                 console.log("BUILDER:", builder)
             }
         }
