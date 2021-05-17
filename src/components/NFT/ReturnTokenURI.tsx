@@ -13,7 +13,7 @@ const putNFTForSale = async () => {
 
   const SporeMarketv1 = new win.web3.eth.Contract(
     SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_FUJI
+    ContractAddesses.AVAX_MARKET_MAINNET
   );
   var _tokenIDforSale = docu.getElementById("_tokenIDforSale").value;
   var _price = docu.getElementById("_price").value;
@@ -32,7 +32,7 @@ const cancelNFTForSale = async () => {
 
   const SporeMarketv1 = new win.web3.eth.Contract(
     SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_FUJI
+    ContractAddesses.AVAX_MARKET_MAINNET
   );
   var _tokenIDforCancel = docu.getElementById("_tokenIDforCancel").value;
 
