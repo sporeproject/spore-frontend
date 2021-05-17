@@ -52,7 +52,6 @@ export const MarketPlaceView = (props: Props) => {
                         <ReturnExternalURL jsonData={[item.URI]} />
                         <p>ID: {item.itemId}</p>
                         <p>Price: {item.price} AVAX</p>
-                        <p>Note: To put the price in AVAX ADD 9 zeroes </p>
 
                     </li>
                 ))) : (
