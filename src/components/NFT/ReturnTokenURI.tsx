@@ -57,7 +57,7 @@ const ReturnTokenURI = (props: Props) => {
     async function startup() {
       const SporeMarketv1 = new win.web3.eth.Contract(
         SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_FUJI
+        ContractAddesses.AVAX_MARKET_MAINNET
       );
       const promises = [];
 
