@@ -93,6 +93,7 @@ const ReturnTokenURI = (props: Props) => {
           <input type="text" id="_price" className="form-control float-left" placeholder="Price" />
           <div className="input-group-append">
             <button onClick={putNFTForSale} className="btn btn-primary">Put NFT for Sale</button>
+             <p> Note: AVAX has 18 decimals, so add 18 decimals to whatever price you want to add.</p>
           </div>
         </div>
         
@@ -100,6 +101,7 @@ const ReturnTokenURI = (props: Props) => {
           <input type="text" id="_tokenIDforCancel" className="form-control float-left" placeholder="NFT_ID" />
           <div className="input-group-append">
             <button onClick={cancelNFTForSale} className="btn btn-primary">Cancel NFT for Sale</button>
+           
           </div>
         </div>
       </div>
