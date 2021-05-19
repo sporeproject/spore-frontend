@@ -84,7 +84,7 @@ export default async function (req,res) {
     
     spore.name = spore.name.length > 4 ? spore.name.replace(".Finance","") : spore.name;
     
-    let url = require('url');
+    let url = req('url');
     let url_parts = url.parse(request.url, true);
     let query = url_parts.query;
 
