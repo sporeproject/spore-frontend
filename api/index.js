@@ -90,10 +90,10 @@ export default async function (req,res) {
     if(q.toLowerCase() == "circulatingsupply"){
         res.send(`${spore.circulatingSupply}`);
     }
-    if(q.toLowerCase() == "totalsupply"){
+    else if(q.toLowerCase() == "totalsupply"){
         res.send(`${spore.totalSupply}`);
     }
-    if(q.toLowerCase() == "maxsupply"){
+    else if(q.toLowerCase() == "maxsupply"){
         res.send(`${spore.maxSupply}`);
     }
     else{
