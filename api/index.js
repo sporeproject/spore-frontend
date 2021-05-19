@@ -77,6 +77,7 @@ export default async function (req,res) {
 
     delete spore.bsc;
     delete spore.avaburn;
+    delete spore.avabridge;
     delete spore.decimals;
     delete spore.owner;
     delete spore.totalSupply;
