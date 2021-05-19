@@ -8,7 +8,9 @@ const tokens = [
    {
        bsc: '0x33a3d962955a3862c8093d1273344719f03ca17c',
        id: '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985',
-       avaburn: '0x000000000000000000000000000000000000dEaD'
+       avaburn: '0x000000000000000000000000000000000000dEaD',
+       avabridge: '0x1aFCEF48379ECad5a6D790cE85ad1c87458C0f07',
+       bsvbridge: '0x33a3d962955a3862c8093d1273344719f03ca17c'
    }
 ];
 
@@ -18,12 +20,7 @@ const find_token = (tokens, filter) => {
 
 
  const populate = (token) => {
-   return Promise.all([
-       new ava.eth.Contract(abi_erc20, token.id).methods.totalSupply().call().then( result => {
-           return parseInt(result)
-       }).catch(err => {
-           console.log('no supply:', err)
-       }),
+   return Promise.all([       
        new ava.eth.Contract(abi_erc20, token.id).methods.decimals().call().then( result => {
            token.decimals = parseInt(result)
        }).catch(err => {
@@ -45,13 +42,7 @@ const find_token = (tokens, filter) => {
        }).catch(err => {
            //console.log('no total fees:', err)            
        })        
-   ]).then(results => {
-       if ( token.decimals !== 18 ) {
-           console.log(token.symbol, 'decimals:', token.decimals)
-       }
-       token.totalSupply = results[0] / 10 ** token.decimals
-       return token
-   })
+   ])
 }
 
 
@@ -60,17 +51,18 @@ export default async function (req,res) {
     let spore = find_token(tokens, {key:'symbol', value: 'spore'})
     let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.burned().call();
     let avaBurned = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avaburn).call();
-    let supplyavax = await new ava.eth.Contract(abi_erc20, spore.id).methods.totalSupply().call();
-    let supplybsc = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.totalSupply().call();
+    let avaxbridge = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avabridge).call();
+    let bscbridge = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.balanceOf(spore.bscbridge).call();
+    let totalSupply = 100000000000000000/ 10 ** spore.decimals;
 
     let report = {
         bscBurned: bscBurned / 10 ** spore.decimals,
         avaBurned: avaBurned / 10 ** spore.decimals,
-        supplyavax: supplyavax / 10 ** spore.decimals,
-        supplybsc: supplybsc / 10 ** spore.decimals
+        supplyavax: totalSupply - avaBurned - avaxbridge,
+        supplybsc: totalSupply - bscbridge
     };
 
-    report.circulatingSupply = spore.totalSupply - report.avaBurned - report.bscBurned; // - spore.totalFees / 2
+    report.circulatingSupply =  report.supplyavax + report.supplybsc; // - spore.totalFees / 2
     spore = Object.assign({}, spore, report);
 
     delete spore.bsc;
