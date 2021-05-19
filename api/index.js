@@ -87,8 +87,10 @@ export default async function (req,res) {
     const {q = ''} = req.query;
 
     if(q.toLowerCase() == "circulatingsupply"){
-        res.send(report.circulatingSupply);
+        res.send(`${report.circulatingSupply}`);
+    }
+    else{
+        res.json(spore);
     }
 
-    res.json(spore);
  };
