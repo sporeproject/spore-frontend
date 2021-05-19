@@ -69,7 +69,7 @@ export default async function (req,res) {
         bscBurned: bscBurned / 10 ** spore.decimals,
         avaBurned: avaBurned / 10 ** spore.decimals        
     };
-    report.totalSupply = spore.maxSupply - report.avaBurned - report.bscBurned - ((avaxbridge / 10 ** spore.decimals) - bscbridge);        
+    report.totalSupply = spore.maxSupply - report.avaBurned - report.bscBurned - ((avaxbridge / 10 ** spore.decimals) - (bscbridge/ 10 ** spore.decimals));        
     report.supplyavax = spore.maxSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
     report.supplybsc = (bscbridge / 10 ** spore.decimals) - report.bscBurned;
     report.circulatingSupply =  report.supplyavax + report.supplybsc;
