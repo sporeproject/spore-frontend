@@ -62,16 +62,16 @@ export default async function (req,res) {
     let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.burned().call();
     let avaBurned = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avaburn).call();
     let avaxbridge = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avabridge).call();
-    let bscbridge = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.balanceOf(spore.bsc).call();
+    let bscbridge = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.totalSupply().call();
     
 
     let report = {
         bscBurned: bscBurned / 10 ** spore.decimals,
         avaBurned: avaBurned / 10 ** spore.decimals        
     };
-    report.totalSupply = spore.maxSupply - report.avaBurned - (bscbridge / 10 ** spore.decimals);        
+    report.totalSupply = spore.maxSupply - report.avaBurned - report.bscBurned;        
     report.supplyavax = spore.maxSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
-    report.supplybsc = (bscbridge / 10 ** spore.decimals);
+    report.supplybsc = (bscbridge / 10 ** spore.decimals) - report.bscBurned;
     report.circulatingSupply =  report.supplyavax + report.supplybsc;
     spore = Object.assign({}, spore, report);
 
