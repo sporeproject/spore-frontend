@@ -67,11 +67,10 @@ export default async function (req,res) {
 
     let report = {
         bscBurned: bscBurned / 10 ** spore.decimals,
-        avaBurned: avaBurned / 10 ** spore.decimals,
-        supplyavax: spore.totalSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals),
-        supplybsc: spore.totalSupply - ((bsctotalSupply / 10 ** spore.decimals) - report.bscBurned)
+        avaBurned: avaBurned / 10 ** spore.decimals        
     };
-
+    report.supplyavax = spore.totalSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
+    report.supplybsc = spore.totalSupply - ((bsctotalSupply / 10 ** spore.decimals) - report.bscBurned);
     report.circulatingSupply =  report.supplyavax + report.supplybsc; 
     spore = Object.assign({}, spore, report);
 
