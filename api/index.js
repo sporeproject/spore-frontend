@@ -97,7 +97,6 @@ export default async function (req,res) {
         res.send(`${spore.maxSupply}`);
     }
     else{
-        delete spore.maxSupply;
         res.json(spore);
     }
 
