@@ -84,11 +84,9 @@ export default async function (req,res) {
     
     spore.name = spore.name.length > 4 ? spore.name.replace(".Finance","") : spore.name;
     
-    let url = req('url');
-    let url_parts = url.parse(request.url, true);
-    let query = url_parts.query;
+    const {q = ''} = req.query;
 
-    if(query.q.toLowerCase() == "circulatingsupply"){
+    if(q.toLowerCase() == "circulatingsupply"){
         res.send(report.circulatingSupply);
     }
 
