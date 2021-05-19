@@ -50,7 +50,7 @@ const find_token = (tokens, filter) => {
        if ( token.decimals !== 18 ) {
            console.log(token.symbol, 'decimals:', token.decimals)
        }
-       token.totalSupply = results[0] / 10 ** token.decimals
+       token.maxSupply = results[0] / 10 ** token.decimals
        return token
    })
 }
@@ -70,9 +70,10 @@ export default async function (req,res) {
         avaBurned: avaBurned / 10 ** spore.decimals        
     };
     
-    report.supplyavax = spore.totalSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
+    report.supplyavax = spore.maxSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
     report.supplybsc = (bsctotalSupply / 10 ** spore.decimals) - report.bscBurned;
-    report.circulatingSupply =  report.supplyavax + report.supplybsc; 
+    report.circulatingSupply =  report.supplyavax + report.supplybsc;
+    report.totalSupply = report.supplyavax - report.bscBurned;
     spore = Object.assign({}, spore, report);
 
     delete spore.bsc;
@@ -80,16 +81,23 @@ export default async function (req,res) {
     delete spore.avabridge;
     delete spore.decimals;
     delete spore.owner;
-    delete spore.totalSupply;
+    
     
     spore.name = spore.name.length > 4 ? spore.name.replace(".Finance","") : spore.name;
     
     const {q = ''} = req.query;
 
     if(q.toLowerCase() == "circulatingsupply"){
-        res.send(`${report.circulatingSupply}`);
+        res.send(`${spore.circulatingSupply}`);
+    }
+    if(q.toLowerCase() == "totalsupply"){
+        res.send(`${spore.totalSupply}`);
+    }
+    if(q.toLowerCase() == "maxsupply"){
+        res.send(`${spore.maxSupply}`);
     }
     else{
+        delete spore.maxSupply;
         res.json(spore);
     }
 
