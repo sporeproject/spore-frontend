@@ -89,6 +89,30 @@ export default async function (req,res) {
     if(q.toLowerCase() == "circulatingsupply"){
         res.send(`${spore.circulatingSupply}`);
     }
+    else if(q.toLowerCase() == "id"){
+        res.send(`${spore.id}`);
+    }
+    else if(q.toLowerCase() == "name"){
+        res.send(`${spore.name}`);
+    }
+    else if(q.toLowerCase() == "totalfees"){
+        res.send(`${spore.totalFees}`);
+    }
+    else if(q.toLowerCase() == "symbol"){
+        res.send(`${spore.symbol}`);
+    }
+    else if(q.toLowerCase() == "bscburned"){
+        res.send(`${spore.bscBurned}`);
+    }
+    else if(q.toLowerCase() == "avaburned"){
+        res.send(`${spore.avaBurned}`);
+    }
+    else if(q.toLowerCase() == "supplyavax"){
+        res.send(`${spore.bscBurned}`);
+    }
+    else if(q.toLowerCase() == "supplybsc"){
+        res.send(`${spore.avaBurned}`);
+    }
     else if(q.toLowerCase() == "totalsupply"){
         res.send(`${spore.totalSupply}`);
     }
