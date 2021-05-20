@@ -95,16 +95,16 @@ export default async function (req,res) {
     else if(q.toLowerCase() == "name"){
         res.send(`${spore.name}`);
     }
-    else if(q.toLowerCase() == "totalFees"){
+    else if(q.toLowerCase() == "totalfees"){
         res.send(`${spore.totalFees}`);
     }
     else if(q.toLowerCase() == "symbol"){
         res.send(`${spore.symbol}`);
     }
-    else if(q.toLowerCase() == "bscBurned"){
+    else if(q.toLowerCase() == "bscburned"){
         res.send(`${spore.bscBurned}`);
     }
-    else if(q.toLowerCase() == "avaBurned"){
+    else if(q.toLowerCase() == "avaburned"){
         res.send(`${spore.avaBurned}`);
     }
     else if(q.toLowerCase() == "supplyavax"){
