@@ -302,6 +302,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fab fa-reddit'
                   aria-label='Reddit'
                 >
+                </a>
                 <a
                   href='https://t.me/sporefinanceofficial'
                   target='_blank'
@@ -309,7 +310,6 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
                   aria-label='Telegram'
                 >
-                </a>
                 </a>
                 <a
                   href='https://discord.gg/hYDnmyadJC'
