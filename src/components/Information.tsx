@@ -288,11 +288,11 @@ const Information = () => {
             <div className="info">
               <div className="row social-links">
                 <a
-                  href='https://t.me/sporefinanceofficial'
+                  href='https://twitter.com/sporeproject'
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
-                  aria-label='Telegram'
+                  className='btn btn-primary mx-1 mb-2 fab fa-twitter'
+                  aria-label='Twitter'
                 >
                 </a>
                 <a
@@ -302,6 +302,14 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fab fa-reddit'
                   aria-label='Reddit'
                 >
+                <a
+                  href='https://t.me/sporefinanceofficial'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
+                  aria-label='Telegram'
+                >
+                </a>
                 </a>
                 <a
                   href='https://discord.gg/hYDnmyadJC'
@@ -309,14 +317,6 @@ const Information = () => {
                   rel='noopener noreferrer'
                   className='btn btn-primary mx-1 mb-2 fab fa-discord'
                   aria-label='Discord'
-                >
-                </a>
-                <a
-                  href='https://twitter.com/sporeproject'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='btn btn-primary mx-1 mb-2 fab fa-twitter'
-                  aria-label='Twitter'
                 >
                 </a>
                 <a
