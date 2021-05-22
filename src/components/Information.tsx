@@ -188,7 +188,7 @@ const Information = () => {
             <div className='col-6'>
               <span className='roadmap-text'>Algorithmically generated NFTs </span>
               <p>
-                In Progress <i className='fa fa-spinner'></i>
+                <i className='fa fa-check'></i> May 17 2021
               </p>
             </div>
           </div>
