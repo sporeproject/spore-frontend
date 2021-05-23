@@ -279,6 +279,11 @@ const Header = () => {
                     <span className='nav-link font-weight-bold'>NFT</span>
                   </Link>
                 </li>
+                <li className='nav-item'>
+                  <Link to='/ComingSoon' style={{ textDecoration: 'none' }}>
+                    <span className='nav-link font-weight-bold'>NFT Gallery</span>
+                  </Link>
+                </li>
 
 
               <li className='nav-item'>
