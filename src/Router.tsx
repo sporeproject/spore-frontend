@@ -6,8 +6,8 @@ import MyParticles from './components/Particles';
 import Information from './components/Information';
 import BSCBridge from './components/BSCBridge';
 import NFT from './components/NFT/NFT';
-//import NFT from './components/NFT/NFT Gallery';
-import ComingSoon from './components/ComingSoon';
+import NFTGallery from './components/NFT/NFTGallery';
+//import ComingSoon from './components/ComingSoon';
 
 const Router = () => {
   return (
@@ -26,7 +26,7 @@ const Router = () => {
         />
         <Route exact path='/nft' render={() => <NFT />} />
         <Route exact path='/bsc-bridge' render={() => <BSCBridge />} />
-        <Route exact path='/ComingSoon' render={() => < ComingSoon/>} />
+        <Route exact path='/gallery' render={() => < NFTGallery/>} />
       </Switch>
       <Footer />
     </ReactRouter>

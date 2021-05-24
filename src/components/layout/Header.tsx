@@ -274,16 +274,37 @@ const Header = () => {
                   </li>
                 </ul>
               </li>
-                <li className='nav-item'>
+              <li className="dropdown nav-item">
+                <a
+                  href="/"
+                  className="dropdown-toggle nav-link font-weight-bold"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  NFT Section<span className="caret"></span>
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
                   <Link to='/nft' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>NFT</span>
                   </Link>
-                </li>
-                <li className='nav-item'>
-                  <Link to='/ComingSoon' style={{ textDecoration: 'none' }}>
+                  </li>
+
+                  <li>
+                  <Link to='/gallery' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>NFT Gallery</span>
                   </Link>
+
                 </li>
+
+                </ul>
+
+
+              </li>
+              
+              
 
 
               <li className='nav-item'>
