@@ -192,8 +192,8 @@ const Header = () => {
                 <a href="/" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Buy SPORE<span className="caret"></span>
                 </a>
-//              <img height="30px" width="30px" src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
-//              <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img> 
+                /*<img height="30px" width="30px" src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
+                <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img> */
                 <ul className="dropdown-menu">
                   <li>
                   <a href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel="noreferrer" style={{textDecoration:'none'}}>
@@ -271,14 +271,14 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li>
                   <Link to='/static/media/how_to_buy.d27bfe52.pdf' target='_blank' rel="noreferrer">
-                    <span className='nav-link font-weight-bold'>How to buy (PDF)</span>
+                    <span className='nav-link'>How to buy (PDF)</span>
                   </Link>
                   </li>
                   <li>
                   <a href='https://www.youtube.com/watch?v=wK4vvE44Pfw' target='_blank' rel="noreferrer">
-                    <span className='nav-link font-weight-bold'>How to buy (video)</span>
+                    <span className='nav-link'>How to buy (video)</span>
                   </a>
-               </li>
+                  </li>
                 </ul>
               </li>
 
