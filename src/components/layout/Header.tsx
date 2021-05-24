@@ -196,14 +196,14 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                  <a href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' style={{ textDecoration: 'none' }}>
+                  <Link to='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Buy on Avalanche</span>
-                  </a>
+                  </Link>
                   </li>
                   <li>
-                  <a href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' style={{ textDecoration: 'none' }}>
+                  <Link to='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Buy on Binance Smart Chain</span>
-                  </a>
+                  </Link>
                   </li>
                 </ul>
               </li> 
