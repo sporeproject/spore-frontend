@@ -190,11 +190,6 @@ const Header = () => {
             <ul className='navbar-nav ml-auto'>
 
               <li className='nav-item'>
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                  <span className='nav-link font-weight-bold'>Home</span>
-                </Link>
-              </li>
-              <li className='nav-item'>
                 <a
                   className='nav-link font-weight-bold'
                   href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
