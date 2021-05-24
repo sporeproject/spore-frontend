@@ -6,7 +6,6 @@ import React from 'react';
 import BurnedTokens from './BurnedTokens';
 import PriceToken from './PriceToken';
 //@ts-ignore
-import HowToBuyPDF from '../assets/how_to_buy.pdf';
 import Contributors from './contributors';
 
 const Information = () => {
@@ -62,11 +61,11 @@ const Information = () => {
               <img className='img-fluid' alt='Burn Token' src='spore_256.png' />
             </div>
             <div className='col-md-7 text-left'>
-              <h2 className='feature'>Tokeneconomics</h2>
+              <h2 className='feature'>Tokenomics</h2>
               <ul className='list-unstyled'>
                 <li> Dev fund : 0%</li>
                 <li>
-                  Total Supply : <b>100,000,000,000,000,000</b> SPORE
+                  Minted : <b>100,000,000,000,000,000</b> SPORE
                 </li>
                 <>
                   <BurnedTokens />
