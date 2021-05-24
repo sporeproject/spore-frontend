@@ -209,9 +209,9 @@ const Header = () => {
               </li> 
               
               <li className='nav-item'>
-                <link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
+                <Link to='/bsc-bridge' style={{ textDecoration: 'none' }}>
                   <span className='nav-link font-weight-bold' title='Spore Avalanche-BSC Bridge'>Bridge</span>
-                </link>
+                </Link>
               </li>
 
               <li className="dropdown nav-item">
@@ -224,14 +224,14 @@ const Header = () => {
                   </Link>
                   </li>
                   <li>
-                  <link to='/gallery' style={{ textDecoration: 'none' }}>
+                  <Link to='/gallery' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Gallery</span>
-                  </link>
+                  </Link>
                   </li>
                   <li>
-                  <link to='/comingsoon' style={{ textDecoration: 'none' }}>
+                  <Link to='/comingsoon' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Giveaway</span>
-                  </link>
+                  </Link>
                   </li>
                 </ul>
                </li>
@@ -277,14 +277,14 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                  <link to='/static/media/how_to_buy.d27bfe52.pdf' style={{ textDecoration: 'none' }}>
+                  <Link to='/static/media/how_to_buy.d27bfe52.pdf' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>How to buy (PDF)</span>
-                  </link>
+                  </Link>
                   </li>
                   <li>
-                  <link to='https://www.youtube.com/watch?v=wK4vvE44Pfw' style={{ textDecoration: 'none' }}>
+                  <Link to='https://www.youtube.com/watch?v=wK4vvE44Pfw' style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>How to buy (video)</span>
-                  </link>
+                  </Link>
                </li>
                 </ul>
               </li>
