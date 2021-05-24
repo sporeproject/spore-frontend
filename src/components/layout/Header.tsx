@@ -189,7 +189,7 @@ const Header = () => {
             <ul className='navbar-nav ml-auto'>
               
                <li className="dropdown nav-item">
-                <a className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Buy SPORE<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
