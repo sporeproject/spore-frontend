@@ -283,18 +283,18 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  NFT Section<span className="caret"></span>
+                  NFT<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                   <Link to='/nft' style={{ textDecoration: 'none' }}>
-                    <span className='nav-link font-weight-bold'>NFT</span>
+                    <span className='nav-link font-weight-bold'>Market</span>
                   </Link>
                   </li>
 
                   <li>
                   <Link to='/gallery' style={{ textDecoration: 'none' }}>
-                    <span className='nav-link font-weight-bold'>NFT Gallery</span>
+                    <span className='nav-link font-weight-bold'>Gallery</span>
                   </Link>
 
                 </li>
