@@ -190,20 +190,20 @@ const Header = () => {
               
                <li className="dropdown nav-item">
                 <a href="/" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  Buy $SPORE<span className="caret"></span>
-                  <img height="30px" width="30px" src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
-                  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img>
+                  Buy SPORE<span className="caret"></span>
                 </a>
+                <img height="30px" width="30px" src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img>
+                <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img> 
                 <ul className="dropdown-menu">
                   <li>
-                  <Link to='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
+                  <a href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Buy on Avalanche</span>
-                  </Link>
+                  </a>
                   </li>
                   <li>
-                  <Link to='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
+                  <a href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
                     <span className='nav-link font-weight-bold'>Buy on Binance Smart Chain</span>
-                  </Link>
+                  </a>
                   </li>
                 </ul>
               </li> 
@@ -247,25 +247,18 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a
-                      href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985'
-                      target='_blank'
-                      rel='noopener noreferrer'>
+                    <a href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel='noopener noreferrer'>
                       Pangolin (Avalanche)
                     </a>
                   </li>
                   <li role="separator" className="divider"></li>
                   <li>
-                    <a href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C'
-                      target='_blank'
-                      rel='noopener noreferrer'>
+                    <a href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C' target='_blank' rel='noopener noreferrer'>
                       Bogged Finance (BSC)
                     </a>
                   </li>
                   <li>
-                    <a href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc'
-                      target='_blank'
-                      rel='noopener noreferrer'>
+                    <a href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc' target='_blank' rel='noopener noreferrer'>
                       DexGuru (BSC)
                     </a>
                   </li>
@@ -277,12 +270,12 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                  <Link to='/static/media/how_to_buy.d27bfe52.pdf' style={{ textDecoration: 'none' }}>
+                  <Link to='/static/media/how_to_buy.d27bfe52.pdf' target='_blank' rel="noreferrer" style={{textDecoration:'none'}}>
                     <span className='nav-link font-weight-bold'>How to buy (PDF)</span>
                   </Link>
                   </li>
                   <li>
-                  <Link to='https://www.youtube.com/watch?v=wK4vvE44Pfw' style={{ textDecoration: 'none' }}>
+                  <Link to='https://www.youtube.com/watch?v=wK4vvE44Pfw' target='_blank' rel="noreferrer" style={{textDecoration:'none'}}>
                     <span className='nav-link font-weight-bold'>How to buy (video)</span>
                   </Link>
                </li>
