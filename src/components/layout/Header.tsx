@@ -197,7 +197,7 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li>
                   <a href='https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel="noreferrer" style={{textDecoration:'none'}}>
-                    <span className='nav-link font-weight-bold'>Buy on Avalanche</span>
+                    <span className='nav-link font-weight-bold'>Buy on Avalanche <img height="30px" width="30px" src='avalanche-logo.png' alt='Avalanche Network' className="imagenespeciada"></img></span>
                   </a>
                   </li>
                   <li>
