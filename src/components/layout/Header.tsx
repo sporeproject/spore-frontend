@@ -299,6 +299,13 @@ const Header = () => {
 
                 </li>
 
+                <li>
+                  <Link to='/comingsoon' style={{ textDecoration: 'none' }}>
+                    <span className='nav-link font-weight-bold'>Spore NFT giveaway</span>
+                  </Link>
+
+                </li>
+
                 </ul>
 
 
