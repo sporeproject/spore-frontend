@@ -218,17 +218,17 @@ const Header = () => {
                 <ul className="dropdown-menu">
                   <li>
                   <Link to='/nft' style={{ textDecoration: 'none' }}>
-                    <span className='nav-link font-weight-bold'>Market</span>
+                    <span className='nav-link'>Market</span>
                   </Link>
                   </li>
                   <li>
                   <Link to='/gallery' style={{ textDecoration: 'none' }}>
-                    <span className='nav-link font-weight-bold'>Gallery</span>
+                    <span className='nav-link'>Gallery</span>
                   </Link>
                   </li>
                   <li>
                   <Link to='/comingsoon' style={{ textDecoration: 'none' }}>
-                    <span className='nav-link font-weight-bold'>Giveaway</span>
+                    <span className='nav-link'>Giveaway</span>
                   </Link>
                   </li>
                 </ul>
@@ -249,10 +249,9 @@ const Header = () => {
                       Pangolin (Avalanche)
                     </a>
                   </li>
-                  <li role="separator" className="divider"></li>
                   <li>
                     <a href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C' target='_blank' rel='noopener noreferrer'>
-                      Bogged Finance (BSC)
+                      Bogged (BSC)
                     </a>
                   </li>
                   <li>
