@@ -156,10 +156,10 @@ const BurnedTokens = () => {
         Total burned: <b>{burnedTokensPercentage(numberOfBurnedTokens, numberOfBurnedTokensBSC)}%</b> 
       </li>
       <li>
-        Holders on Avalanche: <b>{numberOfTokenHolders}</b>
+        Avalanche holders: <b>{numberOfTokenHolders}</b>
       </li>
       <li>
-        Number on BSC: <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
+        BSC holders: <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
       </li>
     </>
   );
