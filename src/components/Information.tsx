@@ -63,9 +63,9 @@ const Information = () => {
             <div className='col-md-7 text-left'>
               <h2 className='feature'>Tokenomics</h2>
               <ul className='list-unstyled'>
-                <li> Dev fund : 0%</li>
+                <li> Dev fund: 0%</li>
                 <li>
-                  Minted : <b>100,000,000,000,000,000</b> SPORE
+                  Minted: <b>100,000,000,000,000,000</b> SPORE
                 </li>
                 <>
                   <BurnedTokens />
