@@ -147,19 +147,19 @@ const BurnedTokens = () => {
   return (
     <>
       <li>
-        Burned Tokens (Avalanche) : <b>{numberWithCommas(numberOfBurnedTokens)}</b> SPORE
+        Burned on Avalanche: <b>{numberWithCommas(numberOfBurnedTokens)}</b> SPORE
       </li>
       <li>
-        Burned Tokens (BSC) : <b>{numberWithCommas(numberOfBurnedTokensBSC)}</b> SPORE
+        Burned on BSC: <b>{numberWithCommas(numberOfBurnedTokensBSC)}</b> SPORE
       </li>
       <li>
-        % of Burned Tokens : <b>{burnedTokensPercentage(numberOfBurnedTokens, numberOfBurnedTokensBSC)}</b> %
+        Total burned: <b>{burnedTokensPercentage(numberOfBurnedTokens, numberOfBurnedTokensBSC)}%</b> 
       </li>
       <li>
-        Number of token holders (Avalanche) : <b>{numberOfTokenHolders}</b>
+        Holders on Avalanche: <b>{numberOfTokenHolders}</b>
       </li>
       <li>
-        Number of token holders (BSC) : <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
+        Number on BSC: <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
       </li>
     </>
   );
