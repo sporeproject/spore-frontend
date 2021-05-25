@@ -25,7 +25,7 @@ const Router = () => {
           )}
         />
         <Route exact path='/nft' render={() => <NFT />} />
-        <Route exact path='/bsc-bridge' render={() => <BSCBridge />} />
+        <Route exact path='/bridge' render={() => <BSCBridge />} />
         <Route exact path='/gallery' render={() => < NFTGallery/>} />
         <Route exact path='/comingsoon' render={() => < ComingSoon/>} />
       </Switch>
