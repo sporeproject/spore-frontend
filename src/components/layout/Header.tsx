@@ -236,17 +236,13 @@ const Header = () => {
                   
               <li className="dropdown nav-item">
                 <a href="/#"
-                  className="dropdown-toggle nav-link font-weight-bold"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false">
+                  className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Charts <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <a href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel='noopener noreferrer'>
-                      Pangolin (Avalanche)
+                      Pangolin (AVAX)
                     </a>
                   </li>
                   <li>
