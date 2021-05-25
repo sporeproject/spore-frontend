@@ -189,7 +189,7 @@ const Header = () => {
             <ul className='navbar-nav ml-auto'>
               
                <li className="dropdown nav-item">
-                <a href="#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Buy SPORE<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
@@ -213,7 +213,7 @@ const Header = () => {
               </li>
 
               <li className="dropdown nav-item">
-                <a href="#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">NFT<span className="caret"></span>
+                <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">NFT<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
@@ -235,7 +235,7 @@ const Header = () => {
                </li>
                   
               <li className="dropdown nav-item">
-                <a href="#"
+                <a href="/#"
                   className="dropdown-toggle nav-link font-weight-bold"
                   data-toggle="dropdown"
                   role="button"
@@ -263,7 +263,7 @@ const Header = () => {
               </li>
                   
                 <li className="dropdown nav-item">
-                <a href="#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Docs<span className="caret"></span>
+                <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Docs<span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
