@@ -59,19 +59,21 @@ const find_token = (tokens, filter) => {
 export default async function (req,res) {
     await populate(tokens[0]);
     let spore = find_token(tokens, {key:'symbol', value: 'spore'})
-    let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.burned().call();
+    let bscBurned = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.balanceOf(spore.bsc).call();
     let avaBurned = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avaburn).call();
     let avaxbridge = await new ava.eth.Contract(abi_erc20, spore.id).methods.balanceOf(spore.avabridge).call();
-    let bscbridge = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.totalSupply().call();
+    let bsctotalsupply = await new bsc.eth.Contract(abi_erc20, spore.bsc).methods.totalSupply().call();
     
-
     let report = {
         bscBurned: bscBurned / 10 ** spore.decimals,
-        avaBurned: avaBurned / 10 ** spore.decimals        
+        avaBurned: avaBurned / 10 ** spore.decimals,
+        avaxbridge: avaxbridge / 10 ** spore.decimals,
+        bsctotalsupply: bsctotalsupply/ 10 ** spore.decimals
     };
-    report.totalSupply = spore.maxSupply - report.avaBurned - report.bscBurned - ((avaxbridge / 10 ** spore.decimals) - (bscbridge/ 10 ** spore.decimals));        
-    report.supplyavax = spore.maxSupply - report.avaBurned - (avaxbridge / 10 ** spore.decimals);
-    report.supplybsc = (bscbridge / 10 ** spore.decimals) - report.bscBurned;
+   
+    report.totalSupply = spore.maxSupply - (report.avaBurned + report.avaxbridge ) + (report.bsctotalsupply - report.bscBurned);        
+    report.supplyavax = spore.maxSupply - report.avaBurned - report.avaxbridge;
+    report.supplybsc = report.bsctotalsupply - report.bscBurned;
     report.circulatingSupply =  report.supplyavax + report.supplybsc;
     spore = Object.assign({}, spore, report);
 
