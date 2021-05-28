@@ -263,7 +263,7 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                  <Link to='/static/media/how_to_buy.d27bfe52.pdf' target='_blank' rel="noreferrer">
+                  <Link to='./how_to_buy.pdf' target='_blank' rel="noreferrer">
                     <span className='nav-link'>How to buy (PDF)</span>
                   </Link>
                   </li>
