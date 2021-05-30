@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url><loc>https://spore.earth/</loc><changefreq>daily</changefreq></url>
 <url><loc>https://spore.earth/bridge</loc><changefreq>daily</changefreq></url>
-<url><loc>https://spore.earth/nft</loc><changefreq>daily</changefreq></url>
 <url><loc>https://spore.earth/gallery</loc><changefreq>daily</changefreq></url>
+<url><loc>https://spore.earth/nft</loc><changefreq>daily</changefreq></url>
 <url><loc>https://spore.earth/coming-soon</loc><changefreq>daily</changefreq></url>
 <url><loc>https://spore.earth/pdf/how-to-buy.pdf</loc><changefreq>daily</changefreq></url>
 </urlset>
