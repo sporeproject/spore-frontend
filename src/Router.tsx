@@ -27,7 +27,7 @@ const Router = () => {
         <Route exact path='/nft' render={() => <NFT />} />
         <Route exact path='/bridge' render={() => <BSCBridge />} />
         <Route exact path='/gallery' render={() => < NFTGallery/>} />
-        <Route exact path='/comingsoon' render={() => < ComingSoon/>} />
+        <Route exact path='/coming-soon' render={() => < ComingSoon/>} />
       </Switch>
       <Footer />
     </ReactRouter>
