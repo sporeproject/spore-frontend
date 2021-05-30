@@ -1,10 +1,11 @@
 import React from "react";
 import Web3 from "web3";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
 import { getAccount } from '../../utils/wallet';
-import ReturnExternalURL from './ReturnExternalURL';
+//import ReturnExternalURL from './ReturnExternalURL';
+import { nftmetadata } from '../../utils/nftmetadata'; 
 //import { ethers } from "ethers";
 
 const win = window as any
@@ -51,9 +52,13 @@ const cancelNFTForSale = async () => {
 type Props = {
   tokensOfOwner: Array<any>
 }
+const findimage = (itemId:number) => {
+  var item = Number(itemId)+1;
+  return nftmetadata.filter(x=>x.id === item.toString()).map(ext => {return ext.external_url}).toString();        
+}
 
 const ReturnTokenURI = (props: Props) => {
-  const [data, setData] = useState(new Array<any>())
+  // const [data, setData] = useState(new Array<any>())
 
   useEffect(() => {
     async function startup() {
@@ -69,10 +74,10 @@ const ReturnTokenURI = (props: Props) => {
           .call();
         promises.push(promisestokenURIs);
       }
-
-      Promise.all(promises).then((values) => {
-        setData(values)
-      });
+      
+      // Promise.all(promises).then((values) => {
+      //   setData(values)
+      // });
     }
     startup()
 
@@ -82,7 +87,11 @@ const ReturnTokenURI = (props: Props) => {
 
   return (
     <>
-      <ReturnExternalURL jsonData={data} />
+      {
+        props.tokensOfOwner.map((id) => (
+          <div className="col-md-3 text-center"><img className="rounded shadow" src={findimage(id)} alt="reload your page" height="200" /></div>
+        ))
+      }
       <div className="col-md-12">
         <p className="pt-5">
           You own the IDs:{" "}
