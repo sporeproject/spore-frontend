@@ -1,6 +1,6 @@
 import React from "react";
 import Web3 from "web3";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
 import { getAccount } from '../../utils/wallet';
@@ -58,7 +58,7 @@ const findimage = (itemId:number) => {
 }
 
 const ReturnTokenURI = (props: Props) => {
-  const [data, setData] = useState(new Array<any>())
+  // const [data, setData] = useState(new Array<any>())
 
   useEffect(() => {
     async function startup() {
@@ -75,9 +75,9 @@ const ReturnTokenURI = (props: Props) => {
         promises.push(promisestokenURIs);
       }
       
-      Promise.all(promises).then((values) => {
-        setData(values)
-      });
+      // Promise.all(promises).then((values) => {
+      //   setData(values)
+      // });
     }
     startup()
 
