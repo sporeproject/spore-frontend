@@ -5,6 +5,7 @@ import { SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import ReturnExternalURL from './ReturnExternalURL';
 
 
+
 const win = window as any
 export interface MarketplaceItem {
     itemId: number,
@@ -47,13 +48,13 @@ export const MarketPlaceView = (props: Props) => {
         <>
             {marketPlaceItems.length > 0 ? (
                 marketPlaceItems.map((item) => (
-                    <li key={item.itemId}>
+                    <div key={item.itemId}>
                         {/* <img className="rounded shadow" src={item[2].image} height="200" /> */}
                         <ReturnExternalURL jsonData={[item.URI]} />
                         <p>ID: {item.itemId}</p>
                         <p>Price: {item.price} AVAX</p>
 
-                    </li>
+                    </div>
                 ))) : (
                 <p> No NFTs for Sale </p>
             )}

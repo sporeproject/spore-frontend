@@ -278,9 +278,9 @@ const NFT = (props: any) => {
                   <h2 className="text-secondary-color">Marketplace</h2>
                 </div>
                 <div className='col-md-12'>
-                  <ul>
+                <div className="row">
                     <MarketPlaceView bazaar={bazaar}  />
-                  </ul>
+                  </div>
                   <br />
                   {" "}
                   <div className="input-group">
