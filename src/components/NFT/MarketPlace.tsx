@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { ContractAddesses } from '../../utils/addresses';
 import { SPORE_MARKET_ABI } from '../../utils/SporeAbis';
-import ReturnExternalURL from './ReturnExternalURL';
+//import ReturnExternalURL from './ReturnExternalURL';
+import { nftmetadata } from '../../utils/nftmetadata'; 
 
 
 
@@ -39,6 +40,11 @@ export const MarketPlaceView = (props: Props) => {
         setMarketPlaceItems(builder)
     }
 
+    const findimage = (itemId:number) => {
+        var item = Number(itemId)+1;
+        return nftmetadata.filter(x=>x.id === item.toString()).map(ext => {return ext.external_url}).toString();        
+    }
+
     useEffect(() => {
         buildMarketPlace()
 
@@ -50,7 +56,7 @@ export const MarketPlaceView = (props: Props) => {
                 marketPlaceItems.map((item) => (
                     <div key={item.itemId}>
                         {/* <img className="rounded shadow" src={item[2].image} height="200" /> */}
-                        <ReturnExternalURL jsonData={[item.URI]} />
+                        <div className="col-md-3 text-center"><img className="rounded shadow" src={findimage(item.itemId)} alt="reload your page" height="200" /></div>
                         <p>ID: {item.itemId}</p>
                         <p>Price: {item.price} AVAX</p>
 
