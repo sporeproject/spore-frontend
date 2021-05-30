@@ -95,9 +95,16 @@ const NFT = (props: any) => {
       if (typeof web3 !== "undefined") {
         // Use Mist/MetaMask's provider
         setweb3Provider({ web3Provider: web3});
-        web3 = new Web3(web3.currentProvider);
+        web3 = new Web3(web3.currentProvider);        
       } else {
         setisWeb3({ isWeb3: true});
+      }
+      console.log(web3.currentProvider.chainId);
+      if(web3.currentProvider.chainId === undefined){
+        setisWeb3(false);
+      }
+      else{
+        setisWeb3(true);
       }
 
       const SporeMarketv1 = new win.ava.eth.Contract(
@@ -105,15 +112,7 @@ const NFT = (props: any) => {
         ContractAddesses.AVAX_MARKET_MAINNET
       );
 
-      const accounts = await win.ethereum.request({ method: "eth_accounts" });
-      //We take the first address in the array of addresses and display it
-      const account = accounts[0];
-      console.log(accounts);
-
-      const balance = await SporeMarketv1.methods.balanceOf(account).call();
-      const tokensOfOwnerTemp = await SporeMarketv1.methods
-        .tokensOfOwner(account)
-        .call();
+      
       const totalSupply = await SporeMarketv1.methods.totalSupply().call();
       //const tokenCounter = await SporeMarketv1.methods.tokenCounter;
 
@@ -126,14 +125,25 @@ const NFT = (props: any) => {
       Promise.all(promises).then((values) => {
         setBazaar(values)
         setTotalSupplyLeft(totalCharacters - totalSupply)
-        //setTokenCounter(tokenCounter)
-        setBalance(balance)
-        setTokensOfOwner(tokensOfOwnerTemp)
+        //setTokenCounter(tokenCounter)        
+      }).then(async () => {
 
         if (win.web3.currentProvider.chainId === "0xa86a") {
+          const accounts = await win.ethereum.request({ method: "eth_accounts" });
+          //We take the first address in the array of addresses and display it
+          const account = accounts[0];
+          
+
+          const balance = await SporeMarketv1.methods.balanceOf(account).call();
+          const tokensOfOwnerTemp = await SporeMarketv1.methods
+            .tokensOfOwner(account)
+            .call();
+          setBalance(balance);
+          setTokensOfOwner(tokensOfOwnerTemp);
           setisnetworkID(true);
         } else {
           setisnetworkID(false);
+          console.log(typeof web3);
         };
       });
     }
@@ -315,7 +325,7 @@ const NFT = (props: any) => {
         </section>
       )        
       : 
-      (<InstallMetamask />)
+      <InstallMetamask />
       }
     </>
   );

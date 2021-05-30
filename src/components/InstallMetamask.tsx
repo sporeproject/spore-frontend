@@ -11,7 +11,7 @@ const InstallMetamask = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <img src="https://metamask.io/img/metamask.png" alt=""></img>
+            <img src="https://metamask.io/images/favicon-256.png" alt=""></img>
           </a>
         </p>
       </div>
