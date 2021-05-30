@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { ContractAddesses } from '../../utils/addresses';
 import { SPORE_MARKET_ABI } from '../../utils/SporeAbis';
-import ReturnExternalURL from './ReturnExternalURL';
+//import ReturnExternalURL from './ReturnExternalURL';
 import { nftmetadata } from '../../utils/nftmetadata'; 
 
 
@@ -42,7 +42,7 @@ export const MarketPlaceView = (props: Props) => {
 
     const findimage = (itemId:number) => {
         var item = Number(itemId)+1;
-        return nftmetadata.filter(x=>x.id == item.toString()).map(ext => {return ext.external_url}).toString();        
+        return nftmetadata.filter(x=>x.id === item.toString()).map(ext => {return ext.external_url}).toString();        
     }
 
     useEffect(() => {
