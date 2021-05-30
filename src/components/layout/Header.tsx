@@ -227,7 +227,7 @@ const Header = () => {
                   </Link>
                   </li>
                   <li>
-                  <Link to='/comingsoon' style={{ textDecoration: 'none' }}>
+                  <Link to='/coming-soon' style={{ textDecoration: 'none' }}>
                     <span className='nav-link'>Giveaway</span>
                   </Link>
                   </li>
@@ -263,7 +263,7 @@ const Header = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                  <Link to='./how_to_buy.pdf' target='_blank' rel="noreferrer">
+                  <Link to='./pdf/how-to-buy.pdf' target='_blank' rel="noreferrer">
                     <span className='nav-link'>How to buy (PDF)</span>
                   </Link>
                   </li>
