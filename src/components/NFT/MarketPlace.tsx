@@ -23,7 +23,7 @@ export const MarketPlaceView = (props: Props) => {
     const [marketPlaceItems, setMarketPlaceItems] = useState<Array<MarketplaceItem>>([])
 
     const buildMarketPlace = async () => {
-        const SporeMarketv1 = new win.web3.eth.Contract(
+        const SporeMarketv1 = new win.ava.eth.Contract(
             SPORE_MARKET_ABI,
             ContractAddesses.AVAX_MARKET_MAINNET
         )
@@ -33,8 +33,7 @@ export const MarketPlaceView = (props: Props) => {
                 const URI = await SporeMarketv1.methods
                     .tokenURI(i)
                     .call()
-                builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 18, URI: URI } as MarketplaceItem);
-                console.log("BUILDER:", builder)
+                builder.push({ itemId: i, price: props.bazaar[i].price / 10 ** 18, URI: URI } as MarketplaceItem);                
             }
         }
         setMarketPlaceItems(builder)
