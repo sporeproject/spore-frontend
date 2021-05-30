@@ -101,10 +101,10 @@ const NFT = (props: any) => {
       }
       console.log(web3.currentProvider.chainId);
       if(web3.currentProvider.chainId === undefined){
-        setisWeb3(false);
+        setisWeb3({ isWeb3: false});
       }
       else{
-        setisWeb3(true);
+        setisWeb3({ isWeb3: true});
       }
 
       const SporeMarketv1 = new win.ava.eth.Contract(
@@ -325,7 +325,7 @@ const NFT = (props: any) => {
         </section>
       )        
       : 
-      <InstallMetamask />
+      (<InstallMetamask />)
       }
     </>
   );
