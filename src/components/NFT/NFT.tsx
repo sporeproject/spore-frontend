@@ -33,11 +33,11 @@ async function approve() {
 }
 
 async function claim() {
-  const SporeMarketv1 = new win.ava.eth.Contract(
+  const SporeMarketv1 = new win.win3.eth.Contract(
     SPORE_MARKET_ABI,
     ContractAddesses.AVAX_MARKET_MAINNET
   );
-  var account = await win.ava.eth.getAccounts();
+  var account = await win.win3.eth.getAccounts();
   account = account[0];
   try {
     await SporeMarketv1.methods
@@ -49,12 +49,12 @@ async function claim() {
 }
 
 async function NFTbuy() {
-  const SporeMarketv1 = new win.ava.eth.Contract(
+  const SporeMarketv1 = new win.win3.eth.Contract(
     SPORE_MARKET_ABI,
     ContractAddesses.AVAX_MARKET_MAINNET
   );
   var _tokenID = docu.getElementById("_tokenID").value;
-  var account = await win.ava.eth.getAccounts();
+  var account = await win.win3.eth.getAccounts();
   account = account[0];
   const bazaar = await SporeMarketv1.methods.Bazaar(_tokenID).call();
   try {
@@ -129,7 +129,7 @@ const NFT = (props: any) => {
         //setTokenCounter(tokenCounter)
         setBalance(balance)
         setTokensOfOwner(tokensOfOwnerTemp)
-        
+
         if (win.web3.currentProvider.chainId === "0xa86a") {
           setisnetworkID(true);
         } else {
