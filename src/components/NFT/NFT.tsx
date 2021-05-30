@@ -97,10 +97,10 @@ const NFT = (props: any) => {
         setweb3Provider({ web3Provider: web3});
         web3 = new Web3(web3.currentProvider);        
       } else {
-        setisWeb3({ isWeb3: true});
+        setisWeb3(true);
       }
-      console.log(web3.currentProvider.chainId);
-      if(web3.currentProvider.chainId === undefined){
+
+      if(win.web3.currentProvider.chainId === undefined){
         setisWeb3(false);
       }
       else{
@@ -325,7 +325,7 @@ const NFT = (props: any) => {
         </section>
       )        
       : 
-      <InstallMetamask />
+      (<InstallMetamask />)
       }
     </>
   );
