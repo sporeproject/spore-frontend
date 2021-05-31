@@ -227,7 +227,7 @@ const Header = () => {
                   </Link>
                   </li>
                   <li>
-                  <Link to='/coming-soon' style={{ textDecoration: 'none' }}>
+                  <Link to='/nft-giveaway' style={{ textDecoration: 'none' }}>
                     <span className='nav-link'>Giveaway</span>
                   </Link>
                   </li>
