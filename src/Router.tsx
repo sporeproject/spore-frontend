@@ -8,6 +8,7 @@ import BSCBridge from './components/BSCBridge';
 import NFT from './components/NFT/NFT';
 import NFTGallery from './components/NFT/NFTGallery';
 import ComingSoon from './components/ComingSoon';
+import Delegate from './components/Delegation';
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
         <Route exact path='/bridge' render={() => <BSCBridge />} />
         <Route exact path='/gallery' render={() => < NFTGallery/>} />
         <Route exact path='/coming-soon' render={() => < ComingSoon/>} />
+        <Route exact path='/delegate' render={() => < Delegate/>} />
       </Switch>
       <Footer />
     </ReactRouter>
