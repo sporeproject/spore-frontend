@@ -33,20 +33,21 @@ const Information = () => {
               <PriceToken></PriceToken>
             </div>
             <dl className='lead'>
-
-              <dd>On Every <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img> Transaction</dd>
-              <dt>3% of rewards are burnt</dt>
-              <dt>3% are redistributed to hodlers</dt>
-              <dd>On Every <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> Transaction</dd>
-              <dt>6% of rewards are burnt</dt>
+		    
+	<h3>The current SPORE burn rate is:</h3>
+              <dd>On every Avalanche transaction <img height="30px" width="30px"
+                src='avalanche-logo.png' alt='Avalanche Network'></img></dd>
+              <dt>4.6% is burned</dt>
+              <dt>1.4% is redistributed to hodlers</dt>
+              <dd>On every BSC transaction <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> </dd> 
+              <dt>6% is burned</dt>
             </dl>
 
             <p className='lead'>
-              Earn frictionless rewards while spore spreads!
+              Frictionless rewards will decrease infinitely as tokens continue to burn.
             </p>
             <p className='lead'>
-              BSC users enjoy ever decreasing circulating supply.
+              All holders enjoy the ever-decreasing circulating supply.
             </p>
           </div>
           <div className='col-md-5 text-right'>
