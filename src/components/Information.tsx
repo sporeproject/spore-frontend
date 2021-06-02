@@ -407,6 +407,13 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fab fa-tiktok'
                   aria-label='TikTok'
                 >
+		<a
+                  href='https://www.youtube.com/sporeproject'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2 fab fa-youtube'
+                  aria-label='YouTube'
+                >
                 </a>
                 <a
                   href='https://sporeproject.medium.com'
