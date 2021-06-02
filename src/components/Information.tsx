@@ -407,7 +407,8 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fab fa-tiktok'
                   aria-label='TikTok'
                 >
-		<a
+                </a>
+		            <a
                   href='https://www.youtube.com/sporeproject'
                   target='_blank'
                   rel='noopener noreferrer'
@@ -432,11 +433,12 @@ const Information = () => {
                 >
                 </a>
               </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-	  
+      
+    
 	  
     </>
   )
