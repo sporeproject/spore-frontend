@@ -414,7 +414,6 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 fab fa-youtube'
                   aria-label='YouTube'
                 >
-                </a>
                 <a
                   href='https://sporeproject.medium.com'
                   target='_blank'
