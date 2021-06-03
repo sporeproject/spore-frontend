@@ -132,7 +132,7 @@ const BurnedTokens = () => {
     catch (err) {
       console.log("Error getting token holders bsc")
       ///HARDCODED VALUE
-      setNumberOfTokenHoldersBSC(97025)
+      setNumberOfTokenHoldersBSC(124104)
     }
 
   }
