@@ -105,7 +105,7 @@ const Vote = (props: any) => {
       </p>
 
       <div className="col-md-12 text-center">
-        <button className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Thanks for delegating for SPORE</button>
+        <button className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Thank you for your vote 🍄</button>
       </div>
 
     </div>
@@ -134,12 +134,15 @@ const Vote = (props: any) => {
               <div>
                 <p className="vote">
               <div className="row py-5">
-              <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" />
+              <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> 
+                <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" />
               </div></p>
-                <h4 className="text-center">The Pangolin vote begins June 5, 2021 at 0:32 GMT.  All $PNG holders are eligible to vote.  
-                To vote for Spore, use the “Delegate” button below.  You have to be connected to the Avalanche network with Metamask.</h4>
-                <p className="text-center"> Your PNG will remain in your wallet.  
-                You are merely delegating your right to vote to Spore, and your only cost is the AVAX gas fee. </p>
+                <p className= "vote-text">
+                  The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
+                  All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
+                  You have to be connected to the Avalanche network with Metamask.</p>
+                <p>Your PNG will remain in your wallet.  You are merely delegating your right to vote to Spore, and your only cost is the AVAX gas fee. 
+                  If you need help or have any questions, please ask in Telegram or Discord.</p>
                 <div>
                   {isWeb3 ? (
                     <>
@@ -164,13 +167,7 @@ const Vote = (props: any) => {
 
 
                       <div className="col-md-12 text-center">
-                        <p>Total PNG delegated to SPORE: {currentSupport}</p>
-                      </div>
-                      <div className="col-md-12 text-center">
-                        <p>Thank you for your support!</p>
-                      </div>
-                      <div className="col-md-12 text-center">
-                        <p>::shroom:: ::spaceship::</p>
+                        <p>Current Support: {currentSupport}</p>
                       </div>
 
                     </div>
