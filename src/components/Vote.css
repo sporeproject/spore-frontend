@@ -43,9 +43,12 @@
 .vote {
     display: flex;
   justify-content: center;
+  
   }
 
 .p {
     max-width:600px;
     indent-text:100px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
