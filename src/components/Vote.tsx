@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import InstallMetamask from "./InstallMetamask";
-import './css/vote.css';
+import './Vote.css';
 import { AVAX_PNG_ABI } from '../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../utils/addresses';
@@ -134,7 +134,7 @@ const Vote = (props: any) => {
               <div>
                 <p className="vote">
               <div className="row py-5">
-              <img src="./img/vote.png" height="100" /> <h2 className="text-center">Vote for SPORE! </h2> <img src="./img/vote.png" height="100" />
+              <img src="./img/vote.png" height="100" alt="Reload your page"/> <h2 className="text-center">Vote for SPORE! </h2> <img src="./img/vote.png" height="100" alt="Reload your page"  />
               </div></p>
                 <p>
                   The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
