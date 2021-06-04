@@ -134,8 +134,9 @@ const Vote = (props: any) => {
               <div>
                 <p className="vote">
               <div className="row py-5">
-              <img src="vote.png" height="100" alt="Reload your page"/> <h2 className="text-center">Vote for SPORE! </h2> <img src="vote.png" height="100" alt="Reload your page"  />
+              <h1 className="text-center">Vote for SPORE! </h1> 
               </div></p>
+                <p><img src="vote.jpg" /></p>
                 <p>
                   The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
                   All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
