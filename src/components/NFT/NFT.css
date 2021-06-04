@@ -34,3 +34,9 @@
 
 .carousel-caption { bottom:-150px; }
 .carousel-inner { padding-bottom:150px; }
+
+.vote {
+    display: flex;
+  justify-content: center;
+  }
+  
