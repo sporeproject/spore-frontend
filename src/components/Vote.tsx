@@ -103,7 +103,7 @@ const Vote = (props: any) => {
     message = <> 
     <div className="col-md-12">
       <p className="mb-1 text-center">
-        <i> Your wallet balance is {balance} PNG.  </i>
+        <i> Your wallet balance is {numberWithCommas(balance)}  PNG.  </i>
       </p>
 
       <div className="col-md-12 text-center">
