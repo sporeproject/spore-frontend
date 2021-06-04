@@ -33,7 +33,7 @@ async function delegate() {
 
 const Vote = (props: any) => {
 
-  const [requiredRemaining, setRequiredRemaining] = useState(0);
+
   const [balance, setBalance] = useState(0);
   const [currentSupport, setCurrentSupport] = useState(0);
   const [isWeb3, setisWeb3] = useState<boolean>(false);
@@ -44,7 +44,7 @@ const Vote = (props: any) => {
   useEffect(() => {
     async function startup() {
 
-      const totalRequired = 10 ** 6
+      
 
       let web3 = win.web3;
       if (win.ethereum) {
@@ -85,7 +85,7 @@ const Vote = (props: any) => {
 
 
       setisDelegates(delegates)
-      setRequiredRemaining(totalRequired - currentSupport / 10 ** 18)
+      
       setCurrentSupport(currentSupport / 10 ** 18)
       setBalance(balance / 10 ** 18)
 
@@ -98,18 +98,27 @@ const Vote = (props: any) => {
 
 
   if (isDelegates.toString() === ContractAddesses.SPORE_DELEGATEE.toString()) {
-    message = <> <p className="mb-1 text-center"><button className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Thank you for your support to SPORE</button></p></>;
-  } else {
-    message = <> <div className="col-md-12">
+    message = <> 
+    <div className="col-md-12">
       <p className="mb-1 text-center">
-        <i> Your PNG balance: {balance}</i>
+        <i> Your wallet balance is {balance} PNG.  </i>
       </p>
 
       <div className="col-md-12 text-center">
-        <button onClick={delegate} className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Delegate your PNG to the DEV Address</button>
-        <p className="text-muted">
-          <b>*Note: </b> Your current PNG will b delegated, BUT it will remain in your wallet and you are free to sell the PNG anytime, we advise you to keep it until the voting ends to support SPORE.
-              </p>
+        <button className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Thanks for delegating for SPORE</button>
+      </div>
+
+    </div>
+    
+    </>;
+  } else {
+    message = <> <div className="col-md-12">
+      <p className="mb-1 text-center">
+        <i> Your wallet balance is {balance} PNG. You have not delegated yet. </i>
+      </p>
+
+      <div className="col-md-12 text-center">
+        <button onClick={delegate} className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Delegate</button>
       </div>
 
     </div>   </>;
@@ -123,9 +132,14 @@ const Vote = (props: any) => {
           <div className="row py-5">
             <div className="col-md-12">
               <div>
-                <h2 className="text-center">PNG Rewards for SPORE Liquidity Providers</h2>
-                <h4 className="text-center">Goal: 1 Million PNG Delegated</h4>
-                <p className="text-center"> Add AVAX/SPORE and PNG/SPORE to the pool of pairs receiving PNG rewards. </p>
+                <p className="vote">
+              <div className="row py-5">
+              <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" />
+              </div></p>
+                <h4 className="text-center">The Pangolin vote begins June 5, 2021 at 0:32 GMT.  All $PNG holders are eligible to vote.  
+                To vote for Spore, use the “Delegate” button below.  You have to be connected to the Avalanche network with Metamask.</h4>
+                <p className="text-center"> Your PNG will remain in your wallet.  
+                You are merely delegating your right to vote to Spore, and your only cost is the AVAX gas fee. </p>
                 <div>
                   {isWeb3 ? (
                     <>
@@ -133,7 +147,7 @@ const Vote = (props: any) => {
                       {
                         isnetworkID ? (<>{message}</>) :
 
-                          (<div className="col-md-12 text-center"> <UnlockMetamask message="Wrong Network, please switch" /> </div>)
+                          (<div className="col-md-12 text-center"> <UnlockMetamask message="Please connect to the Avalanche Network with Metamask" /> </div>)
                       }
 
                     </>
@@ -151,7 +165,6 @@ const Vote = (props: any) => {
 
                       <div className="col-md-12 text-center">
                         <p>Current Support: {currentSupport}</p>
-                        <p>Required Remaining: {requiredRemaining}</p>
                       </div>
 
                     </div>
