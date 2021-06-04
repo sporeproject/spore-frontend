@@ -134,8 +134,8 @@ const Vote = (props: any) => {
               <div>
                 <p className="vote">
               <div className="row py-5">
-              <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> 
-                <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" />
+              <img className="rounded shadow" src="/img/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> 
+                <img className="rounded shadow" src="/img/vote.png" alt="reload your page" height="100" />
               </div></p>
                 <p>
                   The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
