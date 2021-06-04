@@ -141,14 +141,14 @@ const Vote = (props: any) => {
               </p>
               
               <div className="col-md-12 vote  ">
-              <img src="vote.jpg"  alt="Reload your page"  />
-             </div>
+              <img src="vote.jpg"  alt="Resload your page"  />
+             </div> 
              
              <div className="mb-1 col-md-12 ">
              <div className="row py-5">
                 <p >
                   The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a className="link-color" href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
-                  All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
+                  You can delegate your votes <b>NOW!</b>  All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
                   You have to be connected to the Avalanche network with Metamask.</p>
                 <p>Your PNG will remain in your wallet.  You are merely delegating your right to vote to Spore, and your only cost is the AVAX gas fee. 
                   If you need help or have any questions, please ask in Telegram or Discord.</p>
