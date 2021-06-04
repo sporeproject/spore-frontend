@@ -30,7 +30,7 @@ async function delegate() {
   }
   
 
-const Delegate = (props: any) => {
+const Vote = (props: any) => {
 
     const [requiredRemaining, setRequiredRemaining] = useState(0);
     const [balance, setBalance] = useState(0);
@@ -157,4 +157,4 @@ if (isWeb3) {
   }
 
 }
-export default Delegate
+export default Vote

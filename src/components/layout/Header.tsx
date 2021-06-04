@@ -213,8 +213,8 @@ const Header = () => {
               </li>
 
               <li className='nav-item'>
-                <Link to='/delegate' style={{ textDecoration: 'none' }}>
-                  <span className='nav-link font-weight-bold' title='Spore Avalanche-BSC Bridge'>Delegate</span>
+                <Link to='/vote' style={{ textDecoration: 'none' }}>
+                  <span className='nav-link font-weight-bold' title='Spore Avalanche-BSC Bridge'>Vote</span>
                 </Link>
               </li>
 
