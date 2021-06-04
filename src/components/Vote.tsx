@@ -96,7 +96,9 @@ const Vote = (props: any) => {
   let message;
 
 
-
+  const numberWithCommas = (x: number) => {
+    return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
   if (isDelegates.toString() === ContractAddesses.SPORE_DELEGATEE.toString()) {
     message = <> 
     <div className="col-md-12">
@@ -114,7 +116,7 @@ const Vote = (props: any) => {
   } else {
     message = <> <div className="col-md-12">
       <p className="mb-1 text-center">
-        <i> Your wallet balance is {balance} PNG. You have not delegated yet. </i>
+        <i> Your wallet balance is {numberWithCommas(balance)} PNG. You have not delegated yet. </i>
       </p>
 
       <div className="col-md-12 text-center">
@@ -123,6 +125,7 @@ const Vote = (props: any) => {
 
     </div>   </>;
   }
+
 
 
   return (
@@ -134,10 +137,10 @@ const Vote = (props: any) => {
               <div>
                 <p className="vote">
               <div className="row py-5">
-              <img src="vote.png" height="100" alt="Reload your page"/> <h2 className="text-center">Vote for SPORE! </h2> <img src="vote.png" height="100" alt="Reload your page"  />
+              <img src="vote.png" height="100" alt="Reload your page"/> <h2 >Vote for SPORE! </h2> <img src="vote.png" height="100" alt="Reload your page"  />
               </div></p>
                 <p>
-                  The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
+                  The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a className="link-color" href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
                   All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
                   You have to be connected to the Avalanche network with Metamask.</p>
                 <p>Your PNG will remain in your wallet.  You are merely delegating your right to vote to Spore, and your only cost is the AVAX gas fee. 
@@ -149,7 +152,7 @@ const Vote = (props: any) => {
                       {
                         isnetworkID ? (<>{message}</>) :
 
-                          (<div className="col-md-12 text-center"> <UnlockMetamask message="Please connect to the Avalanche Network with Metamask" /> </div>)
+                          (<div className="col-md-12 "> <UnlockMetamask message="Please connect to the Avalanche Network with Metamask" /> </div>)
                       }
 
                     </>
@@ -166,8 +169,14 @@ const Vote = (props: any) => {
 
 
                       <div className="col-md-12 text-center">
-                        <p>Current Support: {currentSupport}</p>
+                        <h4>Total PNG delegated to Spore: </h4>
+                        <h2>{numberWithCommas(currentSupport)}</h2>
                       </div>
+                      <div className="col-md-12 text-center">
+                        <h4>Thank you for your support! </h4>
+                        <h4>  &#127812; 🚀 </h4>
+                      </div>
+
 
                     </div>
                   </p>

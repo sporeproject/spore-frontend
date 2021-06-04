@@ -24,6 +24,11 @@
     font-weight: bold;
 }
 
+.link-color {
+    color: #4B5626;
+    font-weight: bold;
+}
+
 .h-100vh {
     height: calc(100vh - 300px);
 }
@@ -40,7 +45,7 @@
   justify-content: center;
   }
 
-p {
+.p {
     max-width:600px;
     indent-text:100px;
 }
