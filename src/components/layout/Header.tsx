@@ -187,6 +187,11 @@ const Header = () => {
           </button>
           <div id='navbarSupportedContent' className='collapse navbar-collapse'>
             <ul className='navbar-nav ml-auto'>
+            <li className='nav-item'>
+                <Link to='/vote' style={{ textDecoration: 'none' }}>
+                  <span className='nav-link font-weight-bold' title='Vote'>Vote</span>
+                </Link>
+              </li>
               
                <li className="dropdown nav-item">
                 <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
