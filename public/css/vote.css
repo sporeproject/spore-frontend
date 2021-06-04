@@ -39,3 +39,8 @@
     display: flex;
   justify-content: center;
   }
+
+p {
+    max-width:500px;
+    indent-text:100px;
+}
