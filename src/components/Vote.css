@@ -43,13 +43,9 @@
 .vote {
     display: flex;
   justify-content: center;
-<<<<<<< HEAD:src/components/Vote.css
   }
 
 .p {
     max-width:600px;
     indent-text:100px;
 }
-=======
-  }
->>>>>>> parent of 058439c (Update vote.css):public/css/vote.css
