@@ -137,7 +137,7 @@ const Vote = (props: any) => {
               <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" /><h2 className="text-center">Vote for SPORE!</h2> 
                 <img className="rounded shadow" src="/vote.png" alt="reload your page" height="100" />
               </div></p>
-                <p style="text-indent: 30px;">
+                <p style={{text-indent: "30px"}}>
                   The Pangolin vote begins June 5, 2021 at 0:32 GMT (more details <a href="https://twitter.com/pangolindex/status/1400613246655090691">here</a>). 
                   All $PNG holders are eligible to vote. To vote for Spore, use the “Delegate” button below. 
                   You have to be connected to the Avalanche network with Metamask.</p>
