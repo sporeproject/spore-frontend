@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import InstallMetamask from "./InstallMetamask";
-import './NFT/NFT.css';
+import './css/vote.css';
 import { AVAX_PNG_ABI } from '../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../utils/addresses';
