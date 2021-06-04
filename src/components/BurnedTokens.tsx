@@ -18,7 +18,7 @@ const BurnedTokens = () => {
   const [numberOfBurnedTokens, setNumberOfBurnedTokens] = useState(-1)
   const [numberOfBurnedTokensBSC, setNumberOfBurnedTokensBSC] = useState(-1)
   const [numberOfTokenHolders, setNumberOfTokenHolders] = useState(-1)
-  const [numberOfTokenHoldersBSC, setNumberOfTokenHoldersBSC] = useState(-1)
+  const [NumberOfTokenHoldersBSCThousands, setNumberOfTokenHoldersBSCThousands] = useState(-1)
 
   useEffect(() => {
     async function getInfos() {
@@ -122,7 +122,7 @@ const BurnedTokens = () => {
         res.data.data.items !== undefined
       ) {
         const items = res.data.data.items;
-        setNumberOfTokenHoldersBSC(items.length)
+          setNumberOfTokenHoldersBSCThousands(items.length)
       }
       else {
         console.log('test')
@@ -132,7 +132,7 @@ const BurnedTokens = () => {
     catch (err) {
       console.log("Error getting token holders bsc")
       ///HARDCODED VALUE
-      setNumberOfTokenHoldersBSC(124104)
+        setNumberOfTokenHoldersBSCThousands(124)
     }
 
   }
@@ -156,10 +156,10 @@ const BurnedTokens = () => {
         Total burned: <b>{burnedTokensPercentage(numberOfBurnedTokens, numberOfBurnedTokensBSC)}%</b> 
       </li>
       <li>
-        Avalanche holders: <b>{numberOfTokenHolders}</b>
+        Avalanche holders: <b>{numberOfTokenHolders} (<a className="chainLink" href="https://cchain.explorer.avax.network/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token-holders">AvaxExplorer</a>)</b>
       </li>
       <li>
-        BSC holders: <b>{numberOfTokenHoldersBSC}+. <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">bscscan</a></b>
+        BSC holders: <b>{NumberOfTokenHoldersBSCThousands}k+ (<a className="chainLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c#balances">BscScan</a>)</b>
       </li>
     </>
   );
