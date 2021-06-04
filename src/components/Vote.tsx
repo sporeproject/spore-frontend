@@ -5,8 +5,9 @@ import { AVAX_PNG_ABI } from '../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../utils/addresses';
 //import ReturnExternalURL from './ReturnExternalURL';
-
+import UnlockMetamask from "./UnlockMetamask";
 const win = window as any
+win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
 
 
 
@@ -39,6 +40,7 @@ const Vote = (props: any) => {
     console.log(web3Provider,requiredRemaining )
     const [isWeb3 , setisWeb3 ] = useState({});
     const [isDelegates, setisDelegates] = useState(new Array<any>());
+    const [isnetworkID, setisnetworkID] = useState({});
   
   
     useEffect(() => {
@@ -59,15 +61,13 @@ const Vote = (props: any) => {
         } else {
           setisWeb3({ isWeb3: true});
         }
-        if (web3.currentProvider.chainId === "0xa86a") {
-          const isnetworkID = true;
-          console.log("webProvider:", isnetworkID);
+        if (win.web3.currentProvider.chainId === "0xa86a") {
+          setisnetworkID(true);
         } else {
-          const isnetworkID = false;
-          console.log("webProvider:", isnetworkID);
-        };
+          setisnetworkID(false);
+          }
         
-        const PangolinContract = new win.web3.eth.Contract(
+        const PangolinContract = new win.ava.eth.Contract(
           AVAX_PNG_ABI,
           ContractAddesses.AVAX_PNG_MAINNET
         );
@@ -84,6 +84,7 @@ const Vote = (props: any) => {
         const currentSupport = await PangolinContract.methods
           . getCurrentVotes(ContractAddesses.SPORE_DELEGATEE)
           .call();
+
         
 
         setisDelegates(delegates)
@@ -97,7 +98,6 @@ const Vote = (props: any) => {
   
   let message;
 
-if (isWeb3) {
 
     if (isDelegates.toString() === ContractAddesses.SPORE_DELEGATEE.toString()) {
         message= <> <p className="mb-1 text-center"><button className="btn btn-secondary vertical-center btn-lg px-5 py-2 text-uppercase">Thank you for your support to SPORE</button></p></>;
@@ -129,7 +129,22 @@ if (isWeb3) {
                       <h4 className="text-center">Goal: 1 Million PNG Delegated</h4>
                       <p className= "text-center"> Add AVAX/SPORE and PNG/SPORE to the pool of pairs receiving PNG rewards. </p>
 
-                      {message}
+                      { isWeb3 ? (
+                          <>
+                            
+                                  {
+                                    isnetworkID ? (<>{message}</>) : 
+                                    
+                                    (<div className="col-md-12 text-center"> <UnlockMetamask message="Wrong Network, please switch" /> </div>)
+                                  }
+                              
+                          </>
+      )        
+      : 
+      (<InstallMetamask />)
+      }
+
+                      
                       <div className="mb-0">
 
                       <p className="mb-1">
@@ -152,9 +167,7 @@ if (isWeb3) {
 
         </>
         )
-    } else {
-    return <InstallMetamask />;
-  }
+    } 
 
-}
+
 export default Vote
