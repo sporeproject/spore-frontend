@@ -164,7 +164,13 @@ const Vote = (props: any) => {
 
 
                       <div className="col-md-12 text-center">
-                        <p>Current Support: {currentSupport}</p>
+                        <p>Total PNG delegated to SPORE: {currentSupport}</p>
+                      </div>
+                      <div className="col-md-12 text-center">
+                        <p>Thank you for your support!</p>
+                      </div>
+                      <div className="col-md-12 text-center">
+                        <p>::shroom:: ::spaceship::</p>
                       </div>
 
                     </div>
