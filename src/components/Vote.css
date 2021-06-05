@@ -9,8 +9,8 @@
     align-content: flex-start;
 }
 
-.information .box-rounded h4 {
-    color:#6B4E3B;
+.h2 {
+    color:#4B5626;
     padding: 15px 0;
 }
 
@@ -37,9 +37,6 @@
     margin: auto;
 }
 
-.carousel-caption { bottom:-150px; }
-.carousel-inner { padding-bottom:150px; }
-
 .vote {
     display: flex;
   justify-content: center;
@@ -52,3 +49,4 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
