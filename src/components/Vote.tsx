@@ -80,7 +80,7 @@ const Vote = (props: any) => {
                 Help Spore increase liquidity by voting for us in the Pangolin proposal!  If you had $PNG in you wallet before 00:34 GMT on June 5, 2021, you can vote directly on the Pangolin site  (<a className="link-color" href="https://app.pangolin.exchange/#/vote/5">link</a>). If you need help or have any questions, please ask in <a className="link-color" href="https://t.me/sporefinanceofficial">Telegram</a> or <a className="link-color" href="https://discord.gg/xRrArCTG9Q">Discord</a>.</p>
                   </div>
                   <div className="col-md-12 text-justify">
-                  <p> <b>{numberWithCommas(pastSupport )}</b> votes have been cast so far in favor of the proposal. Spore has already cast its delegated votes with Pangolin. Voting will continue until June 8, 2021, 00:34 AM GMT. </p>
+                  <p> <b>{numberWithCommas(forVotes)}</b> votes have been cast so far in favor of the proposal. Spore has already cast its delegated votes with Pangolin. Voting will continue until June 8, 2021, 00:34 AM GMT. </p>
                   </div>
                   <div className="col-md-12 text-center py-1">
                 <h4> Votes For: <b style={{ color: '#265628' }}>{numberWithCommas(forVotes )}  </b> </h4>
