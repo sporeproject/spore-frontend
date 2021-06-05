@@ -1,8 +1,9 @@
 import Web3 from "web3";
 import './Vote.css';
 import { GOVERNOR_ALPHA_ABI} from '../utils/SporeAbis';
-import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../utils/addresses';
+import { useState, useEffect } from 'react';
+
 
 
 const win = window as any
@@ -15,7 +16,6 @@ const Vote = (props: any) => {
 
   const [forVotes, setforVotes] = useState(0);
   const [againstVotes, setagainstVotes] = useState(0);
-  const [pastSupport, setPastSupport] = useState(0);
 
   useEffect(() => {
     async function startup() {
@@ -26,24 +26,11 @@ const Vote = (props: any) => {
         ContractAddesses.AVAX_MAINNET_GOVERNORALPHA
       );
 
-
-
-      
-      
       const proposals = await GovernorContract.methods
         .proposals(5)
         .call();
         console.log(proposals );
-      
-      const pastSupport = await GovernorContract.methods
-        .getReceipt(5, ContractAddesses.SPORE_DELEGATEE) 
-        .call();
-
        
-      console.log("pastSupport ");
-      console.log(pastSupport[2] )
-
-      setPastSupport(pastSupport[2] / 10 ** 18)
       setforVotes(proposals.forVotes/ 10 ** 18)
       setagainstVotes(proposals.againstVotes/ 10 ** 18)
 
