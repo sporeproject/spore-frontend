@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import './Vote.css';
-import { AVAX_PNG_ABI } from '../utils/SporeAbis';
+import { GOVERNOR_ALPHA } from '../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../utils/addresses';
 
@@ -14,8 +14,7 @@ const Vote = (props: any) => {
 
 
 
-  const [currentSupport, setCurrentSupport] = useState(0);
-
+  const [forVotes, setforVotes] = useState(0);
 
   useEffect(() => {
     async function startup() {
@@ -24,22 +23,21 @@ const Vote = (props: any) => {
 
     
 
-      const PangolinContract = new win.ava.eth.Contract(
-        AVAX_PNG_ABI,
-        ContractAddesses.AVAX_PNG_MAINNET
+      const GovernorContract = new win.ava.eth.Contract(
+        GOVERNOR_ALPHA,
+        ContractAddesses.AVAX_MAINNET_GOVERNORALPHA
       );
 
       
 
       
-      const currentSupport = await PangolinContract.methods
-        .getCurrentVotes(ContractAddesses.SPORE_DELEGATEE)
+      const proposals = await GovernorContract.methods
+        .proposals(5)
         .call();
 
 
       
-      setCurrentSupport(currentSupport / 10 ** 18)
-      
+      setforVotes(proposals.forVotes/ 10 ** 18)
 
     }
     startup()
@@ -73,8 +71,7 @@ const Vote = (props: any) => {
                   Help Spore increase liquidity  by voting for us in the Pangolin proposal! All PNG holders can vote for Spore directly on the Pangolin site (<a className="link-color" href="https://app.pangolin.exchange/#/vote/5">link</a>). </p>
                   </div>
                   <div className="col-md-12 text-center">
-                  <p> <b>{numberWithCommas(currentSupport)}</b> votes have already been delegated to Spore. We will cast those votes directly with
-                  Pangolin. Voting will continue until June 8, 2021, 00:34 AM GMT </p>
+                  <p> <b>{numberWithCommas(forVotes)}</b> votes have been done supporting the proposal. Voting will continue until June 8, 2021, 00:34 AM GMT </p>
                   </div>
                   <div className="col-md-12 text-center">
                 <p> If you need help or have any questions, please ask in <a className="link-color" href="https://t.me/sporefinanceofficial">Telegram</a> or <a className="link-color" href="https://discord.gg/xRrArCTG9Q">Discord</a> .</p>
