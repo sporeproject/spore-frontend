@@ -49,6 +49,10 @@ export const MarketPlaceView = (props: Props) => {
 
     })
 
+    const numberWithCommasNFT = (x: number) => {
+        return Math.ceil(x).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
     return (
         <>
             {marketPlaceItems.length > 0 ? (
@@ -56,12 +60,15 @@ export const MarketPlaceView = (props: Props) => {
                     <div key={item.itemId}>
                         {/* <img className="rounded shadow" src={item[2].image} height="200" /> */}
                         <div className="col-md-3 text-center"><img className="rounded shadow" src={findimage(item.itemId)} alt="reload your page" height="200" /></div>
-                        <p>ID: {item.itemId}</p>
-                        <p>Price: {item.price} AVAX</p>
-
+                        <p>
+                            <div className="center-text-NFT"><b>ID: {item.itemId}</b></div>
+                            <div className="align-text-NFT">Price = {numberWithCommasNFT(item.price)} AVAX</div>
+                            
+                        </p>
+                        
                     </div>
                 ))) : (
-                <p> No NFTs for Sale </p>
+                <p> No NFTs for Sale!</p>
             )}
         </>
     )

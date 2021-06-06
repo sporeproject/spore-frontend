@@ -300,9 +300,11 @@ const NFT = (props: any) => {
                   className="form-control"
                 />
                 <div className="input-group-append">
-                  <button onClick={NFTbuy} className="btn btn-primary">Buy NFT</button>
+                    <button onClick={NFTbuy} className="btn btn-primary">Buy NFT</button>
                 </div>
-              </div>
+                </div>
+                <p className="text-muted">
+                    <b>*Note: </b>Displayed price is rounded up if not an integer (you may pay a little less than expected).</p>
             </div>
           </div>
         </div>

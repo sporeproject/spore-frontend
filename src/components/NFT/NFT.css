@@ -39,4 +39,12 @@
     display: flex;
   justify-content: center;
   }
-  
+
+.center-text-NFT {
+    text-align:center;
+}
+
+.align-text-NFT {
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
