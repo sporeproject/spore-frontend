@@ -346,8 +346,7 @@ const Information = () => {
       </div>
 
 
-    
-    
+
 	  
     </>
   )

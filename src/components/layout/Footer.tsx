@@ -6,7 +6,9 @@ import React from 'react';
 const Footer = () => {
   return (
     <div className='container-fluid footer pt-5'>
+      <h5 className="row social-links">Follow us!</h5>
       <div className="info">
+      
         <div className="row social-links">
           <a
             href='https://twitter.com/sporeproject'
@@ -95,7 +97,7 @@ const Footer = () => {
             <a
               href='https://github.com/sporeproject/Spore-frontend'
               target='_blank'
-              className='credit '
+              className='credit'
               rel='noopener noreferrer'
             >
               
