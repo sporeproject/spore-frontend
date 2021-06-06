@@ -156,10 +156,10 @@ const BurnedTokens = () => {
         Total burned: <b>{burnedTokensPercentage(numberOfBurnedTokens, numberOfBurnedTokensBSC)}%</b> 
       </li>
       <li>
-        Avalanche holders: <b>{numberWithCommas(numberOfTokenHolders)} (<a className="chainLink" href="https://cchain.explorer.avax.network/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token-holders" target='_blank'>AvaxExplorer</a>)</b>
+        Avalanche holders: <b>{numberWithCommas(numberOfTokenHolders)} (<a className="chainLink" href='https://cchain.explorer.avax.network/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token-holders' target='_blank' rel='noreferrer'>AvaxExplorer</a>)</b>
       </li>
       <li>
-        BSC holders: <b>{numberWithCommas(numberOfTokenHoldersBSC)}+ (<a className="chainLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c#balances" target='_blank'>BscScan</a>)</b>
+        BSC holders: <b>{numberWithCommas(numberOfTokenHoldersBSC)}+ (<a className="chainLink" href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c#balances' target='_blank' rel='noreferrer'>BscScan</a>)</b>
       </li>
     </>
   );
