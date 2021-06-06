@@ -102,7 +102,9 @@ const Vote = (props: any) => {
              <div className="mb-1 col-md-12 py-5">
              <div className="col-md-12 text-justify" >  
                 <p>
-                Help Spore increase liquidity by voting for us in the Pangolin proposal!  If you had $PNG in you wallet before {startdate.toUTCString()} you can vote directly on the Pangolin site  (<a className="link-color" href="https://app.pangolin.exchange/#/vote/5">link</a>). If you need help or have any questions, please ask in <a className="link-color" href="https://t.me/sporefinanceofficial">Telegram</a> or <a className="link-color" href="https://discord.gg/xRrArCTG9Q">Discord</a>.</p>
+                  Help Spore increase liquidity by voting for us in the Pangolin proposal! 
+                  If you had $PNG in you wallet before {startdate.toUTCString()} you can vote directly on the <a className="link-color" href="https://app.pangolin.exchange/#/vote/5" target='_blank' rel='noreferrer'>Pangolin site</a>.
+                  If you need help or have any questions, please ask in <a className="link-color" href="https://t.me/sporefinanceofficial" target='_blank' rel='noreferrer'>Telegram</a> or <a className="link-color" href="https://discord.gg/xRrArCTG9Q" target='_blank' rel='noreferrer'>Discord</a>.</p>
                   </div>
                   <div className="col-md-12 text-justify">
                   <p> <b>{numberWithCommas(forVotes)}</b> votes have been cast so far in favor of the proposal. Spore has already cast its delegated votes with Pangolin. Voting will continue until {enddate.toUTCString()}. </p>
