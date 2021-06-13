@@ -51,7 +51,7 @@ const Footer = () => {
           >
           </a>
           <a
-            href='https://instagram.com/projectspore'
+            href='https://www.instagram.com/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
             className='btn btn-primary mx-1 mb-2 fab fa-instagram'
