@@ -1,4 +1,4 @@
-# [Spore][Spore]&middot; a greedless ecosystem bringing innovative minds together
+# [Spore][Spore] &middot; a greedless ecosystem bringing innovative minds together
 
 ## Welcome to the Spore Github Repo
 
@@ -10,7 +10,7 @@ In our [Discord][Discord] server we are developing constantly in a completely or
 
 ## How to contribute?
 
-Join us in our [Discord][Discord]and discover how we as a collective can push blockchain technology to the next level.
+Join us in our [Discord][Discord] and discover how we as a collective can push blockchain technology to the next level.
 
 [Discord]: https://discord.gg/n5P7n7DBhh
 [Spore]: https://spore.earth
