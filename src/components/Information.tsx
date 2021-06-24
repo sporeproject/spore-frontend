@@ -2,8 +2,8 @@
 import './Information.css';
 
 
-import React from 'react';
-import BurnedTokens from './BurnedTokens';
+
+import Tokenomics from './Tokenomics';
 import PriceToken from './PriceToken';
 //@ts-ignore
 import Contributors from './contributors';
@@ -11,30 +11,49 @@ import Contributors from './contributors';
 const Information = () => {
   return (
     <>
-      <div className='container information  py-5'>
-        <div className='row py-5'>
+    <div className= "jumbotron">
+    <div className="container information py-5">
+        <div className="row w-100 h-100 mx-0">
+        <div className="container mx-0">
+          <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+            <h1 className='feature pb-4'>Welcome to <span>Spore</span></h1>
+            <div className="text-kecil">
+              <h3>A community of artists, developers and anarchists redefining the concept of blockchain development.</h3>
+              
+            
+              </div>
+              </div>
+
+          </div>
+        </div>
+        </div>
+      </div>
+      
+
+
+ 
+      <div className='container information '>
+        <div className='row'>
           <div className='col-md-7'>
-            <h2 className='feature pb-4'>
-              What is <span>Spore</span>?
-            </h2>
-            <p className='lead'>
-              Spore is an ecosystem that includes
-            </p>
-            <ul className='lead'>
-              <li><b>reflect tokens</b></li>
-              <li><b>algorithmically generated NFTs</b></li>
-              <li><b>next-gen NFT prediction market</b></li>
+            
+            <h3 >
+              Discover our ecosystem of
+            </h3>
+            <ul className='lead py-1'>
+              <li><b>Reflect tokens</b></li>
+              <li><b>Algorithmically generated NFTs</b></li>
+              <li><b>Next-gen NFT prediction market</b></li>
             </ul>
-            <blockquote className='lead'>
-              Meet Spore <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
+            <blockquote className='lead larger' >
+              <b>Meet $Spore </b> <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
             </blockquote>
 
             <div className='lead larger'>
               <PriceToken></PriceToken>
             </div>
-            <dl className='lead'>
+            <dl className='lead py-4'>
 		    
-	<h3>The current SPORE burn rate is:</h3>
+	          <h3>The current $SPORE burn rate is:</h3>
               <dd>On every Avalanche transaction <img height="30px" width="30px"
                 src='avalanche-logo.png' alt='Avalanche Network'></img></dd>
               <dt>4.6% is burned</dt>
@@ -55,27 +74,14 @@ const Information = () => {
           </div>
         </div>
       </div>
+
+      
+
       <section className='bg-white'>
-        <div className='container information  py-5'>
-          <div className='row py-5'>
-            <div className='col-md-5 text-center'>
-              <img className='img-fluid' alt='Burn Token' src='spore_256.png' />
-            </div>
-            <div className='col-md-7 text-left'>
-              <h2 className='feature'>Tokenomics</h2>
-              <ul className='list-unstyled'>
-                <li> Dev fund: 0%</li>
-                <li>
-                  Minted: <b>100,000,000,000,000,000</b> SPORE
-                </li>
-                <>
-                  <BurnedTokens />
-                </>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <Tokenomics />
       </section>
+
+
       <section className='bg-white-darker pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
