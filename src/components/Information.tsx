@@ -34,7 +34,18 @@ const Information = () => {
  
       <div className='container information '>
         <div className='row'>
-          <div className='col-md-7'>
+
+        <div className='row md-3'>
+        <blockquote className='lead larger justify-content-center align-items-center' >
+              <b>Meet $Spore </b> <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
+            </blockquote>
+
+            <div className='lead larger'>
+              <PriceToken></PriceToken>
+            </div>
+
+        </div>
+          <div className='col-md-7 py-5 '>
             
             <h3 >
               Discover our ecosystem of
@@ -44,35 +55,34 @@ const Information = () => {
               <li><b>Algorithmically generated NFTs</b></li>
               <li><b>Next-gen NFT prediction market</b></li>
             </ul>
-            <blockquote className='lead larger' >
-              <b>Meet $Spore </b> <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
-            </blockquote>
-
-            <div className='lead larger'>
-              <PriceToken></PriceToken>
-            </div>
-            <dl className='lead py-4'>
-		    
-	          <h3>The current $SPORE burn rate is:</h3>
-              <dd>On every Avalanche transaction <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img></dd>
-              <dt>4.6% is burned</dt>
-              <dt>1.4% is redistributed to hodlers</dt>
-              <dd>On every BSC transaction <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> </dd> 
-              <dt>6% is burned</dt>
-            </dl>
-
             <p className='lead'>
-              Frictionless rewards will decrease infinitely as tokens continue to burn.
+              <b>Frictionless rewards will decrease infinitely as tokens continue to burn.</b>
             </p>
             <p className='lead'>
-              All holders enjoy the ever-decreasing circulating supply.
+            <b>All holders enjoy the ever-decreasing circulating supply.</b>
             </p>
           </div>
           <div className='col-md-5 text-right'>
             <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
           </div>
         </div>
+        <div className='row-md-3 text-center'>
+       
+            <dl className='lead py-4'>
+		    
+	          <h3>Our burn and redistribution rates are:</h3>
+              <dd>On every Avalanche  <img height="30px" width="30px"
+                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dd>
+              <dt>4.6% is burned</dt>
+              <dt>1.4% is redistributed to hodlers</dt>
+              <dd>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img>transaction: </dd> 
+              <dt>6% is burned</dt>
+            </dl>
+
+           
+        </div>
+        
+
       </div>
 
       
