@@ -11,24 +11,6 @@ import Contributors from './contributors';
 const Information = () => {
   return (
     <>
-    <div className= "jumbotron">
-    <div className="container information py-5">
-        <div className="row w-100 h-100 mx-0">
-        <div className="container mx-0">
-          <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-            <h1 className='feature pb-4'>Welcome to <span>Spore</span></h1>
-            <div className="text-kecil">
-              <h3>A community of artists, developers and anarchists redefining the concept of blockchain development.</h3>
-              
-            
-              </div>
-              </div>
-
-          </div>
-        </div>
-        </div>
-      </div>
-      
 
 
  
