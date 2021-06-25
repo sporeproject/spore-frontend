@@ -4,96 +4,37 @@ import './Information.css';
 
 
 import Tokenomics from './Tokenomics';
-import PriceToken from './PriceToken';
 //@ts-ignore
 import Contributors from './contributors';
+import Discover from './Discover'
 
 const Information = () => {
   return (
     <>
-
-
- 
-      <div className='container information '>
-        <div className='row py-5'>
-
-       
-          <div className='col-md-7'>
-            
-          <h2 className='feature pb-4 py-5'>
-              What is <span>Spore</span>?
-            </h2>
-            <p className='lead'>
-              <b>Spore is an ecosystem that includes:</b>
-            </p>
-            <ul className='lead py-1'>
-              <li><b>Reflect tokens</b></li>
-              <li><b>Algorithmically generated NFTs</b></li>
-              <li><b>Next-gen NFT prediction market</b></li>
-            </ul>
-            <p className='lead'>
-              <b>Frictionless rewards will decrease infinitely as tokens continue to burn.</b>
-            </p>
-            <p className='lead'>
-            <b>All holders enjoy the ever-decreasing circulating supply.</b>
-            </p>
-          </div>
-
-
-          <div className='col-md-5 text-right'>
-            <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
-          </div>
-
-        </div>
-
-
-        <div className='row py-5'>
-        <div className='col-md-6 text-left'>
-            <dl className='lead ' >
-              <h4><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h4>
-            </dl>
-            
-            <div className='lead larger burnbox'>
-              <PriceToken></PriceToken>
+      <div className="section_banner d-flex">
+        <div className="container information px-0">
+          <div className="row w-100 h-100 mx-0">
+            <div className="col">
+              <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                <h1 className='feature pb-4 text-center'>Welcome to <span>Spore</span></h1>
+                <div className="text-kecil">
+                  <h3 className="text-center">A community of artists, developers and anarchists redefining the concept of blockchain development.</h3>
+                </div>
+              </div>
             </div>
-         </div>
-        <div className='col-md-5 text-left larger'>
-            
-		    
-	          <h4>Our burn and redistribution rates are:</h4>
-              <div className="lead larger"> <b>On every Avalanche  <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</b> </div>
-                <ul>
-              <li>4.6% is burned</li>
-              <li>1.4% is redistributed to hodlers</li>
-              </ul>
-              <div className="lead larger mt-3"> <b>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </b></div> 
-              <ul>
-              <li>6% is burned</li>
-              </ul>
-            
-         </div>
-            
-       
-        
-           
+          </div>
         </div>
-        
-
       </div>
 
+      <Discover />
       
-
-      <section className='bg-white'>
       <Tokenomics />
-      </section>
-
 
       <section className='bg-white-darker pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
-              <h2 className='feature'>Roadmap</h2>
+              <h2 className='feature'><b>Roadmap</b></h2>
             </div>
           </div>
           <div className='row align-items-center how-it-works d-flex'>
@@ -224,7 +165,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-            <span className='roadmap-text'>Governance</span>
+              <span className='roadmap-text'>Governance</span>
               <p>
                 In Progress <i className='fa fa-spinner'></i>
               </p>
@@ -272,7 +213,7 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-            <span className='roadmap-text'>NFTs Prediction Market</span>
+              <span className='roadmap-text'>NFTs Prediction Market</span>
               <p>
                 Q4 2021 <i className='fa fa-spinner'></i>
               </p>
@@ -310,7 +251,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2 zeros'
                 >
                   Avalanche token address
-                  </a>
+                </a>
                 <a
                   href='https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
                   target='_blank'
@@ -318,7 +259,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   BSC token address
-                  </a>
+                </a>
               </div>
               <div className="row social-links">
                 <a
@@ -328,7 +269,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   2.5% of supply burnt tx
-                  </a>
+                </a>
                 <a
                   href='https://cchain.explorer.avax.network/tx/0xe3e92326e2993a270a2fdd44a7301e6adccb7dd1b40bcc4ed9ed88ec963a22ab/token-transfers'
                   target='_blank'
@@ -336,7 +277,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   LP-burnt tx
-                  </a>
+                </a>
               </div>
               <div className="row social-links">
                 <a
@@ -346,7 +287,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   DEV wallet address
-                  </a>
+                </a>
                 <a
                   href='https://cchain.explorer.avax.network/tx/0x5fa10181e6c9841aa2226b5468e2b92f0268feaf178626472428e9839ab76982/internal-transactions'
                   target='_blank'
@@ -354,7 +295,7 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   Renounced ownership tx
-                  </a>
+                </a>
               </div>
             </div>
           </div>
@@ -363,7 +304,7 @@ const Information = () => {
 
 
 
-	  
+
     </>
   )
 }
