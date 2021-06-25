@@ -26,10 +26,10 @@ const BurnedTokens = ({
   return (
     <>
       <div className="alert alert-dark" role="alert">
-        Circulating Supply on Avalanche: <b>{numberWithCommas(supplyAVA)}</b> 
+        Circulating Supply on Avalanche:<br></br>  <b>{numberWithCommas(supplyAVA)}</b> 
       </div>
       <div className="alert alert-dark" role="alert">
-        Circulating Supply on BSC: <b>{numberWithCommas(supplyBSC)}</b> 
+        Circulating Supply on BSC: <br></br> <b>{numberWithCommas(supplyBSC)}</b> 
       </div>
       <div className="alert alert-dark" role="alert">
         Total burned:<br></br> <b>{numberWithCommas(burnedTotal)}</b>
