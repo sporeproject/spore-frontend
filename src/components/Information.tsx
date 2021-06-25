@@ -63,7 +63,16 @@ const Information = () => {
 
 
         <div className='row py-5'>
-        <div className='col-md-5'>
+        <div className='col-md-6 text-left'>
+            <dl className='lead ' >
+              <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h3>
+            </dl>
+            
+            <div className='lead larger burnbox'>
+              <PriceToken></PriceToken>
+            </div>
+         </div>
+        <div className='col-md-5 text-left'>
             <dl className='lead  '>
 		    
 	          <h3>Our burn and redistribution rates are:</h3>
@@ -76,15 +85,7 @@ const Information = () => {
             </dl>
          </div>
             
-        <div className='col-md-6 text-right'>
-        <dl className='lead ' >
-              <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h3>
-            </dl>
-            
-            <div className='lead larger burnbox'>
-              <PriceToken></PriceToken>
-            </div>
-            </div>
+       
         
            
         </div>
