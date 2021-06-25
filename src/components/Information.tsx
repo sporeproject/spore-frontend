@@ -23,6 +23,9 @@ const Information = () => {
           <h2 className='feature pb-4 py-5'>
               What is <span>Spore</span>?
             </h2>
+            <p className='lead'>
+              <b>Spore is an ecosystem that includes:</b>
+            </p>
             <ul className='lead py-1'>
               <li><b>Reflect tokens</b></li>
               <li><b>Algorithmically generated NFTs</b></li>
@@ -47,7 +50,7 @@ const Information = () => {
         <div className='row py-5'>
         <div className='col-md-6 text-left'>
             <dl className='lead ' >
-              <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h3>
+              <h4><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h4>
             </dl>
             
             <div className='lead larger burnbox'>
@@ -57,7 +60,7 @@ const Information = () => {
         <div className='col-md-5 text-left'>
             <dl className='lead  '>
 		    
-	          <h3>Our burn and redistribution rates are:</h3>
+	          <h4>Our burn and redistribution rates are:</h4>
               <dt>On every Avalanche  <img height="30px" width="30px"
                 src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dt>
               <dd>4.6% is burned</dd>
