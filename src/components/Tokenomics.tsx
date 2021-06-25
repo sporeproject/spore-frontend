@@ -13,7 +13,7 @@ const win = window as any
 win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
 
-   
+
 const Tokenomics = () => {
   const [bscBurned, setBscBurned] = useState(-1)
   const [avaBurned, setAvaBurned] = useState(-1)
@@ -28,103 +28,103 @@ const Tokenomics = () => {
 
   useEffect(() => {
     async function getInfos() {
-      
+
       await getAvaBurned()
       await getAvaxBridge()
       await getBscTotalSupply()
-      await getBscBurned ()
- 
+      await getBscBurned()
+
       await getTokenHolders()
 
       await getTokenHoldersBSC()
       setInterval(async () => {
-        
+
         await getAvaBurned()
         await getAvaxBridge()
         await getBscTotalSupply()
-        await getBscBurned ()
-   
+        await getBscBurned()
+
         await getTokenHolders()
         await getTokenHoldersBSC()
- 
+
       }, 60000)
     }
     getInfos()
 
   }, [])
 
-const getBscBurned = async () => {
-  try {
-    console.log("getting bsc burned tokens");
-    const SporeContract = new win.web3.eth.Contract(
-      BSC_SPORE_ABI,
-      ContractAddesses.BSC_SPORE_MAINNET
-    );
+  const getBscBurned = async () => {
+    try {
+      console.log("getting bsc burned tokens");
+      const SporeContract = new win.web3.eth.Contract(
+        BSC_SPORE_ABI,
+        ContractAddesses.BSC_SPORE_MAINNET
+      );
 
-    const bscburn = await SporeContract.methods.balanceOf(ContractAddesses.BSC_SPORE_MAINNET).call();
-    setBscBurned(bscburn / (10 ** 9));
+      const bscburn = await SporeContract.methods.balanceOf(ContractAddesses.BSC_SPORE_MAINNET).call();
+      setBscBurned(bscburn / (10 ** 9));
 
+    }
+    catch (err) {
+      console.log("Error getting burned tokens bsc")
+    }
   }
-  catch (err) {
-    console.log("Error getting burned tokens bsc")
+
+  const getAvaBurned = async () => {
+    try {
+      console.log("getting avax burned tokens");
+      const SporeContract = new win.ava.eth.Contract(
+        AVAX_SPORE_ABI,
+        ContractAddesses.AVAX_SPORE_MAINNET
+      );
+
+      const avaburn = await SporeContract.methods.balanceOf(ContractAddesses.DEAD_ADDRESS).call();
+      setAvaBurned(avaburn / (10 ** 9));
+
+    }
+    catch (err) {
+      console.log("Error getting burned tokens avax")
+    }
   }
-}
 
-const getAvaBurned = async () => {
-  try {
-    console.log("getting avax burned tokens");
-    const SporeContract = new win.ava.eth.Contract(
-      AVAX_SPORE_ABI,
-      ContractAddesses.AVAX_SPORE_MAINNET
-    );
+  const getAvaxBridge = async () => {
+    try {
+      console.log("getting avax bridge tokens");
+      const SporeContract = new win.ava.eth.Contract(
+        AVAX_SPORE_ABI,
+        ContractAddesses.AVAX_SPORE_MAINNET
+      );
 
-    const avaburn = await SporeContract.methods.balanceOf(ContractAddesses.DEAD_ADDRESS).call();
-    setAvaBurned(avaburn / (10 ** 9));
+      const avaxbridge = await SporeContract.methods.balanceOf(ContractAddesses.AVAX_BRIDGE_MAINNET).call();
+      setAvaxBridge(avaxbridge / (10 ** 9));
 
+    }
+    catch (err) {
+      console.log("Error getting tokens bridge")
+    }
   }
-  catch (err) {
-    console.log("Error getting burned tokens avax")
+
+
+
+  const getBscTotalSupply = async () => {
+    try {
+      console.log("getting bsc total supply");
+      const SporeContract = new win.web3.eth.Contract(
+        BSC_SPORE_ABI,
+        ContractAddesses.BSC_SPORE_MAINNET
+      );
+
+      const bsctotalsupply = await SporeContract.methods.totalSupply().call();
+      setBscTotalSupply(bsctotalsupply / (10 ** 9));
+
+    }
+    catch (err) {
+      console.log("Error getting bsc totalSupply")
+    }
   }
-}
-
-const getAvaxBridge = async () => {
-  try {
-    console.log("getting avax bridge tokens");
-    const SporeContract = new win.ava.eth.Contract(
-      AVAX_SPORE_ABI,
-      ContractAddesses.AVAX_SPORE_MAINNET
-    );
-
-    const avaxbridge = await SporeContract.methods.balanceOf(ContractAddesses.AVAX_BRIDGE_MAINNET).call();
-    setAvaxBridge(avaxbridge / (10 ** 9));
-
-  }
-  catch (err) {
-    console.log("Error getting tokens bridge")
-  }
-}
 
 
 
-const getBscTotalSupply = async () => {
-  try {
-    console.log("getting bsc total supply");
-    const SporeContract = new win.web3.eth.Contract(
-      BSC_SPORE_ABI,
-      ContractAddesses.BSC_SPORE_MAINNET
-    );
-
-    const bsctotalsupply = await SporeContract.methods.totalSupply().call();
-    setBscTotalSupply(bsctotalsupply / (10 ** 9));
-
-  }
-  catch (err) {
-    console.log("Error getting bsc totalSupply")
-  }
-}
-
- 
- 
   const getTokenHolders = async () => {
     console.log("getting token holders avax")
     try {
@@ -173,32 +173,24 @@ const getBscTotalSupply = async () => {
     }
 
   }
-  const TOTAL_SUPPLY= 100000000000000000
-  
+  const TOTAL_SUPPLY = 100000000000000000
+
   const numberWithCommas = (x: number) => {
-      return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    }
+    return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
 
 
   return (
-    <section className='tokenomic'>
-      <div className='container information py-5'>
-
-      <div className="container mx-0">
-          <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-            <h1 className='feature pb-1'><span>Tokenomics</span></h1>
-            
-            <div className="text-kecil">
-             
-            
-              </div>
-              </div>
-
+    <section className='section_tokenomics bg-white py-5 min-vh-100 d-flex justify-content-center'>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1 className='feature pb-1 text-center'><b>Tokenomics</b></h1>
           </div>
+        </div>
 
-
-        <div className='row py-4'>
-          <div className='col-md-12 col-lg-4 col-sm-12 text-left'>
+        <div className='row py-5'>
+          <div className='col-md-12 col-lg-4 col-sm-12 text-right'>
             <div className="alert alert-dark" role="alert">
               Dev fund: <br></br><b>0%</b>
             </div>
@@ -207,9 +199,9 @@ const getBscTotalSupply = async () => {
             </div>
             <ul className='list-unstyled'>
               <BurnedTokens
-                supplyAVA={TOTAL_SUPPLY-avaBurned-avaxBridge}
-                supplyBSC={bscTotalSupply-bscBurned}
-                burnedTotal= {avaBurned+avaxBridge-bscTotalSupply+bscBurned}
+                supplyAVA={TOTAL_SUPPLY - avaBurned - avaxBridge}
+                supplyBSC={bscTotalSupply - bscBurned}
+                burnedTotal={avaBurned + avaxBridge - bscTotalSupply + bscBurned}
                 totalTokenHolders={totalTokenHolders}
                 totalTokenHoldersBSC={totalTokenHoldersBSC}
               />
@@ -226,9 +218,9 @@ const getBscTotalSupply = async () => {
                 overflow: 'visible'
               }}
               data={[
-                { key: 'burnedToken', title: 'Burned Tokens', value: (avaBurned+avaxBridge-bscTotalSupply+bscBurned)/ TOTAL_SUPPLY * 100, color: 'black' },
-                { key: 'bscSupply', title: 'BSC supply',  value: (bscTotalSupply-bscBurned)/ TOTAL_SUPPLY * 100, color: '#f3ba2f' },
-                { key: 'avaSupply', title: 'Avalanche Supply', value: (TOTAL_SUPPLY-avaBurned-avaxBridge)/ TOTAL_SUPPLY * 100, color: '#e84142' },
+                { key: 'burnedToken', title: 'Burned Tokens', value: (avaBurned + avaxBridge - bscTotalSupply + bscBurned) / TOTAL_SUPPLY * 100, color: 'black' },
+                { key: 'bscSupply', title: 'BSC supply', value: (bscTotalSupply - bscBurned) / TOTAL_SUPPLY * 100, color: '#f3ba2f' },
+                { key: 'avaSupply', title: 'Avalanche Supply', value: (TOTAL_SUPPLY - avaBurned - avaxBridge) / TOTAL_SUPPLY * 100, color: '#e84142' },
               ]}
               radius={PieChart.defaultProps.radius - 6}
               lineWidth={50}
@@ -259,18 +251,17 @@ const getBscTotalSupply = async () => {
               </li>
             </ul>
             <ul className="lead">
-            <li className="chart-caption__item">
-                
+              <li className="chart-caption__item">
+
                 <i className="chart-caption__text">*BSC and Avalanche supplies are both connected by our <a className="bridgeLink" href='/bridge' >Bridge</a></i>
               </li>
             </ul>
           </div>
-       
-       
-        </div>
 
-        
+
+        </div>
       </div>
+
     </section>
   );
 }
