@@ -15,14 +15,14 @@ const Information = () => {
 
  
       <div className='container information '>
-        <div className='row'>
+        <div className='row py-5'>
 
        
-          <div className='col-md-7 py-5 '>
+          <div className='col-md-7'>
             
-            <h3 >
-              Discover our ecosystem of
-            </h3>
+          <h2 className='feature pb-4 py-5'>
+              What is <span>Spore</span>?
+            </h2>
             <ul className='lead py-1'>
               <li><b>Reflect tokens</b></li>
               <li><b>Algorithmically generated NFTs</b></li>
