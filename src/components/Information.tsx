@@ -211,7 +211,10 @@ const Information = () => {
             <div className='col-6'>
               <span className='roadmap-text'>Algorithmically generated NFTs </span>
               <p>
-                <i className='fa fa-check'></i> May 17 2021
+                <i className='fa fa-check'></i> NFT v1: May 17 2021
+              </p>
+              <p>
+                <i className='fa fa-spinner'></i> <b>NFT v2</b>: In Progress
               </p>
             </div>
           </div>

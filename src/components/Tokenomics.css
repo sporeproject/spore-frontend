@@ -58,3 +58,12 @@
   }
   
 }
+
+
+.bridgeLink{
+  color:#4B5626;
+}
+
+.bridgeLink:hover{
+  color:grey;
+}

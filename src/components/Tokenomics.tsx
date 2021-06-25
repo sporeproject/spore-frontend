@@ -258,6 +258,12 @@ const getBscTotalSupply = async () => {
                 <i className="chart-caption__text">Burned Tokens</i>
               </li>
             </ul>
+            <ul className="lead">
+            <li className="chart-caption__item">
+                
+                <i className="chart-caption__text">*BSC and Avalanche Supplies are both connected by our <a className="bridgeLink" href='/bridge' >Bridge</a></i>
+              </li>
+            </ul>
           </div>
        
        
