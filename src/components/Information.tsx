@@ -57,17 +57,21 @@ const Information = () => {
               <PriceToken></PriceToken>
             </div>
          </div>
-        <div className='col-md-5 text-left'>
-            <dl className='lead  '>
+        <div className='col-md-5 text-left larger'>
+            
 		    
 	          <h4>Our burn and redistribution rates are:</h4>
-              <dt>On every Avalanche  <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dt>
-              <dd>4.6% is burned</dd>
-              <dd>1.4% is redistributed to hodlers</dd>
-              <dt>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </dt> 
-              <dd>6% is burned</dd>
-            </dl>
+              <div className="lead larger"> <b>On every Avalanche  <img height="30px" width="30px"
+                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</b> </div>
+                <ul>
+              <li>4.6% is burned</li>
+              <li>1.4% is redistributed to hodlers</li>
+              </ul>
+              <div className="lead larger mt-3"> <b>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </b></div> 
+              <ul>
+              <li>6% is burned</li>
+              </ul>
+            
          </div>
             
        
