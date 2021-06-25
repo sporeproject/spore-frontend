@@ -261,7 +261,7 @@ const getBscTotalSupply = async () => {
             <ul className="lead">
             <li className="chart-caption__item">
                 
-                <i className="chart-caption__text">*BSC and Avalanche Supplies are both connected by our <a className="bridgeLink" href='/bridge' >Bridge</a></i>
+                <i className="chart-caption__text">*BSC and Avalanche supplies are both connected by our <a className="bridgeLink" href='/bridge' >Bridge</a></i>
               </li>
             </ul>
           </div>
