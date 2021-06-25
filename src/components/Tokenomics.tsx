@@ -203,7 +203,7 @@ const getBscTotalSupply = async () => {
               Dev fund: <br></br><b>0%</b>
             </div>
             <div className="alert alert-dark" role="alert">
-              Total Supply: <b>{numberWithCommas(TOTAL_SUPPLY)}</b>
+              Total Supply:<br></br>  <b>{numberWithCommas(TOTAL_SUPPLY)}</b>
             </div>
             <ul className='list-unstyled'>
               <BurnedTokens
