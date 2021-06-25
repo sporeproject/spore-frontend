@@ -2,8 +2,8 @@
 import './Information.css';
 
 
-import React from 'react';
-import BurnedTokens from './BurnedTokens';
+
+import Tokenomics from './Tokenomics';
 import PriceToken from './PriceToken';
 //@ts-ignore
 import Contributors from './contributors';
@@ -11,71 +11,80 @@ import Contributors from './contributors';
 const Information = () => {
   return (
     <>
-      <div className='container information  py-5'>
+
+
+ 
+      <div className='container information '>
         <div className='row py-5'>
+
+       
           <div className='col-md-7'>
-            <h2 className='feature pb-4'>
+            
+          <h2 className='feature pb-4 py-5'>
               What is <span>Spore</span>?
             </h2>
             <p className='lead'>
-              Spore is an ecosystem that includes
+              <b>Spore is an ecosystem that includes:</b>
             </p>
-            <ul className='lead'>
-              <li><b>reflect tokens</b></li>
-              <li><b>algorithmically generated NFTs</b></li>
-              <li><b>next-gen NFT prediction market</b></li>
+            <ul className='lead py-1'>
+              <li><b>Reflect tokens</b></li>
+              <li><b>Algorithmically generated NFTs</b></li>
+              <li><b>Next-gen NFT prediction market</b></li>
             </ul>
-            <blockquote className='lead'>
-              Meet Spore <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
-            </blockquote>
-
-            <div className='lead larger'>
-              <PriceToken></PriceToken>
-            </div>
-            <dl className='lead'>
-		    
-	<h3>The current SPORE burn rate is:</h3>
-              <dd>On every Avalanche transaction <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img></dd>
-              <dt>4.6% is burned</dt>
-              <dt>1.4% is redistributed to hodlers</dt>
-              <dd>On every BSC transaction <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> </dd> 
-              <dt>6% is burned</dt>
-            </dl>
-
             <p className='lead'>
-              Frictionless rewards will decrease infinitely as tokens continue to burn.
+              <b>Frictionless rewards will decrease infinitely as tokens continue to burn.</b>
             </p>
             <p className='lead'>
-              All holders enjoy the ever-decreasing circulating supply.
+            <b>All holders enjoy the ever-decreasing circulating supply.</b>
             </p>
           </div>
+
+
           <div className='col-md-5 text-right'>
             <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
           </div>
+
         </div>
+
+
+        <div className='row py-5'>
+        <div className='col-md-6 text-left'>
+            <dl className='lead ' >
+              <h4><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h4>
+            </dl>
+            
+            <div className='lead larger burnbox'>
+              <PriceToken></PriceToken>
+            </div>
+         </div>
+        <div className='col-md-5 text-left'>
+            <dl className='lead  '>
+		    
+	          <h4>Our burn and redistribution rates are:</h4>
+              <dt>On every Avalanche  <img height="30px" width="30px"
+                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dt>
+              <dd>4.6% is burned</dd>
+              <dd>1.4% is redistributed to hodlers</dd>
+              <dt>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </dt> 
+              <dd>6% is burned</dd>
+            </dl>
+         </div>
+            
+       
+        
+           
+        </div>
+        
+
       </div>
+
+      
+
       <section className='bg-white'>
-        <div className='container information  py-5'>
-          <div className='row py-5'>
-            <div className='col-md-5 text-center'>
-              <img className='img-fluid' alt='Burn Token' src='spore_256.png' />
-            </div>
-            <div className='col-md-7 text-left'>
-              <h2 className='feature'>Tokenomics</h2>
-              <ul className='list-unstyled'>
-                <li> Dev fund: 0%</li>
-                <li>
-                  Minted: <b>100,000,000,000,000,000</b> SPORE
-                </li>
-                <>
-                  <BurnedTokens />
-                </>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <Tokenomics />
       </section>
+
+
       <section className='bg-white-darker pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
@@ -188,7 +197,10 @@ const Information = () => {
             <div className='col-6'>
               <span className='roadmap-text'>Algorithmically generated NFTs </span>
               <p>
-                <i className='fa fa-check'></i> May 17 2021
+                <i className='fa fa-check'></i> NFT v1: May 17 2021
+              </p>
+              <p>
+                <i className='fa fa-spinner'></i> <b>NFT v2</b>: In Progress
               </p>
             </div>
           </div>
