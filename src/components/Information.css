@@ -127,11 +127,11 @@ dl {
 }
 
 dt {
-  margin-left: 60px;
+  margin-left: 40px;
 }
 
 dd {
-  margin-left: 40px;
+  margin-left: 60px;
 }
 
 ul.lead {
@@ -213,3 +213,7 @@ ul.lead {
   text-align: center;
 }
 
+.burnbox {
+  margin: 0 auto;
+    
+}

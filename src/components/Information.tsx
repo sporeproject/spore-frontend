@@ -35,16 +35,7 @@ const Information = () => {
       <div className='container information '>
         <div className='row'>
 
-        <div className='row md-3'>
-        <blockquote className='lead larger justify-content-center align-items-center' >
-              <b>Meet $Spore </b> <img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' />
-            </blockquote>
-
-            <div className='lead larger'>
-              <PriceToken></PriceToken>
-            </div>
-
-        </div>
+       
           <div className='col-md-7 py-5 '>
             
             <h3 >
@@ -62,23 +53,39 @@ const Information = () => {
             <b>All holders enjoy the ever-decreasing circulating supply.</b>
             </p>
           </div>
+
+
           <div className='col-md-5 text-right'>
             <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
           </div>
+
         </div>
-        <div className='row-md-3 text-center'>
-       
-            <dl className='lead py-4'>
+
+
+        <div className='row py-5'>
+        <div className='col-md-5'>
+            <dl className='lead  '>
 		    
 	          <h3>Our burn and redistribution rates are:</h3>
-              <dd>On every Avalanche  <img height="30px" width="30px"
-                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dd>
-              <dt>4.6% is burned</dt>
-              <dt>1.4% is redistributed to hodlers</dt>
-              <dd>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img>transaction: </dd> 
-              <dt>6% is burned</dt>
+              <dt>On every Avalanche  <img height="30px" width="30px"
+                src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</dt>
+              <dd>4.6% is burned</dd>
+              <dd>1.4% is redistributed to hodlers</dd>
+              <dt>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </dt> 
+              <dd>6% is burned</dd>
             </dl>
-
+         </div>
+            
+        <div className='col-md-6 text-right'>
+        <dl className='lead ' >
+              <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h3>
+            </dl>
+            
+            <div className='lead larger burnbox'>
+              <PriceToken></PriceToken>
+            </div>
+            </div>
+        
            
         </div>
         

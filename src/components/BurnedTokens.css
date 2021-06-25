@@ -19,3 +19,11 @@ a:hover {
 .chainLink{
   color: grey;
 }
+
+.bscLink{
+  color:#4B5626;
+}
+
+.bscLink:hover{
+  color:grey;
+}
