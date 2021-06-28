@@ -283,7 +283,7 @@ const Information = () => {
           </div>
         </div>
       </section>
-      <section className='bg-white pb-5'>
+      <section className='bg-white min-vh-100 pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
@@ -291,9 +291,7 @@ const Information = () => {
             </div>
           </div>
           <div className='row'>
-            <>
-              <Contributors />
-            </>
+            <Contributors />
           </div>
         </div>
       </section>
