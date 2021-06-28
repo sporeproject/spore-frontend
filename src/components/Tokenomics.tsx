@@ -197,9 +197,7 @@ const getBscTotalSupply = async () => {
 
         <div className='row py-4'>
           <div className='col-md-12 col-lg-4 col-sm-12 text-left'>
-            <div className="alert alert-dark" role="alert">
-              Dev fund: <br></br><b>0%</b>
-            </div>
+            
             <ul className='list-unstyled'>
               <BurnedTokens
                 supplyAVA={TOTAL_SUPPLY-avaBurned-avaxBridge}

@@ -18,7 +18,7 @@ const BurnedTokens = ({
   totalTokenHoldersBSC,
 }: BurnedTokensInterfaceProps) => {
   
-  const TOTAL_SUPPLY= 100000000000000000
+ 
   const numberWithCommas = (x: number) => {
     return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   }
@@ -34,9 +34,7 @@ const BurnedTokens = ({
       <div className="alert alert-dark" role="alert">
         Total burned:<br></br> <b>{numberWithCommas(burnedTotal)}</b>
       </div>
-      <div className="alert alert-dark" role="alert">
-              Original Supply:<br></br>  <b>{numberWithCommas(TOTAL_SUPPLY)}</b>
-      </div>
+     
       <div className="alert alert-dark" role="alert">
         Avalanche holders: <br></br><b>{numberWithCommas(totalTokenHolders)}</b>
       </div>
