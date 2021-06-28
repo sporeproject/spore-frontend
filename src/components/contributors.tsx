@@ -27,7 +27,7 @@ const Contributors = () => {
           contrib.map((data: any) => {
             return <div className='contributor-style' key={data.html_url}>
               <a href={data.html_url} target="_blank" rel="noreferrer">
-                <img src={data.avatar_url} alt='' loading="lazy" />
+                <img src={data.avatar_url} alt='' className="pr-1" loading="lazy" />
                 <span>{data.login}</span>
               </a>
             </div>

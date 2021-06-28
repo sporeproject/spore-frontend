@@ -64,3 +64,23 @@
 .divider {
     border: 1px solid white;
 }
+
+@media (max-width: 360px) {
+  .dropdown-menu {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu.dropdown-menu--buy-spore {
+    width: 262px;
+  }
+  
+  .dropdown-menu.dropdown-menu--chart {
+    width: 170px;
+  }
+  
+  .dropdown-menu.dropdown-menu--how-to-buy {
+    width: 204px;
+  }
+}
