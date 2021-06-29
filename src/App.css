@@ -1,5 +1,6 @@
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -58,4 +59,32 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.scroll-to-top {
+  position: fixed;
+  z-index: 10;
+  bottom:2%;
+  right:1%;
+  transition: .3s;
+  cursor: pointer;
+  display: none;
+  background: #6b4e3b;
+
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+}
+
+.scroll-to-top.show {
+  display: block;
+}
+
+.scroll-to-top:hover {
+  transform: scale(1.1);
+}
+
+.scroll-to-top i {
+  display: block;
 }

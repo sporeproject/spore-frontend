@@ -173,11 +173,9 @@ const getBscTotalSupply = async () => {
     }
 
   }
+  
   const TOTAL_SUPPLY= 100000000000000000
   
-  const numberWithCommas = (x: number) => {
-      return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    }
 
 
   return (
@@ -199,12 +197,7 @@ const getBscTotalSupply = async () => {
 
         <div className='row py-4'>
           <div className='col-md-12 col-lg-4 col-sm-12 text-left'>
-            <div className="alert alert-dark" role="alert">
-              Dev fund: <br></br><b>0%</b>
-            </div>
-            <div className="alert alert-dark" role="alert">
-              Total Supply:<br></br>  <b>{numberWithCommas(TOTAL_SUPPLY)}</b>
-            </div>
+            
             <ul className='list-unstyled'>
               <BurnedTokens
                 supplyAVA={TOTAL_SUPPLY-avaBurned-avaxBridge}
