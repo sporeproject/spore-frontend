@@ -153,7 +153,7 @@ const getBscTotalSupply = async () => {
         'https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
         ,{
           method: "GET",
-          mode:'no-cors'
+          mode:'cors'
         }
       )
       console.log(res);
