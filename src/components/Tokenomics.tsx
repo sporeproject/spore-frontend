@@ -149,12 +149,9 @@ const getBscTotalSupply = async () => {
   }
   const getTokenHoldersBSC = async () => {
     try {
-      const headers = {
-        'Content-Type': 'text/plain'
-      };
+      axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
       const res = axios.get(
-        'https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c',
-        {headers}        
+        'https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'       
       );
       console.log(res);
       // if (
