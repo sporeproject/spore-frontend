@@ -149,22 +149,22 @@ const getBscTotalSupply = async () => {
   }
   const getTokenHoldersBSC = async () => {
     try {
-      const res = await axios.get(
-        'https://api.covalenthq.com/v1/56/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c/token_holders/?page-size=99999'
+      const res = await fetch(
+        'https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c'
       )
-
-      if (
-        res.data !== undefined &&
-        res.data.data !== undefined &&
-        res.data.data.items !== undefined
-      ) {
-        const items = res.data.data.items;
-        setTotalTokenHoldersBSC(items.length)
-      }
-      else {
-        console.log('test')
-        console.log(res)
-      }
+      console.log(res);
+      // if (
+      //   res.data !== undefined &&
+      //   res.data.data !== undefined &&
+      //   res.data.data.items !== undefined
+      // ) {
+      //   const items = res.data.data.items;
+      //   setTotalTokenHoldersBSC(items.length)
+      // }
+      // else {
+      //   console.log('test')
+      //   console.log(res)
+      // }
     }
     catch (err) {
       console.log("Error getting token holders bsc")
