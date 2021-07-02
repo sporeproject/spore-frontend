@@ -242,40 +242,43 @@ const BSCBridge = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="container">
                     <div className="offset-lg-3 col-lg-6 text-center py-4">
                                 <h3>Trust Wallet Steps 😎 </h3>
 
-                                <dl className="tips">                                    
-                                    <dt>Step 1 - Install <a 
+                                <p className="text-left">                                    
+                                    <p><b>Step 1 </b>- Install <a 
                                         target="_blank"  
                                         rel='noopener noreferrer'                                    
                                         href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">
-                                        metamask</a> extension - use chrome</dt>
-                                    <dt>Step 2 - Add both <a 
+                                        metamask</a> extension - use chrome</p>
+                                    <p><b>Step 2 </b>- Add both <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
                                        href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche">Avalanche</a> and <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
-                                       href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</dt>
-                                    <dt>Step 3 - Add 🍄 SPORE to both chains in metamask</dt>
-                                    <dd><i>Add token</i> - <i>Custom</i> - <i>paste</i></dd>
-                                    <dd>0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</dd>
-                                    <dd>0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</dd>
-                                    <dt>Step 4 - Send 🍄 SPORE from Trust Wallet to Metamask</dt>
-                                    <dt>Step 5 - Send tiny bit of BNB from Trust Wallet to Metamask</dt>
-                                    <dd>Close your trust wallet 🎉 open your browser again</dd>
-                                    <dt>Step 6 - Goto 🍄 SPORE Bridge</dt>
-                                    <dt>Step 7 - Enable Metamask</dt>
-                                    <dt>Step 8 - Click ‘Max’</dt>
-                                    <dt>Step 9 - Click ‘Transfer’</dt>
-                                    <dd>😌 - Ahhhhh</dd>
-                                    <dt>Step 10 - Flip to Avalanche chain</dt>
-                                    <dt>Step 11 - Wait for spore to arrive (couple of minutes)</dt>
-                                    <dt>Step 12 - Confirm spore is growing in wallet</dt>
-                                </dl>
+                                       href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</p>
+                                    <p><b>Step 3</b> - Add 🍄 SPORE to both chains in metamask</p>
+                                    
+                                    <p><i>Add token</i> -&gt; <i>Custom</i> -&gt; <i>paste</i></p>
+                                    <p className="limit">0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</p>
+                                    <p className="limit">0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</p>
+                                    <p><b>Step 4 </b>- Send 🍄 SPORE from Trust Wallet to Metamask</p>
+                                    <p><b>Step 5</b> - Send tiny bit of BNB from Trust Wallet to Metamask</p>
+                                    
+                                    <p>Close your trust wallet 🎉 open your browser again</p>
+                                    <p><b>Step 6</b> - Goto 🍄 SPORE Bridge</p>
+                                    <p><b>Step 7</b> - Enable Metamask</p>
+                                    <p><b>Step 8 </b>- Click ‘Max’</p>
+                                    <p><b>Step 9 </b>- Click ‘Transfer’</p>
+                                    <p>😌 - Ahhhhh</p>
+                                    <p><b>Step 10</b> - Flip to Avalanche chain</p>
+                                    <p><b>Step 11</b> - Wait for spore to arrive (couple of minutes)</p>
+                                    <p><b>Step 12</b> - Confirm spore is growing in wallet</p>
+                                </p>
                             </div>
-
+                            </div>
                 </div>
             </div>
         </div>

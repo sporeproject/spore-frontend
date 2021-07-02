@@ -13,6 +13,7 @@ const win = window as any
 win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
 
+
    
 const Tokenomics = () => {
   const [bscBurned, setBscBurned] = useState(-1)
@@ -69,6 +70,7 @@ const getBscBurned = async () => {
     console.log("Error getting burned tokens bsc")
   }
 }
+
 
 const getAvaBurned = async () => {
   try {
