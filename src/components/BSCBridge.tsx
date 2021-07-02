@@ -236,12 +236,13 @@ const BSCBridge = () => {
                                 <button onClick={swapFromBSC} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-lg-6 text-center py-4">
-                                <h3>Disclaimer: this is a version alpha. Use at your own risk please come to discord if you have an issue.</h3>
+                        </div>
+                        <div className="container text-center">
+                            <div className="  py-4">
+                                <h3>Disclaimer: this is a version alpha. Use at your own risk.<br></br> Please come to discord if you have an issue.</h3>
                             </div>
                         </div>
-                    </div>
+                    
                     <div className="container">
                     <div className="offset-lg-3 col-lg-6 text-center py-4">
                                 <h3>Trust Wallet Steps 😎 </h3>
