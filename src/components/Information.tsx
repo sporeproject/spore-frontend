@@ -283,18 +283,36 @@ const Information = () => {
           </div>
         </div>
       </section>
-      <section className='bg-white min-vh-100 pb-5'>
+      <section className='bg-white min-vh-50 pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
-              <h2 className='feature'>Developers</h2>
+              <h2 className='feature'>Core Developers</h2>
             </div>
           </div>
           <div className='row'>
             <Contributors />
           </div>
+          <div className='row'>
+          <div className='col-md-5 text-left py-4'>
+            Complete list and legacy developers <a className="contribs" href= "https://github.com/sporeproject/spore-frontend/graphs/contributors">here</a>
+            </div>
+          
+          </div>
         </div>
       </section>
+
+      <section className='bg-white-darker pb-5'>
+        <div className='container information py-5'>
+          <div className='row py-4'>
+            <div className='col-md-12 text-center'>
+              <h2 className='feature'>Partnerships</h2>
+            </div>
+          </div>
+          </div>
+      </section>
+
+
       <div className='container information py-5'>
         <div className='row py-5'>
           <div className='col-md-12 text-center'>

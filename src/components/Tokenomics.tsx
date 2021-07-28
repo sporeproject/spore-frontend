@@ -171,7 +171,7 @@ const getBscTotalSupply = async () => {
     catch (err) {
       console.log("Error getting token holders bsc")
       ///HARDCODED VALUE
-      setTotalTokenHoldersBSC(126025)
+      setTotalTokenHoldersBSC(128979)
     }
 
   }

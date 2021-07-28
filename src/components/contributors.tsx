@@ -25,13 +25,15 @@ const Contributors = () => {
       <div className='col-md-12'>
         {
           contrib.map((data: any) => {
+            if(data.contributions > 13){
             return <div className='contributor-style' key={data.html_url}>
               <a href={data.html_url} target="_blank" rel="noreferrer">
                 <img src={data.avatar_url} alt='' className="pr-1" loading="lazy" />
                 <span>{data.login}</span>
               </a>
             </div>
-          })
+          }
+        })
         }
       </div>
     </>
