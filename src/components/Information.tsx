@@ -309,6 +309,11 @@ const Information = () => {
               <h2 className='feature'>Partnerships</h2>
             </div>
           </div>
+          <div className='row py-4'>
+            <div className='col-md-12 py-3 text-center'>
+            <img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" />
+            </div>
+          </div>
           </div>
       </section>
 
