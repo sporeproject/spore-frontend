@@ -293,6 +293,12 @@ const Information = () => {
           <div className='row'>
             <Contributors />
           </div>
+          <div className='row'>
+          <div className='col-md-5 text-left py-4'>
+            Complete list and legacy developers <a className="contribs" href= "https://github.com/sporeproject/spore-frontend/graphs/contributors">here</a>
+            </div>
+          
+          </div>
         </div>
       </section>
       <div className='container information py-5'>
