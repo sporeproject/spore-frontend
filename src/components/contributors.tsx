@@ -20,18 +20,27 @@ const Contributors = () => {
     });
   }
 
+
+
+  var coreContributors = contrib.map ((data:any) => {if (data.contributions >13) {return data} else {return null} })
+  coreContributors = coreContributors.filter((data:any) => {return data !== null})
+  console.log("coreContributors");
+  console.log(coreContributors);
+  
   return (
     <>
       <div className='col-md-12'>
         {
-          contrib.map((data: any) => {
+          coreContributors.map((data: any) => {
+            
             return <div className='contributor-style' key={data.html_url}>
               <a href={data.html_url} target="_blank" rel="noreferrer">
                 <img src={data.avatar_url} alt='' className="pr-1" loading="lazy" />
                 <span>{data.login}</span>
               </a>
             </div>
-          })
+          
+        })
         }
       </div>
     </>
