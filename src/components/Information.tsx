@@ -354,6 +354,24 @@ const Information = () => {
                   Renounced ownership tx
                   </a>
               </div>
+              <div className="row social-links">
+                <a
+                  href='https://cchain.explorer.avax.network/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/contracts'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2'
+                >
+                  NFT V1 Address
+                  </a>
+                <a
+                  href='https://cchain.explorer.avax.network/address/0x6Fe55D097FC9C1d08B64f4b1c94ac9453B1c9abB/contracts'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2'
+                >
+                  Multisig Wallet Contract
+                  </a>
+              </div>
             </div>
           </div>
         </div>
