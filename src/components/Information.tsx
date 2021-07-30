@@ -287,7 +287,7 @@ const Information = () => {
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
-              <h2 className='feature'>Developers</h2>
+              <h2 className='feature'>Core Developers</h2>
             </div>
           </div>
           <div className='row'>
@@ -301,6 +301,23 @@ const Information = () => {
           </div>
         </div>
       </section>
+
+      <section className='bg-white-darker pb-5'>
+        <div className='container information py-5'>
+          <div className='row py-4'>
+            <div className='col-md-12 text-center'>
+              <h2 className='feature'>Partnerships</h2>
+            </div>
+          </div>
+          <div className='row py-4'>
+            <div className='col-md-12 py-3 text-center'>
+            <a href= "https://pangolin.exchange/"><img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" /></a>
+            </div>
+          </div>
+          </div>
+      </section>
+
+
       <div className='container information py-5'>
         <div className='row py-5'>
           <div className='col-md-12 text-center'>
