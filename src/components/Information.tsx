@@ -287,7 +287,7 @@ const Information = () => {
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
-              <h2 className='feature'>Core Developers</h2>
+              <h2 className='feature'>Developers</h2>
             </div>
           </div>
           <div className='row'>
