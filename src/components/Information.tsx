@@ -311,7 +311,7 @@ const Information = () => {
           </div>
           <div className='row py-4'>
             <div className='col-md-12 py-3 text-center'>
-            <img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" />
+            <a href= "https://pangolin.exchange/"><img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" /></a>
             </div>
           </div>
           </div>
