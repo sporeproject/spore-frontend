@@ -25,6 +25,13 @@ const getNetworkId = async () => {
     return "Network : " + networks.get(win.web3.currentProvider.chainId);
 }
 
+const getConnectedAccount = async () => {
+    var account = await win.web3.eth.getAccounts();
+    account = account[0];
+    return "Account: " + account;
+}
+
+
 
 const approve = async () => {
     const SporeAddress = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985";
@@ -143,6 +150,7 @@ const BSCBridge = () => {
     const [feesBNB] = useState(0.005)
     const [feesAVAX] = useState(0.03)
     const [network, setNetwork] = useState<any>(<button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>)
+    const [connectedAccount, setConnectedAccount] = useState<any>()
 
     // network: <button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>,
     useEffect(() => {
@@ -155,9 +163,11 @@ const BSCBridge = () => {
             var numberOfSporeAVAX = await getSporeInWalletAVAX() / 10 ** 9;
             var numberOfSporeBSC = await getSporeInWalletBSC() / 10 ** 9;
             var nid = await getNetworkId();
+            var connected_account= await getConnectedAccount();
             setNumberOfSporeAVAX(numberOfSporeAVAX)
             setNumberOfSporeBSC(numberOfSporeBSC)
             setNetwork(nid)
+            setConnectedAccount(connected_account)
 
         }
         startup()
@@ -172,9 +182,17 @@ const BSCBridge = () => {
                         <div className="col-lg-8">
                             <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
                         </div>
-                        <div className="col-lg-4 text-right">
-                            {network}
+                        <div className="col-lg-10  ">
+                                {connectedAccount}
+                            </div>
+                        
+                            <div className="col-lg-10 text-right">
+                                {network}
+                            
+                            
                         </div>
+
+
                     </div>
                     <div className="wrapBridge pt-2">
                         <div className="row rowBridge">
