@@ -18,12 +18,13 @@ const connectMetaMask = async () => {
 
 const getNetworkId = async () => {
     const networks = new Map();
-    networks.set("97", "BSC Testnet")
-    networks.set("56", "Binance Smart Chain")
-    networks.set("43114", "Avalanche")
-    networks.set("43113", "Fuji Testnet")
-    return "Network : " + networks.get(win.ethereum.networkVersion);
+    networks.set("0x61", "BSC Testnet")
+    networks.set("0x38", "Binance Smart Chain")
+    networks.set("0xa86a", "Avalanche")
+    networks.set("0xa869", "Fuji Testnet")
+    return "Network : " + networks.get(win.web3.currentProvider.chainId);
 }
+
 
 const approve = async () => {
     const SporeAddress = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985";
