@@ -94,6 +94,75 @@ const swapFromBSC = async () => {
     }
 }
 
+const addSporeBSC = async () => {
+    const tokenAddress = "0x33a3d962955a3862c8093d1273344719f03ca17c";
+    const tokenSymbol = "SPORE";
+    const tokenDecimals = 9;
+    const tokenImage = "https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png";
+    const nid= win.web3.currentProvider.chainId
+    if (nid === "0x38") {
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await win.web3.currentProvider.sendAsync({
+            method: 'wallet_watchAsset',
+            params: {
+                type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                options: {
+                address: tokenAddress, // The address that the token is at.
+                symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+                decimals: tokenDecimals, // The number of decimals in the token
+                image: tokenImage, // A string url of the token logo
+                },
+            },
+            });
+        
+            if (wasAdded) {
+            console.log('Thanks for your interest!');
+            } else {
+            console.log('Your loss!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        console.log('You are not on the BSC!');
+    }
+}
+
+const addSporeAvalanche = async () => {
+    const tokenAddress = "0x33a3d962955a3862c8093d1273344719f03ca17c";
+    const tokenSymbol = "SPORE";
+    const tokenDecimals = 9;
+    const tokenImage = "https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png";
+    const nid= win.web3.currentProvider.chainId
+    if (nid === "0xa86a") {
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await win.web3.currentProvider.sendAsync({
+            method: 'wallet_watchAsset',
+            params: {
+                type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                options: {
+                address: tokenAddress, // The address that the token is at.
+                symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+                decimals: tokenDecimals, // The number of decimals in the token
+                image: tokenImage, // A string url of the token logo
+                },
+            },
+            });
+        
+            if (wasAdded) {
+            console.log('Thanks for your interest!');
+            } else {
+            console.log('Your loss!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        console.log('You are not on the BSC!');
+    }
+}
 
 const getSporeInWalletAVAX = async () => {
     const SporeAddress = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985";
@@ -152,6 +221,7 @@ const BSCBridge = () => {
     const [network, setNetwork] = useState<any>(<button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>)
     const [connectedAccount, setConnectedAccount] = useState<any>()
 
+
     // network: <button onClick={connectMetaMask} className="btn btn-light">Connect wallet </button>,
     useEffect(() => {
         async function startup() {
@@ -173,6 +243,9 @@ const BSCBridge = () => {
         startup()
 
     }, [])
+
+
+
 
     return (
         <div className="container py-5" id="bridge">
@@ -270,32 +343,21 @@ const BSCBridge = () => {
                                     <p><b>Step 1 </b>- Install <a 
                                         target="_blank"  
                                         rel='noopener noreferrer'                                    
-                                        href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">
-                                        metamask</a> extension - use chrome</p>
-                                    <p><b>Step 2 </b>- Add both <a 
+                                        href="https://metamask.io">
+                                        metamask</a> extension - an import your 12 words from trustwallet</p>
+                                    <p><b>Step 2 </b>- Add both  
+                                    <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
-                                       href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche">Avalanche</a> and <a 
+                                       href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche"> Avalanche</a> and <a 
                                        target="_blank"  
                                        rel='noopener noreferrer'
                                        href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</p>
-                                    <p><b>Step 3</b> - Add 🍄 SPORE to both chains in metamask</p>
-                                    
-                                    <p><i>Add token</i> -&gt; <i>Custom</i> -&gt; <i>paste</i></p>
-                                    <p className="limit">0x33a3d962955a3862c8093d1273344719f03ca17c (spore on BSC)</p>
-                                    <p className="limit">0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985 (spore on Avax)</p>
-                                    <p><b>Step 4 </b>- Send 🍄 SPORE from Trust Wallet to Metamask</p>
-                                    <p><b>Step 5</b> - Send tiny bit of BNB from Trust Wallet to Metamask</p>
-                                    
-                                    <p>Close your trust wallet 🎉 open your browser again</p>
-                                    <p><b>Step 6</b> - Goto 🍄 SPORE Bridge</p>
-                                    <p><b>Step 7</b> - Enable Metamask</p>
-                                    <p><b>Step 8 </b>- Click ‘Max’</p>
-                                    <p><b>Step 9 </b>- Click ‘Transfer’</p>
-                                    <p>😌 - Ahhhhh</p>
-                                    <p><b>Step 10</b> - Flip to Avalanche chain</p>
-                                    <p><b>Step 11</b> - Wait for spore to arrive (couple of minutes)</p>
-                                    <p><b>Step 12</b> - Confirm spore is growing in wallet</p>
+                                    <p><b>Step 3</b>- Add 🍄 SPORE to your metamask by clicking on the links:
+                                    <button onClick={addSporeBSC} className="btn " id="addBSC">add BSC Spore</button>
+                                    and  <button onClick={addSporeAvalanche} className="btn " id="addAvalanche">add Avalanche Spore</button> </p>
+                                    <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
+                                   
                                 </p>
                             </div>
                             </div>
