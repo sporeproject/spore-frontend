@@ -11,9 +11,12 @@ import { approveContract } from '../../utils/wallet';
 //import ReturnExternalURL from './ReturnExternalURL';
 import { MarketPlaceView } from "./MarketPlace";
 import { ethers } from "ethers";
+import axios from 'axios';
+
 const win = window as any
 const docu = document as any
 win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
+
 
 async function approve() {
   const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
@@ -32,21 +35,6 @@ async function approve() {
   await approveContract(SporeAddress, AVAX_SPORE_ABI, SporeNFTMarketaddress, amount)
 }
 
-async function claim() {
-  const SporeMarketv1 = new win.web3.eth.Contract(
-    SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_MAINNET
-  );
-  var account = await win.web3.eth.getAccounts();
-  account = account[0];
-  try {
-    await SporeMarketv1.methods
-      .claim()
-      .send({ from: account, gasPrice: 225000000000 });
-  } catch (error) {
-    alert(error);
-  }
-}
 
 async function NFTbuy() {
   const SporeMarketv1 = new win.web3.eth.Contract(
@@ -68,10 +56,11 @@ async function NFTbuy() {
 
 
 const NFT = (props: any) => {
-  const [bazaar, setBazaar] = useState(new Array<any>())
+  const [bazaar, setBazaar] = useState(new Array<any>());
+  const [buys, setBuys] =  useState(new Array<any>());
   //const [tokenCounter, setTokenCounter] = useState(new Array<any>());
   //const [totalCharacters, setTotalCharacters] = useState(72);
-  const [totalSupplyLeft, setTotalSupplyLeft] = useState(0);
+  //const [totalSupplyLeft, setTotalSupplyLeft] = useState(0);
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
   const [balance, setBalance] = useState(0);
   //const [marketPlaceBuilder, setMarketPlaceBuilder] = useState(new Array<any>());
@@ -81,9 +70,17 @@ const NFT = (props: any) => {
   console.log(web3Provider );
   const [isWeb3 , setisWeb3 ] = useState({});
 
+  
+
 
   useEffect(() => {
     async function startup() {
+//"https://api.covalenthq.com/v1/43114/events/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/?starting-block=1856944&ending-block=latest&key=ckey_f37f7c829733479193bca53f7a4" \
+
+//"https://api.covalenthq.com/v1/43114/events/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/?starting-block=1856944&ending-block=latest&key=ckey_f37f7c829733479193bca53f7a4" \
+
+      
+      
 
       const totalCharacters = 72
       
@@ -111,9 +108,30 @@ const NFT = (props: any) => {
         SPORE_MARKET_ABI,
         ContractAddesses.AVAX_MARKET_MAINNET
       );
+      
+      
+      getBuysData();
+      
+      // const transactions = await axios.get(
+      //   "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&key=ckey_a09c56c3188547958bd621253a4"
+      // );
+      // const abiDecoder = require('abi-decoder'); // NodeJS
+      // abiDecoder.addABI(SPORE_MARKET_ABI);
+
+      // transactions.data.data.items.map( async (item: any) => {
+      //   const transaction = await win.ava.eth.getTransaction(item.tx_hash);
+      //   const decodedData = abiDecoder.decodeMethod(transaction.input);
+      //   if (decodedData !== undefined && decodedData.name === "buy") {
+      //     console.log(transaction.value);
+      //     return (transaction.value);
+      //       }
+      //     })
+
+
+
 
       
-      const totalSupply = await SporeMarketv1.methods.totalSupply().call();
+      //const totalSupply = await SporeMarketv1.methods.totalSupply().call();
       //const tokenCounter = await SporeMarketv1.methods.tokenCounter;
 
       const promises = [];
@@ -124,7 +142,7 @@ const NFT = (props: any) => {
 
       Promise.all(promises).then((values) => {
         setBazaar(values)
-        setTotalSupplyLeft(totalCharacters - totalSupply)
+        //setTotalSupplyLeft(totalCharacters - totalSupply)
         //setTokenCounter(tokenCounter)        
       }).then(async () => {
 
@@ -132,8 +150,6 @@ const NFT = (props: any) => {
           const accounts = await win.ethereum.request({ method: "eth_accounts" });
           //We take the first address in the array of addresses and display it
           const account = accounts[0];
-          
-
           const balance = await SporeMarketv1.methods.balanceOf(account).call();
           const tokensOfOwnerTemp = await SporeMarketv1.methods
             .tokensOfOwner(account)
@@ -150,6 +166,30 @@ const NFT = (props: any) => {
     startup()
   }, [])
 
+  const getBuysData = async () => {
+    await axios.get(
+      "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&key=ckey_a09c56c3188547958bd621253a4"
+    ).then(async (res) => {
+      
+        const abiDecoder = require('abi-decoder'); // NodeJS
+        abiDecoder.addABI(SPORE_MARKET_ABI);
+        const transactions : any = [];
+        res.data.data.items.map( async (item: any) => {
+        const transaction = await win.ava.eth.getTransaction(item.tx_hash);
+        const decodedData = abiDecoder.decodeMethod(transaction.input);
+        if (decodedData !== undefined && decodedData.name === "buy") {
+          transactions.push(transaction.value);
+            }
+          })   
+        setBuys(transactions);
+        
+        
+        })
+        .catch(error => {
+          console.error(error)
+        })
+  }
+
 
   var image: any;
 
@@ -158,121 +198,46 @@ const NFT = (props: any) => {
   } else {
      image = <> You dont own any NFTs yet! </>;
   }
+  
+  
+  let sum: number = 0;
+  buys.forEach( a => sum += +a);
+ 
 
   return (
     <>
-      <div className='container information py-2'>
-        <div className='row pb-5 py-2'>
-          <div className='col-lg-12'>
-            <h2 className='feature pb-2 text-center'>
-              <span>NFT version 1</span> : Vision, Pricing & Fair Launch
+      <div className='container information '>
+            <h2 className='feature pb-4 py-5 text-center'>
+              Spore NFT Marketplace
             </h2>
-            <h3 className="text-center pb-2">Welcome to our first generation of NFTs</h3>
-            <div className="row">
-              <div className="col-lg-4 col-sm-12">
-                <div className="box-rounded">
-                  <h4>Objective</h4>
-                  <p>The stepping stone in our road to decentralized governance.
-                    Burn an additional 0.0578% of the totalsupply.
-                    Equivalent of 57t (0.057e15) SPORE.
-                  </p>
-                  <ul>
-                    <li>First 4 NFTs: 1b each </li> 
-                    <li>Next 8 NFTs:  2b each </li>  
-                    <li>Next 12 NFTs: 50b each </li> 
-                    <li>Next 24 NFTs: 100b each </li> 
-                    <li>Next 12 NFTs: 500b each </li> 
-                    <li>Next 8 NFTs: 1t each </li> 
-                    <li>Last 4 NFTs: 10t each </li> 
-                  </ul>
-                  <p className='pt-4'>
-                    This first generation of NFTs have a special meaning :
-                    they will be used for setting up a system of
-                    off-chain/on-chain governance over the next deployments
-                    using hashed signatures.</p>
 
-                </div>
-              </div>
-              <div className="col-lg-4 col-sm-12">
-                <div className="box-rounded">
-                  <h4>Fair Launch</h4>
-                  <p>After the public announcement, a timelock will be
-                    activated allowing 6 hours to start buying the NFTs. 
-                    A sniper lock will not allow the first person to claim the NFTs but will have 
-                    1 in 3 possibilities to unlock the contract, allowing the following people to
-                    claim the rest of the NFTs normally.
-                    Only 1 NFT allowed to claim per wallet!
-                    All SPORE used to mint the NFTs will go to the BURN address.</p>
-
-                  <p>
-                    <b className="important">There is no "DEV" fund.</b> The NFTs can be traded at
-                    our marketplace using AVAX for settlement or in other marketplaces inside the Avalanche Ecosystem</p>
-                  <p>A small SPORE
-                    tax will be burnt every time anyone buys an NFT from the
-                    Marketplace (10 million SPORE).</p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-sm-12">
-                <div className="box-rounded">
-                  <h4>Art Curation</h4>
-                  <p>100% of the pieces have been made by community contribution.</p>
-                  <p>Here an non exhaustive list about our artists (many thanks to them):</p>
-                  <ul>
-                    <li>Papipaz </li>
-                    <li>Gamatar</li>
-                    <li>Tchoco</li>
-                    <li>JC </li>
-                    <li>Brotoshi</li>
-                    <li>Mlolotte</li>
-                    <li>Freelancer</li>
-                    <li>NightlyCatGirl</li>
-                    <li>OrionDeimos</li>
-                    <li>Berserk</li>
-                  </ul>
-                </div>
-              </div>
+        <div className='row py-5'>
+            <div className='col-md-6 text-left'>
+                <dl className='lead ' >
+                  <h4>Last traded price:  {buys[0]/10**18} AVAX </h4>
+                </dl>
+                
+                
             </div>
+          
+            <div className='col-md-5 text-left larger'>
 
-          </div>
+            <dl className='lead ' >
+                  <h4>Total volume: {sum/10**18} AVAX </h4>
+                </dl>
+                
+            </div>
+           
         </div>
+        
+
       </div>
-      <section className="bg-white" id="claim">
-        <div className="container py-5">
-          <div className="row py-5">
-            <div className="col-md-12">
-              <div>
-                <h2 className="text-center">Claim your NFT and spread the Spore !</h2>
-                <p className="mb-1">
-                  <i>NFTs left to claim: {totalSupplyLeft}</i>
-                </p>
-                <div className="input-group mb-0">
-                  <input
-                    type="number"
-                    id="_approveFee"
-                    defaultValue="10000000000000"
-                    className="form-control"
-                  />
-                  <div className="input-group-append">
-                    <button onClick={approve} className="btn btn-primary">Approve</button>
-                  </div>
-                </div>
-                <p className="text-muted">
-                  <b>*WARNING: </b> Only approve the SPORE that you are willing to spend. Default: 10t SPORE.
-                </p>
-                <p className="text-center">
-                  <button onClick={claim} className="btn btn-secondary btn-lg px-5 py-2 text-uppercase">Claim your NFT</button>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className='bg-white-darker'>
+
+      
+    <section className='bg-white-darker'>
         <div className="container information py-5">
           <div className='row py-5'>
-            <div className='col-md-12 text-center'>
-              <h2 className="text-secondary-color">Marketplace</h2>
-            </div>
+
             <div className='col-md-12'>
             <div className="row">
                 <MarketPlaceView bazaar={bazaar}  />
@@ -291,7 +256,7 @@ const NFT = (props: any) => {
                 </div>
               </div>
               <p className="text-muted">
-                <b>*Note: </b>Default is 10 million SPORE.</p>
+                <b>*Note: </b>Default is 10 million SPORE, that will be burned whenever any NFT is bought.</p>
               <div className="input-group">
                 <input
                   type="text"

@@ -283,7 +283,7 @@ const Information = () => {
           </div>
         </div>
       </section>
-      <section className='bg-white min-vh-100 pb-5'>
+      <section className='bg-white min-vh-50 pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
@@ -293,8 +293,31 @@ const Information = () => {
           <div className='row'>
             <Contributors />
           </div>
+          <div className='row'>
+          <div className='col-md-5 text-left py-4'>
+            Complete list and legacy developers <a className="contribs" href= "https://github.com/sporeproject/spore-frontend/graphs/contributors">here</a>
+            </div>
+          
+          </div>
         </div>
       </section>
+
+      <section className='bg-white-darker pb-5'>
+        <div className='container information py-5'>
+          <div className='row py-4'>
+            <div className='col-md-12 text-center'>
+              <h2 className='feature'>Partnerships</h2>
+            </div>
+          </div>
+          <div className='row py-4'>
+            <div className='col-md-12 py-3 text-center'>
+            <a href= "https://pangolin.exchange/"><img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" /></a>
+            </div>
+          </div>
+          </div>
+      </section>
+
+
       <div className='container information py-5'>
         <div className='row py-5'>
           <div className='col-md-12 text-center'>
@@ -352,6 +375,24 @@ const Information = () => {
                   className='btn btn-primary mx-1 mb-2'
                 >
                   Renounced ownership tx
+                  </a>
+              </div>
+              <div className="row social-links">
+                <a
+                  href='https://cchain.explorer.avax.network/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/contracts'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2'
+                >
+                  NFT V1 Address
+                  </a>
+                <a
+                  href='https://cchain.explorer.avax.network/address/0x6Fe55D097FC9C1d08B64f4b1c94ac9453B1c9abB/contracts'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='btn btn-primary mx-1 mb-2'
+                >
+                  Multisig Wallet Contract
                   </a>
               </div>
             </div>
