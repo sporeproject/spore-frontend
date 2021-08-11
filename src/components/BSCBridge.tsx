@@ -94,6 +94,84 @@ const swapFromBSC = async () => {
     }
 }
 
+const addBSCRPC = async () => {
+    const chainId = "0x38";
+    const chaindName = "Smart Chain";
+    const nativeCurrency = {
+        name: "BNB",
+        symbol: "BNB",
+        decimals: 18
+    };
+    const rpcUrl = ["https://bsc-dataseed.binance.org/"]
+    const blockExplorerUrl = ["https://bscscan.com"]
+    const nid = win.web3.currentProvider.chainId;
+    if(nid !== "0x38"){
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await win.web3.currentProvider.sendAsync({
+            method: 'wallet_addEthereumChain',
+            params: [{
+                chainId: chainId,
+                chainName: chaindName,
+                nativeCurrency: nativeCurrency,
+                rpcUrls: rpcUrl,
+                blockExplorerUrls: blockExplorerUrl // A string url of the token logo
+                }]
+            });
+        
+            if (wasAdded === null) {
+            console.log('Thanks for your interest!');
+            } else {
+            console.log('Your loss!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    else{
+        console.log('You are on the BSC!');
+    }
+}
+
+const addAVAXRPC = async () => {
+    const chainId = "0xa86a";
+    const chaindName = "Avalanche Mainnet C-Chain";
+    const nativeCurrency = {
+        name: "AVAX",
+        symbol: "AVAX",
+        decimals: 18
+    };
+    const rpcUrl = ["https://api.avax.network/ext/bc/C/rpc"]
+    const blockExplorerUrl = ["https://cchain.explorer.avax.network/"]
+    const nid = win.web3.currentProvider.chainId;
+    if(nid !== "0xa86a"){
+        try {
+            // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+            const wasAdded = await win.web3.currentProvider.sendAsync({
+            method: 'wallet_addEthereumChain',
+            params: [{
+                chainId: chainId,
+                chainName: chaindName,
+                nativeCurrency: nativeCurrency,
+                rpcUrls: rpcUrl,
+                blockExplorerUrls: blockExplorerUrl // A string url of the token logo
+                }]
+            });
+        
+            if (wasAdded === null) {
+            console.log('Thanks for your interest!');
+            } else {
+            console.log('Your loss!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    else{
+        console.log('You are on the AVALANCHE!');
+    }
+}
+
 const addSporeBSC = async () => {
     const tokenAddress = "0x33a3d962955a3862c8093d1273344719f03ca17c";
     const tokenSymbol = "SPORE";
@@ -346,13 +424,8 @@ const BSCBridge = () => {
                                         href="https://metamask.io">
                                         metamask</a> extension - an import your 12 words from trustwallet</p>
                                     <p><b>Step 2 </b>- Add both  
-                                    <a 
-                                       target="_blank"  
-                                       rel='noopener noreferrer'
-                                       href="https://support.avalabs.org/en/articles/4626956-how-do-i-set-up-metamask-on-avalanche"> Avalanche</a> and <a 
-                                       target="_blank"  
-                                       rel='noopener noreferrer'
-                                       href="https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain">BSC</a> chains</p>
+                                    <button onClick={addAVAXRPC} className="btn" id="addAVAXRPC" > Avalanche</button> and 
+                                       <button onClick={addBSCRPC} className="btn" id="addBSCRPC" >BSC</button> chains</p>
                                     <p><b>Step 3</b>- Add 🍄 SPORE to your metamask by clicking on the links:
                                     <button onClick={addSporeBSC} className="btn " id="addBSC">add BSC Spore</button>
                                     and  <button onClick={addSporeAvalanche} className="btn " id="addAvalanche">add Avalanche Spore</button> </p>
