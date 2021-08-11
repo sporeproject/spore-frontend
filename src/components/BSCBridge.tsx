@@ -130,7 +130,7 @@ const addSporeBSC = async () => {
 }
 
 const addSporeAvalanche = async () => {
-    const tokenAddress = "0x33a3d962955a3862c8093d1273344719f03ca17c";
+    const tokenAddress = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985";
     const tokenSymbol = "SPORE";
     const tokenDecimals = 9;
     const tokenImage = "https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png";
@@ -160,7 +160,7 @@ const addSporeAvalanche = async () => {
             console.log(error);
         }
     } else {
-        console.log('You are not on the BSC!');
+        console.log('You are not on the AVALANCHE!');
     }
 }
 
