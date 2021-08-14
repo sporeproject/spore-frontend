@@ -2,7 +2,7 @@
 import './Header.css';
 
 import React from 'react';
-import Web3 from 'web3';
+
 import { Link } from 'react-router-dom';
 
 

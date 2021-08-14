@@ -1,4 +1,4 @@
-import { SPORE_FAIRY_ABI } from "./SporeAbis";
+
 
 export enum ContractAddesses {
     AVAX_SPORE_MAINNET = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985",
