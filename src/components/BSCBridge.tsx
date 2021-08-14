@@ -435,7 +435,7 @@ const BSCBridge = () => {
                                         target="_blank"  
                                         rel='noopener noreferrer'                                    
                                         href="https://metamask.io">
-                                        metamask</a> extension - an import your 12 words Recovery Phrase from trustwallet</p>
+                                        metamask</a> extension - and import your 12 words Recovery Phrase from trustwallet</p>
                                     <p><b>Step 2 </b>- Add custom RPC for
                                     <button onClick={addAVAXRPC} className="btn" id="addAVAXRPC" > Avalanche</button> and 
                                        <button onClick={addBSCRPC} className="btn" id="addBSCRPC" >BSC</button> (in one click!)</p>
