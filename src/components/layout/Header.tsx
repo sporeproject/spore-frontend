@@ -96,9 +96,14 @@ const Header = () => {
                       DexGuru (BSC)
                     </a>
                   </li>
+                  <li>
+                    <a href='https://poocoin.app/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel='noopener noreferrer'>
+                      PooCoin (BSC)
+                    </a>
+                  </li>
                 </ul>
               </li>
-                  
+                              
                 <li className="dropdown nav-item">
                 <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Docs<span className="caret"></span>
                 </a>
