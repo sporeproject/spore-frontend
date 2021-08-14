@@ -57,7 +57,7 @@ export const MarketPlaceView = (props: Props) => {
                         {/* <img className="rounded shadow" src={item[2].image} height="200" /> */}
                         <div className="col-md-3 text-center"><img className="rounded shadow" src={findimage(item.itemId)} alt="reload your page" height="200" /></div>
                         <p>ID: {item.itemId}</p>
-                        <p>Price: {item.price} AVAX</p>
+                        <p>Price: {item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</p>
 
                     </div>
                 ))) : (
