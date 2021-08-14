@@ -48,7 +48,7 @@ const Tokenomics = () => {
         await getTokenHolders()
         await getTokenHoldersBSC()
  
-      }, 60000)
+      }, 6000000)
     }
     getInfos()
 
@@ -152,7 +152,7 @@ const getBscTotalSupply = async () => {
   const getTokenHoldersBSC = async () => {
     try {
       const res = await axios.get(
-        'https://api.covalenthq.com/v1/56/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c/token_holders/?page-size=99999'
+        'https://api.covalenthq.com/v1/56/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c/token_holders/?page-size=999999&key=ckey_a09c56c3188547958bd621253a4'
       )
 
       if (
@@ -162,6 +162,8 @@ const getBscTotalSupply = async () => {
       ) {
         const items = res.data.data.items;
         setTotalTokenHoldersBSC(items.length)
+        console.log('test')
+        console.log(res.data.data.items.length)
       }
       else {
         console.log('test')

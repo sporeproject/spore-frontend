@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const PriceToken = () => {
   const [usd, setUsd] = useState({ price: 0, zeros: 0})
+  const [marketCap, setMarketCap] = useState(0)
   const [avax, setAvax] = useState({ price: '0', zeros: 0})
   const [bnb, setBnb] = useState({ price: '0', zeros: 0})
   const [currency, setCurrency] = useState('usd')
@@ -10,6 +11,7 @@ const PriceToken = () => {
   useEffect(() => {
     async function getInfos() {
       await getPriceToken() 
+      await getMarketCap()
       setInterval(async () => {
         await getPriceToken()
       }, 300000)
@@ -36,7 +38,7 @@ const PriceToken = () => {
 
 
   const getPriceToken = async () => {
-    await axios.get('https://api.coingecko.com/api/v3/coins/spore-finance-2/market_chart?vs_currency=usd&days=1')
+    await axios.get('https://api.coingecko.com/api/v3/coins/spore/market_chart?vs_currency=usd&days=1')
     .then(res => {
       const {data = null} = res
       if (data) {
@@ -47,7 +49,7 @@ const PriceToken = () => {
     }).catch(error => {
       console.error(error)
     })
-    await axios.get('https://api.coingecko.com/api/v3/coins/spore-finance-2?localization=false&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false')
+    await axios.get('https://api.coingecko.com/api/v3/coins/spore?localization=false&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false')
     .then(res2 => {
       const {data = null} = res2
       if (data) {
@@ -69,36 +71,69 @@ const PriceToken = () => {
     })
   }
 
+  const getMarketCap = async () => {
+    await axios.get('https://api.coingecko.com/api/v3/coins/spore/market_chart?vs_currency=usd&days=1&interval=daily')
+    .then(res => {
+      const {data = null} = res
+      if (data) {
+        const currentMarketCap = data.market_caps[data.market_caps.length -1][data.market_caps[data.market_caps.length -1].length -1].toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        setMarketCap(currentMarketCap)
+      }
+    }).catch(error => {
+      console.error(error)
+    })
+
+
+  }
+
+
   return (
     <>
-      <span className='price'>
-        <button
-          className='btn btn-primary mx-1 mb-2 larger'
-          aria-label='Toggle currency'
-          onClick={toggleCurrency}
-          >
-          <svg height='18px' viewBox='0 0 8 8' className='icon'>
-            <path fill='white' d="M6 0v1h-5c-.554 0-1 .446-1 1v1h1v-1h5v1l2-1.5-2-1.5zm-4 4l-2 1.5 2 1.5v-1h5c.542 0 1-.458 1-1v-1h-1v1h-5v-1z" id="loop"></path>
-          </svg>
-        </button>
-      </span>
-        <span className="price">
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 larger' 
-            href={currency === 'avax' 
-            ? "https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985" 
-            : "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c"}>
-              {currency === 'bnb' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="binance-logo.png" alt="Binance"></img>)}
-              {currency === 'avax' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="avalanche-logo.png" alt="Avalanche Network"></img>)}
-            {currency === 'usd' ? `💲`+usd.price : currency === 'avax' ? avax.price : bnb.price}
-          </a>
-        </span>
-      <span className="price larger">        
-          That's {
-            currency === 'usd' ? usd.zeros : currency === 'avax' ? avax.zeros : bnb.zeros} zeros! 🚀
-      </span>      
+
+                  <div className='col-md-6 text-left'>
+                   
+                      <dl className='lead ' >
+                        <h4><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h4>
+                      </dl>
+                      
+                      <div className='lead larger burnbox'>
+                                <span className='price'>
+                                <button
+                                  className='btn btn-primary mx-1 mb-2 larger'
+                                  aria-label='Toggle currency'
+                                  onClick={toggleCurrency}
+                                  >
+                                  <svg height='18px' viewBox='0 0 8 8' className='icon'>
+                                    <path fill='white' d="M6 0v1h-5c-.554 0-1 .446-1 1v1h1v-1h5v1l2-1.5-2-1.5zm-4 4l-2 1.5 2 1.5v-1h5c.542 0 1-.458 1-1v-1h-1v1h-5v-1z" id="loop"></path>
+                                  </svg>
+                                </button>
+                              </span>
+                                <span className="price">
+                                  <a
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    className='btn btn-primary mx-1 mb-2 larger' 
+                                    href={currency === 'avax' 
+                                    ? "https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985" 
+                                    : "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c"}>
+                                      {currency === 'bnb' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="binance-logo.png" alt="Binance"></img>)}
+                                      {currency === 'avax' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="avalanche-logo.png" alt="Avalanche Network"></img>)}
+                                    {currency === 'usd' ? `💲`+usd.price : currency === 'avax' ? avax.price : bnb.price}
+                                  </a>
+                                </span>
+                              <span className="price larger">        
+                                  That's {
+                                    currency === 'usd' ? usd.zeros : currency === 'avax' ? avax.zeros : bnb.zeros} zeros! 🚀
+                              </span>  
+                        </div>
+
+                        <dl className='lead larger mt-3' >
+                        <h4> Market Cap:  {marketCap}$ </h4>
+                      </dl>
+
+                  </div>
+                
+          
     </>
   );
 }

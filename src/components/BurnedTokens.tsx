@@ -39,8 +39,10 @@ const BurnedTokens = ({
         Avalanche holders: <br></br><b>{numberWithCommas(totalTokenHolders)}</b>
       </div>
       <div className="alert alert-dark" role="alert">
-        BSC holders:<br></br> <b>{numberWithCommas(totalTokenHoldersBSC)} <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">BSCscan</a></b>
+        BSC holders:<br></br> <b>{numberWithCommas(totalTokenHoldersBSC)}</b> source:<b> <a className="bscLink" href="https://www.covalenthq.com/docs/api/#get-/v1/{chain_id}/tokens/{contract_address}/nft_metadata/{token_id}/">Covalenth API</a> </b><br></br>
+        <b>  {numberWithCommas(131185)} </b> source: <b> <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">BSCscan</a> </b>
       </div>
+      
     </>
   );
 }  
