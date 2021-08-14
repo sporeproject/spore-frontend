@@ -409,9 +409,22 @@ const BSCBridge = () => {
                         </div>
                         <div className="container text-center">
                             <div className="  py-4">
-                                <h3>Disclaimer: this is a version alpha. Use at your own risk.<br></br> Please come to discord if you have an issue.</h3>
+                                <h3>Disclaimer: this is a version alpha. Use at your own risk. 
+                                </h3>
                             </div>
                         </div>
+
+                        <div className="container">
+                    <div className="offset-lg-3 col-lg-6 text-center py-4">
+
+                                <p className="text-left">                                    
+                                    <p><b>Note </b>: The Bridge may encounter occasional delays depending on network conditions.</p>
+                                    <p>If you encounter any problems come to our <a href="t.me/sporefinanceofficial">Telegram</a> and we will answer your questions</p>
+                                    <p>Always check the domain to be spore.earth, be aware of impersonators/scams!</p>
+                                   
+                                </p>
+                            </div>
+                            </div>
                     
                     <div className="container">
                     <div className="offset-lg-3 col-lg-6 text-center py-4">
@@ -422,13 +435,15 @@ const BSCBridge = () => {
                                         target="_blank"  
                                         rel='noopener noreferrer'                                    
                                         href="https://metamask.io">
-                                        metamask</a> extension - an import your 12 words from trustwallet</p>
-                                    <p><b>Step 2 </b>- Add both  
+                                        metamask</a> extension - an import your 12 words Recovery Phrase from trustwallet</p>
+                                    <p><b>Step 2 </b>- Add custom RPC for
                                     <button onClick={addAVAXRPC} className="btn" id="addAVAXRPC" > Avalanche</button> and 
-                                       <button onClick={addBSCRPC} className="btn" id="addBSCRPC" >BSC</button> chains</p>
-                                    <p><b>Step 3</b>- Add 🍄 SPORE to your metamask by clicking on the links:
-                                    <button onClick={addSporeBSC} className="btn " id="addBSC">add BSC Spore</button>
-                                    and  <button onClick={addSporeAvalanche} className="btn " id="addAvalanche">add Avalanche Spore</button> </p>
+                                       <button onClick={addBSCRPC} className="btn" id="addBSCRPC" >BSC</button> (in one click!)</p>
+                                    <p><b>Step 3</b>- Add 🍄 SPORE token address: <br></br>
+                                    <button onClick={addSporeBSC} className="btn " id="addBSC">+ add BSC 🍄 Spore</button>
+                                    <br></br> <button onClick={addSporeAvalanche} className="btn " id="addAvalanche"> + add Avalanche 🍄 Spore</button>
+                                     </p>
+                                    
                                     <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
                                    
                                 </p>
