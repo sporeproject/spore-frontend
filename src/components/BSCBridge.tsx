@@ -436,12 +436,12 @@ const BSCBridge = () => {
                                         rel='noopener noreferrer'                                    
                                         href="https://metamask.io">
                                         metamask</a> extension - and import your 12 words Recovery Phrase from trustwallet</p>
-                                    <p><b>Step 2 </b>- Add custom RPC for
-                                    <button onClick={addAVAXRPC} className="btn" id="addAVAXRPC" > Avalanche</button> and 
-                                       <button onClick={addBSCRPC} className="btn" id="addBSCRPC" >BSC</button> (in one click!)</p>
-                                    <p><b>Step 3</b>- Add 🍄 SPORE token address: <br></br>
-                                    <button onClick={addSporeBSC} className="btn " id="addBSC">+ add BSC 🍄 Spore</button>
-                                    <br></br> <button onClick={addSporeAvalanche} className="btn " id="addAvalanche"> + add Avalanche 🍄 Spore</button>
+                                    <p><b>Step 2 </b>- Add custom RPC for {' '}
+                                    <button onClick={addAVAXRPC} className="btn btn-primary" id="addAVAXRPC" > Avalanche</button> and  {' '} 
+                                       <button onClick={addBSCRPC} className="btn btn-primary" id="addBSCRPC" > BSC</button> (in one click!)</p>
+                                    <p><b>Step 3</b>- Add 🍄 SPORE token address: <br></br> <br></br> 
+                                    <button onClick={addSporeBSC} className="btn btn-primary" id="addBSC">+ add BSC 🍄 Spore</button>
+                                    <br></br> <br></br> <button onClick={addSporeAvalanche} className="btn btn-primary " id="addAvalanche"> + add Avalanche 🍄 Spore</button>
                                      </p>
                                     
                                     <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
