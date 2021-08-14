@@ -81,6 +81,12 @@ const Header = () => {
                   Charts <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu dropdown-menu--chart">
+                <li>
+                    <a href='https://metamorphosis.chartex.pro/?symbol=AVAX_PANGOLIN%3ASPORE.0x0a63179a8838b5729E79D239940d7e29e40A0116&interval=240&theme=dark' target='_blank' rel='noopener noreferrer'>
+                      Chartex Pro (AVAX)
+                    </a>
+                  </li>
+                
                   <li>
                     <a href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel='noopener noreferrer'>
                       Pangolin (AVAX)
