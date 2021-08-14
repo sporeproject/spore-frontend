@@ -5,166 +5,7 @@ import React from 'react';
 import Web3 from 'web3';
 import { Link } from 'react-router-dom';
 
-const win = window as any
-const connectMetaMask = () => {
-  if (win.ethereum) {
-    win.web3 = new Web3(win.ethereum);
-    win.ethereum.enable();
-  }
-}
 
-const claimAirdrop = async (e: any) => {
-  e.preventDefault();
-  connectMetaMask();
-  const ABI = [
-    {
-      type: 'constructor',
-      stateMutability: 'nonpayable',
-      inputs: [
-        { type: 'address', name: 'contrak', internalType: 'contract IERC20' }
-      ]
-    },
-    {
-      type: 'event',
-      name: 'Deposit',
-      inputs: [
-        {
-          type: 'address',
-          name: 'user',
-          internalType: 'address',
-          indexed: true
-        },
-        {
-          type: 'uint256',
-          name: 'pid',
-          internalType: 'uint256',
-          indexed: false
-        },
-        {
-          type: 'uint256',
-          name: 'amount',
-          internalType: 'uint256',
-          indexed: false
-        }
-      ],
-      anonymous: false
-    },
-    {
-      type: 'event',
-      name: 'OwnershipTransferred',
-      inputs: [
-        {
-          type: 'address',
-          name: 'previousOwner',
-          internalType: 'address',
-          indexed: true
-        },
-        {
-          type: 'address',
-          name: 'newOwner',
-          internalType: 'address',
-          indexed: true
-        }
-      ],
-      anonymous: false
-    },
-    {
-      type: 'event',
-      name: 'Withdraw',
-      inputs: [
-        {
-          type: 'address',
-          name: 'user',
-          internalType: 'address',
-          indexed: true
-        },
-        {
-          type: 'uint256',
-          name: 'pid',
-          internalType: 'uint256',
-          indexed: false
-        },
-        {
-          type: 'uint256',
-          name: 'amount',
-          internalType: 'uint256',
-          indexed: false
-        }
-      ],
-      anonymous: false
-    },
-    {
-      type: 'function',
-      stateMutability: 'view',
-      outputs: [{ type: 'uint256', name: '', internalType: 'uint256' }],
-      name: 'balance',
-      inputs: []
-    },
-    {
-      type: 'function',
-      stateMutability: 'view',
-      outputs: [{ type: 'address', name: '', internalType: 'contract IERC20' }],
-      name: 'contractaddress',
-      inputs: []
-    },
-    {
-      type: 'function',
-      stateMutability: 'nonpayable',
-      outputs: [],
-      name: 'deposit',
-      inputs: [{ type: 'uint256', name: '_amount', internalType: 'uint256' }]
-    },
-    {
-      type: 'function',
-      stateMutability: 'nonpayable',
-      outputs: [],
-      name: 'get',
-      inputs: []
-    },
-    {
-      type: 'function',
-      stateMutability: 'view',
-      outputs: [{ type: 'address', name: '', internalType: 'address' }],
-      name: 'owner',
-      inputs: []
-    },
-    {
-      type: 'function',
-      stateMutability: 'nonpayable',
-      outputs: [],
-      name: 'renounceOwnership',
-      inputs: []
-    },
-    {
-      type: 'function',
-      stateMutability: 'nonpayable',
-      outputs: [],
-      name: 'transferOwnership',
-      inputs: [{ type: 'address', name: 'newOwner', internalType: 'address' }]
-    },
-    {
-      type: 'function',
-      stateMutability: 'nonpayable',
-      outputs: [],
-      name: 'update',
-      inputs: [{ type: 'uint256', name: '_amount', internalType: 'uint256' }]
-    }
-  ];
-  const fairyContract = new win.web3.eth.Contract(
-    ABI,
-    '0xeAdf7D005596dbad55e067C1208080f83258D452'
-  );
-  var account = await win.web3.eth.getAccounts();
-  account = account[0];
-  console.log(account);
-  try {
-    await fairyContract.methods
-      .get()
-      .send({ from: account, gasPrice: 225000000000, gas: 200000 });
-  } catch (error) {
-    alert(error);
-  }
-}
 
 const Header = () => {
   return (
@@ -276,12 +117,12 @@ const Header = () => {
               </li>
 
               <li className='nav-item'>
-                <button
+                <a
                   className='btn btn-outline-light'
-                  onClick={claimAirdrop}
+                  href='/airdrop'
                 >
                   Claim Airdrop
-                </button>
+                </a>
               </li>
             </ul>
           </div>
