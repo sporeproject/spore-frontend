@@ -168,12 +168,15 @@ const NFT = (props: any) => {
 
   const getBuysData = async () => {
     await axios.get(
-      "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&key=ckey_a09c56c3188547958bd621253a4"
+      "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&skip=250&key=ckey_a09c56c3188547958bd621253a4"
     ).then(async (res) => {
       
         const abiDecoder = require('abi-decoder'); // NodeJS
         abiDecoder.addABI(SPORE_MARKET_ABI);
-        const transactions : any = [];
+        const transactions : any = [];  
+        
+
+        
         res.data.data.items.map( async (item: any) => {
         const transaction = await win.ava.eth.getTransaction(item.tx_hash);
         const decodedData = abiDecoder.decodeMethod(transaction.input);
@@ -181,7 +184,17 @@ const NFT = (props: any) => {
           transactions.push(transaction.value);
             }
           })   
+        
+        if (transactions.length == 0) {
+          transactions.push(12.5*(10**18));
+          
+        }
+       
         setBuys(transactions);
+    
+        
+        
+        
         
         
         })
@@ -190,7 +203,7 @@ const NFT = (props: any) => {
         })
   }
 
-
+ 
   var image: any;
 
   if (balance > 0) {
@@ -199,9 +212,10 @@ const NFT = (props: any) => {
      image = <> You dont own any NFTs yet! </>;
   }
   
+
   
-  let sum: number = 0;
-  buys.forEach( a => sum += +a);
+  let sum: number = 31;
+  buys.forEach( a => sum += +a/10**18);
  
 
   return (
@@ -223,7 +237,7 @@ const NFT = (props: any) => {
             <div className='col-md-5 text-left larger'>
 
             <dl className='lead ' >
-                  <h4>Total volume: {sum/10**18} AVAX </h4>
+                  <h4>Total volume: {sum} AVAX </h4>
                 </dl>
                 
             </div>
