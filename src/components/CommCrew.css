@@ -1,0 +1,129 @@
+#bridge .rowBridge {
+    position: relative;
+}
+#bridge .arrow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 99;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+#bridge .arrow .btn {
+    border: 0;
+    padding: 15px 20px;
+    transition: all 0.5s ease-in-out;
+}
+#bridge .arrow .btn.reverted {
+    transform: rotate(-180deg);
+}
+
+#bridge .arrow .btn:hover,
+#bridge .arrow .btn:active,
+#bridge .arrow .btn:focus {
+    border: 0;
+    background-color: transparent;
+}
+
+#bridge .arrow .fa {
+    color: #4B5626;
+    font-size: 46px;
+}
+
+#bridge .card-title span {
+    color: rgba(0,0,0,.50);
+    padding-right: 15px;
+}
+
+#bridge .dropdown-menu a {
+    color: #212121;
+    text-decoration: none;
+}
+
+#bridge .dropdown .btn {
+    width: 100%;
+    text-align: left;
+    background-color: #f1f3f6;
+}
+
+#bridge .dropdown-toggle:after {
+    float: right;
+    position: relative;
+    top: 7px;
+}
+
+#bridge .dropdown-menu {
+    padding: 5px;
+    width: 100%;
+}
+
+#bridge .dropdown-menu li {
+    padding: 3px 5px;
+}
+
+#bridge .dropdown-menu li button {
+    font-size: 22px;
+    border: 0;
+    background-color: #fff;
+}
+
+#bridge .dropdown-menu  img {
+    height: 32px;
+    margin-right: 10px;
+}
+
+#bridge .final-spores {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#bridge .avalanche{
+    background-color: #e84142;
+}
+
+#bridge .binance{
+    background-color: #f3ba2f;
+}
+
+#bridge .white{
+    background-color: white;
+}
+
+#bridge #swap-btn {
+    font-size: 28px;
+    
+}
+
+#bridge #approve-btn {
+    font-size: 14px;
+    
+}
+
+@media screen and (max-width: 640px) {
+    #bridge .arrow {
+        right: 0px;
+        left: auto;
+        transform: translateY(-50%) translateX(-50%) rotate(90deg);
+        top: calc(50% + 5px);
+    }
+    
+    #bridge .arrow .fa {
+        font-size: 32px;
+        position: relative;
+        top: 1px;
+    }
+
+    #bridge .arrow .btn {
+        padding: 11px 13px;
+    }
+
+}
+.limit{
+    width: 300px;
+    word-wrap: break-word;
+    padding: 8px 0 0 0;
+    position:relative;
+}

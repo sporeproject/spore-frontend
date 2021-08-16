@@ -9,7 +9,9 @@ import NFT from './components/NFT/NFT';
 import NFTGallery from './components/NFT/NFTGallery';
 import ComingSoon from './components/ComingSoon';
 import Vote from './components/Vote';
+import CommCrew from './components/CommCrew';
 import SporeFairy from './components/SporeFairy';
+
 
 const Router = () => {
   return (
@@ -32,6 +34,8 @@ const Router = () => {
         <Route exact path='/coming-soon' render={() => < ComingSoon/>} />
         <Route exact path='/vote' render={() => < Vote/>} />
         <Route exact path='/airdrop' render={() => < SporeFairy/>} />
+        <Route exact path='/metamask' render={() => < CommCrew/>} />
+
       </Switch>
       <Footer />
     </ReactRouter>
