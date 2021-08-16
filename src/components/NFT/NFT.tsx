@@ -18,6 +18,8 @@ const docu = document as any
 win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
 
 
+
+
 async function approve() {
   const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
   const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_MAINNET;
@@ -83,6 +85,11 @@ const NFT = (props: any) => {
       
 
       const totalCharacters = 72
+
+      const SporeMarketv1 = new win.ava.eth.Contract(
+        SPORE_MARKET_ABI,
+        ContractAddesses.AVAX_MARKET_MAINNET
+      );
       
       let web3 = win.web3;
       if (win.ethereum) {
@@ -104,13 +111,19 @@ const NFT = (props: any) => {
         setisWeb3(true);
       }
 
-      const SporeMarketv1 = new win.ava.eth.Contract(
-        SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_MAINNET
-      );
-      
       
       getBuysData();
+
+
+    const nid= win.web3.currentProvider.chainId
+    if (nid === "0xa86a") {
+
+      setisnetworkID(true);
+    } else {
+      setisnetworkID(false);
+    }
+
+
       
       // const transactions = await axios.get(
       //   "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&key=ckey_a09c56c3188547958bd621253a4"
@@ -146,7 +159,6 @@ const NFT = (props: any) => {
         //setTokenCounter(tokenCounter)        
       }).then(async () => {
 
-        if (win.web3.currentProvider.chainId === "0xa86a") {
           const accounts = await win.ethereum.request({ method: "eth_accounts" });
           //We take the first address in the array of addresses and display it
           const account = accounts[0];
@@ -156,11 +168,10 @@ const NFT = (props: any) => {
             .call();
           setBalance(balance);
           setTokensOfOwner(tokensOfOwnerTemp);
-          setisnetworkID(true);
-        } else {
-          setisnetworkID(false);
-          console.log(typeof web3);
-        };
+
+          
+
+         ;
       });
     }
     startup()
