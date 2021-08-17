@@ -196,7 +196,7 @@ const NFT = (props: any) => {
             }
           })   
         
-        if (transactions.length == 0) {
+        if (transactions.length === 0) {
           transactions.push(12.5*(10**18));
           
         }
