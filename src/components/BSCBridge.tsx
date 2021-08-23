@@ -96,7 +96,7 @@ const swapFromBSC = async () => {
 
 const addBSCRPC = async () => {
     const chainId = "0x38";
-    const chaindName = "Binance Smart Chain";
+    const chaindName = "BSC";
     const nativeCurrency = {
         name: "BNB",
         symbol: "BNB",
@@ -135,7 +135,7 @@ const addBSCRPC = async () => {
 
 const addAVAXRPC = async () => {
     const chainId = "0xa86a";
-    const chaindName = "Avalanche Network";
+    const chaindName = "Avalanche";
     const nativeCurrency = {
         name: "AVAX",
         symbol: "AVAX",
