@@ -96,7 +96,7 @@ const swapFromBSC = async () => {
 
 const addBSCRPC = async () => {
     const chainId = "0x38";
-    const chaindName = "Smart Chain";
+    const chaindName = "Binance Smart Chain";
     const nativeCurrency = {
         name: "BNB",
         symbol: "BNB",
@@ -135,7 +135,7 @@ const addBSCRPC = async () => {
 
 const addAVAXRPC = async () => {
     const chainId = "0xa86a";
-    const chaindName = "Avalanche Mainnet C-Chain";
+    const chaindName = "Avalanche Network";
     const nativeCurrency = {
         name: "AVAX",
         symbol: "AVAX",
@@ -407,12 +407,6 @@ const BSCBridge = () => {
                             </div>
                         </div>
                         </div>
-                        <div className="container text-center">
-                            <div className="  py-4">
-                                <h3>Disclaimer: this is a version alpha. Use at your own risk. 
-                                </h3>
-                            </div>
-                        </div>
 
                         <div className="container">
                     <div className="offset-lg-3 col-lg-6 text-center py-4">
@@ -420,7 +414,7 @@ const BSCBridge = () => {
                                 <p className="text-left">                                    
                                     <p><b>Note </b>: The Bridge may encounter occasional delays depending on network conditions.</p>
                                     <p>If you encounter any problems come to our <a href="t.me/sporefinanceofficial">Telegram</a> and we will answer your questions</p>
-                                    <p>Always check the domain to be spore.earth, be aware of impersonators/scams!</p>
+                                
                                    
                                 </p>
                             </div>
@@ -436,12 +430,13 @@ const BSCBridge = () => {
                                         rel='noopener noreferrer'                                    
                                         href="https://metamask.io">
                                         MetaMask </a> 🦊 extension - and import your 12 words Recovery Phrase from trustwallet</p>
-                                    <p><b>Step 2 </b>- Add custom RPC for {' '}
-                                    <button onClick={addAVAXRPC} className="btn btn-primary" id="addAVAXRPC" > Avalanche 🔺</button> and  {' '} 
-                                       <button onClick={addBSCRPC} className="btn btn-primary" id="addBSCRPC" > BSC 🔶 </button> (in one click!)</p>
-                                    <p><b>Step 3</b>- Add 🍄 SPORE token address: <br></br> <br></br> 
-                                    <button onClick={addSporeBSC} className="btn btn-primary" id="addBSC">+ add BSC 🔶 Spore 🍄</button>
-                                    <br></br> <br></br> <button onClick={addSporeAvalanche} className="btn btn-primary " id="addAvalanche"> + add Avalanche 🔺 Spore🍄</button>
+                                    <p><b>Step 2 </b>- Add {' '}
+                                    <button onClick={addAVAXRPC} className="btn btn-primary" id="addAVAXRPC" > Avalanche🔺 Network</button> and  {' '} <br></br><br></br>
+                                    <button onClick={addSporeAvalanche} className="btn btn-primary " id="addAvalanche"> add Avalanche 🔺 Spore🍄</button></p>
+                                    <p><b>Step 3</b>- Add {' '}
+                                    <button onClick={addBSCRPC} className="btn btn-primary" id="addBSCRPC" > BSC 🔶 Network </button>  and {' '} 
+                                    <button onClick={addSporeBSC} className="btn btn-primary" id="addBSC"> add BSC 🔶 Spore 🍄</button>
+                                    <br></br> <br></br> 
                                      </p>
                                     
                                     <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
