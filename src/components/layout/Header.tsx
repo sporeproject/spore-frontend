@@ -127,14 +127,14 @@ const Header = () => {
                 </ul>
               </li>
 
-              <li className='nav-item'>
+              {/*<li className='nav-item'>
                 <a
                   className='btn btn-outline-light'
                   href='/airdrop'
                 >
                   Claim Airdrop
                 </a>
-              </li>
+              </li>*/}
             </ul>
           </div>
         </div>
