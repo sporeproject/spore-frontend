@@ -413,7 +413,7 @@ const BSCBridge = () => {
 
                                 <p className="text-left">                                    
                                     <p><b>Note </b>: The Bridge may encounter occasional delays depending on network conditions.</p>
-                                    <p>If you encounter any problems come to our <a href="t.me/sporefinanceofficial">Telegram</a> and we will answer your questions</p>
+                                    <p>If you encounter issues, ask for help in our <a href="https://telegram.me/sporefinanceofficial">Telegram</a> group. </p>
                                 
                                    
                                 </p>
