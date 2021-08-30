@@ -83,13 +83,7 @@ const Header = () => {
                 <ul className="dropdown-menu dropdown-menu--chart">
                 <li>
                     <a href='https://metamorphosis.chartex.pro/?symbol=AVAX_PANGOLIN%3ASPORE.0x0a63179a8838b5729E79D239940d7e29e40A0116&interval=240&theme=dark' target='_blank' rel='noopener noreferrer'>
-                      Chartex (AVAX)
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href='https://info.pangolin.exchange/#/token/0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985' target='_blank' rel='noopener noreferrer'>
-                      Pangolin (AVAX)
+                      Chartex (Avalanche)
                     </a>
                   </li>
                   <li>
@@ -100,11 +94,6 @@ const Header = () => {
                   <li>
                     <a href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc' target='_blank' rel='noopener noreferrer'>
                       DexGuru (BSC)
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://poocoin.app/tokens/0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel='noopener noreferrer'>
-                      PooCoin (BSC)
                     </a>
                   </li>
                 </ul>
