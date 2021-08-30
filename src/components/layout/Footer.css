@@ -1,16 +1,11 @@
-
-
 .footer a.credit {
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
-  font-weight: bold;
-
 }
 .social-links.row {
   display: flex;
   justify-content: center;
 }
-
 .footer a.credit:hover {
   color:white;
 }
