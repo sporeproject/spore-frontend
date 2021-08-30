@@ -297,19 +297,31 @@ const Information = () => {
         </div>
       </section>
 
-      <section className='bg-white-darker pb-5'>
+      <section className='bg-white-darker pb-6'>
         <div className='container information py-5'>
-          <div className='row py-4'>
+          <div className='row py-6'>
             <div className='col-md-12 text-center'>
               <h2 className='feature'>Partnerships</h2>
             </div>
           </div>
-          <div className='row py-4'>
-            <div className='col-md-12 py-3 text-center'>
+
+          <div className='row py-5' >
+          
+            <div className='col-md-5 py-3 text-center'>
             <a href= "https://pangolin.exchange/"><img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" /></a>
             </div>
+          
+
+          
+            <div className='col-md-5  py-3 text-center '>
+            <a href= "https://avax.gaj.finance/vaults"><img src="/logos/Gaj-finance-logo.png" alt="Gaj Finance" height="75" /></a>
+            </div>
+          
+
           </div>
+
           </div>
+
       </section>
 
 
