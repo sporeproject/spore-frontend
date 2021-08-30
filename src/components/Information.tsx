@@ -314,7 +314,7 @@ const Information = () => {
 
           
             <div className='col-md-5  py-3 text-center '>
-            <a href="https://gaj.finance"><img src="/img/gaj.png" alt="Gaj Finance" height="100" /></a>
+            <a href="https://gaj.finance"><img src="/img/gaj.png" alt="Gaj Finance" height="75" /></a>
             </div>
           
 
