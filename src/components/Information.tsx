@@ -24,21 +24,13 @@ const Information = () => {
               What is <span>Spore</span>?
             </h1>
             <p className='lead'>
-              Spore™ is an NFT platform on the Avalanche blockchain and developer of the hyperdeflationary SPORE currency.  Our products include 
+              Spore™ is an NFT platform on the Avalanche blockchain and developer of the hyperdeflationary SPORE currency.
+	    </p>
+	    
+	    <p>Our products include 
 		    the first-ever mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special 
 		    events, a next-generation NFT prediction market (in development), and several yet-to-be announced services that will stand at the 
 		    intersection of blockspace and physical events and help transition the world to decentralized living.
-            </p>
-            <ul className='lead py-1'>
-              <li><b>Reflect tokens</b></li>
-              <li><b>Algorithmically generated NFTs</b></li>
-              <li><b>Next-gen NFT prediction market</b></li>
-            </ul>
-            <p className='lead'>
-              <b>Frictionless rewards will decrease infinitely as tokens continue to burn.</b>
-            </p>
-            <p className='lead'>
-            <b>All holders enjoy the ever-decreasing circulating supply.</b>
             </p>
           </div>
 
@@ -60,22 +52,24 @@ const Information = () => {
                   <div className='col-md-5 text-left larger'>
                       
                   
-                      <h3>Token burn and redistribution rates are as follows.</h3>
+                      <h3>Token burn and redistribution rates</h3>
                         <div className="lead larger"> <b>On every Avalanche  <img height="30px" width="30px"
                           src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</b> </div>
                           <ul>
                         <li>4.6% is burned</li>
                         <li>1.4% is redistributed to hodlers</li>
                         </ul>
-                        <div className="lead larger mt-3"> <b>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain"></img> transaction: </b></div> 
+                        <div className="lead larger mt-3"> <b>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain">
+				</img> transaction: </b></div> 
                         <ul>
                         <li>6% is burned</li>
                         </ul>
+                        </div>
 			  
-			Frictionless rewards (aka "reflections") will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
-                      
-                  </div>
-          </div>
+			<p className='lead'>
+              		Frictionless rewards will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
+            		</p>
+	      </div>
       </div>
 
       <section className='bg-white'>
