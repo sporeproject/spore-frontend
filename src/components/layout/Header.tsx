@@ -77,7 +77,7 @@ const Header = () => {
                   
               <li className="dropdown nav-item">
                 <a href="/#"
-                  className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
                   Charts <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu dropdown-menu--chart">
