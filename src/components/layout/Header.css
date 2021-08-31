@@ -78,7 +78,7 @@ margin-right: 7%;
 
 @media (min-width: 768px) {
   .dropdown-menu.dropdown-menu--buy-spore {
-    width: 262px;
+    width: 260px;
   }
   
   .dropdown-menu.dropdown-menu--chart {
@@ -86,6 +86,6 @@ margin-right: 7%;
   }
   
   .dropdown-menu.dropdown-menu--how-to-buy {
-    width: 204px;
+    width: 198px;
   }
 }
