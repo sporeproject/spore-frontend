@@ -12,11 +12,10 @@ const Header = () => {
     <header className='header'>
       <nav className='navbar navbar-expand-lg py-3'>
         <div className='container-fluid'>
-          <div className='pulse'>
           <a href='/' className='navbar-brand'>
             <img src='spore_128.png' className='logo' alt='Spore' />{' '}
             <h1 className='font-weight-bold d-inline'>Spore</h1>
-            </a></div>
+          </a>
           <button
             type='button'
             data-toggle='collapse'
