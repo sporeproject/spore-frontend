@@ -20,9 +20,9 @@ const Information = () => {
        
           <div className='col-md-7'>
             
-          <h2 className='feature pb-4 py-5'>
+          <h1 className='feature pb-4 py-5'>
               What is <span>Spore</span>?
-            </h2>
+            </h1>
             <p className='lead'>
               <b>Spore is an ecosystem that includes:</b>
             </p>
