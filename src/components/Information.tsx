@@ -294,15 +294,15 @@ const Information = () => {
             </div>
           </div>
 
-          <div className='row py-5' >
+          <div className='row py-5 partners' >
           
-            <div className='col-md-5 py-3 text-center'>
+            <div className='col-md-6 py-3 text-center'>
             <a href= "https://pangolin.exchange/"><img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" height="75" /></a>
             </div>
           
 
           
-            <div className='col-md-5  py-3 text-center '>
+            <div className='col-md-6 py-3 text-center '>
             <a href="https://gaj.finance"><img src="/img/gaj.png" alt="Gaj Finance" height="75" /></a>
             </div>
           
