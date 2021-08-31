@@ -24,7 +24,10 @@ const Information = () => {
               What is <span>Spore</span>?
             </h1>
             <p className='lead'>
-              <b>Spore is an ecosystem that includes:</b>
+              Spore™ is an NFT platform on the Avalanche blockchain and developer of the hyperdeflationary SPORE currency.  Our products include 
+		    the first-ever mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special 
+		    events, a next-generation NFT prediction market (in development), and several yet-to-be announced services that will stand at the 
+		    intersection of blockspace and physical events and help transition the world to decentralized living.
             </p>
             <ul className='lead py-1'>
               <li><b>Reflect tokens</b></li>
@@ -57,7 +60,7 @@ const Information = () => {
                   <div className='col-md-5 text-left larger'>
                       
                   
-                      <h4>Our burn and redistribution rates are:</h4>
+                      <h3>Token burn and redistribution rates are as follows.</h3>
                         <div className="lead larger"> <b>On every Avalanche  <img height="30px" width="30px"
                           src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</b> </div>
                           <ul>
@@ -68,21 +71,16 @@ const Information = () => {
                         <ul>
                         <li>6% is burned</li>
                         </ul>
+			  
+			Frictionless rewards (aka "reflections") will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
                       
                   </div>
-              
-            
           </div>
-        
-
       </div>
-
-      
 
       <section className='bg-white'>
       <Tokenomics />
       </section>
-
 
       <section className='bg-white-darker pb-5'>
         <div className='container information py-5'>
