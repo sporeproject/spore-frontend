@@ -28,7 +28,7 @@ const Information = () => {
 	    </p>
 	    
 	     <p className='lead'>Our products include 
-		    the first-ever mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special 
+		    the first mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special 
 		    events, a next-generation NFT prediction market (in development), and several yet-to-be announced services that will stand at the 
 		    intersection of blockspace and physical events and help transition the world to decentralized living.
             </p>
