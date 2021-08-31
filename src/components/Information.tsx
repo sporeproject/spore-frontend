@@ -24,10 +24,10 @@ const Information = () => {
               What is <span>Spore</span>?
             </h1>
             <p className='lead'>
-              Spore™ is an NFT platform on the Avalanche blockchain and developer of the hyperdeflationary SPORE currency.
+              Spore™ is an NFT platform on the Avalanche blockchain and the developer of the hyperdeflationary SPORE currency.
 	    </p>
 	    
-	    <p>Our products include 
+	     <p className='lead'>Our products include 
 		    the first-ever mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special 
 		    events, a next-generation NFT prediction market (in development), and several yet-to-be announced services that will stand at the 
 		    intersection of blockspace and physical events and help transition the world to decentralized living.
@@ -45,9 +45,6 @@ const Information = () => {
           <div className='row py-5'>
                   
                         <PriceToken></PriceToken>
-                      
-
-
                   
                   <div className='col-md-5 text-left larger'>
                       
@@ -65,11 +62,11 @@ const Information = () => {
                         <li>6% is burned</li>
                         </ul>
                         </div>
-			  
+	      </div>
+						  
 			<p className='lead'>
               		Frictionless rewards will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
             		</p>
-	      </div>
       </div>
 
       <section className='bg-white'>
