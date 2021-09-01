@@ -85,9 +85,11 @@ const Information = () => {
               <div className='circle font-weight-bold'>1</div>
             </div>
             <div className='col-6'>
-              <span className='roadmap-text'>Fair and stealth launch </span>
+              <span className='roadmap-text'>Fair and stealth launch </span><br/>
+	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
+              <span className='roadmap-text'>BSC token and bridge deployed </span>
               <p>
-                <i className='fa fa-check'></i> 18 March 2021
+                <i className='fa fa-check'></i> March 2021 
               </p>
             </div>
           </div>
@@ -105,9 +107,9 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <span className='roadmap-text'>Setting up Airdrops & Incentive program </span>
+              <span className='roadmap-text'>NFT Charter Collection released </span>
               <p>
-                <i className='fa fa-check'></i> 20 March 2021
+                <i className='fa fa-check'></i> May 2021
               </p>
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
@@ -132,9 +134,12 @@ const Information = () => {
               <div className='circle font-weight-bold'>3</div>
             </div>
             <div className='col-6'>
-              <span className='roadmap-text'>Second layer blockchain development + Bridge (Binance Smart Chain)</span>
+              <span className='roadmap-text'>Brand building</span><br/>
+		    <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br/>
+		    <span className='roadmap-text'>Built liquidity via exchange incentives</span><br/>
+		    <span className='roadmap-text'>Strategic partnerships</span>
               <p>
-                <i className='fa fa-check'></i> 6 April 2021
+                <i className='fa fa-check'></i> Summer 2021
               </p>
             </div>
           </div>
@@ -153,9 +158,11 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <span className='roadmap-text'>Farming Partnerships</span>
+              <span className='roadmap-text'>Special NFT events</span><br/>
+		    <span className='roadmap-text'>Legal entity registration</span><br/>
+		    <span className='roadmap-text'>New strategic partnerships</span>
               <p>
-                <i className='fa fa-check'></i> 12 April 2021
+                <i className='fa fa-check'></i> Fall 2021
               </p>
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
@@ -183,86 +190,15 @@ const Information = () => {
               <div className='circle font-weight-bold'>5</div>
             </div>
             <div className='col-6'>
-              <span className='roadmap-text'>Algorithmically generated NFTs </span>
+              <span className='roadmap-text'>NFT Prediction Market </span><br/>
+	      <span className='roadmap-text'>TBA products and services </span><br/>
+	      <span className='roadmap-text'>CEX listing </span><br/>
+	      <span className='roadmap-text'>Fiat onramp </span><br/>
+	      <span className='roadmap-text'>Governance </span>
+          
               <p>
-                <i className='fa fa-check'></i> NFT v1: May 17 2021
+                <i className='fa fa-spinner'></i> <b>Future:</b> In Progress
               </p>
-              <p>
-                <i className='fa fa-spinner'></i> <b>NFT v2</b>: In Progress
-              </p>
-            </div>
-          </div>
-
-
-          <div className='row timeline'>
-            <div className='col-2'>
-              <div className='corner top-right'></div>
-            </div>
-            <div className='col-8'>
-              <hr />
-            </div>
-            <div className='col-2'>
-              <div className='corner left-bottom'></div>
-            </div>
-          </div>
-
-          <div className='row align-items-center justify-content-end how-it-works d-flex'>
-            <div className='col-6 text-right'>
-            <span className='roadmap-text'>Governance</span>
-              <p>
-                In Progress <i className='fa fa-spinner'></i>
-              </p>
-            </div>
-            <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>6</div>
-            </div>
-          </div>
-
-          <div className='row timeline'>
-            <div className='col-2'>
-              <div className='corner right-bottom'></div>
-            </div>
-            <div className='col-8'>
-              <hr />
-            </div>
-            <div className='col-2'>
-              <div className='corner top-left'></div>
-            </div>
-          </div>
-
-          <div className='row align-items-center how-it-works d-flex'>
-            <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>7</div>
-            </div>
-            <div className='col-6'>
-              <span className='roadmap-text'>Cross-chain compatibility</span>
-              <p>
-                Q3 2021 <i className='fa fa-spinner'></i>
-              </p>
-            </div>
-          </div>
-
-          <div className='row timeline'>
-            <div className='col-2'>
-              <div className='corner top-right'></div>
-            </div>
-            <div className='col-8'>
-              <hr />
-            </div>
-            <div className='col-2'>
-              <div className='corner left-bottom'></div>
-            </div>
-          </div>
-
-          <div className='row align-items-center justify-content-end how-it-works d-flex'>
-            <div className='col-6 text-right'>
-            <span className='roadmap-text'>NFTs Prediction Market</span>
-              <p>
-                Q4 2021 <i className='fa fa-spinner'></i>
-              </p>
-            </div>
-            <div className='col-2 text-center top-right d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>8</div>
             </div>
           </div>
         </div>
