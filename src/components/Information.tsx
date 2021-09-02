@@ -161,7 +161,7 @@ const Information = () => {
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
 		       <p>
-                <i className='fa fa-check'></i> Fall 2021
+                Fall 2021
               </p>
               <span className='roadmap-text'>Special NFT events</span><br/>
 		    <span className='roadmap-text'>Legal entity registration</span><br/>
