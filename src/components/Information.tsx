@@ -85,13 +85,13 @@ const Information = () => {
               <div className='circle font-weight-bold'>1</div>
             </div>
             <div className='col-6'>
+		 <p>
+                <i className='fa fa-check'></i> March 2021 
+              </p>
               <span className='roadmap-text'>Fair and stealth launch </span><br/>
 	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
               <span className='roadmap-text'>BSC token and bridge deployed </span>
-              <p>
-                <i className='fa fa-check'></i> March 2021 
-              </p>
-            </div>
+                </div>
           </div>
           <div className='row timeline'>
             <div className='col-2'>
@@ -107,10 +107,11 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
-              <span className='roadmap-text'>NFT Charter Collection released </span>
-              <p>
+		     <p>
                 <i className='fa fa-check'></i> May 2021
               </p>
+              <span className='roadmap-text'>NFT Charter Collection released </span>
+             
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>2</div>
@@ -134,13 +135,14 @@ const Information = () => {
               <div className='circle font-weight-bold'>3</div>
             </div>
             <div className='col-6'>
+		        <p>
+                <i className='fa fa-check'></i> Summer 2021
+              </p>
               <span className='roadmap-text'>Brand building</span><br/>
 		    <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br/>
 		    <span className='roadmap-text'>Built liquidity via exchange incentives</span><br/>
 		    <span className='roadmap-text'>Strategic partnerships</span>
-              <p>
-                <i className='fa fa-check'></i> Summer 2021
-              </p>
+          
             </div>
           </div>
 
@@ -158,12 +160,13 @@ const Information = () => {
 
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
+		       <p>
+                <i className='fa fa-check'></i> Fall 2021
+              </p>
               <span className='roadmap-text'>Special NFT events</span><br/>
 		    <span className='roadmap-text'>Legal entity registration</span><br/>
 		    <span className='roadmap-text'>New strategic partnerships</span>
-              <p>
-                <i className='fa fa-check'></i> Fall 2021
-              </p>
+           
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>4</div>
@@ -190,15 +193,16 @@ const Information = () => {
               <div className='circle font-weight-bold'>5</div>
             </div>
             <div className='col-6'>
+		        <p>
+                 <b>Future:</b> In Progress
+              </p>
               <span className='roadmap-text'>NFT Prediction Market </span><br/>
 	      <span className='roadmap-text'>TBA products and services </span><br/>
 	      <span className='roadmap-text'>CEX listing </span><br/>
 	      <span className='roadmap-text'>Fiat onramp </span><br/>
 	      <span className='roadmap-text'>Governance </span>
           
-              <p>
-                <i className='fa fa-spinner'></i> <b>Future:</b> In Progress
-              </p>
+          
             </div>
           </div>
         </div>
