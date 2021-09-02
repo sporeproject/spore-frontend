@@ -86,7 +86,7 @@ const Information = () => {
             </div>
             <div className='col-6'>
 		 <p>
-                <i className='fa fa-check'></i> March 2021 
+                March 2021 <i className='fa fa-check'></i> 
               </p>
               <span className='roadmap-text'>Fair and stealth launch </span><br/>
 	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
@@ -108,7 +108,7 @@ const Information = () => {
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
 		     <p>
-                <i className='fa fa-check'></i> May 2021
+                May 2021 <i className='fa fa-check'></i>
               </p>
               <span className='roadmap-text'>NFT Charter Collection released </span>
              
@@ -136,7 +136,7 @@ const Information = () => {
             </div>
             <div className='col-6'>
 		        <p>
-                <i className='fa fa-check'></i> Summer 2021
+                Summer 2021 <i className='fa fa-check'></i> 
               </p>
               <span className='roadmap-text'>Brand building</span><br/>
 		    <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br/>
@@ -194,7 +194,7 @@ const Information = () => {
             </div>
             <div className='col-6'>
 		        <p>
-                 <b>Future:</b> In Progress
+                 <b>Future:</b>
               </p>
               <span className='roadmap-text'>NFT Prediction Market </span><br/>
 	      <span className='roadmap-text'>TBA products and services </span><br/>
