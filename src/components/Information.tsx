@@ -86,7 +86,7 @@ const Information = () => {
             </div>
             <div className='col-6'>
 		 <p>
-                March 2021 <i className='fa fa-check'></i> 
+                April 2021 <i className='fa fa-check'></i> 
               </p>
               <span className='roadmap-text'>Fair and stealth launch </span><br/>
 	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
