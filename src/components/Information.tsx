@@ -194,7 +194,7 @@ const Information = () => {
             </div>
             <div className='col-6'>
 		        <p>
-                 <b>Future:</b>
+                 Future
               </p>
               <span className='roadmap-text'>NFT Prediction Market </span><br/>
 	      <span className='roadmap-text'>TBA products and services </span><br/>
