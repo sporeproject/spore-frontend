@@ -81,44 +81,18 @@ const Information = () => {
             </div>
           </div>
 
-          <div className='row align-items-center justify-content-end how-it-works d-flex'>
-            <div className='col-6 text-right'>
-		     <p>
-         March 2021 <i className='fa fa-check'></i>
-              </p>
-              <span className='roadmap-text'>Fair and stealth launch </span><br/>
-	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
-             
-            </div>
-            <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>1</div>
-            </div>
-          </div>
-
-
-
-          <div className='row timeline'>
-            <div className='col-2'>
-              <div className='corner right-bottom'></div>
-            </div>
-            <div className='col-8'>
-              <hr />
-            </div>
-            <div className='col-2'>
-              <div className='corner top-left'></div>
-            </div>
-          </div>
 
           <div className='row align-items-center how-it-works d-flex'>
             <div className='col-2 text-center bottom d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>2</div>
+              <div className='circle font-weight-bold'>1</div>
             </div>
             <div className='col-6'>
 		 <p>
-                April 2021 <i className='fa fa-check'></i> 
+                March 2021 <i className='fa fa-check'></i> 
               </p>
 
-              <span className='roadmap-text'>BSC token and bridge deployed </span>
+              <span className='roadmap-text'>Fair and stealth launch </span><br/>
+	      <span className='roadmap-text'>Airdrops and incentives </span><br/>
                 </div>
           </div>
 
@@ -136,19 +110,16 @@ const Information = () => {
           </div>
 
 
-
-
-
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
 		     <p>
-                May 2021 <i className='fa fa-check'></i>
+               April 2021  <i className='fa fa-check'></i>
               </p>
-              <span className='roadmap-text'>NFT Charter Collection released </span>
+              <span className='roadmap-text'>BSC token and bridge deployed </span>
              
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>3</div>
+              <div className='circle font-weight-bold'>2</div>
             </div>
           </div>
 
@@ -166,16 +137,13 @@ const Information = () => {
 
           <div className='row align-items-center how-it-works d-flex'>
             <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>4</div>
+              <div className='circle font-weight-bold'>3</div>
             </div>
             <div className='col-6'>
 		        <p>
-                Summer 2021 <i className='fa fa-check'></i> 
+            May 2021 <i className='fa fa-check'></i> 
               </p>
-              <span className='roadmap-text'>Brand building</span><br/>
-		    <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br/>
-		    <span className='roadmap-text'>Built liquidity via exchange incentives</span><br/>
-		    <span className='roadmap-text'>Strategic partnerships</span>
+              <span className='roadmap-text'>NFT Charter Collection released </span>
           
             </div>
           </div>
@@ -203,10 +171,9 @@ const Information = () => {
            
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>5</div>
+              <div className='circle font-weight-bold'>4</div>
             </div>
           </div>
-
 
 
           <div className='row timeline'>
@@ -224,23 +191,66 @@ const Information = () => {
 
           <div className='row align-items-center how-it-works d-flex'>
             <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>6</div>
+              <div className='circle font-weight-bold'>5</div>
             </div>
             <div className='col-6'>
 		        <p>
-                 Future
+            Summer 2021 
+              </p>
+              <span className='roadmap-text'>Brand building</span><br/>
+		    <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br/>
+		    <span className='roadmap-text'>Built liquidity via exchange incentives</span><br/>
+		    <span className='roadmap-text'>Strategic partnerships</span>
+          
+          
+            </div>
+          </div>
+
+
+          <div className='row timeline'>
+            <div className='col-2'>
+              <div className='corner top-right'></div>
+            </div>
+            <div className='col-8'>
+              <hr />
+            </div>
+            <div className='col-2'>
+              <div className='corner left-bottom'></div>
+            </div>
+          </div>
+
+
+
+        <div className='row align-items-center justify-content-end how-it-works d-flex'>
+            <div className='col-6 text-right'>
+		       <p>
+                Future
               </p>
               <span className='roadmap-text'>NFT Prediction Market </span><br/>
 	      <span className='roadmap-text'>TBA products and services </span><br/>
 	      <span className='roadmap-text'>CEX listing </span><br/>
 	      <span className='roadmap-text'>Fiat onramp </span><br/>
 	      <span className='roadmap-text'>Governance </span>
-          
-          
+           
+            </div>
+            <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
+              <div className='circle font-weight-bold'>6</div>
             </div>
           </div>
+
+
+
+
         </div>
+
+
+
+
+
       </section>
+
+
+
       <section className='bg-white min-vh-50 pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
