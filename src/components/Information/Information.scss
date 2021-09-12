@@ -69,45 +69,56 @@
   top: 0;
 }
 
-.timeline div {
-  padding: 0;
-  height: 40px;
-}
-.timeline hr {
-  border-top: 3px solid #4B5626;
-  margin: 0;
-  top: 17px;
-  position: relative;
-}
-.timeline .col-2 {
-  display: flex;
-  overflow: hidden;
-}
-.timeline .corner {
-  border: 3px solid #4B5626;
-  width: 100%;
-  position: relative;
-  border-radius: 15px;
-}
-.timeline .top-right {
-  left: 50%;
-  top: -50%;
-}
-.timeline .left-bottom {
-  left: -50%;
-  top: calc(50% - 3px);
-}
-.timeline .top-left {
-  left: -50%;
-  top: -50%;
-}
-.timeline .right-bottom {
-  left: 50%;
-  top: calc(50% - 3px);
+.timeline {
+  div {
+    padding: 0;
+    height: 40px;
+  } 
+
+  hr {
+    border-top: 3px solid #4B5626;
+    margin: 0;
+    top: 17px;
+    position: relative;
+  }
+
+  .col-2 {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .corner {
+    border: 3px solid #4B5626;
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+  }
+
+  .top-right {
+    left: 50%;
+    top: -50%;
+  }
+
+  .left-bottom {
+    left: -50%;
+    top: calc(50% - 3px);
+  }
+
+  .top-left {
+    left: -50%;
+    top: -50%;
+  }
+
+  .right-bottom {
+    left: 50%;
+    top: calc(50% - 3px);
+  }
 }
 
-.card .card-body {
-  color: #212121;
+.card {
+  .card-body {
+    color: #212121;
+  }
 }
 
 .center {
@@ -163,62 +174,15 @@ ul.lead {
   margin-top: 0;
 }
 
-.jumbotron {
-  position: relative;
-  overflow: hidden;
-  width:100%;
-  height: calc(100vh - var(--header));
-}
-
-
-
-.jumbotron::after {
-  content: "";
-  width:100%;
-  height:100%;
-  position: absolute;
-  top:0;
-  z-index: -1;
-  background: rgba(8, 12, 15, 0.432);
-  background: linear-gradient(0deg, #9c7456 7%, #9c7456c9 0%, #00000000 100%);
-
-}
-.jumbotron::before {
-  content: "";
-  width:100%;
-  height:100%;
-  position: absolute;
-  background-image: url(/src/assets/jumbotron-coin.png);
-  z-index: -1;
-  background-size: cover;
-  background-position-y: -60px;
-
-}
-
-.jumbotron{
-  background-color: #9c745657;
-  z-index: -1;
-  background-position-y: -100px;
-
-}
-
-
-
 .contribs {
   color:#4B5626;
 }
 
-
 .text-kecil {
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .burnbox {
-  margin: 0 auto;
-    
-}
-.partners{
-  margin: auto;
-  width: 55%;
+  margin: 0 auto; 
 }

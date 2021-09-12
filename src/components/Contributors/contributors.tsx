@@ -19,13 +19,9 @@ const Contributors = () => {
       setContributors(res.data);
     });
   }
-
-
-
+  
   var coreContributors = contrib.map ((data:any) => {if (data.contributions >13) {return data} else {return null} })
   coreContributors = coreContributors.filter((data:any) => {return data !== null})
-  console.log("coreContributors");
-  console.log(coreContributors);
   
   return (
     <>
@@ -39,7 +35,6 @@ const Contributors = () => {
                 <span>{data.login}</span>
               </a>
             </div>
-          
         })
         }
       </div>

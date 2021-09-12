@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter as ReactRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import MyParticles from './components/Particles';
-import Information from './components/Information';
-import BSCBridge from './components/BSCBridge';
+import MyParticles from './components/Particles/Particles';
+import Information from './components/Information/Information';
+import BSCBridge from './components/BSCBridge/BSCBridge';
 import NFT from './components/NFT/NFT';
 import NFTGallery from './components/NFT/NFTGallery';
-import ComingSoon from './components/ComingSoon';
-import Vote from './components/Vote';
-import SporeFairy from './components/SporeFairy';
+import ComingSoon from './components/ComingSoon/ComingSoon';
+import Vote from './components/Vote/Vote';
+import SporeFairy from './components/SporeFairy/SporeFairy';
 
 const Router = () => {
   return (

@@ -4,129 +4,113 @@ import { PieChart } from 'react-minimal-pie-chart';
 
 import Web3 from 'web3'
 import { useEffect } from 'react';
-import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../utils/SporeAbis';
-import { ContractAddesses } from '../utils/addresses';
-import BurnedTokens from './BurnedTokens';
 import './Tokenomics.css'
+import BurnedTokens from '../BurnedTokens/BurnedTokens';
+import { ContractAddesses } from '../../utils/addresses';
+import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
 
 const win = window as any
 win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
 
-
-   
 const Tokenomics = () => {
   const [bscBurned, setBscBurned] = useState(-1)
   const [avaBurned, setAvaBurned] = useState(-1)
   const [avaxBridge, setAvaxBridge] = useState(-1)
   const [bscTotalSupply, setBscTotalSupply] = useState(-1)
-
-
   const [totalTokenHolders, setTotalTokenHolders] = useState(-1)
   const [totalTokenHoldersBSC, setTotalTokenHoldersBSC] = useState(-1)
 
-
-
   useEffect(() => {
     async function getInfos() {
-      
       await getAvaBurned()
       await getAvaxBridge()
       await getBscTotalSupply()
-      await getBscBurned ()
- 
+      await getBscBurned()
       await getTokenHolders()
-
       await getTokenHoldersBSC()
+
       setInterval(async () => {
-        
         await getAvaBurned()
         await getAvaxBridge()
         await getBscTotalSupply()
-        await getBscBurned ()
-   
+        await getBscBurned()
+
         await getTokenHolders()
         await getTokenHoldersBSC()
- 
       }, 6000000)
     }
-    getInfos()
 
+    getInfos()
   }, [])
 
-const getBscBurned = async () => {
-  try {
-    console.log("getting bsc burned tokens");
-    const SporeContract = new win.web3.eth.Contract(
-      BSC_SPORE_ABI,
-      ContractAddesses.BSC_SPORE_MAINNET
-    );
+  const getBscBurned = async () => {
+    try {
+      console.log("getting bsc burned tokens");
+      const SporeContract = new win.web3.eth.Contract(
+        BSC_SPORE_ABI,
+        ContractAddesses.BSC_SPORE_MAINNET
+      );
 
-    const bscburn = await SporeContract.methods.balanceOf(ContractAddesses.BSC_SPORE_MAINNET).call();
-    setBscBurned(bscburn / (10 ** 9));
-
+      const bscburn = await SporeContract.methods.balanceOf(ContractAddesses.BSC_SPORE_MAINNET).call();
+      setBscBurned(bscburn / (10 ** 9));
+    }
+    catch (err) {
+      console.log("Error getting burned tokens bsc")
+    }
   }
-  catch (err) {
-    console.log("Error getting burned tokens bsc")
+
+  const getAvaBurned = async () => {
+    try {
+      console.log("getting avax burned tokens");
+      const SporeContract = new win.ava.eth.Contract(
+        AVAX_SPORE_ABI,
+        ContractAddesses.AVAX_SPORE_MAINNET
+      );
+
+      const avaburn = await SporeContract.methods.balanceOf(ContractAddesses.DEAD_ADDRESS).call();
+      setAvaBurned(avaburn / (10 ** 9));
+
+    }
+    catch (err) {
+      console.log("Error getting burned tokens avax")
+    }
   }
-}
 
+  const getAvaxBridge = async () => {
+    try {
+      console.log("getting avax bridge tokens");
+      const SporeContract = new win.ava.eth.Contract(
+        AVAX_SPORE_ABI,
+        ContractAddesses.AVAX_SPORE_MAINNET
+      );
 
-const getAvaBurned = async () => {
-  try {
-    console.log("getting avax burned tokens");
-    const SporeContract = new win.ava.eth.Contract(
-      AVAX_SPORE_ABI,
-      ContractAddesses.AVAX_SPORE_MAINNET
-    );
+      const avaxbridge = await SporeContract.methods.balanceOf(ContractAddesses.AVAX_BRIDGE_MAINNET).call();
+      setAvaxBridge(avaxbridge / (10 ** 9));
 
-    const avaburn = await SporeContract.methods.balanceOf(ContractAddesses.DEAD_ADDRESS).call();
-    setAvaBurned(avaburn / (10 ** 9));
-
+    }
+    catch (err) {
+      console.log("Error getting tokens bridge")
+    }
   }
-  catch (err) {
-    console.log("Error getting burned tokens avax")
+
+  const getBscTotalSupply = async () => {
+    try {
+      console.log("getting bsc total supply");
+      const SporeContract = new win.web3.eth.Contract(
+        BSC_SPORE_ABI,
+        ContractAddesses.BSC_SPORE_MAINNET
+      );
+
+      const bsctotalsupply = await SporeContract.methods.totalSupply().call();
+      setBscTotalSupply(bsctotalsupply / (10 ** 9));
+
+    }
+    catch (err) {
+      console.log("Error getting bsc totalSupply")
+    }
   }
-}
 
-const getAvaxBridge = async () => {
-  try {
-    console.log("getting avax bridge tokens");
-    const SporeContract = new win.ava.eth.Contract(
-      AVAX_SPORE_ABI,
-      ContractAddesses.AVAX_SPORE_MAINNET
-    );
-
-    const avaxbridge = await SporeContract.methods.balanceOf(ContractAddesses.AVAX_BRIDGE_MAINNET).call();
-    setAvaxBridge(avaxbridge / (10 ** 9));
-
-  }
-  catch (err) {
-    console.log("Error getting tokens bridge")
-  }
-}
-
-
-
-const getBscTotalSupply = async () => {
-  try {
-    console.log("getting bsc total supply");
-    const SporeContract = new win.web3.eth.Contract(
-      BSC_SPORE_ABI,
-      ContractAddesses.BSC_SPORE_MAINNET
-    );
-
-    const bsctotalsupply = await SporeContract.methods.totalSupply().call();
-    setBscTotalSupply(bsctotalsupply / (10 ** 9));
-
-  }
-  catch (err) {
-    console.log("Error getting bsc totalSupply")
-  }
-}
-
- 
- 
   const getTokenHolders = async () => {
     console.log("getting token holders avax")
     try {
@@ -142,13 +126,12 @@ const getBscTotalSupply = async () => {
         const items = res.data.data.items;
         setTotalTokenHolders(items.length)
       }
-
     }
     catch (err) {
       console.log("errror getting holders avax", err)
     }
-
   }
+
   const getTokenHoldersBSC = async () => {
     try {
       const res = await axios.get(
@@ -172,41 +155,29 @@ const getBscTotalSupply = async () => {
     }
     catch (err) {
       console.log("Error getting token holders bsc")
-      ///HARDCODED VALUE
       setTotalTokenHoldersBSC(128979)
     }
-
   }
-  
-  const TOTAL_SUPPLY= 100000000000000000
-  
 
+  const TOTAL_SUPPLY = 100000000000000000
 
   return (
     <section className='tokenomic'>
       <div className='container information py-5'>
-
-      <div className="container mx-0">
+        <div className="container mx-0">
           <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
             <h1 className='feature pb-1'><span>Tokenomics</span></h1>
-            
-            <div className="text-kecil">
-             
-            
-              </div>
-              </div>
-
+            <div className="text-kecil"></div>
           </div>
-
+        </div>
 
         <div className='row py-4'>
           <div className='col-md-12 col-lg-4 col-sm-12 text-left'>
-            
             <ul className='list-unstyled'>
               <BurnedTokens
-                supplyAVA={TOTAL_SUPPLY-avaBurned-avaxBridge}
-                supplyBSC={bscTotalSupply-bscBurned}
-                burnedTotal= {avaBurned+avaxBridge-bscTotalSupply+bscBurned}
+                supplyAVA={TOTAL_SUPPLY - avaBurned - avaxBridge}
+                supplyBSC={bscTotalSupply - bscBurned}
+                burnedTotal={avaBurned + avaxBridge - bscTotalSupply + bscBurned}
                 totalTokenHolders={totalTokenHolders}
                 totalTokenHoldersBSC={totalTokenHoldersBSC}
               />
@@ -223,9 +194,9 @@ const getBscTotalSupply = async () => {
                 overflow: 'visible'
               }}
               data={[
-                { key: 'burnedToken', title: 'Burned Tokens', value: (avaBurned+avaxBridge-bscTotalSupply+bscBurned)/ TOTAL_SUPPLY * 100, color: 'black' },
-                { key: 'bscSupply', title: 'BSC supply',  value: (bscTotalSupply-bscBurned)/ TOTAL_SUPPLY * 100, color: '#f3ba2f' },
-                { key: 'avaSupply', title: 'Avalanche Supply', value: (TOTAL_SUPPLY-avaBurned-avaxBridge)/ TOTAL_SUPPLY * 100, color: '#e84142' },
+                { key: 'burnedToken', title: 'Burned Tokens', value: (avaBurned + avaxBridge - bscTotalSupply + bscBurned) / TOTAL_SUPPLY * 100, color: 'black' },
+                { key: 'bscSupply', title: 'BSC supply', value: (bscTotalSupply - bscBurned) / TOTAL_SUPPLY * 100, color: '#f3ba2f' },
+                { key: 'avaSupply', title: 'Avalanche Supply', value: (TOTAL_SUPPLY - avaBurned - avaxBridge) / TOTAL_SUPPLY * 100, color: '#e84142' },
               ]}
               radius={PieChart.defaultProps.radius - 6}
               lineWidth={50}
@@ -256,17 +227,12 @@ const getBscTotalSupply = async () => {
               </li>
             </ul>
             <ul className="lead">
-            <li className="chart-caption__item">
-                
+              <li className="chart-caption__item">
                 <i className="chart-caption__text">*BSC and Avalanche supplies are both connected by our <a className="bridgeLink" href='/bridge' >Bridge</a></i>
               </li>
             </ul>
           </div>
-       
-       
         </div>
-
-        
       </div>
     </section>
   );
