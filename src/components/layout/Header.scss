@@ -1,21 +1,46 @@
 .navbar {
   transition: all 0.4s;
   background-color: #6B4E3B;
-}
 
-.navbar .logo {
-  max-height: 50px;
-  margin-right: 10px;
-}
+  .logo {
+    max-height: 50px;
+    margin-right: 10px;
+  }
 
-
-.navbar .navbar-brand {
+  .navbar-brand {
     text-decoration: none;
     font-size: 32px;
+  }
+
+  .nav-item {
+    padding: 0 15px;
+    text-align: start;
+  }
+
+  .nav-link,
+  .btn {
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: #EBD5C7;
+  }
+
+  a.btn:hover,
+  a.btn:focus {
+    text-decoration: none;
+    color: #6B4E3B;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .navbar-nav{
-margin-right: 7%;
+  margin-right: 7%;
 }
 
 .navbar-brand h1{
@@ -26,32 +51,6 @@ margin-right: 7%;
     margin-left: 5px;
 }
 
-.navbar .nav-item {
-    padding: 0 15px;
-    text-align: start;
-}
-
-.navbar .nav-link,
-.navbar .btn {
-    text-decoration: none;
-}
-
-.navbar a:hover,
-.navbar a:focus {
-  text-decoration: none;
-  color: #EBD5C7;
-}
-
-.navbar a.btn:hover,
-.navbar a.btn:focus {
-  text-decoration: none;
-  color: #6B4E3B;
-}
-
-.navbar a {
-  text-decoration: none;
-}
-
 .dropdown {
   background-color: #6B4E3B;
 }
@@ -60,14 +59,14 @@ margin-right: 7%;
   background-color: #6B4E3B;
   padding: 15px;
   border: 1px solid white;
-}
 
-.dropdown-menu li {
+  li {
     margin: 2px;
+  }
 }
 
 .divider {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 
 @media (max-width: 360px) {
