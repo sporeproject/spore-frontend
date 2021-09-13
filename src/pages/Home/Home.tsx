@@ -8,7 +8,7 @@ import './Home.scss';
 const Home = () => {
   return (
     <>
-      <div className='container Home '>
+      <div className='container information'>
         <div className='row py-5'>
           <div className='col-md-7'>
 
@@ -60,7 +60,7 @@ const Home = () => {
       </section>
 
       <section className='bg-white-darker pb-5'>
-        <div className='container Home py-5'>
+        <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
               <h2 className='feature'>Roadmap</h2>
