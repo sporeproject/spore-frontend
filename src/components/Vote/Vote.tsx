@@ -3,9 +3,10 @@ import './Vote.css';
 import { useState, useEffect } from 'react';
 import { GOVERNOR_ALPHA_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from "../../utils/addresses";
+import { AVAX_NETWORK_RPC } from "../../utils/constants";
 
 const win = window as any
-win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
+win.ava = new Web3(AVAX_NETWORK_RPC)
 
 const Vote = (props: any) => {
 

@@ -8,10 +8,11 @@ import './Tokenomics.css'
 import BurnedTokens from '../BurnedTokens/BurnedTokens';
 import { ContractAddesses } from '../../utils/addresses';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
+import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
 const win = window as any
 win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
-win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc');
+win.ava = new Web3(AVAX_NETWORK_RPC);
 
 const Tokenomics = () => {
   const [bscBurned, setBscBurned] = useState(-1)

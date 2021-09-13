@@ -1,4 +1,5 @@
-.information .box-rounded {
+.information {
+  .box-rounded {
     background-color: #fff;
     color: #212121;
     padding: 15px 20px;
@@ -7,14 +8,14 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-}
+    
+    h4 {
+      color:#6B4E3B;
+      padding: 15px 0;
+    }
+  }
 
-.information .box-rounded h4 {
-    color:#6B4E3B;
-    padding: 15px 0;
-}
-
-.information .box-large {
+  .box-large {
     background-color: #fff;
     color: #212121;
     padding: 20px 40px;
@@ -23,8 +24,8 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+  }
 }
-
 
 .btn-secondary {
     background-color: #4B5626;
@@ -37,18 +38,18 @@
 }
 
 .h-100vh {
-    height: calc(100vh - 300px);
+  height: calc(100vh - 300px);
 }
 
 .d-block {
-    margin: auto;
+  margin: auto;
 }
 
 .carousel-caption { bottom:-150px; }
 .carousel-inner { padding-bottom:150px; }
 
 .vote {
-    display: flex;
+  display: flex;
   justify-content: center;
-  }
+}
   

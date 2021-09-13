@@ -1,4 +1,5 @@
 import React from "react";
+import { AVAX_NETWORK_RPC } from "../../utils/constants";
 
 const win = window as any
 
@@ -10,7 +11,7 @@ const addAVAXRPC = async () => {
       symbol: "AVAX",
       decimals: 18
   };
-  const rpcUrl = ["https://api.avax.network/ext/bc/C/rpc"]
+  const rpcUrl = [AVAX_NETWORK_RPC]
   const blockExplorerUrl = ["https://cchain.explorer.avax.network/"]
   const nid = win.web3.currentProvider.chainId;
   if(nid !== "0xa86a"){

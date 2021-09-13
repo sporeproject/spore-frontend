@@ -2,18 +2,21 @@ import Web3 from "web3";
 import InstallMetamask from "../InstallMetamask/InstallMetamask";
 import UnlockMetamask from "../UnlockMetamask/UnlockMetamask";
 import ReturnTokenURI from "./ReturnTokenURI";
-import './NFT.css';
+import './NFT.scss';
 import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../../utils/addresses';
 import { approveContract } from '../../utils/wallet';
-import { MarketPlaceView } from "./MarketPlace";
+import { MarketPlaceView } from "./MarketPlace/MarketPlace";
 import { ethers } from "ethers";
 import axios from 'axios';
+import { API_COVALENTHQ, AVAX_NETWORK_RPC } from "../../utils/constants";
+import { MarketStat } from "./NFT.style";
+import MyParticles from "../Particles/Particles";
 
 const win = window as any
 const docu = document as any
-win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
+win.ava = new Web3(AVAX_NETWORK_RPC)
 
 async function approve() {
   const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
@@ -47,6 +50,7 @@ const NFT = (props: any) => {
   const [balance, setBalance] = useState(0);
   const [isnetworkID, setisnetworkID] = useState({});
   const [web3Provider, setweb3Provider] = useState({});
+  const [itemId, setItemId] = useState<number>();
   console.log(web3Provider);
   const [isWeb3, setisWeb3] = useState({});
 
@@ -113,9 +117,7 @@ const NFT = (props: any) => {
   }, [])
 
   const getBuysData = async () => {
-    await axios.get(
-      "https://api.covalenthq.com/v1/43114/address/0xc2457F6Eb241C891EF74E02CCd50E5459c2E28Ea/transactions_v2/?block-signed-at-asc=false&page-size=250&skip=250&key=ckey_a09c56c3188547958bd621253a4"
-    ).then(async (res) => {
+    await axios.get(API_COVALENTHQ).then(async (res) => {
       const abiDecoder = require('abi-decoder'); // NodeJS
       abiDecoder.addABI(SPORE_MARKET_ABI);
       const transactions: any = [];
@@ -150,24 +152,29 @@ const NFT = (props: any) => {
   let sum: number = 31;
   buys.forEach(a => sum += +a / 10 ** 18);
 
+  const buysQuantity = buys[0] / 10 ** 18;
+
   return (
     <>
-      <div className='container information '>
+      <div className='container information'>
+       <MyParticles />
         <h2 className='feature pb-4 py-5 text-center'>
           Spore NFT Marketplace
         </h2>
 
-        <div className='row py-5'>
-          <div className='col-md-6 text-left'>
-            <dl className='lead ' >
-              <h4>Last traded price:  {buys[0] / 10 ** 18} AVAX </h4>
-            </dl>
+        <div className='row pb-5'>
+          <div className='col-md-6'>
+            <MarketStat>
+              <span>Last traded price:</span>
+              <h4>{buysQuantity || 0} AVAX</h4>
+            </MarketStat>
           </div>
 
-          <div className='col-md-5 text-left larger'>
-            <dl className='lead ' >
-              <h4>Total volume: {sum} AVAX </h4>
-            </dl>
+          <div className='col-md-6'>
+            <MarketStat>
+              <span>Total volume:</span>
+              <h4>{sum} AVAX</h4>
+            </MarketStat>
           </div>
         </div>
       </div>
@@ -176,11 +183,9 @@ const NFT = (props: any) => {
         <div className="container information py-5">
           <div className='row py-5'>
             <div className='col-md-12'>
-              <div className="row">
-                <MarketPlaceView bazaar={bazaar} />
+              <div className="row pb-5">
+                <MarketPlaceView bazaar={bazaar} onSelected={(nftId: number) => setItemId(nftId) } />
               </div>
-              <br />
-              {" "}
               <div className="input-group">
                 <input
                   type="text"
@@ -198,6 +203,7 @@ const NFT = (props: any) => {
                 <input
                   type="text"
                   id="_tokenID"
+                  value={itemId}
                   placeholder="NFT_ID (ex: 0)"
                   className="form-control"
                 />

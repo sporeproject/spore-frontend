@@ -5,9 +5,10 @@ import { useState, useEffect } from 'react';
 import { nftmetadata } from '../../utils/nftmetadata';
 import { ContractAddesses } from '../../utils/addresses';
 import { SPORE_FAIRY_ABI } from '../../utils/SporeAbis';
+import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
 const win = window as any
-win.ava = new Web3('https://api.avax.network/ext/bc/C/rpc')
+win.ava = new Web3(AVAX_NETWORK_RPC)
 
 const connectMetaMask = () => {
   if (win.ethereum) {
@@ -24,7 +25,7 @@ const addAVAXRPC = async () => {
     symbol: "AVAX",
     decimals: 18
   };
-  const rpcUrl = ["https://api.avax.network/ext/bc/C/rpc"]
+  const rpcUrl = [AVAX_NETWORK_RPC]
   const blockExplorerUrl = ["https://cchain.explorer.avax.network/"]
   const nid = win.web3.currentProvider.chainId;
   if (nid !== "0xa86a") {
