@@ -53,3 +53,32 @@
   justify-content: center;
 }
   
+.alice-carousel__prev-btn {
+  position: absolute;
+  left: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem !important;
+
+  span {
+    font-size: 64px;
+    font-weight: bold;
+  }
+}
+
+.alice-carousel__next-btn {
+  position: absolute;
+  right: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem !important;
+
+  span {
+    font-size: 64px;
+    font-weight: bold;
+  }
+}
+
+.feature {
+  font-size: 46px;
+}

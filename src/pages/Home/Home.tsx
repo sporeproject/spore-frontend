@@ -1,14 +1,14 @@
-import { Contracts } from '../Contracts/Contracts';
-import Contributors from '../Contributors/Contributors';
-import { Partnerships } from '../Partnerships/Partnerships';
-import PriceToken from '../PriceToken/PriceToken';
-import Tokenomics from '../Tokenomics/Tokenomics';
-import './Information.scss';
+import { Contracts } from '../../components/Contracts/Contracts';
+import Contributors from '../../components/Contributors/Contributors';
+import { Partnerships } from '../../components/Partnerships/Partnerships';
+import PriceToken from '../../components/PriceToken/PriceToken';
+import Tokenomics from '../../components/Tokenomics/Tokenomics';
+import './Home.scss';
 
-const Information = () => {
+const Home = () => {
   return (
     <>
-      <div className='container information '>
+      <div className='container Home '>
         <div className='row py-5'>
           <div className='col-md-7'>
 
@@ -60,7 +60,7 @@ const Information = () => {
       </section>
 
       <section className='bg-white-darker pb-5'>
-        <div className='container information py-5'>
+        <div className='container Home py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>
               <h2 className='feature'>Roadmap</h2>
@@ -212,10 +212,8 @@ const Information = () => {
           </div>
         </div>
       </section>
-
       
-            <Contributors />
-          
+      <Contributors />
 
       <Partnerships />
 
@@ -224,4 +222,4 @@ const Information = () => {
   )
 }
 
-export default Information;
+export default Home;

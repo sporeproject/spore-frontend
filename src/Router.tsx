@@ -2,38 +2,46 @@ import React from 'react';
 import { BrowserRouter as ReactRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import Home from './pages/Home/Home';
+import BSCBridge from './pages/BSCBridge/BSCBridge';
+import NFT from './pages/NFT/NFT';
+import Gallery from './pages/NFT/Gallery/Gallery';
+import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
-import Information from './components/Information/Information';
-import BSCBridge from './components/BSCBridge/BSCBridge';
-import NFT from './components/NFT/NFT';
-import NFTGallery from './components/NFT/NFTGallery';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
-import SporeFairy from './components/SporeFairy/SporeFairy';
 
 const Router = () => {
   return (
     <ReactRouter>
-      <Header />
+      <Header/>
       <Switch>
-        <Route
-          exact
-          path='/'
-          render={() => (
-            <>
-              <MyParticles />
-              <Information />
-            </>
-          )}
-        />
-        <Route exact path='/nft' render={() => <NFT />} />
-        <Route exact path='/bridge' render={() => <BSCBridge />} />
-        <Route exact path='/gallery' render={() => < NFTGallery/>} />
-        <Route exact path='/coming-soon' render={() => < ComingSoon/>} />
-        <Route exact path='/vote' render={() => < Vote/>} />
-        <Route exact path='/airdrop' render={() => < SporeFairy/>} />
+        <Route exact path='/'>
+          <>
+            <MyParticles/>
+            <Home/>
+          </>
+        </Route>
+        <Route exact path='/nft'>
+          <NFT/>
+        </Route>
+        <Route exact path='/bridge'>
+          <BSCBridge/>
+        </Route>
+        <Route exact path='/gallery'>
+          <Gallery/>
+        </Route>
+        <Route exact path='/coming-soon'>
+          <ComingSoon/>
+        </Route>
+        <Route exact path='/vote'>
+          <Vote/>
+        </Route>
+        <Route exact path='/airdrop'>
+          <SporeFairy/>
+        </Route>
       </Switch>
-      <Footer />
+      <Footer/>
     </ReactRouter>
   );
 };

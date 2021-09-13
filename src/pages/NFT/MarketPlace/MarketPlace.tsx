@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ContractAddesses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
 import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
-import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MartketPlace.style';
+import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
 
 const win = window as any

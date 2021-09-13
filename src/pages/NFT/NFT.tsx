@@ -1,6 +1,4 @@
 import Web3 from "web3";
-import InstallMetamask from "../InstallMetamask/InstallMetamask";
-import UnlockMetamask from "../UnlockMetamask/UnlockMetamask";
 import ReturnTokenURI from "./ReturnTokenURI";
 import './NFT.scss';
 import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
@@ -12,7 +10,9 @@ import { ethers } from "ethers";
 import axios from 'axios';
 import { API_COVALENTHQ, AVAX_NETWORK_RPC } from "../../utils/constants";
 import { MarketStat } from "./NFT.style";
-import MyParticles from "../Particles/Particles";
+import MyParticles from "../../components/Particles/Particles";
+import UnlockMetamask from "../../components/UnlockMetamask/UnlockMetamask";
+import InstallMetamask from "../../components/InstallMetamask/InstallMetamask";
 
 const win = window as any
 const docu = document as any
