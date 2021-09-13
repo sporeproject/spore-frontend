@@ -1,5 +1,5 @@
 import { Contracts } from '../../components/Contracts/Contracts';
-import Contributors from '../../components/Contributors/Contributors';
+import { Contributors } from '../../components/Contributors/Contributors';
 import { Partnerships } from '../../components/Partnerships/Partnerships';
 import PriceToken from '../../components/PriceToken/PriceToken';
 import Tokenomics from '../../components/Tokenomics/Tokenomics';

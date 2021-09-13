@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Contributors.scss';
 
-const Contributors = () => {
+export const Contributors = () => {
   const [contrib, setContributors] = useState([]);
 
   useEffect(() => {
@@ -56,4 +56,3 @@ const Contributors = () => {
   );
 
 };
-export default Contributors;
