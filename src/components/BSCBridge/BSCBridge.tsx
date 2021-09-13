@@ -3,7 +3,7 @@ import Web3 from 'web3';
 //@ts-ignore
 import { ethers } from "ethers";
 
-import './BSCBridge.css';
+import './BSCBridge.scss';
 import { useEffect } from 'react';
 
 const win = window as any
@@ -141,7 +141,7 @@ const addAVAXRPC = async () => {
     symbol: "AVAX",
     decimals: 18
   };
-  const rpcUrl = ["https://api.avax.network/ext/bc/C/rpc"]
+  const rpcUrl = ["AVAX_NETWORK_RPC"]
   const blockExplorerUrl = ["https://cchain.explorer.avax.network/"]
   const nid = win.web3.currentProvider.chainId;
   if (nid !== "0xa86a") {

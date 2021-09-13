@@ -1,6 +1,6 @@
-import './contributors.css';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './contributors.scss';
 
 const Contributors = () => {
   const [contrib, setContributors] = useState([]);
