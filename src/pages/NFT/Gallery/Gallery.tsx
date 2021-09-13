@@ -16,7 +16,7 @@ SwiperCore.use([Navigation,Pagination]);
 const Gallery = (props: any) => {
   return (
     <>
-      <div className='container overflow-hidden'>
+      <div className='container overflow-hidden position-relative'>
         <MyParticles />
         <h2 className='feature pb-2 pt-5 text-center'>
           Gallery

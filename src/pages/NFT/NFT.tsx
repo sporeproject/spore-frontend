@@ -156,7 +156,7 @@ const NFT = (props: any) => {
 
   return (
     <>
-      <div className='container information'>
+      <div className='container information overflow-hidden position-relative'>
        <MyParticles />
         <h2 className='feature pb-4 py-5 text-center'>
           Spore NFT Marketplace
