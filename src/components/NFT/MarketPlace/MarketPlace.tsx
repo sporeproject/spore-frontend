@@ -69,8 +69,8 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   return (
     <>
       {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem, index: number) => (
-        <div className="col-6 col-sm-4 col-md-4 col-lg-3">
-          <ItemNFT key={index} onClick={() => onSelected(item.itemId)}>
+        <div key={index} className="col-6 col-sm-4 col-md-4 col-lg-3">
+          <ItemNFT onClick={() => onSelected(item.itemId)}>
             <div className="image-wrapper">
               <img src={findimage(item.itemId)} alt="Reload your page" />
             </div>
