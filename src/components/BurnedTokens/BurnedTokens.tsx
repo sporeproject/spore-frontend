@@ -1,6 +1,5 @@
-// src/Footer.js
-import './BurnedTokens.css';
 import React from 'react';
+import './BurnedTokens.scss';
 
 interface BurnedTokensInterfaceProps {
   supplyAVA: number,

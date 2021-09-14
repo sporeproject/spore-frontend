@@ -4,9 +4,7 @@ import { useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
 import { getAccount } from '../../utils/wallet';
-//import ReturnExternalURL from './ReturnExternalURL';
 import { nftmetadata } from '../../utils/nftmetadata'; 
-//import { ethers } from "ethers";
 
 const win = window as any
 const docu = document as any

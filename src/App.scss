@@ -88,3 +88,27 @@ body {
 .scroll-to-top i {
   display: block;
 }
+
+.swiper-container {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    &:after {
+      color: #6B4E3B;
+      font-size: 4rem;
+      font-weight: bold;
+    }
+  }
+
+  .swiper-slide {
+    opacity: 0.5;
+    transition: all 0.1s ease-in;
+  
+    &.swiper-slide-active {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,14 +1,11 @@
-// src/Footer.js
-import './Footer.css';
-
 import React from 'react';
+import './Footer.scss';
 
 const Footer = () => {
   return (
     <div className='container-fluid footer pt-5'>
       <h5 className="row social-links">Follow us!</h5>
       <div className="info">
-      
         <div className="row social-links">
           <a
             href='https://twitter.com/sporeproject'
@@ -100,7 +97,6 @@ const Footer = () => {
               className='credit'
               rel='noopener noreferrer'
             >
-              
               Made with &#127812; by the Spore community
             </a>
           </div>
