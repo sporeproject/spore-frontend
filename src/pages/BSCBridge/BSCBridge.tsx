@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 
 import './BSCBridge.scss';
 import { useEffect } from 'react';
+import { CardBridge, TransferButton } from './BSCBridge.style';
 
 const win = window as any
 const docu = document as any
@@ -338,7 +339,7 @@ const BSCBridge = () => {
           <div className="wrapBridge pt-2">
             <div className="row rowBridge">
               <div className="col-lg-6 col-coin pr-lg-0">
-                <div className="card px-lg-5 rounded-0 h-100 avalanche">
+                <CardBridge type="avalanche" className="card px-lg-5 h-100 avalanche">
                   <div className="card-body">
                     <h5 className="card-title"><span>FROM</span> Avalanche </h5>
                     <p className="card-text">Balance : {numberOfSporeAVAX}</p>
@@ -352,25 +353,25 @@ const BSCBridge = () => {
                       <button onClick={approve} className="btn btn-primary" id="approve-btn">APPROVE</button>
                     </div>
                   </div>
-                </div>
+                </CardBridge>
               </div>
               <div className="col-lg-6 col-coin pr-lg-0 d-none">
-                <div className="card px-lg-5 rounded-0 h-100 avalanche" id="reverted-1">
+                <CardBridge type="avalanche" className="card px-lg-5 h-100 avalanche" id="reverted-1">
                   <div className="card-body">
                     <h5 className="card-title"><span>TO </span>  Avalanche </h5>
                   </div>
-                </div>
+                </CardBridge>
               </div>
               <div className="arrow"><button className="btn btn-outline-light inverted" id="btn-arrow"><i className="fa fa-arrow-right"></i></button></div>
               <div className="col-lg-6 col-coin pl-lg-0" id="reverted-2">
-                <div className="card px-lg-5 rounded-0 h-100 binance">
+                <CardBridge className="card px-lg-5 h-100 binance">
                   <div className="card-body">
                     <h5 className="card-title"><span>TO</span> Binance Smart Chain </h5>
                   </div>
-                </div>
+                </CardBridge>
               </div>
               <div className="col-lg-6 col-coin pl-lg-0 d-none">
-                <div className="card px-lg-5 rounded-0 h-100 binance">
+                <CardBridge className="card px-lg-5 h-100 binance">
                   <div className="card-body">
                     <h5 className="card-title"><span>FROM</span> Binance Smart Chain </h5>
                     <p className="card-text">Balance : <span id="balance">{numberOfSporeBSC}</span></p>
@@ -382,17 +383,21 @@ const BSCBridge = () => {
                     </div>
                     <label className="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
                   </div>
-                </div>
+                </CardBridge>
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-6 text-center py-4 col-coin">
-                Transfer fees : {feesAVAX} AVAX
-                <button onClick={swapFromAVAX} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
+              <div className="col-lg-12 text-center py-4 col-coin">
+                <div className="pb-2">Transfer fees : {feesAVAX} AVAX</div>
+                <TransferButton onClick={swapFromAVAX} className="btn btn-primary btn-lg" id="swap-btn">
+                  TRANSFER
+                </TransferButton>
               </div>
-              <div className="col-lg-6 text-center py-4 col-coin d-none">
-                Transfer fees : {feesBNB} BNB
-                <button onClick={swapFromBSC} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
+              <div className="col-lg-12 text-center py-4 col-coin d-none">
+                <div className="pb-2">Transfer fees : {feesBNB} BNB</div>
+                <TransferButton onClick={swapFromBSC} className="btn btn-primary btn-lg" id="swap-btn">
+                  TRANSFER
+                </TransferButton>
               </div>
             </div>
           </div>
