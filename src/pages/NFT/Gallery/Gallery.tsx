@@ -11,11 +11,21 @@ import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
 import '../NFT.scss';
 
 import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Helmet } from "react-helmet";
 SwiperCore.use([Navigation,Pagination]);
 
 const Gallery = (props: any) => {
+  const Metadata = () => (
+    <Helmet>
+      <title>Spore NFT Gallery - Spore</title>
+      <meta name="description" content="Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency." />
+      <meta name="keywords" content="Spore, NFT, Avalanche, BSC" />
+    </Helmet>
+  )
+  
   return (
     <>
+      <Metadata />
       <div className='container overflow-hidden position-relative'>
         <MyParticles />
         <h2 className='feature pb-2 pt-5 text-center'>
@@ -112,11 +122,11 @@ const Gallery = (props: any) => {
                           alt="Reload your page"
                           height="400"
                         />
-                        <div className="info-wrapper">
-                          <div style={{ fontSize: '24px' }}>Name: {data.name}</div>
-                          <div style={{ fontSize: '14px' }}>Author: {data.author}</div>
-                          <p style={{ fontSize: '16px', marginTop: '.5rem' }}>{data.description}</p>
-                        </div>
+                      </div>
+                      <div className="info-wrapper">
+                        <div style={{ fontSize: '24px' }}>Name: {data.name}</div>
+                        <div style={{ fontSize: '14px' }}>Author: {data.author}</div>
+                        <p style={{ fontSize: '16px', marginTop: '.5rem' }}>{data.description}</p>
                       </div>
                     </GalleryItem>
                   </SwiperSlide>
