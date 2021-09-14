@@ -13,7 +13,7 @@ export enum ScreenSize {
   smMin = 481,
   smMax = 767,
   mdMin = 768,
-  mdMax = 1024,
-  lgMin = 1025,
+  mdMax = 975,
+  lgMin = 976,
   lgMax = 4000,
 }

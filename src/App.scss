@@ -92,6 +92,7 @@ body {
 .swiper-container {
   padding-left: 2rem !important;
   padding-right: 2rem !important;
+  padding-top: 2rem !important;
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -108,7 +109,7 @@ body {
   
     &.swiper-slide-active {
       opacity: 1;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
   }
 }
