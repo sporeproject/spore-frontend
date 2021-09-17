@@ -13,6 +13,7 @@ import { MarketStat } from "./NFT.style";
 import MyParticles from "../../components/Particles/Particles";
 import UnlockMetamask from "../../components/UnlockMetamask/UnlockMetamask";
 import InstallMetamask from "../../components/InstallMetamask/InstallMetamask";
+import { Helmet } from "react-helmet";
 
 const win = window as any
 const docu = document as any
@@ -49,9 +50,7 @@ const NFT = (props: any) => {
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
   const [balance, setBalance] = useState(0);
   const [isnetworkID, setisnetworkID] = useState({});
-  const [web3Provider, setweb3Provider] = useState({});
   const [itemId, setItemId] = useState<number>();
-  console.log(web3Provider);
   const [isWeb3, setisWeb3] = useState({});
 
   useEffect(() => {
@@ -70,7 +69,6 @@ const NFT = (props: any) => {
       }
       if (typeof web3 !== "undefined") {
         // Use Mist/MetaMask's provider
-        setweb3Provider({ web3Provider: web3 });
         web3 = new Web3(web3.currentProvider);
       } else {
         setisWeb3(true);
@@ -154,8 +152,17 @@ const NFT = (props: any) => {
 
   const buysQuantity = buys[0] / 10 ** 18;
 
+  const Metadata = () => (
+    <Helmet>
+      <title>Spore NFT Marketplace - Spore</title>
+      <meta name="description" content="Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency." />
+      <meta name="keywords" content="Spore, NFT, Avalanche, BSC" />
+    </Helmet>
+  )
+
   return (
     <>
+      <Metadata />
       <div className='container information overflow-hidden position-relative'>
        <MyParticles />
         <h2 className='feature pb-4 py-5 text-center'>

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import { Contracts } from '../../components/Contracts/Contracts';
 import { Contributors } from '../../components/Contributors/Contributor';
 import { Partnerships } from '../../components/Partnerships/Partnerships';
@@ -6,8 +7,17 @@ import Tokenomics from '../../components/Tokenomics/Tokenomics';
 import './Home.scss';
 
 const Home = () => {
+  const Metadata = () => (
+    <Helmet>
+      <title>Spore</title>
+      <meta name="description" content="Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency." />
+      <meta name="keywords" content="Spore, NFT, Avalanche, BSC" />
+    </Helmet>
+  )
+  
   return (
     <>
+      <Metadata />
       <div className='container information'>
         <div className='row py-5'>
           <div className='col-md-7'>

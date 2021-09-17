@@ -5,6 +5,8 @@ import { ethers } from "ethers";
 
 import './BSCBridge.scss';
 import { useEffect } from 'react';
+import { CardBridge, TransferButton } from './BSCBridge.style';
+import { Helmet } from 'react-helmet';
 
 const win = window as any
 const docu = document as any
@@ -320,118 +322,133 @@ const BSCBridge = () => {
     startup()
   }, [])
 
+  const Metadata = () => (
+    <Helmet>
+      <title>Bridge - Spore</title>
+      <meta name="description" content="Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency." />
+      <meta name="keywords" content="Spore, NFT, Avalanche, BSC" />
+    </Helmet>
+  )
+
   return (
-    <div className="container py-5" id="bridge">
-      <div className="row py-5">
-        <div className="col-lg-12">
-          <div className="row">
-            <div className="col-lg-8">
-              <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
-            </div>
-            <div className="col-lg-10  ">
-              {connectedAccount}
-            </div>
-            <div className="col-lg-10 text-right">
-              {network}
-            </div>
-          </div>
-          <div className="wrapBridge pt-2">
-            <div className="row rowBridge">
-              <div className="col-lg-6 col-coin pr-lg-0">
-                <div className="card px-lg-5 rounded-0 h-100 avalanche">
-                  <div className="card-body">
-                    <h5 className="card-title"><span>FROM</span> Avalanche </h5>
-                    <p className="card-text">Balance : {numberOfSporeAVAX}</p>
-                    <div className="input-group">
-                      <input type="text" className="form-control" id="spores" placeholder="0.0" />
-                      <div className="input-group-append">
-                        <button className="btn btn-outline-secondary white" onClick={setMaxSporeAVAX} type="button">MAX</button>
-                      </div>
-                    </div>
-                    <div className="offset-lg-3 col-lg-6 text-center py-1">
-                      <button onClick={approve} className="btn btn-primary" id="approve-btn">APPROVE</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-coin pr-lg-0 d-none">
-                <div className="card px-lg-5 rounded-0 h-100 avalanche" id="reverted-1">
-                  <div className="card-body">
-                    <h5 className="card-title"><span>TO </span>  Avalanche </h5>
-                  </div>
-                </div>
-              </div>
-              <div className="arrow"><button className="btn btn-outline-light inverted" id="btn-arrow"><i className="fa fa-arrow-right"></i></button></div>
-              <div className="col-lg-6 col-coin pl-lg-0" id="reverted-2">
-                <div className="card px-lg-5 rounded-0 h-100 binance">
-                  <div className="card-body">
-                    <h5 className="card-title"><span>TO</span> Binance Smart Chain </h5>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-coin pl-lg-0 d-none">
-                <div className="card px-lg-5 rounded-0 h-100 binance">
-                  <div className="card-body">
-                    <h5 className="card-title"><span>FROM</span> Binance Smart Chain </h5>
-                    <p className="card-text">Balance : <span id="balance">{numberOfSporeBSC}</span></p>
-                    <div className="input-group">
-                      <input type="text" className="form-control" id="spores2" placeholder="0.0" />
-                      <div className="input-group-append">
-                        <button className="btn btn-outline-secondary white" type="button" onClick={setMaxSporeBSC}>MAX</button>
-                      </div>
-                    </div>
-                    <label className="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <>
+      <Metadata />
+      <div className="container py-5" id="bridge">
+        <div className="row py-5">
+          <div className="col-lg-12">
             <div className="row">
-              <div className="col-lg-6 text-center py-4 col-coin">
-                Transfer fees : {feesAVAX} AVAX
-                <button onClick={swapFromAVAX} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
+              <div className="col-lg-8">
+                <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
               </div>
-              <div className="col-lg-6 text-center py-4 col-coin d-none">
-                Transfer fees : {feesBNB} BNB
-                <button onClick={swapFromBSC} className="btn btn-primary btn-lg w-100" id="swap-btn">TRANSFER</button>
+              <div className="col-lg-10  ">
+                {connectedAccount}
+              </div>
+              <div className="col-lg-10 text-right">
+                {network}
               </div>
             </div>
-          </div>
-
-          <div className="container">
-            <div className="offset-lg-3 col-lg-6 text-center py-4">
-              <p className="text-left">
-                <p><b>Note </b>: The Bridge may encounter occasional delays depending on network conditions.</p>
-                <p>If you encounter issues, ask for help in our <a href="https://telegram.me/sporefinanceofficial">Telegram</a> group. </p>
-              </p>
+            <div className="wrapBridge pt-2">
+              <div className="row rowBridge">
+                <div className="col-lg-6 col-coin pr-lg-0">
+                  <CardBridge type="avalanche" className="card px-lg-5 h-100 avalanche">
+                    <div className="card-body">
+                      <h5 className="card-title"><span>FROM</span> Avalanche </h5>
+                      <p className="card-text">Balance : {numberOfSporeAVAX}</p>
+                      <div className="input-group">
+                        <input type="text" className="form-control" id="spores" placeholder="0.0" />
+                        <div className="input-group-append">
+                          <button className="btn btn-outline-secondary white" onClick={setMaxSporeAVAX} type="button">MAX</button>
+                        </div>
+                      </div>
+                      <div className="offset-lg-3 col-lg-6 text-center py-1">
+                        <button onClick={approve} className="btn btn-primary" id="approve-btn">APPROVE</button>
+                      </div>
+                    </div>
+                  </CardBridge>
+                </div>
+                <div className="col-lg-6 col-coin pr-lg-0 d-none">
+                  <CardBridge type="avalanche" className="card px-lg-5 h-100 avalanche" id="reverted-1">
+                    <div className="card-body">
+                      <h5 className="card-title"><span>TO </span>  Avalanche </h5>
+                    </div>
+                  </CardBridge>
+                </div>
+                <div className="arrow"><button className="btn btn-outline-light inverted" id="btn-arrow"><i className="fa fa-arrow-right"></i></button></div>
+                <div className="col-lg-6 col-coin pl-lg-0" id="reverted-2">
+                  <CardBridge className="card px-lg-5 h-100 binance">
+                    <div className="card-body">
+                      <h5 className="card-title"><span>TO</span> Binance Smart Chain </h5>
+                    </div>
+                  </CardBridge>
+                </div>
+                <div className="col-lg-6 col-coin pl-lg-0 d-none">
+                  <CardBridge className="card px-lg-5 h-100 binance">
+                    <div className="card-body">
+                      <h5 className="card-title"><span>FROM</span> Binance Smart Chain </h5>
+                      <p className="card-text">Balance : <span id="balance">{numberOfSporeBSC}</span></p>
+                      <div className="input-group">
+                        <input type="text" className="form-control" id="spores2" placeholder="0.0" />
+                        <div className="input-group-append">
+                          <button className="btn btn-outline-secondary white" type="button" onClick={setMaxSporeBSC}>MAX</button>
+                        </div>
+                      </div>
+                      <label className="py-2"><input type="checkbox" id="checkbox" name="pay-fees-spore" value="1" /> Swap some SPORE for AVAX (10%) </label>
+                    </div>
+                  </CardBridge>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-12 text-center py-4 col-coin">
+                  <div className="pb-2">Transfer fees : {feesAVAX} AVAX</div>
+                  <TransferButton onClick={swapFromAVAX} className="btn btn-primary btn-lg" id="swap-btn">
+                    TRANSFER
+                  </TransferButton>
+                </div>
+                <div className="col-lg-12 text-center py-4 col-coin d-none">
+                  <div className="pb-2">Transfer fees : {feesBNB} BNB</div>
+                  <TransferButton onClick={swapFromBSC} className="btn btn-primary btn-lg" id="swap-btn">
+                    TRANSFER
+                  </TransferButton>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className="container">
-            <div className="offset-lg-3 col-lg-6 text-center py-4">
-              <h3>Trust Wallet Steps 😎 </h3>
-
-              <p className="text-left">
-                <p><b>Step 1 </b>- Install <a
-                  target="_blank"
-                  rel='noopener noreferrer'
-                  href="https://metamask.io">
-                  MetaMask </a> 🦊 extension - and import your 12 words Recovery Phrase from trustwallet</p>
-                <p><b>Step 2 </b>- Add {' '}
-                  <button onClick={addAVAXRPC} className="btn btn-primary" id="addAVAXRPC" > Avalanche🔺 Network</button> and  {' '} <br></br><br></br>
-                  <button onClick={addSporeAvalanche} className="btn btn-primary " id="addAvalanche"> add Avalanche 🔺 Spore🍄</button></p>
-                <p><b>Step 3</b>- Add {' '}
-                  <button onClick={addBSCRPC} className="btn btn-primary" id="addBSCRPC" > BSC 🔶 Network </button>  and {' '}
-                  <button onClick={addSporeBSC} className="btn btn-primary" id="addBSC"> add BSC 🔶 Spore 🍄</button>
-                  <br></br> <br></br>
+            <div className="container">
+              <div className="offset-lg-3 col-lg-6 text-center py-4">
+                <p className="text-left">
+                  <p><b>Note </b>: The Bridge may encounter occasional delays depending on network conditions.</p>
+                  <p>If you encounter issues, ask for help in our <a href="https://telegram.me/sporefinanceofficial">Telegram</a> group. </p>
                 </p>
+              </div>
+            </div>
 
-                <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
-              </p>
+            <div className="container">
+              <div className="offset-lg-3 col-lg-6 text-center py-4">
+                <h3>Trust Wallet Steps 😎 </h3>
+
+                <p className="text-left">
+                  <p><b>Step 1 </b>- Install <a
+                    target="_blank"
+                    rel='noopener noreferrer'
+                    href="https://metamask.io">
+                    MetaMask </a> 🦊 extension - and import your 12 words Recovery Phrase from trustwallet</p>
+                  <p><b>Step 2 </b>- Add {' '}
+                    <button onClick={addAVAXRPC} className="btn btn-primary" id="addAVAXRPC" > Avalanche🔺 Network</button> and  {' '} <br></br><br></br>
+                    <button onClick={addSporeAvalanche} className="btn btn-primary " id="addAvalanche"> add Avalanche 🔺 Spore🍄</button></p>
+                  <p><b>Step 3</b>- Add {' '}
+                    <button onClick={addBSCRPC} className="btn btn-primary" id="addBSCRPC" > BSC 🔶 Network </button>  and {' '}
+                    <button onClick={addSporeBSC} className="btn btn-primary" id="addBSC"> add BSC 🔶 Spore 🍄</button>
+                    <br></br> <br></br>
+                  </p>
+
+                  <p><b>Step 4 </b>- Refresh the page click on max and transfer </p>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

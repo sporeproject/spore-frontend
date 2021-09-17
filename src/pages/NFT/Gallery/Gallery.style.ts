@@ -36,15 +36,17 @@ export const GalleryItem = styled.div`
       width: 100%;
     }
     
-    .info-wrapper {
-      background-color: rgba(0,0,0,0.75);
-      bottom: 0;
-      color: #ffffff;
-      height: ${Spacing.Spacing12};
-      padding: ${Spacing.Spacing1};
-      position: absolute;
-      text-align: center;
-      width: 100%;
+  }
+
+  .info-wrapper {
+    bottom: 0;
+    height: 8rem;
+    padding: ${Spacing.Spacing1};
+    text-align: center;
+    width: 100%;
+
+    p {
+      margin-bottom: 0;
     }
   }
 `
