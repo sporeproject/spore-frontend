@@ -23,25 +23,7 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   const [marketPlaceItems, setMarketPlaceItems] = useState<Array<MarketplaceItem>>([]);
   const isLtMd = useMedia('(max-width: 600px)');
 
-  const buildMarketPlace = async () => {
-    const SporeMarketv1 = new win.ava.eth.Contract(
-      SPORE_MARKET_ABI,
-      ContractAddesses.AVAX_MARKET_MAINNET
-    )
-    var builder = new Array<MarketplaceItem>()
-    for (let i = 0; i <= 72 - 1; i++) {
-
-      if (bazaar[i] !== undefined && bazaar[i].price > 0) {
-        
-        
-        const URI = await SporeMarketv1.methods
-          .tokenURI(i)
-          .call()
-        builder.push({ itemId: i, price: bazaar[i].price / 10 ** 18, URI: URI } as MarketplaceItem);
-      }
-    }
-    setMarketPlaceItems(builder)
-  }
+  
 
   const findimage = (itemId: number) => {
     var item = Number(itemId) + 1;
@@ -49,8 +31,28 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   }
 
   useEffect(() => {
+
+    const buildMarketPlace = async () => {
+      const SporeMarketv1 = new win.ava.eth.Contract(
+        SPORE_MARKET_ABI,
+        ContractAddesses.AVAX_MARKET_MAINNET
+      )
+      var builder = new Array<MarketplaceItem>()
+      for (let i = 0; i <= 72 - 1; i++) {
+  
+        if (bazaar[i] !== undefined && bazaar[i].price > 0) {
+          
+          
+          const URI = await SporeMarketv1.methods
+            .tokenURI(i)
+            .call()
+          builder.push({ itemId: i, price: bazaar[i].price / 10 ** 18, URI: URI } as MarketplaceItem);
+        }
+      }
+      setMarketPlaceItems(builder)
+    }
     buildMarketPlace()
-  },[])
+  },[bazaar])
 
   const nFormatter = (num: number, digits: number) => {
     const lookup = [
