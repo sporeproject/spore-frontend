@@ -30,7 +30,10 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
     )
     var builder = new Array<MarketplaceItem>()
     for (let i = 0; i <= 72 - 1; i++) {
+
       if (bazaar[i] !== undefined && bazaar[i].price > 0) {
+        
+        
         const URI = await SporeMarketv1.methods
           .tokenURI(i)
           .call()
@@ -47,7 +50,7 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
 
   useEffect(() => {
     buildMarketPlace()
-  })
+  },[])
 
   const nFormatter = (num: number, digits: number) => {
     const lookup = [
