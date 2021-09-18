@@ -5,6 +5,7 @@ import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
 import { getAccount } from '../../utils/wallet';
 import { nftmetadata } from '../../utils/nftmetadata'; 
+import { ItemNFT} from './MarketPlace/MarketPlace.style';
 
 const win = window as any
 const docu = document as any
@@ -87,16 +88,24 @@ const ReturnTokenURI = (props: Props) => {
     <>
       {
         props.tokensOfOwner.map((id) => (
-          <div className="col-md-3 text-center"><img className="rounded shadow" src={findimage(id)} alt="reload your page" height="200" /></div>
+          <div className="col-md-3 text-center">
+             
+
+              <ItemNFT onClick={() => id}>
+              <div className="image-wrapper">
+                <img src={findimage(id)} alt="Reload your page" />
+              </div>
+              <div className="item-description">
+                <span>ID: {id}</span>
+                
+              </div>
+              </ItemNFT>
+            
+            
+            </div>
         ))
       }
       <div className="col-md-12">
-        <p className="pt-5">
-          You own the IDs:{" "}
-          {props.tokensOfOwner.map((ID) => (
-            <>{ID},</>
-          ))}
-        </p>
         <div className="input-group">
           <input type="text" id="_tokenIDforSale" className="form-control float-left" placeholder="NFT_ID" />
           <input type="text" id="_price" className="form-control float-left" placeholder="Price" />
@@ -119,3 +128,7 @@ const ReturnTokenURI = (props: Props) => {
 }
 
 export default ReturnTokenURI
+
+
+
+      
