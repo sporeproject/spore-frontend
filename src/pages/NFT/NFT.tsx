@@ -82,7 +82,7 @@ const NFT = (props: any) => {
       //   transactions.push(12.5 * (10 ** 18));
       // }
       
-      console.log(transactions)
+     
       setBuys(transactions)
     })  
     .catch(error => {
