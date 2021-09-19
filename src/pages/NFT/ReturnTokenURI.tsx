@@ -88,15 +88,15 @@ const ReturnTokenURI = (props: Props) => {
     <>
       {
         props.tokensOfOwner.map((id) => (
-          <div className="col-md-3 text-center">
+          <div key={id} className="col-md-3 text-center">
              
 
               <ItemNFT onClick={() => id}>
               <div className="image-wrapper">
-                <img src={findimage(id)} alt="Reload your page" />
+                <img  src={findimage(id)} alt="Reload your page" />
               </div>
-              <div className="item-description">
-                <span>ID: {id}</span>
+              <div  className="item-description">
+                <span >ID: {id}</span>
                 
               </div>
               </ItemNFT>

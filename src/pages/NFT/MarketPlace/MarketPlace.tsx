@@ -73,14 +73,14 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
 
   return (
     <>
-      {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem, index: number) => (
-        <div key={index} className="col-6 col-sm-4 col-md-4 col-lg-3">
+      {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem) => (
+        <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
           <ItemNFT onClick={() => onSelected(item.itemId)}>
             <div className="image-wrapper">
               <img src={findimage(item.itemId)} alt="Reload your page" />
             </div>
             <div className="item-description">
-              <span>ID: {item.itemId}</span>
+              <span  >ID: {item.itemId}</span>
               {isLtMd && (<TagPrice>{nFormatter(item.price, 2)} AVAX</TagPrice>)}
               {!isLtMd && (
                 <TagPrice>{item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>

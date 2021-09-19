@@ -46,6 +46,8 @@ async function NFTbuy() {
   }
 }
 
+
+
 const NFT = (props: any) => {
   const [bazaar, setBazaar] = useState(new Array<any>());
   const [buys, setBuys] = useState(new Array<any>());
@@ -55,10 +57,46 @@ const NFT = (props: any) => {
   const [itemId, setItemId] = useState<number>();
   const [isWeb3, setisWeb3] = useState({});
 
+  const getBuysData = async () => {
+    await axios.get(API_COVALENTHQ).then(async (res) => {
+      const abiDecoder = require('abi-decoder'); // NodeJS
+      abiDecoder.addABI(SPORE_MARKET_ABI);
+      const transactions: any = [];
+      
+  
+      res.data.data.items.map(async (item: any) => {
+        const transaction = await win.ava.eth.getTransaction(item.tx_hash);
+        const decodedData = abiDecoder.decodeMethod(transaction.input);
+        
+        if (decodedData !== undefined && decodedData.name === "buy") {
+          if (transaction.value !== 0){
+            transactions.push(transaction.value);
+            
+
+          }
+         
+        }
+      })
+      // console.log(transactions.length)
+      // if (transactions.length === 0) {
+      //   transactions.push(12.5 * (10 ** 18));
+      // }
+      
+      console.log(transactions)
+      setBuys(transactions)
+    })  
+    .catch(error => {
+      console.error(error)
+    })
+  }
+
   useEffect(() => {
     async function startup() {
-      const totalCharacters = 72
 
+     getBuysData()
+    
+
+      const totalCharacters = 72
       const SporeMarketv1 = new win.ava.eth.Contract(
         SPORE_MARKET_ABI,
         ContractAddesses.AVAX_MARKET_MAINNET
@@ -83,7 +121,7 @@ const NFT = (props: any) => {
         setisWeb3(true);
       }
 
-      getBuysData();
+      
 
       const nid = win.web3.currentProvider.chainId
       if (nid === "0xa86a") {
@@ -111,36 +149,17 @@ const NFT = (props: any) => {
 
         setBalance(balance);
         setTokensOfOwner(tokensOfOwnerTemp);
+        
       });
+
     }
+    
+    
     startup()
+      
   }, [])
 
-  const getBuysData = async () => {
-    await axios.get(API_COVALENTHQ).then(async (res) => {
-      const abiDecoder = require('abi-decoder'); // NodeJS
-      abiDecoder.addABI(SPORE_MARKET_ABI);
-      const transactions: any = [];
 
-      res.data.data.items.map(async (item: any) => {
-        const transaction = await win.ava.eth.getTransaction(item.tx_hash);
-        const decodedData = abiDecoder.decodeMethod(transaction.input);
-        if (decodedData !== undefined && decodedData.name === "buy") {
-          transactions.push(transaction.value);
-        }
-      })
-      // console.log(transactions.length)
-      // if (transactions.length === 0) {
-      //   transactions.push(12.5 * (10 ** 18));
-      // }
-      
-
-      setBuys(transactions);
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }
 
   var image: any;
 
@@ -155,7 +174,7 @@ const NFT = (props: any) => {
 
   const buysQuantity = buys[buys.length-1] / 10 ** 18;
 
-  console.log(buys[buys.length-1])
+
 
   const Metadata = () => (
     <Helmet>
