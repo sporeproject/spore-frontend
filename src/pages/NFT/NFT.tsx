@@ -142,7 +142,8 @@ const NFT = (props: any) => {
 
       Promise.all(promises).then((values) => {
         setBazaar(values)      
-      }).then(async () => {
+      })
+     
         const accounts = await win.ethereum.request({ method: "eth_accounts" });
         //We take the first address in the array of addresses and display it
         const account = accounts[0];
@@ -156,7 +157,7 @@ const NFT = (props: any) => {
 
         
         
-      });
+      
 
     }
     getBuysData()
