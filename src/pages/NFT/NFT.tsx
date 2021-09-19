@@ -136,7 +136,9 @@ const NFT = (props: any) => {
         const characterForSale = SporeMarketv1.methods.Bazaar(i).call();
         promises.push(characterForSale);
       }
-      getBuysData()
+      
+
+
       Promise.all(promises).then((values) => {
         setBazaar(values)      
       }).then(async () => {
@@ -156,7 +158,7 @@ const NFT = (props: any) => {
       });
 
     }
-    
+    getBuysData()
     
     startup()
       
