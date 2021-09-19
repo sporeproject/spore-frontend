@@ -56,26 +56,27 @@ const NFT = (props: any) => {
   const [isnetworkID, setisnetworkID] = useState({});
   const [itemId, setItemId] = useState<number>();
   const [isWeb3, setisWeb3] = useState({});
+  const [buysQuantity, setBuysQuantity] = useState(0);
+  const [sumTotal, setSumtotal] = useState(0);
 
   const getBuysData = async () => {
     await axios.get(API_COVALENTHQ).then(async (res) => {
       const abiDecoder = require('abi-decoder'); // NodeJS
       abiDecoder.addABI(SPORE_MARKET_ABI);
-      const transactions: any = [];
       
-  
       res.data.data.items.map(async (item: any) => {
         const transaction = await win.ava.eth.getTransaction(item.tx_hash);
+        
         const decodedData = abiDecoder.decodeMethod(transaction.input);
         
         if (decodedData !== undefined && decodedData.name === "buy") {
-          console.log(transaction.value !== "0")
+          
           
           if (transaction.value !== "0"){
-            transactions.push(transaction.value);
             
+            setBuys((previousBuys)=> {return [...previousBuys,transaction.value] } )
           }
-         console.log(transactions)
+         
         }
       })
       // console.log(transactions.length)
@@ -84,7 +85,7 @@ const NFT = (props: any) => {
       // }
       
      
-      setBuys(transactions)
+      
     })  
     .catch(error => {
       console.error(error)
@@ -159,13 +160,13 @@ const NFT = (props: any) => {
 
     }
     getBuysData()
-    
     startup()
+    
       
   }, [])
 
 
-
+  
   var image: any;
 
   if (balance > 0) {
@@ -173,13 +174,21 @@ const NFT = (props: any) => {
   } else {
     image = <> You dont own any NFTs yet! </>;
   }
+  useEffect (() => {
 
-  let sum: number = 43.5;
-  buys.forEach(a => sum += +a / 10 ** 18);
+    let sum: number = 43.5;
+    buys.forEach(a => sum += +a / 10 ** 18);
+    setSumtotal(sum);
 
-  const buysQuantity = buys[buys.length-1] / 10 ** 18;
+    const _buysQuantity = buys[buys.length-1] / 10 ** 18;
+    setBuysQuantity(_buysQuantity);
+    console.log("buys",buys)
 
-  console.log("buys",buys)
+   } , [buys])
+  
+  
+
+  
 
 
 
@@ -211,7 +220,7 @@ const NFT = (props: any) => {
           <div className='col-md-6'>
             <MarketStat>
               <span>Total volume:</span>
-              <h4>{sum}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
+              <h4>{sumTotal}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
         </div>
