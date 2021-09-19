@@ -15,6 +15,8 @@ import UnlockMetamask from "../../components/UnlockMetamask/UnlockMetamask";
 import InstallMetamask from "../../components/InstallMetamask/InstallMetamask";
 import { Helmet } from "react-helmet";
 
+
+
 const win = window as any
 const docu = document as any
 win.ava = new Web3(AVAX_NETWORK_RPC)
@@ -127,10 +129,11 @@ const NFT = (props: any) => {
           transactions.push(transaction.value);
         }
       })
-
-      if (transactions.length === 0) {
-        transactions.push(12.5 * (10 ** 18));
-      }
+      // console.log(transactions.length)
+      // if (transactions.length === 0) {
+      //   transactions.push(12.5 * (10 ** 18));
+      // }
+      
 
       setBuys(transactions);
     })
@@ -150,7 +153,9 @@ const NFT = (props: any) => {
   let sum: number = 31;
   buys.forEach(a => sum += +a / 10 ** 18);
 
-  const buysQuantity = buys[0] / 10 ** 18;
+  const buysQuantity = buys[buys.length-1] / 10 ** 18;
+
+  console.log(buys[buys.length-1])
 
   const Metadata = () => (
     <Helmet>
@@ -173,14 +178,14 @@ const NFT = (props: any) => {
           <div className='col-md-6'>
             <MarketStat>
               <span>Last traded price:</span>
-              <h4>{buysQuantity || 0} AVAX</h4>
+              <h4>{buysQuantity || 0}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
 
           <div className='col-md-6'>
             <MarketStat>
               <span>Total volume:</span>
-              <h4>{sum} AVAX</h4>
+              <h4>{sum}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
         </div>
@@ -231,7 +236,16 @@ const NFT = (props: any) => {
                 <h2>Your NFTs <small className="text-muted font-italic">({isnetworkID ? balance : 0})</small></h2>
               </div>
               {
-                isnetworkID ? (<div className="row">{image}</div>) :
+                isnetworkID ? (
+
+                 
+            <div className="row">
+                 
+
+                {image}</div>
+                
+                
+                ) :
 
                   (<div className="col-md-12 text-center"> <UnlockMetamask message="Wrong Network, please switch" /> </div>)
               }
