@@ -69,12 +69,13 @@ const NFT = (props: any) => {
         const decodedData = abiDecoder.decodeMethod(transaction.input);
         
         if (decodedData !== undefined && decodedData.name === "buy") {
+          console.log(transaction.value !== "0")
           
           if (transaction.value !== "0"){
             transactions.push(transaction.value);
             
           }
-         
+         console.log(transactions)
         }
       })
       // console.log(transactions.length)
@@ -149,6 +150,8 @@ const NFT = (props: any) => {
 
         setBalance(balance);
         setTokensOfOwner(tokensOfOwnerTemp);
+
+       
         
       });
 
@@ -169,10 +172,12 @@ const NFT = (props: any) => {
     image = <> You dont own any NFTs yet! </>;
   }
 
-  let sum: number = 31;
+  let sum: number = 43.5;
   buys.forEach(a => sum += +a / 10 ** 18);
 
   const buysQuantity = buys[buys.length-1] / 10 ** 18;
+
+  console.log("buys",buys)
 
 
 
