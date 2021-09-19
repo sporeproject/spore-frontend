@@ -7,6 +7,7 @@ import './BSCBridge.scss';
 import { useEffect } from 'react';
 import { CardBridge, TransferButton } from './BSCBridge.style';
 import { Helmet } from 'react-helmet';
+import { AVAX_NETWORK_RPC } from "../../utils/constants";
 
 const win = window as any
 const docu = document as any
@@ -143,7 +144,7 @@ const addAVAXRPC = async () => {
     symbol: "AVAX",
     decimals: 18
   };
-  const rpcUrl = ["AVAX_NETWORK_RPC"]
+  const rpcUrl = [AVAX_NETWORK_RPC]
   const blockExplorerUrl = ["https://cchain.explorer.avax.network/"]
   const nid = win.web3.currentProvider.chainId;
   if (nid !== "0xa86a") {
