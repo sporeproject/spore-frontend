@@ -69,10 +69,10 @@ const NFT = (props: any) => {
         const decodedData = abiDecoder.decodeMethod(transaction.input);
         
         if (decodedData !== undefined && decodedData.name === "buy") {
+          console.log(transaction.value !== "0")
           if (transaction.value !== 0){
             transactions.push(transaction.value);
             
-
           }
          
         }
