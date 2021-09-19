@@ -94,7 +94,7 @@ const NFT = (props: any) => {
   useEffect(() => {
     async function startup() {
 
-     getBuysData()
+     
     
 
       const totalCharacters = 72
@@ -136,7 +136,7 @@ const NFT = (props: any) => {
         const characterForSale = SporeMarketv1.methods.Bazaar(i).call();
         promises.push(characterForSale);
       }
-
+      getBuysData()
       Promise.all(promises).then((values) => {
         setBazaar(values)      
       }).then(async () => {
@@ -147,11 +147,11 @@ const NFT = (props: any) => {
         const tokensOfOwnerTemp = await SporeMarketv1.methods
           .tokensOfOwner(account)
           .call();
-
+        
         setBalance(balance);
         setTokensOfOwner(tokensOfOwnerTemp);
 
-       
+        
         
       });
 
