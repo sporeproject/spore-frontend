@@ -143,7 +143,7 @@ const NFT = (props: any) => {
         
       });
 
-      
+      const promises2 = [];
       
 
         const accounts = await win.ethereum.request({ method: "eth_accounts" });
@@ -215,21 +215,21 @@ const NFT = (props: any) => {
         </h2>
 
         <div className='row pb-5'>
-          <div className='col-md-6'>
+          <div className='col-md-4'>
             <MarketStat>
               <span>Last traded price:</span>
               <h4>{buysQuantity || 0}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
 
-          <div className='col-md-6'>
+          <div className='col-md-4'>
             <MarketStat>
               <span>Floor Price:</span>
               <h4>{floorPrice}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
 
-          <div className='col-md-6'>
+          <div className='col-md-4'>
             <MarketStat>
               <span>Total volume:</span>
               <h4>{sumTotal}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
