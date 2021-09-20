@@ -119,8 +119,6 @@ const NFT = (props: any) => {
         setisWeb3(true);
       }
 
-      
-
       const nid = win.web3.currentProvider.chainId
       if (nid === "0xa86a") {
         setisnetworkID(true);
@@ -134,16 +132,12 @@ const NFT = (props: any) => {
         promises.push(characterForSale);
       }
       
-
-
       Promise.all(promises).then((values) => {
         setBazaar(values)
-        values.filter ((value)=> { if (value.price !== "0") {return setBazaarPrices((previousPrice)=> {return [...previousPrice,value.price] } ) }})
-        
-        
+        values.forEach((value)=> { if (value.price !== "0") {return setBazaarPrices((previousPrice)=> {return [...previousPrice,value.price] } ) }})
       });
 
-      const promises2 = [];
+      
       
 
         const accounts = await win.ethereum.request({ method: "eth_accounts" });
