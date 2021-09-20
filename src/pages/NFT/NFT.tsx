@@ -58,6 +58,8 @@ const NFT = (props: any) => {
   const [isWeb3, setisWeb3] = useState({});
   const [buysQuantity, setBuysQuantity] = useState(0);
   const [sumTotal, setSumtotal] = useState(0);
+  const [bazaarPrices, setBazaarPrices] = useState(new Array<any>());
+  const [floorPrice, setFloorPrice] = useState(0);
 
   const getBuysData = async () => {
     await axios.get(API_COVALENTHQ).then(async (res) => {
@@ -69,8 +71,7 @@ const NFT = (props: any) => {
         
         const decodedData = abiDecoder.decodeMethod(transaction.input);
         
-        if (decodedData !== undefined && decodedData.name === "buy") {
-          
+        if (decodedData !== undefined && decodedData.name === "buy") {  
           
           if (transaction.value !== "0"){
             
@@ -82,8 +83,7 @@ const NFT = (props: any) => {
       // console.log(transactions.length)
       // if (transactions.length === 0) {
       //   transactions.push(12.5 * (10 ** 18));
-      // }
-      
+      // } 
      
       
     })  
@@ -94,10 +94,6 @@ const NFT = (props: any) => {
 
   useEffect(() => {
     async function startup() {
-
-     
-    
-
       const totalCharacters = 72
       const SporeMarketv1 = new win.ava.eth.Contract(
         SPORE_MARKET_ABI,
@@ -141,9 +137,15 @@ const NFT = (props: any) => {
 
 
       Promise.all(promises).then((values) => {
-        setBazaar(values)      
-      })
-     
+        setBazaar(values)
+        values.filter ((value)=> { if (value.price !== "0") {return setBazaarPrices((previousPrice)=> {return [...previousPrice,value.price] } ) }})
+        
+        
+      });
+
+      
+      
+
         const accounts = await win.ethereum.request({ method: "eth_accounts" });
         //We take the first address in the array of addresses and display it
         const account = accounts[0];
@@ -151,23 +153,28 @@ const NFT = (props: any) => {
         const tokensOfOwnerTemp = await SporeMarketv1.methods
           .tokensOfOwner(account)
           .call();
-        
         setBalance(balance);
         setTokensOfOwner(tokensOfOwnerTemp);
-
-        
-        
-      
-
     }
-    getBuysData()
-    startup()
     
+    getBuysData();
+    startup()
       
   }, [])
 
+ 
+  // if (bazaarPrices.length > 0) { 
+  //   setFloorPrice(Math.min(...bazaarPrices));
+  //   console.log(bazaarPrices)
+  // };
 
-  
+  useEffect(() => {
+    if (bazaarPrices.length > 0) {
+      setFloorPrice(Math.min(...bazaarPrices)/10**18)
+    }
+  }, [bazaarPrices])
+
+
   var image: any;
 
   if (balance > 0) {
@@ -183,14 +190,11 @@ const NFT = (props: any) => {
 
     const _buysQuantity = buys[buys.length-1] / 10 ** 18;
     setBuysQuantity(_buysQuantity);
-    console.log("buys",buys)
+    
+    
 
    } , [buys])
   
-  
-
-  
-
 
 
   const Metadata = () => (
@@ -215,6 +219,13 @@ const NFT = (props: any) => {
             <MarketStat>
               <span>Last traded price:</span>
               <h4>{buysQuantity || 0}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
+            </MarketStat>
+          </div>
+
+          <div className='col-md-6'>
+            <MarketStat>
+              <span>Floor Price:</span>
+              <h4>{floorPrice}  <img className="mr-2" id="cur-logo" height="28px" width="28px" src="avalanche-logo.png" alt="Avalanche Network"></img></h4>
             </MarketStat>
           </div>
 
