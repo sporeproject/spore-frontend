@@ -24,7 +24,7 @@ export const Contributors = () => {
   coreContributors = coreContributors.filter((data:any) => {return data !== null})
   
   return (
-    <section className='bg-white min-vh-50 pb-5'>
+    <section className='bg-white-darker min-vh-50 pb-5'>
       <div className='container information py-5'>
         <div className='row py-4'>
           <div className='col-md-12 text-center'>

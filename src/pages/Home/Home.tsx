@@ -2,8 +2,8 @@ import { Helmet } from 'react-helmet';
 import { Contracts } from '../../components/Contracts/Contracts';
 import { Contributors } from '../../components/Contributors/Contributor';
 import { Partnerships } from '../../components/Partnerships/Partnerships';
-import PriceToken from '../../components/PriceToken/PriceToken';
-import Tokenomics from '../../components/Tokenomics/Tokenomics';
+// import PriceToken from '../../components/PriceToken/PriceToken';
+// import Tokenomics from '../../components/Tokenomics/Tokenomics';
 import './Home.scss';
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
     <>
       <Metadata />
       <div className='container information'>
-        <div className='row py-5'>
+        <div className='row py-6'>
           <div className='col-md-7'>
 
             <h1 className='feature pb-4 py-5'>
@@ -39,9 +39,18 @@ const Home = () => {
           <div className='col-md-5 text-right'>
             <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
           </div>
-        </div>
+          </div>
 
-        <div className='row py-5'>
+          <div className='row py-6'>
+            <div className='col-md-12'>
+              <p className='lead'>
+              Frictionless rewards will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
+              </p>
+            </div>
+          </div>
+        
+
+        {/* <div className='row py-5'>
           <PriceToken></PriceToken>
 
           <div className='col-md-5 text-left larger'>
@@ -58,18 +67,17 @@ const Home = () => {
               <li>6% is burned</li>
             </ul>
           </div>
+        </div> */}
+      
+        
+      
         </div>
 
-        <p className='lead'>
-          Frictionless rewards will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
-        </p>
-      </div>
-
-      <section className='bg-white'>
+      {/* <section className='bg-white'>
         <Tokenomics />
-      </section>
+      </section> */}
 
-      <section className='bg-white-darker pb-5'>
+      <section className='bg-white pb-5'>
         <div className='container information py-5'>
           <div className='row py-4'>
             <div className='col-md-12 text-center'>

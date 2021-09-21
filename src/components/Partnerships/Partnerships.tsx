@@ -3,7 +3,7 @@ import { PartnersWrapper } from './Information.style';
 
 export const Partnerships = () => {
   return (
-    <section className='bg-white-darker pb-6'>
+    <section className='bg-white pb-6'>
       <div className='container information py-5'>
         <div className='row py-6'>
           <div className='col-md-12 text-center'>

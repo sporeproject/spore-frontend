@@ -10,6 +10,8 @@ import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
+import Token from './pages/Token/Token';
+
 
 const Router = () => {
   return (
@@ -21,6 +23,9 @@ const Router = () => {
             <MyParticles/>
             <Home/>
           </>
+        </Route>
+        <Route exact path='/token'>
+          <Token/>
         </Route>
         <Route exact path='/nft'>
           <NFT/>

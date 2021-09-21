@@ -47,6 +47,12 @@ const Header = () => {
                 </Link>
               </li>
 
+              <li className='nav-item'>
+                <Link to='/token' style={{ textDecoration: 'none' }}>
+                  <span className='nav-link font-weight-bold' title='Token Information'>Token</span>
+                </Link>
+              </li>
+
 
               <li className="dropdown nav-item">
                 <a href="/#" className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">NFT<span className="caret"></span>

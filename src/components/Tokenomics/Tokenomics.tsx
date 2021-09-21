@@ -167,7 +167,7 @@ const Tokenomics = () => {
       <div className='container information py-5'>
         <div className="container mx-0">
           <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-            <h1 className='feature pb-1'><span>Tokenomics</span></h1>
+            <h1 className='feature pb-1'><span>Token Distribution</span></h1>
             <div className="text-kecil"></div>
           </div>
         </div>
