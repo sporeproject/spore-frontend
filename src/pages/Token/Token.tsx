@@ -15,12 +15,26 @@ const Token = () => {
   return (
     <>
       <Metadata />
+      <div className='container information'>
+        <div className='row py-5'>
+          <div className='col-md-12'>
 
-      <div className="container md-5 py-4">
+          <div className="container md-5 py-4">
           <div className="inner-header w-100 h-100 d-flex flex-column justify-content-center align-items-center">
             <h1 className='feature'><span>Tokenomics</span></h1>
             </div>
         </div>
+
+            <p className='lead'>
+             lorem ipsum
+            </p>
+
+            <p className='lead'> lorem ipsum
+            </p>
+
+          </div>
+          </div>
+      
 
       <div className='container information'>
         
@@ -44,6 +58,7 @@ const Token = () => {
         </div>
 
         
+      </div>
       </div>
 
       <section className='bg-white'>
