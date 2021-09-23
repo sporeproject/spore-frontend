@@ -41,13 +41,7 @@ const Home = () => {
           </div>
           </div>
 
-          <div className='row py-6'>
-            <div className='col-md-12'>
-              <p className='lead'>
-              Frictionless rewards will decrease infinitely as tokens continue to burn. All holders enjoy the ever-decreasing circulating supply.
-              </p>
-            </div>
-          </div>
+          
         
 
         {/* <div className='row py-5'>
