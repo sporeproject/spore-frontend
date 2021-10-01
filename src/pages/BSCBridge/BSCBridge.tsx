@@ -320,7 +320,7 @@ const BSCBridge = () => {
       setConnectedAccount(connected_account)
 
     }
-    startup()
+    //startup()
   }, [])
 
   const Metadata = () => (

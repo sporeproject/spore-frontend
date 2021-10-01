@@ -10,38 +10,42 @@ import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
+import Connect from './pages/Connect/Connect';
 
 const Router = () => {
   return (
     <ReactRouter>
-      <Header/>
+      <Header />
       <Switch>
         <Route exact path='/'>
           <>
-            <MyParticles/>
-            <Home/>
+            <MyParticles />
+            <Home />
           </>
         </Route>
         <Route exact path='/nft'>
-          <NFT/>
+          <NFT />
         </Route>
         <Route exact path='/bridge'>
-          <BSCBridge/>
+          <BSCBridge />
         </Route>
         <Route exact path='/gallery'>
-          <Gallery/>
+          <Gallery />
         </Route>
         <Route exact path='/coming-soon'>
-          <ComingSoon/>
+          <ComingSoon />
         </Route>
         <Route exact path='/vote'>
-          <Vote/>
+          <Vote />
         </Route>
         <Route exact path='/airdrop'>
-          <SporeFairy/>
+          <SporeFairy />
+        </Route>
+        <Route exact path='/connect'>
+          <Connect />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </ReactRouter>
   );
 };
