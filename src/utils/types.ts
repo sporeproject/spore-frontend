@@ -11,9 +11,12 @@ export interface IChainData {
   short_name: string;
   chain: string;
   network: string;
-  chain_id: number;
-  network_id: number;
+  chain_id: number | string;
+  chainId: number | string;
+  network_id: number | string;
   rpc_url: string;
+  rpcUrl: string;
+  blockExploreURL?: string;
   native_currency: IAssetData;
 }
 
@@ -131,7 +134,7 @@ export interface IMethod {
 }
 
 export interface IBoxImage {
-  "@type": string;
+  '@type': string;
   contentUrl: {
     [label: string]: string;
   };

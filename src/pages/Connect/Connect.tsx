@@ -5,26 +5,15 @@ import Column from '../../components/Connect/Column';
 import Wrapper from '../../components/Connect/Wrapper';
 import Header from '../../components/Connect/Header';
 import Loader from '../../components/Connect/Loader';
-import AccountAssets from '../../components/Connect/AccountAssets';
 import Web3Modal from 'web3modal';
 import ConnectButton from '../../components/Connect/ConnectButton';
 import Modal from '../../components/Connect/Modal';
 import ModalResult from '../../components/Connect/ModalResult';
-import {
-  ETH_SEND_TRANSACTION,
-  ETH_SIGN,
-  PERSONAL_SIGN,
-  BOX_GET_PROFILE,
-  DAI_BALANCE_OF,
-  DAI_TRANSFER,
-} from '../../constants';
 import { fonts } from '../../utils/stylesConnect';
-import { callBalanceOf, callTransfer } from '../../utils/web3';
 import { getChainData } from '../../utils/utilities';
 // @ts-ignore
 import WalletConnectProvider from '@walletconnect/web3-provider';
 // @ts-ignore
-import Fortmatic from 'fortmatic';
 
 const SLayout = styled.div`
   position: relative;
@@ -117,7 +106,6 @@ export default function Connect() {
   const [provider, setProvider] = useState(null);
   const [connected, setConnected] = useState(false);
   const [chainId, setChainId] = useState(1);
-  const [assets, setAssets] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [pendingRequest, setPendingRequest] = useState(false);
   const [result, setResult] = useState(null);
@@ -128,13 +116,11 @@ export default function Connect() {
       walletconnect: {
         package: WalletConnectProvider,
         options: {
-          infuraId: process.env.REACT_APP_INFURA_ID,
-        },
-      },
-      fortmatic: {
-        package: Fortmatic,
-        options: {
-          key: process.env.REACT_APP_FORTMATIC_KEY,
+          infuraId: '3dd9be7637c24ef6938fad45f832b2ce',
+          rpc: {
+            56: 'https://bsc-dataseed.binance.org/',
+            43114: 'https://bsc-dataseed.binance.org/',
+          },
         },
       },
     };
@@ -148,7 +134,12 @@ export default function Connect() {
       await web3.currentProvider.close();
     }
     await web3Modal.clearCachedProvider();
-    //  this.setState({ ...INITIAL_STATE });
+    setWeb3(null);
+    setProvider(null);
+    setAddress('');
+    setChainId(1);
+    setNetworkId(56);
+    setConnected(false);
   };
 
   const subscribeProvider = async (provider: any) => {
@@ -157,39 +148,28 @@ export default function Connect() {
     }
     provider.on('close', () => resetApp());
     provider.on('accountsChanged', async (accounts: string[]) => {
-      // await this.setState({ address: accounts[0] });
-      // await this.getAccountAssets();
+      setAddress(accounts[0]);
     });
     provider.on('chainChanged', async (chainId: number) => {
       if (!web3) return;
-      const networkId = await web3.eth.net.getId();
-      setNetworkId(networkId);
+      setNetworkId(chainId);
       setChainId(chainId);
-      // await this.getAccountAssets();
     });
 
     provider.on('networkChanged', async (networkId: number) => {
       if (!web3) return;
-      const chainId = await web3.eth.chainId();
-      setChainId(chainId);
+      setChainId(networkId);
       setNetworkId(networkId);
-      // await this.getAccountAssets();
     });
   };
 
   const onConnect = async () => {
     const provider = await web3Modal.connect();
-
     await subscribeProvider(provider);
-
     const web3: any = initWeb3(provider);
-
     const accounts = await web3.eth.getAccounts();
-
     const address = accounts[0];
-
     const networkId = await web3.eth.net.getId();
-
     const chainId = await web3.eth.chainId();
 
     setWeb3(web3);
@@ -198,21 +178,6 @@ export default function Connect() {
     setChainId(chainId);
     setNetworkId(networkId);
     setConnected(true);
-
-    // await this.getAccountAssets();
-  };
-
-  const getAccountAssets = async () => {
-    setFetching(true);
-    try {
-      // get account balances
-      // const assets = await apiGetAccountAssets(address, chainId);
-      setFetching(false);
-      setAssets(assets);
-    } catch (error) {
-      console.error(error); // tslint:disable-line
-      setFetching(false);
-    }
   };
 
   const web3Modal: Web3Modal = new Web3Modal({
@@ -220,6 +185,10 @@ export default function Connect() {
     cacheProvider: true,
     providerOptions: getProviderOptions(),
   });
+
+  useEffect(() => {
+    onConnect();
+  }, []);
 
   return (
     <SLayout>

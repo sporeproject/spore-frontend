@@ -107,7 +107,7 @@ export function isMobile(): boolean {
 
 export function getChainData(chainId: number): IChainData {
   const chainData = supportedChains.filter(
-    (chain: any) => chain.chain_id === chainId
+    (chain: any) => chain.chain_id == chainId
   )[0];
 
   if (!chainData) {
@@ -128,7 +128,6 @@ export function getChainData(chainId: number): IChainData {
       rpc_url: rpcUrl,
     };
   }
-
   return chainData;
 }
 
