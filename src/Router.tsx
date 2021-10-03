@@ -41,9 +41,6 @@ const Router = () => {
         <Route exact path='/airdrop'>
           <SporeFairy />
         </Route>
-        <Route exact path='/connect'>
-          <Connect />
-        </Route>
       </Switch>
       <Footer />
     </ReactRouter>

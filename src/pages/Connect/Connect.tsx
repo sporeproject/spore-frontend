@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Web3 from 'web3';
 import Column from '../../components/Connect/Column';
-import Wrapper from '../../components/Connect/Wrapper';
-import Header from '../../components/Connect/Header';
+import AccountInfo from '../../components/Connect/Header';
 import Loader from '../../components/Connect/Loader';
 import Web3Modal from 'web3modal';
 import ConnectButton from '../../components/Connect/ConnectButton';
@@ -15,19 +14,6 @@ import { getChainData } from '../../utils/utilities';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 // @ts-ignore
 
-const SLayout = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  text-align: center;
-`;
-
-const SContent = styled(Wrapper)`
-  width: 100%;
-  height: 100%;
-  padding: 0 16px;
-`;
-
 const SContainer = styled.div`
   height: 100%;
   min-height: 200px;
@@ -36,10 +22,6 @@ const SContainer = styled.div`
   justify-content: center;
   align-items: center;
   word-break: break-word;
-`;
-
-const SLanding = styled(Column)`
-  height: 600px;
 `;
 
 const SModalContainer = styled.div`
@@ -56,31 +38,6 @@ const SModalTitle = styled.div`
 
 const SModalParagraph = styled.p`
   margin-top: 30px;
-`;
-
-// @ts-ignore
-const SBalances = styled(SLanding)`
-  height: 100%;
-  & h3 {
-    padding-top: 30px;
-  }
-`;
-
-const STestButtonContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const STestButton = styled.button`
-  border-radius: 8px;
-  font-size: ${fonts.size.medium};
-  height: 44px;
-  width: 100%;
-  max-width: 175px;
-  margin: 12px;
 `;
 
 function initWeb3(provider: any) {
@@ -119,7 +76,7 @@ export default function Connect() {
           infuraId: '3dd9be7637c24ef6938fad45f832b2ce',
           rpc: {
             56: 'https://bsc-dataseed.binance.org/',
-            43114: 'https://bsc-dataseed.binance.org/',
+            43114: 'https://api.avax.network/ext/bc/C/rpc',
           },
         },
       },
@@ -191,69 +148,14 @@ export default function Connect() {
   }, []);
 
   return (
-    <SLayout>
-      <Column maxWidth={1000} spanHeight>
-        <Header
-          connected={connected}
-          address={address}
-          chainId={chainId}
-          killSession={resetApp}
-        />
-        <SContent>
-          <SLanding center>
-            <h3>{`Test Web3Modal`}</h3>
-            <ConnectButton onClick={onConnect} />
-          </SLanding>
-          {/*fetching ? (
-            <Column center>
-              <SContainer>
-                <Loader />
-              </SContainer>
-            </Column>
-          ) : !!assets && !!assets.length ? (
-            <SBalances>
-              <h3>Actions</h3>
-              <Column center>
-                <STestButtonContainer>
-                  <STestButton left onClick={this.testSendTransaction}>
-                    {ETH_SEND_TRANSACTION}
-                  </STestButton>
-
-                  <STestButton left onClick={this.testSignMessage}>
-                    {ETH_SIGN}
-                  </STestButton>
-
-                  <STestButton left onClick={this.testSignPersonalMessage}>
-                    {PERSONAL_SIGN}
-                  </STestButton>
-                  <STestButton
-                    left
-                    onClick={() => this.testContractCall(DAI_BALANCE_OF)}>
-                    {DAI_BALANCE_OF}
-                  </STestButton>
-
-                  <STestButton
-                    left
-                    onClick={() => this.testContractCall(DAI_TRANSFER)}>
-                    {DAI_TRANSFER}
-                  </STestButton>
-
-                  <STestButton left onClick={this.testOpenBox}>
-                    {BOX_GET_PROFILE}
-                  </STestButton>
-                </STestButtonContainer>
-              </Column>
-              <h3>Balances</h3>
-              <AccountAssets chainId={chainId} assets={assets} />{' '}
-            </SBalances>
-          ) : (
-            <SLanding center>
-              <h3>{`Test Web3Modal`}</h3>
-              <ConnectButton onClick={this.onConnect} />
-            </SLanding>
-          )*/}
-        </SContent>
-      </Column>
+    <div>
+      <AccountInfo
+        connected={connected}
+        address={address}
+        chainId={chainId}
+        killSession={resetApp}>
+        <ConnectButton onClick={() => onConnect()} />
+      </AccountInfo>
       <Modal
         show={showModal}
         toggleModal={() => {
@@ -280,6 +182,6 @@ export default function Connect() {
           </SModalContainer>
         )}
       </Modal>
-    </SLayout>
+    </div>
   );
 }

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as PropTypes from 'prop-types';
 import Blockie from './Blockie';
-import Banner from './Banner';
 import { ellipseAddress, getChainData } from '../../utils/utilities';
 import { transitions } from '../../utils/stylesConnect';
 
@@ -29,7 +27,6 @@ const SActiveChain = styled(SActiveAccount)`
   text-align: left;
   align-items: flex-start;
   & p {
-    font-size: 0.8em;
     margin: 0;
     padding: 0;
   }
@@ -72,42 +69,48 @@ const SDisconnect = styled.div<IHeaderStyle>`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 interface IHeaderProps {
   killSession: () => void;
   connected: boolean;
   address: string;
   chainId: number;
+  children: React.ReactElement;
 }
 
 const Header = (props: IHeaderProps) => {
-  const { connected, address, chainId, killSession } = props;
+  const { connected, address, chainId, killSession, children } = props;
   const chainData = chainId ? getChainData(chainId) : null;
   return (
-    <SHeader {...props}>
-      {connected && chainData ? (
-        <SActiveChain>
-          <p>{`Connected to`}</p>
-          <p>{chainData.name}</p>
-        </SActiveChain>
-      ) : (
-        <Banner />
+    <>
+      {connected && (
+        <SHeader {...props}>
+          {connected && chainData ? (
+            <SActiveChain>
+              <p>{`Connected to`}</p>
+              <p>{chainData.name}</p>
+            </SActiveChain>
+          ) : null}
+          {address && (
+            <SActiveAccount>
+              <SBlockie address={address} />
+              <SAddress connected={connected}>
+                {ellipseAddress(address)}
+              </SAddress>
+              <SDisconnect connected={connected} onClick={killSession}>
+                {'Disconnect'}
+              </SDisconnect>
+            </SActiveAccount>
+          )}
+        </SHeader>
       )}
-      {address && (
-        <SActiveAccount>
-          <SBlockie address={address} />
-          <SAddress connected={connected}>{ellipseAddress(address)}</SAddress>
-          <SDisconnect connected={connected} onClick={killSession}>
-            {'Disconnect'}
-          </SDisconnect>
-        </SActiveAccount>
-      )}
-    </SHeader>
+      <ButtonWrapper>{children}</ButtonWrapper>
+    </>
   );
-};
-
-Header.propTypes = {
-  killSession: PropTypes.func.isRequired,
-  address: PropTypes.string,
 };
 
 export default Header;

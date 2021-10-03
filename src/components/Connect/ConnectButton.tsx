@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
 const SConnectButtonContainer = styled.div`
   position: relative;
@@ -56,9 +56,9 @@ const SConnectButton = styled.button<IConnectButtonStyleProps>`
   border: none;
   border-style: none;
   box-sizing: border-box;
-  background-color: rgb(64, 153, 255);
+  background-color: #f8f9fa;
   border: none;
-  color: rgb(255, 255, 255);
+  color: #212529;
   box-shadow: 0 4px 6px 0 rgba(50, 50, 93, 0.11),
     0 1px 3px 0 rgba(0, 0, 0, 0.08), inset 0 0 1px 0 rgba(0, 0, 0, 0.06);
   border-radius: 32px;
@@ -67,8 +67,8 @@ const SConnectButton = styled.button<IConnectButtonStyleProps>`
   height: 48px;
   width: 100%;
   margin: 0 auto;
-  padding: ${({ icon }) => (icon ? "8px 5% 7px 17.2%" : "8px 12px")};
-  cursor: ${({ disabled }) => (disabled ? "auto" : "pointer")};
+  padding: ${({ icon }) => (icon ? '.375rem .75rem' : '.375rem .75rem')};
+  cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
   will-change: transform;
 
   &:disabled {
@@ -79,7 +79,7 @@ const SConnectButton = styled.button<IConnectButtonStyleProps>`
 
   @media (hover: hover) {
     &:hover {
-      transform: ${({ disabled }) => (!disabled ? "translateY(-1px)" : "none")};
+      transform: ${({ disabled }) => (!disabled ? 'translateY(-1px)' : 'none')};
       box-shadow: ${({ disabled }) =>
         !disabled
           ? `0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.08), inset 0 0 1px 0 rgba(0, 0, 0, 0.06)`
@@ -93,7 +93,7 @@ const SConnectButton = styled.button<IConnectButtonStyleProps>`
   }
 
   &:active {
-    transform: ${({ disabled }) => (!disabled ? "translateY(1px)" : "none")};
+    transform: ${({ disabled }) => (!disabled ? 'translateY(1px)' : 'none')};
     box-shadow: 0 4px 6px 0 rgba(50, 50, 93, 0.11),
       0 1px 3px 0 rgba(0, 0, 0, 0.08), inset 0 0 1px 0 rgba(0, 0, 0, 0.06);
     color: rgba(255, 255, 255, 0.7);
@@ -106,8 +106,8 @@ const SConnectButton = styled.button<IConnectButtonStyleProps>`
   & ${SIcon} {
     right: auto;
     left: 0;
-    display: ${({ icon }) => (icon ? "block" : "none")};
-    mask: ${({ icon }) => (icon ? `url(${icon}) center no-repeat` : "none")};
+    display: ${({ icon }) => (icon ? 'block' : 'none')};
+    mask: ${({ icon }) => (icon ? `url(${icon}) center no-repeat` : 'none')};
     mask-size: 100%;
     background-color: rgb(255, 255, 255);
     transition: 0.15s ease;
@@ -118,13 +118,12 @@ const ConnectButton = (props: IConnectButtonProps) => (
   <SConnectButtonContainer>
     <SConnectButton
       {...props}
-      type="button"
+      type='button'
       disabled={props.disabled}
-      icon={props.icon}
-    >
+      icon={props.icon}>
       <SHoverLayer />
       <SIcon />
-      {"Connect"}
+      {'Connect'}
     </SConnectButton>
   </SConnectButtonContainer>
 );
