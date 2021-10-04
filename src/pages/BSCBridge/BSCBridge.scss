@@ -116,6 +116,7 @@
       left: auto;
       transform: translateY(-50%) translateX(-50%) rotate(90deg);
       top: calc(50% + 60px);
+      z-index: 1;
     }
   }
 }
@@ -146,4 +147,8 @@
   word-wrap: break-word;
   padding: 8px 0 0 0;
   position: relative;
+}
+
+#WEB3_CONNECT_MODAL_ID > div{
+  z-index: 1999;
 }

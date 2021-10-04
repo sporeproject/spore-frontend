@@ -106,6 +106,7 @@ export function isMobile(): boolean {
 }
 
 export function getChainData(chainId: number): IChainData {
+  console.log({ chainId });
   const chainData = supportedChains.filter(
     (chain: any) => chain.chain_id == chainId
   )[0];
@@ -114,7 +115,7 @@ export function getChainData(chainId: number): IChainData {
     throw new Error('ChainId missing or not supported');
   }
 
-  const API_KEY = process.env.REACT_APP_INFURA_ID;
+  const API_KEY = '3dd9be7637c24ef6938fad45f832b2ce';
 
   if (
     chainData.rpc_url.includes('infura.io') &&

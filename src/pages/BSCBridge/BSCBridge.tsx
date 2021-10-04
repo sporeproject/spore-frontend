@@ -25,34 +25,7 @@ import { getChainData } from '../../utils/utilities';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 // @ts-ignore
 
-const win = window as any;
 const docu = document as any;
-
-const SContainer = styled.div`
-  height: 100%;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  word-break: break-word;
-`;
-
-const SModalContainer = styled.div`
-  width: 100%;
-  position: relative;
-  word-wrap: break-word;
-`;
-
-const SModalTitle = styled.div`
-  margin: 1em 0;
-  font-size: 20px;
-  font-weight: 700;
-`;
-
-const SModalParagraph = styled.p`
-  margin-top: 30px;
-`;
 
 function initWeb3(provider: any) {
   const web3: any = new Web3(provider);
@@ -72,37 +45,28 @@ function initWeb3(provider: any) {
 
 const SporeAddress = '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985';
 const AvaxBridgeAdress = '0x1aFCEF48379ECad5a6D790cE85ad1c87458C0f07';
+const SporeAddressBSC = '0x33A3d962955A3862C8093D1273344719f03cA17C';
 
 const BSCBridge = () => {
-  /* -------------------------------- */
   const [address, setAddress] = useState('');
   const [web3, setWeb3] = useState<any>({});
-  const [provider, setProvider] = useState(null);
   const [connected, setConnected] = useState(false);
   const [chainId, setChainId] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [pendingRequest, setPendingRequest] = useState(false);
-  const [networkId, setNetworkId] = useState(0);
-
-  /* -------------------------------- */
-
   const [numberOfSporeAVAX, setNumberOfSporeAVAX] = useState(0);
   const [numberOfSporeBSC, setNumberOfSporeBSC] = useState(0);
+  const [checkTenPercentageBSC, setCheckTenPercentageBSC] = useState(false);
+
   const feesBNB = 0.005;
   const feesAVAX = 0.03;
 
   const [sporeValue, setSporeValue] = useState('');
 
-  const getNetworkId = async () => {
-    const networks = new Map();
-    networks.set('0x61', 'BSC Testnet');
-    networks.set('0x38', 'Binance Smart Chain');
-    networks.set('0xa86a', 'Avalanche');
-    networks.set('0xa869', 'Fuji Testnet');
-    return 'Network : ' + networks.get(web3.currentProvider.chainId);
-  };
-
   const approve = async () => {
+    if (!connected) return;
+    if (sporeValue === '' || !Boolean(sporeValue)) {
+      alert('Please enter a valid spore value');
+      return;
+    }
     const SporeContract = new web3.eth.Contract(SporeABI, SporeAddress);
     var amount = ethers.BigNumber.from(sporeValue).mul(10 ** 9);
     try {
@@ -116,6 +80,10 @@ const BSCBridge = () => {
 
   const swapFromAVAX = async () => {
     if (!connected) return;
+    if (sporeValue === '' || !Boolean(sporeValue)) {
+      alert('Please enter a valid spore value');
+      return;
+    }
     const AvaxBridgeContract = new web3.eth.Contract(
       AvaxBridgeABI,
       AvaxBridgeAdress
@@ -133,14 +101,17 @@ const BSCBridge = () => {
 
   const swapFromBSC = async () => {
     if (!connected) return;
+    console.log({ sporeValue });
+    if (sporeValue === '' || !Boolean(sporeValue)) {
+      alert('Please enter a valid spore value');
+      return;
+    }
     const BscBridgeAdress = '0x638E8FE7AD4D9C05735Ecb6b9c66013679276651';
     const BscBridgeContract = new web3.eth.Contract(
       BscBridgeABI,
       BscBridgeAdress
     );
-    var amount = ethers.BigNumber.from(
-      docu.getElementById('spores2').value
-    ).mul(10 ** 9);
+    var amount = ethers.BigNumber.from(sporeValue).mul(10 ** 9);
     var fees = ethers.BigNumber.from('5000000000000000');
     try {
       if (docu.getElementById('checkbox').checked) {
@@ -326,9 +297,10 @@ const BSCBridge = () => {
   };
 
   const getSporeInWalletBSC = async () => {
-    const SporeContract = new web3.eth.Contract(SporeABI, SporeAddress);
+    const SporeContract = new web3.eth.Contract(SporeABI, SporeAddressBSC);
     try {
       var spores = await SporeContract.methods.balanceOf(address).call();
+      console.log({ spores });
       return spores;
     } catch (error) {
       console.log(error);
@@ -387,7 +359,6 @@ const BSCBridge = () => {
     }
     await web3Modal.clearCachedProvider();
     setWeb3(null);
-    setProvider(null);
     setAddress('');
     setChainId(1);
     setConnected(false);
@@ -397,39 +368,43 @@ const BSCBridge = () => {
     if (!provider.on) {
       return;
     }
+
     provider.on('close', () => resetApp());
     provider.on('accountsChanged', async (accounts: string[]) => {
       setAddress(accounts[0]);
-      setShowModal(false);
     });
     provider.on('chainChanged', async (chainId: number) => {
-      setNetworkId(chainId);
-      setChainId(chainId);
-      setShowModal(false);
-    });
-
-    provider.on('networkChanged', async (networkId: number) => {
-      setChainId(networkId);
-      setNetworkId(networkId);
-      setShowModal(false);
+      setChainId(Number(chainId));
+      console.log({ chainId });
+      web3Modal.clearCachedProvider();
+      web3Modal.toggleModal();
+      onConnect();
     });
   };
 
   const onConnect = async () => {
-    const provider = await web3Modal.connect();
-    await subscribeProvider(provider);
-    const web3: any = initWeb3(provider);
-    const accounts = await web3.eth.getAccounts();
-    const address = accounts[0];
-    const networkId = await web3.eth.net.getId();
-    const chainId = await web3.eth.chainId();
+    try {
+      web3Modal.off('close');
+      web3Modal.off('accountsChanged');
+      web3Modal.off('chainChanged');
 
-    setWeb3(web3);
-    setProvider(provider);
-    setChainId(chainId);
-    setNetworkId(networkId);
-    setConnected(true);
-    setAddress(address);
+      web3Modal.on('connect', () => {
+        console.log('Coneted');
+      });
+
+      const provider = await web3Modal.connect();
+      await subscribeProvider(provider);
+      const web3: any = initWeb3(provider);
+      const accounts = await web3.eth.getAccounts();
+      const address = accounts[0];
+      const chainId = await web3.eth.chainId();
+      setWeb3(web3);
+      setChainId(chainId);
+      setConnected(true);
+      setAddress(address);
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   const web3Modal: Web3Modal = new Web3Modal({
@@ -445,15 +420,20 @@ const BSCBridge = () => {
   async function getMaxSporeCountInBalances() {
     var numberOfSporeAVAX = (await getSporeInWalletAVAX()) / 10 ** 9;
     var numberOfSporeBSC = (await getSporeInWalletBSC()) / 10 ** 9;
+    console.log({ numberOfSporeBSC });
     setNumberOfSporeAVAX(numberOfSporeAVAX);
     setNumberOfSporeBSC(numberOfSporeBSC);
   }
 
-  useEffect(() => {
-    if (web3 && address) getMaxSporeCountInBalances();
-  }, [web3, address, chainId]);
+  const isChainIdAvalanche = () => chainId > 431;
 
-  /* ------------------------------ */
+  useEffect(() => {
+    if (web3 && address && connected) getMaxSporeCountInBalances();
+  }, [web3, address, chainId, connected]);
+
+  useEffect(() => {
+    console.log('checkTenPercentageBSC', checkTenPercentageBSC);
+  }, [checkTenPercentageBSC]);
 
   return (
     <>
@@ -465,8 +445,6 @@ const BSCBridge = () => {
               <div className='col-lg-8'>
                 <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
               </div>
-              {/*<div className='col-lg-10  '>{connectedAccount}</div>
-              <div className='col-lg-10 text-right'>{network}</div>*/}
               <div className='col-lg-12 text-right'>
                 <AccountInfo
                   connected={connected}
@@ -479,165 +457,176 @@ const BSCBridge = () => {
                     ) : null}
                   </>
                 </AccountInfo>
-                <Modal
-                  show={showModal}
-                  toggleModal={() => {
-                    setShowModal((prev) => !prev);
-                  }}>
-                  {pendingRequest ? (
-                    <SModalContainer>
-                      <SModalTitle>{'Pending Call Request'}</SModalTitle>
-                      <SContainer>
-                        <Loader />
-                        <SModalParagraph>
-                          {'Approve or reject request using your wallet'}
-                        </SModalParagraph>
-                      </SContainer>
-                    </SModalContainer>
-                  ) : (
-                    <SModalContainer>
-                      <SModalTitle>{'Call Request Rejected'}</SModalTitle>
-                    </SModalContainer>
-                  )}
-                </Modal>
               </div>
             </div>
             <div className='wrapBridge pt-2'>
               <div className='row rowBridge'>
-                <div className='col-lg-6 col-coin pr-lg-0'>
-                  <CardBridge
-                    type='avalanche'
-                    className='card px-lg-5 h-100 avalanche'>
-                    <div className='card-body'>
-                      <h5 className='card-title'>
-                        <span>FROM</span> Avalanche{' '}
-                      </h5>
-                      <p className='card-text'>Balance : {numberOfSporeAVAX}</p>
-                      <div className='input-group'>
-                        <input
-                          type='text'
-                          className='form-control'
-                          id='spores'
-                          placeholder='0.0'
-                          value={sporeValue}
-                          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                            setSporeValue(event.target.value)
-                          }
-                        />
-                        <div className='input-group-append'>
+                {isChainIdAvalanche() && (
+                  <div className='col-lg-6 col-coin pr-lg-0'>
+                    <CardBridge
+                      type='avalanche'
+                      className='card px-lg-5 h-100 avalanche'>
+                      <div className='card-body'>
+                        <h5 className='card-title'>
+                          <span>FROM</span> Avalanche{' '}
+                        </h5>
+                        <p className='card-text'>
+                          Balance : {numberOfSporeAVAX}
+                        </p>
+                        <div className='input-group'>
+                          <input
+                            type='text'
+                            className='form-control'
+                            id='spores'
+                            placeholder='0.0'
+                            value={sporeValue}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                              setSporeValue(event.target.value)
+                            }
+                          />
+                          <div className='input-group-append'>
+                            <button
+                              className='btn btn-outline-secondary white'
+                              onClick={setMaxSporeAVAX}
+                              disabled={!connected}
+                              type='button'>
+                              MAX
+                            </button>
+                          </div>
+                        </div>
+                        <div className='offset-lg-3 col-lg-6 text-center py-1'>
                           <button
-                            className='btn btn-outline-secondary white'
-                            onClick={setMaxSporeAVAX}
+                            onClick={approve}
                             disabled={!connected}
-                            type='button'>
-                            MAX
+                            className='btn btn-primary'
+                            id='approve-btn'>
+                            APPROVE
                           </button>
                         </div>
                       </div>
-                      <div className='offset-lg-3 col-lg-6 text-center py-1'>
-                        <button
-                          onClick={approve}
-                          disabled={!connected}
-                          className='btn btn-primary'
-                          id='approve-btn'>
-                          APPROVE
-                        </button>
+                    </CardBridge>
+                  </div>
+                )}
+                {!isChainIdAvalanche() && (
+                  <div className='col-lg-6 col-coin pr-lg-0'>
+                    <CardBridge
+                      type='avalanche'
+                      className='card px-lg-5 h-100 avalanche'
+                      id='reverted-1'>
+                      <div className='card-body'>
+                        <h5 className='card-title'>
+                          <span>TO </span> Avalanche{' '}
+                        </h5>
                       </div>
-                    </div>
-                  </CardBridge>
-                </div>
-                <div className='col-lg-6 col-coin pr-lg-0 d-none'>
-                  <CardBridge
-                    type='avalanche'
-                    className='card px-lg-5 h-100 avalanche'
-                    id='reverted-1'>
-                    <div className='card-body'>
-                      <h5 className='card-title'>
-                        <span>TO </span> Avalanche{' '}
-                      </h5>
-                    </div>
-                  </CardBridge>
-                </div>
+                    </CardBridge>
+                  </div>
+                )}
                 <div className='arrow'>
                   <button
-                    className='btn btn-outline-light inverted'
-                    id='btn-arrow'>
-                    <i className='fa fa-arrow-right'></i>
+                    className='btn btn-outline-light'
+                    onClick={async () => {
+                      if (!connected) {
+                        alert('Plase connect your wallet');
+                        return;
+                      }
+                      if (isChainIdAvalanche()) {
+                        await addBSCRPC();
+                      } else {
+                        await addAVAXRPC();
+                      }
+                      setSporeValue('');
+                    }}>
+                    {isChainIdAvalanche() ? (
+                      <i className='fa fa-arrow-right'></i>
+                    ) : (
+                      <i className='fa fa-arrow-left'></i>
+                    )}
                   </button>
                 </div>
-                <div className='col-lg-6 col-coin pl-lg-0' id='reverted-2'>
-                  <CardBridge className='card px-lg-5 h-100 binance'>
-                    <div className='card-body'>
-                      <h5 className='card-title'>
-                        <span>TO</span> Binance Smart Chain{' '}
-                      </h5>
-                    </div>
-                  </CardBridge>
-                </div>
-                <div className='col-lg-6 col-coin pl-lg-0 d-none'>
-                  <CardBridge className='card px-lg-5 h-100 binance'>
-                    <div className='card-body'>
-                      <h5 className='card-title'>
-                        <span>FROM</span> Binance Smart Chain{' '}
-                      </h5>
-                      <p className='card-text'>
-                        Balance : <span id='balance'>{numberOfSporeBSC}</span>
-                      </p>
-                      <div className='input-group'>
-                        <input
-                          type='text'
-                          className='form-control'
-                          id='spores2'
-                          placeholder='0.0'
-                          value={sporeValue}
-                          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                            setSporeValue(event.target.value)
-                          }
-                        />
-                        <div className='input-group-append'>
-                          <button
-                            className='btn btn-outline-secondary white'
-                            type='button'
-                            disabled={!connected}
-                            onClick={setMaxSporeBSC}>
-                            MAX
-                          </button>
-                        </div>
+                {isChainIdAvalanche() && (
+                  <div className='col-lg-6 col-coin pl-lg-0' id='reverted-2'>
+                    <CardBridge className='card px-lg-5 h-100 binance'>
+                      <div className='card-body'>
+                        <h5 className='card-title'>
+                          <span>TO</span> Binance Smart Chain{' '}
+                        </h5>
                       </div>
-                      <label className='py-2'>
-                        <input
-                          type='checkbox'
-                          id='checkbox'
-                          name='pay-fees-spore'
-                          value='1'
-                        />{' '}
-                        Swap some SPORE for AVAX (10%){' '}
-                      </label>
-                    </div>
-                  </CardBridge>
+                    </CardBridge>
+                  </div>
+                )}
+                <div className='col-lg-6 col-coin pl-lg-0'>
+                  {!isChainIdAvalanche() && (
+                    <CardBridge className='card px-lg-5 h-100 binance'>
+                      <div className='card-body'>
+                        <h5 className='card-title'>
+                          <span>FROM</span> Binance Smart Chain{' '}
+                        </h5>
+                        <p className='card-text'>
+                          Balance : <span id='balance'>{numberOfSporeBSC}</span>
+                        </p>
+                        <div className='input-group'>
+                          <input
+                            type='text'
+                            className='form-control'
+                            id='spores2'
+                            placeholder='0.0'
+                            value={sporeValue}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                              setSporeValue(event.target.value)
+                            }
+                          />
+                          <div className='input-group-append'>
+                            <button
+                              className='btn btn-outline-secondary white'
+                              type='button'
+                              disabled={!connected}
+                              onClick={setMaxSporeBSC}>
+                              MAX
+                            </button>
+                          </div>
+                        </div>
+                        <label className='py-2'>
+                          <input
+                            type='checkbox'
+                            id='checkbox'
+                            name='pay-fees-spore'
+                            value='1'
+                            checked={checkTenPercentageBSC}
+                            onChange={() => {
+                              setCheckTenPercentageBSC((val) => !val);
+                            }}
+                          />{' '}
+                          Swap some SPORE for AVAX (10%){' '}
+                        </label>
+                      </div>
+                    </CardBridge>
+                  )}
                 </div>
               </div>
               <div className='row'>
-                <div className='col-lg-12 text-center py-4 col-coin'>
-                  <div className='pb-2'>Transfer fees : {feesAVAX} AVAX</div>
-                  <TransferButton
-                    disabled={!connected}
-                    onClick={swapFromAVAX}
-                    className='btn btn-primary btn-lg'
-                    id='swap-btn'>
-                    TRANSFER
-                  </TransferButton>
-                </div>
-                <div className='col-lg-12 text-center py-4 col-coin d-none'>
-                  <div className='pb-2'>Transfer fees : {feesBNB} BNB</div>
-                  <TransferButton
-                    onClick={swapFromBSC}
-                    disabled={!connected}
-                    className='btn btn-primary btn-lg'
-                    id='swap-btn'>
-                    TRANSFER
-                  </TransferButton>
-                </div>
+                {isChainIdAvalanche() ? (
+                  <div className='col-lg-12 text-center py-4 col-coin'>
+                    <div className='pb-2'>Transfer fees : {feesAVAX} AVAX</div>
+                    <TransferButton
+                      disabled={!connected}
+                      onClick={swapFromAVAX}
+                      className='btn btn-primary btn-lg'
+                      id='swap-btn'>
+                      TRANSFER
+                    </TransferButton>
+                  </div>
+                ) : (
+                  <div className='col-lg-12 text-center py-4 col-coin'>
+                    <div className='pb-2'>Transfer fees : {feesBNB} BNB</div>
+                    <TransferButton
+                      onClick={swapFromBSC}
+                      disabled={!connected}
+                      className='btn btn-primary btn-lg'
+                      id='swap-btn'>
+                      TRANSFER
+                    </TransferButton>
+                  </div>
+                )}
               </div>
             </div>
 
