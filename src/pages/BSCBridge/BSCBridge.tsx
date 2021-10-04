@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Web3 from 'web3';
 //@ts-ignore
 import { ethers } from 'ethers';
@@ -8,22 +8,14 @@ import { useEffect } from 'react';
 import { CardBridge, TransferButton } from './BSCBridge.style';
 import { Helmet } from 'react-helmet';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
-import Connect from '../Connect/Connect';
 import { AvaxBridgeABI, BscBridgeABI, SporeABI } from '../../utils/abis';
 
-import styled from 'styled-components';
-import Column from '../../components/Connect/Column';
 import AccountInfo from '../../components/Connect/Header';
-import Loader from '../../components/Connect/Loader';
 import Web3Modal from 'web3modal';
 import ConnectButton from '../../components/Connect/ConnectButton';
-import Modal from '../../components/Connect/Modal';
-import ModalResult from '../../components/Connect/ModalResult';
-import { fonts } from '../../utils/stylesConnect';
 import { getChainData } from '../../utils/utilities';
 // @ts-ignore
 import WalletConnectProvider from '@walletconnect/web3-provider';
-// @ts-ignore
 
 const docu = document as any;
 
@@ -415,6 +407,7 @@ const BSCBridge = () => {
 
   useEffect(() => {
     onConnect();
+    // eslint-disable-next-line
   }, []);
 
   async function getMaxSporeCountInBalances() {
@@ -429,11 +422,8 @@ const BSCBridge = () => {
 
   useEffect(() => {
     if (web3 && address && connected) getMaxSporeCountInBalances();
+    // eslint-disable-next-line
   }, [web3, address, chainId, connected]);
-
-  useEffect(() => {
-    console.log('checkTenPercentageBSC', checkTenPercentageBSC);
-  }, [checkTenPercentageBSC]);
 
   return (
     <>

@@ -10,7 +10,6 @@ import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
-import Connect from './pages/Connect/Connect';
 
 const Router = () => {
   return (
