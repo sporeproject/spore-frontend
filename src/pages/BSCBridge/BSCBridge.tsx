@@ -325,7 +325,6 @@ const BSCBridge = () => {
     </Helmet>
   );
 
-  /* ------------------------------ */
   const getProviderOptions = () => {
     const providerOptions = {
       walletconnect: {
@@ -413,7 +412,6 @@ const BSCBridge = () => {
   async function getMaxSporeCountInBalances() {
     var numberOfSporeAVAX = (await getSporeInWalletAVAX()) / 10 ** 9;
     var numberOfSporeBSC = (await getSporeInWalletBSC()) / 10 ** 9;
-    console.log({ numberOfSporeBSC });
     setNumberOfSporeAVAX(numberOfSporeAVAX);
     setNumberOfSporeBSC(numberOfSporeBSC);
   }
@@ -511,7 +509,8 @@ const BSCBridge = () => {
                     </CardBridge>
                   </div>
                 )}
-                <div className='arrow'>
+                <div
+                  className={`arrow ${isChainIdAvalanche() ? 'avax' : 'bsc'}`}>
                   <button
                     className='btn btn-outline-light'
                     onClick={async () => {
