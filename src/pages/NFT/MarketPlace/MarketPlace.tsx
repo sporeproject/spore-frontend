@@ -57,8 +57,8 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
       setMarketPlaceItems(builder);
       setLoading(false);
     };
-    console.log({ bazaar });
     if (bazaar.length > 0 && marketPlaceItems.length !== 72) buildMarketPlace();
+    // eslint-disable-next-line
   }, [bazaar]);
 
   const nFormatter = (num: number, digits: number) => {

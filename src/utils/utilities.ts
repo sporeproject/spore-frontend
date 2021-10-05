@@ -1,4 +1,3 @@
-import * as ethUtil from 'ethereumjs-util';
 import { IChainData } from './types';
 import supportedChains from './chains';
 
