@@ -22,43 +22,16 @@ import { getChainData } from '../../utils/utilities';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
 const win = window as any;
-const docu = document as any;
 win.ava = new Web3(AVAX_NETWORK_RPC);
 
-async function approve() {
-  const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
-  const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_MAINNET;
-  var amount = ethers.BigNumber.from(
-    docu.getElementById('_approveFee').value
-  ).mul(10 ** 9);
-  await approveContract(
-    SporeAddress,
-    AVAX_SPORE_ABI,
-    SporeNFTMarketaddress,
-    amount
-  );
-}
-
-async function NFTbuy() {
-  const SporeMarketv1 = new win.web3.eth.Contract(
-    SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_MAINNET
-  );
-  var _tokenID = docu.getElementById('_tokenID').value;
-  var account = await win.web3.eth.getAccounts();
-  account = account[0];
-  const bazaar = await SporeMarketv1.methods.Bazaar(_tokenID).call();
-  try {
-    await SporeMarketv1.methods
-      .buy(_tokenID)
-      .send({ from: account, gasPrice: 225000000000, value: bazaar.price });
-  } catch (error) {
-    alert(error);
-  }
-}
+const SporeMarketv2 = new win.ava.eth.Contract(
+  SPORE_MARKET_ABI,
+  ContractAddesses.AVAX_MARKET_MAINNET
+);
 
 function initWeb3(provider: any) {
   const web3: any = new Web3(provider);
+  win.web3 = web3;
   web3.eth.extend({
     methods: [
       {
@@ -71,11 +44,6 @@ function initWeb3(provider: any) {
   return web3;
 }
 
-const SporeMarketv1 = new win.ava.eth.Contract(
-  SPORE_MARKET_ABI,
-  ContractAddesses.AVAX_MARKET_MAINNET
-);
-
 const NFT = (props: any) => {
   const [bazaar, setBazaar] = useState(new Array<any>());
   const [buys, setBuys] = useState(new Array<any>());
@@ -87,14 +55,61 @@ const NFT = (props: any) => {
   const [bazaarPrices, setBazaarPrices] = useState(new Array<any>());
   const [floorPrice, setFloorPrice] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [approveFee, setApproveFee] = useState(100000000000);
 
   /* ----------------------------------------------------------------**/
 
   const [address, setAddress] = useState('');
-  const [web3, setWeb3] = useState<any>({});
+  const [web3, setWeb3] = useState<any>(null);
   const [connected, setConnected] = useState(false);
   const [chainId, setChainId] = useState(1);
   /* ----------------------------------------------------------------**/
+
+  async function approve() {
+    if (!connected) {
+      alert('Please connect before your walllet');
+      return;
+    }
+
+    const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
+    const SporeNFTMarketaddress = ContractAddesses.AVAX_MARKET_MAINNET;
+    var amount = ethers.BigNumber.from(approveFee).mul(10 ** 9);
+    await approveContract(
+      SporeAddress,
+      AVAX_SPORE_ABI,
+      SporeNFTMarketaddress,
+      amount
+    ).catch((error) => {
+      alert(error.message);
+    });
+  }
+
+  async function NFTbuy() {
+    if (!isNetworkAvalanche()) {
+      alert('Please connect to Avalanche Network before buy');
+      return;
+    }
+    if (!connected || !address) {
+      alert('Please connect before your walllet');
+      return;
+    }
+    if (!itemId) {
+      alert('Please select a NFT to buy');
+      return;
+    }
+    const SporeMarketv1 = new web3.eth.Contract(
+      SPORE_MARKET_ABI,
+      ContractAddesses.AVAX_MARKET_MAINNET
+    );
+    const bazaar = await SporeMarketv1.methods.Bazaar(itemId).call();
+    try {
+      await SporeMarketv1.methods
+        .buy(itemId)
+        .send({ from: address, gasPrice: 225000000000, value: bazaar.price });
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
 
   const getBuysData = async () => {
     await axios
@@ -121,13 +136,15 @@ const NFT = (props: any) => {
       });
   };
 
+  const isNetworkAvalanche = () => Boolean(chainId === 0xa86a);
+
   async function startup() {
     setLoading(true);
     const totalCharacters = 72;
 
     const promises = [];
     for (let i = 0; i <= totalCharacters - 1; i++) {
-      const characterForSale = await SporeMarketv1.methods.Bazaar(i).call();
+      const characterForSale = await SporeMarketv2.methods.Bazaar(i).call();
       promises.push(characterForSale);
     }
 
@@ -197,6 +214,10 @@ const NFT = (props: any) => {
   };
 
   const getBalance = async () => {
+    const SporeMarketv1 = new web3.eth.Contract(
+      SPORE_MARKET_ABI,
+      ContractAddesses.AVAX_MARKET_MAINNET
+    );
     //We take the first address in the array of addresses and display it
     const _balance = await SporeMarketv1.methods.balanceOf(address).call();
     const tokensOfOwnerTemp = await SporeMarketv1.methods
@@ -247,9 +268,9 @@ const NFT = (props: any) => {
   });
 
   useEffect(() => {
-    startup();
-    onConnect();
+    if (web3Modal.cachedProvider) onConnect();
     getBuysData();
+    startup();
     // eslint-disable-next-line
   }, []);
 
@@ -268,6 +289,8 @@ const NFT = (props: any) => {
       <meta name='keywords' content='Spore, NFT, Avalanche, BSC' />
     </Helmet>
   );
+
+  console.log(isNetworkAvalanche());
 
   return (
     <>
@@ -355,7 +378,8 @@ const NFT = (props: any) => {
                 <input
                   type='text'
                   id='_approveFee'
-                  value='100000000000'
+                  value={approveFee}
+                  onChange={(event: any) => setApproveFee(event.target.value)}
                   className='form-control'
                 />
                 <div className='input-group-append'>
@@ -370,9 +394,10 @@ const NFT = (props: any) => {
               </p>
               <div className='input-group'>
                 <input
-                  type='text'
                   id='_tokenID'
+                  type='number'
                   value={itemId}
+                  readOnly={true}
                   placeholder='NFT_ID (ex: 0)'
                   className='form-control'
                 />
@@ -399,7 +424,7 @@ const NFT = (props: any) => {
                   </small>
                 </h2>
               </div>
-              {chainId ? (
+              {isNetworkAvalanche() ? (
                 <div className='row'>{image}</div>
               ) : (
                 <div className='col-md-12 text-center'>
