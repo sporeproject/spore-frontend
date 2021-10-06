@@ -235,10 +235,14 @@ const NFT = (props: any) => {
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
       const chainId = await web3.eth.chainId();
-      setWeb3(web3);
-      setChainId(chainId);
-      setConnected(true);
-      setAddress(address);
+      if (Boolean(address)) {
+        setWeb3(web3);
+        setChainId(chainId);
+        setConnected(Boolean(address));
+        setAddress(address);
+      } else {
+        resetApp();
+      }
     } catch (error) {
       console.log('error', error);
     }
@@ -289,8 +293,6 @@ const NFT = (props: any) => {
       <meta name='keywords' content='Spore, NFT, Avalanche, BSC' />
     </Helmet>
   );
-
-  console.log(isNetworkAvalanche());
 
   return (
     <>
