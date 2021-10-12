@@ -90,7 +90,7 @@ const BSCBridge = () => {
       alert(error.message);
     }
   };
-
+  //7:38
   const swapFromBSC = async () => {
     if (!connected) return;
     console.log({ sporeValue });
@@ -375,14 +375,7 @@ const BSCBridge = () => {
 
   const onConnect = async () => {
     try {
-      web3Modal.off('close');
-      web3Modal.off('accountsChanged');
-      web3Modal.off('chainChanged');
-
-      web3Modal.on('connect', () => {
-        console.log('Coneted');
-      });
-
+      await web3Modal.clearCachedProvider();
       const provider = await web3Modal.connect();
       await subscribeProvider(provider);
       const web3: any = initWeb3(provider);
@@ -398,14 +391,22 @@ const BSCBridge = () => {
     }
   };
 
-  const web3Modal: Web3Modal = new Web3Modal({
+  // const [web3Modal, setWeb3Modal] = useState<any>(null);
+  console.log({
     network: getNetwork(),
-    cacheProvider: true,
+    cacheProvider: false,
+    providerOptions: getProviderOptions(),
+  });
+  const web3Modal = new Web3Modal({
+    network: getNetwork(),
+    cacheProvider: false,
     providerOptions: getProviderOptions(),
   });
 
   useEffect(() => {
-    onConnect();
+    if (web3Modal.cachedProvider) {
+      onConnect();
+    }
     // eslint-disable-next-line
   }, []);
 

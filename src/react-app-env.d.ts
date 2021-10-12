@@ -1,5 +1,7 @@
 /// <reference types="react-scripts" />
 
+declare module "@walletconnect/web3-provider";
+
 interface Window {
   web3: any;
   ethereum: any;

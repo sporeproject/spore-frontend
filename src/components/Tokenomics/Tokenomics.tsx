@@ -10,11 +10,11 @@ import { ContractAddesses } from '../../utils/addresses';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
-const win = window as any
-win.web3 = new Web3('https://bsc-dataseed1.binance.org:443');
-win.ava = new Web3(AVAX_NETWORK_RPC);
 
 const Tokenomics = () => {
+  const win = window as any
+  const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+  const ava = new Web3(AVAX_NETWORK_RPC);
   const [bscBurned, setBscBurned] = useState(-1)
   const [avaBurned, setAvaBurned] = useState(-1)
   const [avaxBridge, setAvaxBridge] = useState(-1)
@@ -43,12 +43,13 @@ const Tokenomics = () => {
     }
 
     getInfos()
+    // eslint-disable-next-line
   }, [])
 
   const getBscBurned = async () => {
     try {
       console.log("getting bsc burned tokens");
-      const SporeContract = new win.web3.eth.Contract(
+      const SporeContract = new web3.eth.Contract(
         BSC_SPORE_ABI,
         ContractAddesses.BSC_SPORE_MAINNET
       );
@@ -64,7 +65,7 @@ const Tokenomics = () => {
   const getAvaBurned = async () => {
     try {
       console.log("getting avax burned tokens");
-      const SporeContract = new win.ava.eth.Contract(
+      const SporeContract = new ava.eth.Contract(
         AVAX_SPORE_ABI,
         ContractAddesses.AVAX_SPORE_MAINNET
       );
@@ -98,7 +99,7 @@ const Tokenomics = () => {
   const getBscTotalSupply = async () => {
     try {
       console.log("getting bsc total supply");
-      const SporeContract = new win.web3.eth.Contract(
+      const SporeContract = new web3.eth.Contract(
         BSC_SPORE_ABI,
         ContractAddesses.BSC_SPORE_MAINNET
       );
