@@ -283,7 +283,6 @@ const BSCBridge = () => {
       var spores = await SporeContract.methods.balanceOf(address).call();
       return spores;
     } catch (error) {
-      console.log(error);
       return 0;
     }
   };
@@ -375,7 +374,6 @@ const BSCBridge = () => {
 
   const onConnect = async () => {
     try {
-      await web3Modal.clearCachedProvider();
       const provider = await web3Modal.connect();
       await subscribeProvider(provider);
       const web3: any = initWeb3(provider);
@@ -383,23 +381,21 @@ const BSCBridge = () => {
       const address = accounts[0];
       const chainId = await web3.eth.chainId();
       setWeb3(web3);
-      setChainId(chainId);
       setConnected(true);
       setAddress(address);
+      if (Number(chainId) === 1) {
+        setChainId(0xa86a);
+        return;
+      }
+      setChainId(chainId);
     } catch (error) {
       console.log('error', error);
     }
   };
 
-  // const [web3Modal, setWeb3Modal] = useState<any>(null);
-  console.log({
-    network: getNetwork(),
-    cacheProvider: false,
-    providerOptions: getProviderOptions(),
-  });
   const web3Modal = new Web3Modal({
     network: getNetwork(),
-    cacheProvider: false,
+    cacheProvider: true,
     providerOptions: getProviderOptions(),
   });
 
@@ -411,16 +407,21 @@ const BSCBridge = () => {
   }, []);
 
   async function getMaxSporeCountInBalances() {
-    var numberOfSporeAVAX = (await getSporeInWalletAVAX()) / 10 ** 9;
-    var numberOfSporeBSC = (await getSporeInWalletBSC()) / 10 ** 9;
-    setNumberOfSporeAVAX(numberOfSporeAVAX);
-    setNumberOfSporeBSC(numberOfSporeBSC);
+    if (isChainIdAvalanche()) {
+      var numberOfSporeAVAX = (await getSporeInWalletAVAX()) / 10 ** 9;
+      setNumberOfSporeAVAX(numberOfSporeAVAX);
+    } else {
+      var numberOfSporeBSC = (await getSporeInWalletBSC()) / 10 ** 9;
+      setNumberOfSporeBSC(numberOfSporeBSC);
+    }
   }
 
   const isChainIdAvalanche = () => chainId > 431;
 
   useEffect(() => {
-    if (web3 && address && connected) getMaxSporeCountInBalances();
+    if (web3 && address && connected) {
+      getMaxSporeCountInBalances();
+    }
     // eslint-disable-next-line
   }, [web3, address, chainId, connected]);
 

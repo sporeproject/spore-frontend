@@ -237,9 +237,13 @@ const NFT = (props: any) => {
       const chainId = await web3.eth.chainId();
       if (Boolean(address)) {
         setWeb3(web3);
-        setChainId(chainId);
         setConnected(Boolean(address));
         setAddress(address);
+        if (Number(chainId) === 1) {
+          setChainId(0xa86a);
+          return;
+        }
+        setChainId(chainId);
       } else {
         resetApp();
       }
