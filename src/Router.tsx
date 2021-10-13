@@ -14,34 +14,34 @@ import Vote from './components/Vote/Vote';
 const Router = () => {
   return (
     <ReactRouter>
-      <Header/>
+      <Header />
       <Switch>
         <Route exact path='/'>
           <>
-            <MyParticles/>
-            <Home/>
+            <MyParticles />
+            <Home />
           </>
         </Route>
         <Route exact path='/nft'>
-          <NFT/>
+          <NFT />
         </Route>
         <Route exact path='/bridge'>
-          <BSCBridge/>
+          <BSCBridge />
         </Route>
         <Route exact path='/gallery'>
-          <Gallery/>
+          <Gallery />
         </Route>
         <Route exact path='/coming-soon'>
-          <ComingSoon/>
+          <ComingSoon />
         </Route>
         <Route exact path='/vote'>
-          <Vote/>
+          <Vote />
         </Route>
         <Route exact path='/airdrop'>
-          <SporeFairy/>
+          <SporeFairy />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </ReactRouter>
   );
 };

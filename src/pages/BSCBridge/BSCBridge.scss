@@ -9,7 +9,7 @@
     top: 50%;
     transform: translateY(-50%) translateX(-50%);
     z-index: 99;
-    border: 2px solid rgba(0,0,0,.125);
+    border: 2px solid rgba(0, 0, 0, 0.125);
     border-radius: 50%;
     background-color: #fff;
 
@@ -25,19 +25,19 @@
       &:hover,
       &:active,
       &:focus {
-          border: 0;
-          background-color: transparent;
+        border: 0;
+        background-color: transparent;
       }
     }
 
     .fa {
-      color: #4B5626;
+      color: #4b5626;
       font-size: 46px;
     }
   }
 
   .card-title span {
-    color: rgba(0,0,0,.50);
+    color: rgba(0, 0, 0, 0.5);
     padding-right: 15px;
   }
 
@@ -82,25 +82,30 @@
     font-weight: 600;
     font-size: 18px;
   }
-  
-  .avalanche{
+
+  .avalanche {
     background-color: #e84142;
   }
-  
-  .binance{
+
+  .binance {
     background-color: #f3ba2f;
   }
-  
-  .white{
+
+  .white {
     background-color: white;
   }
-  
+
   #swap-btn {
     font-size: 28px;
   }
-  
+
   #approve-btn {
     font-size: 14px;
+  }
+
+  .btn-primary:disabled {
+    background-color: rgba(195, 195, 195, 0.3);
+    border-color: rgba(195, 195, 195, 0.3);
   }
 }
 
@@ -109,8 +114,13 @@
     .arrow {
       right: 0px;
       left: auto;
-      transform: translateY(-50%) translateX(-50%) rotate(90deg);
-      top: calc(50% + 60px);
+      transform: translateX(-50%) rotate(90deg);
+      top: 10%;
+      z-index: 1;
+
+      &.avax {
+        top: 60%;
+      }
     }
   }
 }
@@ -120,15 +130,17 @@
     .arrow {
       right: 0px;
       left: auto;
-      transform: translateY(-50%) translateX(-50%) rotate(90deg);
-      top: calc(50% + 60px);
-  
+      transform: translateX(-50%) rotate(90deg);
+      top: 15%;
+      &.avax {
+        top: 60%;
+      }
       .fa {
         font-size: 32px;
         position: relative;
         top: 1px;
       }
-    
+
       .btn {
         padding: 11px 13px;
       }
@@ -136,9 +148,13 @@
   }
 }
 
-.limit{
+.limit {
   width: 300px;
   word-wrap: break-word;
   padding: 8px 0 0 0;
-  position:relative;
+  position: relative;
+}
+
+#WEB3_CONNECT_MODAL_ID > div {
+  z-index: 1999;
 }
