@@ -13,6 +13,11 @@ const SHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+
+  @media (max-width: 561px) {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const SActiveAccount = styled.div`
@@ -20,6 +25,10 @@ const SActiveAccount = styled.div`
   align-items: center;
   position: relative;
   font-weight: 500;
+  @media (max-width: 561px) {
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
 `;
 
 const SActiveChain = styled(SActiveAccount)`
@@ -32,6 +41,11 @@ const SActiveChain = styled(SActiveAccount)`
   }
   & p:nth-child(2) {
     font-weight: bold;
+  }
+
+  @media (max-width: 561px) {
+    align-self: flex-start;
+    margin-bottom: 10px;
   }
 `;
 
