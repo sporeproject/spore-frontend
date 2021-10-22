@@ -640,20 +640,91 @@ const BSCBridge = () => {
             </div>
 
             <div className='container'>
+              <div className='offset-lg-12 col-lg-12 py-4'>
+              <div className='offset-lg-12  text-center col-lg-12 py-6'>
+
+                <h3>Trust wallet Steps 😎  </h3>
+
+              
+                </div>
+                <h5> Add Token and Avalanche Network </h5>
+                <div className='col-lg-12 '>
+                <table className="table table-bordered">
+                <tbody>
+
+                    <tr>
+                      <td>In TW, manage token list </td>
+                      <td>+ add custom token</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>SPORE contract address</td>
+                      <td>0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td>Spore</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Symbol</td>
+                      <td>SPORE</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Decimals</td>
+                      <td>9</td>
+
+                     
+                    </tr>
+                    </tbody>
+
+                  </table>
+                </div>
+                <h5> Connect Trustwallet to bridge </h5>
+                <div className='col-lg-12 '>
+                <table className="table table-bordered">
+                <tbody>
+
+                <tr>
+                    <td>spore.earth/bridge</td>
+                    <td>click connect</td>
+                  </tr>
+                  <tr>
+                    <td>select Trust and connect</td>
+                    <td>select wallet and network (BSC)</td>
+                  </tr>
+                  <tr>
+                    <td>click max</td>
+                    <td>click transfer and confirm</td>
+                  </tr>
+                  <tr>
+                    <td>disconnect wallet</td>
+                    <td>return to wallet view</td>
+                  </tr>
+                    </tbody>
+
+                  </table>
+                </div>
+
+              </div>
+          
+            </div>
+
+            <div className='container'>
               <div className='offset-lg-3 col-lg-6 text-center py-4'>
-                <h3>Trust Wallet Steps 😎 </h3>
+                <h3>Metamask Steps 🦊 </h3>
 
                 <p className='text-left'>
                   <p>
-                    <b>Step 1 </b>- Install{' '}
-                    <a
+                    <b>Step 1 </b>- Use the Connect button on the top right{' '}
+                    and choose to connect to <a
                       target='_blank'
                       rel='noopener noreferrer'
                       href='https://metamask.io'>
-                      MetaMask{' '}
-                    </a>{' '}
-                    🦊 extension - and import your 12 words Recovery Phrase from
-                    trustwallet
+                      MetaMask
+                    </a>.
                   </p>
                   <p>
                     <b>Step 2 </b>- Add{' '}

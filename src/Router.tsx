@@ -10,6 +10,8 @@ import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
+import { ViewItem } from './pages/NFT/MarketPlace/ViewItem';
+
 
 const Router = () => {
   return (
@@ -22,8 +24,11 @@ const Router = () => {
             <Home />
           </>
         </Route>
-        <Route exact path='/nft'>
-          <NFT />
+        <Route exact path='/nft' >
+          <NFT/>
+        </Route>
+        <Route exact path='/nft/:itemId' >
+          <ViewItem/>
         </Route>
         <Route exact path='/bridge'>
           <BSCBridge />

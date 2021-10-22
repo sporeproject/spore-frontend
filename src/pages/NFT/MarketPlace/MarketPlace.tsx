@@ -6,6 +6,10 @@ import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
 
+import { useHistory } from "react-router-dom";
+
+
+
 const win = window as any;
 
 export interface MarketplaceItem {
@@ -25,13 +29,15 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   >([]);
   const isLtMd = useMedia('(max-width: 600px)');
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
+  
 
   const findimage = (itemId: number) => {
     var item = Number(itemId) + 1;
     return nftmetadata
       .filter((x) => x.id === item.toString())
       .map((ext) => {
-        return ext.external_url;
+        return ext.compressed_url;
       })
       .toString();
   };
@@ -86,33 +92,29 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   if (loading) {
     return <div className='loader'> Loading...</div>;
   }
+  
 
   return (
     <>
-      {marketPlaceItems.length > 0 &&
-        marketPlaceItems.map((item: MarketplaceItem) => (
-          <div key={item.itemId} className='col-6 col-sm-4 col-md-4 col-lg-3'>
-            <ItemNFT onClick={() => onSelected(item.itemId)}>
-              <div className='image-wrapper'>
-                <img src={findimage(item.itemId)} alt='Reload your page' />
-              </div>
-              <div className='item-description'>
-                <span>ID: {item.itemId}</span>
-                {isLtMd && (
-                  <TagPrice>{nFormatter(item.price, 2)} AVAX</TagPrice>
-                )}
-                {!isLtMd && (
-                  <TagPrice>
-                    {item.price
-                      .toFixed(0)
-                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}{' '}
-                    AVAX
-                  </TagPrice>
-                )}
-              </div>
-            </ItemNFT>
-          </div>
-        ))}
+      {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem) => (
+        <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
+
+
+
+          <ItemNFT onClick={() => history.push("/nft/"+item.itemId )}>
+            <div className="image-wrapper">
+              <img src={findimage(item.itemId)} alt="Reload your page" />
+            </div>
+            <div className="item-description">
+              <span  >ID: {item.itemId}</span>
+              {isLtMd && (<TagPrice>{nFormatter(item.price, 2)} AVAX</TagPrice>)}
+              {!isLtMd && (
+                <TagPrice>{item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>
+              )}
+            </div>
+          </ItemNFT>
+        </div>
+      ))}
 
       {marketPlaceItems.length === 0 && (
         <EmptyNFTWrapper>

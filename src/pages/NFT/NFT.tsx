@@ -45,6 +45,7 @@ function initWeb3(provider: any) {
 }
 
 const NFT = (props: any) => {
+  
   const [bazaar, setBazaar] = useState(new Array<any>());
   const [buys, setBuys] = useState(new Array<any>());
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
