@@ -640,76 +640,53 @@ const BSCBridge = () => {
             </div>
 
             <div className='container'>
-              <div className='offset-lg-12 col-lg-12 py-4'>
-              <div className='offset-lg-12  text-center col-lg-12 py-6'>
-
+              <div className='offset-lg-3 col-lg-6 text-center py-4'>
                 <h3>Trust wallet Steps 😎  </h3>
 
-              
-                </div>
-                <h5> Add Token and Avalanche Network </h5>
-                <div className='col-lg-12 '>
-                <table className="table table-bordered">
-                <tbody>
 
-                    <tr>
-                      <td>In TW, manage token list </td>
-                      <td>+ add custom token</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>SPORE contract address</td>
-                      <td>0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>Name</td>
-                      <td>Spore</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>Symbol</td>
-                      <td>SPORE</td>
-                      
-                    </tr>
-                    <tr>
-                      <td>Decimals</td>
-                      <td>9</td>
 
-                     
-                    </tr>
-                    </tbody>
+                <p className='text-left'>
 
-                  </table>
-                </div>
-                <h5> Connect Trustwallet to bridge </h5>
-                <div className='col-lg-12 '>
-                <table className="table table-bordered">
-                <tbody>
+                  <p><b>Step 1</b> - Enable Avalanche C-Chain AVAX  🔺 in Trustwallet
 
-                <tr>
-                    <td>spore.earth/bridge</td>
-                    <td>click connect</td>
-                  </tr>
-                  <tr>
-                    <td>select Trust and connect</td>
-                    <td>select wallet and network (BSC)</td>
-                  </tr>
-                  <tr>
-                    <td>click max</td>
-                    <td>click transfer and confirm</td>
-                  </tr>
-                  <tr>
-                    <td>disconnect wallet</td>
-                    <td>return to wallet view</td>
-                  </tr>
-                    </tbody>
+                  </p>
+                  <p>
+                    <b>Step 2</b> - Add SPORE token (Avalanche){' '}<br></br>
+                    <ul>
+                      <li>Network: Avalanche C-Chain</li>
+                      <li>Contract Address: <br></br>0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985</li>
+                      <li>Name: Spore</li>
+                      <li>Symbol: SPORE</li>
+                      <li>Decimals: 9</li>
+                    </ul>
 
-                  </table>
-                </div>
 
+                  </p>
+
+                  <p>
+                    <b>Step 3 </b> - Connect to Bridge{' '}<br></br>
+                    <ul>
+                      <li>click connect button + select Trust</li>
+                      <li>select BSC network + connect</li>
+                    </ul>
+                  </p>
+
+                  <p>
+                    <b>Step 4 </b> - Transfer SPORE{' '}<br></br>
+                    <ul>
+                      <li>set SPORE amount [MAX] </li>
+                      <li>click Transfer</li>
+                      <li>confirm transaction in Trustwallet</li>
+                    </ul>
+                    <p>
+                    <b>Step 5</b> - Congratulations, you bridged your SPORE ;){' '}<br></br>
+                   
+                    </p>
+
+
+                  </p>
+                </p>
               </div>
-          
             </div>
 
             <div className='container'>
