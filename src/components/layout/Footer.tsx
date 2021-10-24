@@ -24,7 +24,7 @@ const Footer = () => {
           >
           </a>
           <a
-            href='https://t.me/sporefinanceofficial'
+            href='https://t.me/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
             className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
