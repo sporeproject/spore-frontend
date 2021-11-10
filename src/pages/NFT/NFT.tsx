@@ -94,15 +94,17 @@ const NFT = (props: any) => {
       alert('Please connect before your walllet');
       return;
     }
-    if (!itemId) {
-      alert('Please select a NFT to buy');
-      return;
-    }
+    
     const SporeMarketv1 = new web3.eth.Contract(
       SPORE_MARKET_ABI,
       ContractAddesses.AVAX_MARKET_MAINNET
     );
     const bazaar = await SporeMarketv1.methods.Bazaar(itemId).call();
+    if (!itemId) {
+      return;
+    }
+    
+    
     try {
       await SporeMarketv1.methods
         .buy(itemId)
@@ -405,6 +407,7 @@ const NFT = (props: any) => {
                   type='number'
                   value={itemId}
                   readOnly={false}
+                  onChange={(event: any) => setItemId(event.target.value)}
                   placeholder='NFT_ID (ex: 0)'
                   className='form-control'
                 />
