@@ -404,7 +404,7 @@ const NFT = (props: any) => {
                   id='_tokenID'
                   type='number'
                   value={itemId}
-                  readOnly={true}
+                  readOnly={false}
                   placeholder='NFT_ID (ex: 0)'
                   className='form-control'
                 />
