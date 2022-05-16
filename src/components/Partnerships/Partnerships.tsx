@@ -11,13 +11,13 @@ export const Partnerships = () => {
           </div>
         </div>
         <PartnersWrapper className='row py-5'>
-          <div className='col-md-6 py-3 text-center'>
+          <div className='col-md-8 py-3 text-left'>
             <a href="https://pangolin.exchange/">
               <img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" />
             </a>
           </div>
 
-          <div className='col-md-6 py-3 text-center'>
+          <div className='col-md-2 py-3 text-center'>
             <a href="https://gaj.finance">
               <img src="/img/gaj.png" alt="Gaj Finance" />
             </a>

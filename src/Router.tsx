@@ -6,6 +6,8 @@ import Home from './pages/Home/Home';
 import BSCBridge from './pages/BSCBridge/BSCBridge';
 import NFT from './pages/NFT/NFT';
 import Gallery from './pages/NFT/Gallery/Gallery';
+import Charter from './pages/NFT/Gallery/Charter';
+import Asciid from './pages/NFT/Gallery/Asciid';
 import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
@@ -36,6 +38,9 @@ const Router = () => {
         <Route exact path='/gallery'>
           <Gallery />
         </Route>
+        <Route exact path='/charter'>
+          <Charter/>
+        </Route>
         <Route exact path='/coming-soon'>
           <ComingSoon />
         </Route>
@@ -44,6 +49,9 @@ const Router = () => {
         </Route>
         <Route exact path='/airdrop'>
           <SporeFairy />
+        </Route>
+        <Route exact path='/asciid'>
+          <Asciid />
         </Route>
       </Switch>
       <Footer />

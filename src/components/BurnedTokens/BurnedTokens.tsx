@@ -37,7 +37,7 @@ const BurnedTokens = ({
       </div>
       <div className="alert alert-dark" role="alert">
         BSC holders:<br></br> 
-        <b>  {numberWithCommas(136688)} </b> source: <b> <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">BSCscan</a> </b>
+        <b>  {numberWithCommas(146417)} </b> source: <b> <a className="bscLink" href="https://bscscan.com/token/0x33a3d962955a3862c8093d1273344719f03ca17c">BSCscan</a> </b>
       </div>
       
     </>
