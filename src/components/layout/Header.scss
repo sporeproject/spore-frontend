@@ -1,6 +1,8 @@
 .navbar {
   transition: all 0.4s;
   background-color: #6B4E3B;
+  position: relative;
+  z-index: 1;
 
   .logo {
     max-height: 50px;

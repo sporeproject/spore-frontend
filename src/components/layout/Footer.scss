@@ -5,7 +5,14 @@
 .social-links.row {
   display: flex;
   justify-content: center;
+
+  z-index: 2;
 }
 .footer a.credit:hover {
   color:white;
 }
+
+
+
+
+

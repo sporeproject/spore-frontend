@@ -26,8 +26,15 @@ const FirstGeneration = (props: any) => {
         <>
             <div className="asciid-space">
                 <Metadata />
+
                 <div className='container overflow-hidden position-relative'>
-                    <MyParticles />
+
+                 
+                        <MyParticles />
+
+
+
+
 
                     <h2 className='feature pb-12 pt-5 text-center'>
                         ASCIId
