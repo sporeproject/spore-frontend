@@ -5,7 +5,7 @@ import Particles from 'react-tsparticles';
 const MyParticles = () => {
 	return (
 		<Particles
-		id= "particles-js"
+		
       options={{
         backgroundMode: {
           enable: true,
