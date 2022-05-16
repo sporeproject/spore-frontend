@@ -1,8 +1,7 @@
 import React from "react";
-import { nftmetadata } from '../../../utils/nftmetadata';
-import { GalleryItem, GalleryWrapper } from './Gallery.style';
+
 import MyParticles from "../../../components/Particles/Particles";
-import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
