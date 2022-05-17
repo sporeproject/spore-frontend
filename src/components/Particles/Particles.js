@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
+
 
 import Particles from 'react-tsparticles';
 
-const MyParticles:FC = () => {
+const MyParticles = () => {
 	return (
 		<div>
 			<Particles
