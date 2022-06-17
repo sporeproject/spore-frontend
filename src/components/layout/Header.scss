@@ -90,3 +90,70 @@
     width: 198px;
   }
 }
+
+
+$fireColor: rgb(255, 0, 0);
+$fireColorT: rgba(0, 0, 0, 0);
+$dur: 1s;
+$blur: 0.00001em;
+$fireRad: 2em;
+$parts: 10;
+$partSize: 2em;
+
+
+.fire {
+	font-size: 5px;
+	filter: blur($blur);
+	-webkit-filter: blur($blur);
+	position: relative;
+	width: 6em;
+	height: 4em;
+  margin-left: -15px;
+}
+
+.fire2 {
+	font-size: 5px;
+	filter: blur($blur);
+	-webkit-filter: blur($blur);
+	position: relative;
+	width: 10em;
+	height: 4em;
+  margin-left: -80px;
+}
+.particle {
+	animation: rise $dur ease-in infinite;
+	background-image: radial-gradient($fireColor 40%,$fireColorT 60%);
+	border-radius: 50%;
+	mix-blend-mode: screen;
+	opacity: 0;
+  position: absolute;
+	bottom: 0;
+	width: $partSize;
+	height: $partSize;
+	// spread particles out in time and x-position to get desired effect
+	@for $p from 0 through $parts {
+		&:nth-of-type(#{$p}) {
+			animation-delay: $dur * random();
+			left: calc((10% - #{$partSize}) * #{($p - 1)/$parts});
+		}
+	}
+}
+
+.fire-container {
+  display: flex;
+}
+
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(0) scale(1);
+	}
+	95% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-3em) scale(0);
+	}
+}

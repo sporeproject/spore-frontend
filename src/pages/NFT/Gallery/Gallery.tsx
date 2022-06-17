@@ -33,7 +33,7 @@ const Gallery = (props: any) => {
           Gallery
         </h2>
 
-        <h3 className="text-center pb-5">"Spore's artworks are the manifestation o the community's nature"</h3>
+        <h3 className="text-center pb-5">"Spore's artworks are the manifestation of the community's nature"</h3>
       </div>
 
       <section className="bg-white-darker py-5">
