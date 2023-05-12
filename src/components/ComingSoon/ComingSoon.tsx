@@ -1,18 +1,11 @@
 import React from 'react';
-import Lottie from 'react-lottie';
-import comingSoon from '../../assets/coming-soon.json';
+import './comingSoon.css'
 
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: comingSoon
-};
 const ComingSoon = () => {
   return (
-    <div>
-      <Lottie options={defaultOptions} height={400} width={400} />
+    <div id="soon-tm">
+       <img src="sticker.png" alt="Soon" height="200"></img>
     </div>
   );
 }
-
 export default ComingSoon
