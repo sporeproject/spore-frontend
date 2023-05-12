@@ -172,7 +172,8 @@ const Tokenomics = () => {
                 { key: 'bscSupply', title: 'BSC supply', value: (bscTotalSupply - bscBurned) / TOTAL_SUPPLY * 100, color: '#f3ba2f' },
                 { key: 'avaSupply', title: 'Avalanche Supply', value: (TOTAL_SUPPLY - avaBurned - avaxBridge) / TOTAL_SUPPLY * 100, color: '#e84142' },
               ]}
-              radius={PieChart.defaultProps.radius - 6}
+              // radius={PieChart.defaultProps.radius - 6}
+              radius={44}
               lineWidth={50}
               segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
               // segmentsShift={(index) => (index === selected ? 6 : 0)}
