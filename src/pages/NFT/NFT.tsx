@@ -45,7 +45,7 @@ function initWeb3(provider: any) {
 }
 
 const NFT = (props: any) => {
-  
+
   const [bazaar, setBazaar] = useState(new Array<any>());
   const [buys, setBuys] = useState(new Array<any>());
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
@@ -94,7 +94,7 @@ const NFT = (props: any) => {
       alert('Please connect before your walllet');
       return;
     }
-    
+
     const SporeMarketv1 = new web3.eth.Contract(
       SPORE_MARKET_ABI,
       ContractAddesses.AVAX_MARKET_MAINNET
@@ -103,8 +103,7 @@ const NFT = (props: any) => {
     if (!itemId) {
       return;
     }
-    
-    
+
     try {
       await SporeMarketv1.methods
         .buy(itemId)
@@ -170,13 +169,7 @@ const NFT = (props: any) => {
     }
   }, [bazaarPrices]);
 
-  var image: any;
 
-  if (balance > 0) {
-    image = <ReturnTokenURI tokensOfOwner={tokensOfOwner} />;
-  } else {
-    image = <> You dont own any NFTs yet! </>;
-  }
   useEffect(() => {
     let sum: number = 43.5;
     buys.forEach((a) => (sum += +a / 10 ** 18));
@@ -435,7 +428,20 @@ const NFT = (props: any) => {
                 </h2>
               </div>
               {isNetworkAvalanche() ? (
-                <div className='row'>{image}</div>
+                <div className='row'>
+                  {balance > 0 ? (
+                    <ReturnTokenURI
+                      tokensOfOwner={tokensOfOwner}
+                      chainId={chainId}
+                      address={address}
+                      web3={web3}
+                      connected={connected}
+                      onUpdate={getBalance}
+                    />
+                  ) : (
+                    <> You dont own any NFTs yet! </>
+                  )}
+                </div>
               ) : (
                 <div className='col-md-12 text-center'>
                   {' '}
