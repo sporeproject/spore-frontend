@@ -16,12 +16,6 @@ export const Partnerships = () => {
               <img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" />
             </a>
           </div>
-
-          <div className='col-md-2 py-3 text-center'>
-            <a href="https://gaj.finance">
-              <img src="/img/gaj.png" alt="Gaj Finance" />
-            </a>
-          </div>
         </PartnersWrapper>
       </div>
     </section>

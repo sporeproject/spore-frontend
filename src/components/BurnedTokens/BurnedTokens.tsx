@@ -33,7 +33,7 @@ const BurnedTokens = ({
       </div>
      
       <div className="alert alert-dark" role="alert">
-        Avalanche holders: <br></br><b>{numberWithCommas(totalTokenHolders)}</b>
+        Avalanche holders: <br></br><b>{numberWithCommas(totalTokenHolders)}</b> source: Spore API 🔧
       </div>
       <div className="alert alert-dark" role="alert">
         BSC holders:<br></br> 

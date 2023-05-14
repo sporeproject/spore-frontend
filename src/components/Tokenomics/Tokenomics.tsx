@@ -19,7 +19,7 @@ const Tokenomics = () => {
   const [avaBurned, setAvaBurned] = useState(-1)
   const [avaxBridge, setAvaxBridge] = useState(-1)
   const [bscTotalSupply, setBscTotalSupply] = useState(-1)
-  const [totalTokenHolders, setTotalTokenHolders] = useState(-1)
+  const [totalTokenHolders, setTotalTokenHolders] = useState(0)
 
   useEffect(() => {
     async function getInfos() {
@@ -116,16 +116,18 @@ const Tokenomics = () => {
     console.log("getting token holders avax")
     try {
       const res = await axios.get(
-        'https://api.covalenthq.com/v1/43114/tokens/0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985/token_holders/?page-size=999999&key=ckey_a09c56c3188547958bd621253a4'
+        'https://frontend-api.sporeproject.org/avax-holders'
       )
+
+      console.log('here', res.data)
 
       if (
         res.data !== undefined &&
         res.data.data !== undefined &&
         res.data.data.items !== undefined
       ) {
-        const items = res.data.data.items;
-        setTotalTokenHolders(items.length)
+
+        setTotalTokenHolders(res.data)
       }
     }
     catch (err) {
@@ -135,6 +137,7 @@ const Tokenomics = () => {
 
 
   const TOTAL_SUPPLY = 100000000000000000
+  console.log("TotalTokenHolders",totalTokenHolders)
 
   return (
     <section className='tokenomic'>
