@@ -155,37 +155,38 @@ export function convertAmountFromRawNumber(
     .toString()
 }
 
-export function handleSignificantDecimals(
-  value: string,
-  decimals: number,
-  buffer?: number
-): string | null {
-  if (
-    !new BigNumber(`${decimals}`).isInteger() ||
-    (buffer && !new BigNumber(`${buffer}`).isInteger()) ||
-    !new BigNumber(`${value}`).isInteger()
+// export function handleSignificantDecimals(
+//   value: string,
+//   decimals: number,
+//   buffer?: number
+// ): string | null {
+//   if (
+//     !new BigNumber(`${decimals}`).isInteger() ||
+//     (buffer && !new BigNumber(`${buffer}`).isInteger()) ||
+//     !new BigNumber(`${value}`).isInteger()
 
-  ) {
-    return null
-  }
-  buffer = buffer ? convertStringToNumber(buffer) : 3
-  decimals = convertStringToNumber(decimals)
-  const absolute = new BigNumber(`${value}`).abs().toNumber()
-  if (smallerThan(absolute, 1)) {
-    decimals = value.slice(2).search(/[^0]/g) + buffer
-    decimals = decimals < 8 ? decimals : 8
-  } else {
-    decimals = decimals < buffer ? decimals : buffer
-  }
-  let result = new BigNumber(`${value}`).toFixed(decimals)
-  result = new BigNumber(`${result}`).toString()
-  if (typeof (new BigNumber(`${result}`).dp()) != 'string'){
-    return null
-  }
-  return new BigNumber(`${result}`).dp() <= 2
-    ? new BigNumber(`${result}`).toFormat(2)
-    : new BigNumber(`${result}`).toFormat()
-}
+//   ) {
+//     return null
+//   }
+//   buffer = buffer ? convertStringToNumber(buffer) : 3
+//   decimals = convertStringToNumber(decimals)
+//   const absolute = new BigNumber(`${value}`).abs().toNumber()
+//   if (smallerThan(absolute, 1)) {
+//     decimals = value.slice(2).search(/[^0]/g) + buffer
+//     decimals = decimals < 8 ? decimals : 8
+//   } else {
+//     decimals = decimals < buffer ? decimals : buffer
+//   }
+//   let result = new BigNumber(`${value}`).toFixed(decimals)
+//   result = new BigNumber(`${result}`).toString()
+//   if (typeof (new BigNumber(`${result}`).dp()) != 'string'){
+//     return null
+//   }
+//   console.log("hellos")
+//   return new BigNumber(`${result}`).dp() <= 2
+//     ? new BigNumber(`${result}`).toFormat(2)
+//     : new BigNumber(`${result}`).toFormat()
+// }
 
 export function formatFixedDecimals(value: string, decimals: number): string {
   const _value = convertNumberToString(value)
@@ -195,6 +196,7 @@ export function formatFixedDecimals(value: string, decimals: number): string {
   ).toString()
   return result
 }
+
 
 export function formatInputDecimals(
   inputOne: string,
