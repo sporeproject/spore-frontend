@@ -179,6 +179,9 @@ export function handleSignificantDecimals(
   }
   let result = new BigNumber(`${value}`).toFixed(decimals)
   result = new BigNumber(`${result}`).toString()
+  if (typeof result == null){
+    return null
+  }
   return new BigNumber(`${result}`).dp() <= 2
     ? new BigNumber(`${result}`).toFormat(2)
     : new BigNumber(`${result}`).toFormat()
