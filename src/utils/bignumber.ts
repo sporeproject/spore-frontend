@@ -179,7 +179,7 @@ export function handleSignificantDecimals(
   }
   let result = new BigNumber(`${value}`).toFixed(decimals)
   result = new BigNumber(`${result}`).toString()
-  if (typeof result != 'string'){
+  if (typeof (new BigNumber(`${result}`).dp()) != 'string'){
     return null
   }
   return new BigNumber(`${result}`).dp() <= 2
