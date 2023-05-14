@@ -25,7 +25,7 @@ export function isZero(value: string | number): boolean {
   return new BigNumber(`${value}`).isZero()
 }
 
-export function countDecimalPlaces(value: string | number): number {
+export function countDecimalPlaces(value: string | number): any {
   return new BigNumber(`${value}`).dp()
 }
 
