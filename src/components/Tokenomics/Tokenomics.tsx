@@ -121,14 +121,9 @@ const Tokenomics = () => {
 
       console.log('here', res.data)
 
-      if (
-        res.data !== undefined &&
-        res.data.data !== undefined &&
-        res.data.data.items !== undefined
-      ) {
 
-        setTotalTokenHolders(res.data)
-      }
+      setTotalTokenHolders(res.data)
+
     }
     catch (err) {
       console.log("errror getting holders avax", err)
