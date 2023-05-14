@@ -162,7 +162,9 @@ export function handleSignificantDecimals(
 ): string | null {
   if (
     !new BigNumber(`${decimals}`).isInteger() ||
-    (buffer && !new BigNumber(`${buffer}`).isInteger())
+    (buffer && !new BigNumber(`${buffer}`).isInteger()) ||
+    !new BigNumber(`${value}`).isInteger()
+
   ) {
     return null
   }
