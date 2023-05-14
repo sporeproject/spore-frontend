@@ -119,7 +119,7 @@ const Tokenomics = () => {
         'https://frontend-api.sporeproject.org/avax-holders'
       )
 
-      console.log('here', res.data)
+
 
 
       setTotalTokenHolders(res.data)
