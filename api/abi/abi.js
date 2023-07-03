@@ -169,4 +169,4 @@ const abi_erc20 = [
   }
 ]
 
-export { abi_erc20 }
+module.exports= { abi_erc20 }

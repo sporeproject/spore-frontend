@@ -1,5 +1,5 @@
-import { abi_erc20 } from './abi/abi';
-import Web3 from 'web3';
+const { abi_erc20 } = require('./abi/abi') ;
+const Web3 = require( 'web3');
 
 const bsc = new Web3('https://bsc-dataseed1.binance.org');
 const ava = new Web3("https://api.avax.network/ext/bc/C/rpc");
@@ -56,7 +56,7 @@ const populate = (token) => {
 }
 
 
-export default async function (req, res) {
+module.exports= async function (req, res) {
     try {
         await populate(tokens[0]);
 
