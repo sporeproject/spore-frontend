@@ -42,6 +42,10 @@
     "web3modal": "^1.9.4",
     "webpack": "^4.44.2"
   },
+  "engines": {
+    "node": "16.15.1",
+    "yarn": "1.22.17"
+  },
   "scripts": {
     "start": "node index.js",
     "build": "react-scripts build",
