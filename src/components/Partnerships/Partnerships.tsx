@@ -1,6 +1,6 @@
 import React from 'react';
 import { PartnersWrapper } from './Information.style';
-
+import pangolinExchangeLogo from '../../assets/pangolin-exchange.svg';
 export const Partnerships = () => {
   return (
     <section className='bg-white-darker pb-6'>
@@ -13,7 +13,7 @@ export const Partnerships = () => {
         <PartnersWrapper className='row py-5'>
           <div className='col-md-8 py-3 text-left'>
             <a href="https://pangolin.exchange/">
-              <img src="https://pangolin.exchange/logo.svg" alt="Pangolin Exchange" />
+              <img src={pangolinExchangeLogo} alt="Pangolin Exchange" />
             </a>
           </div>
         </PartnersWrapper>
