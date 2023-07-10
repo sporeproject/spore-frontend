@@ -13,6 +13,7 @@ import MyParticles from './components/Particles/Particles';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
 import { ViewItem } from './pages/NFT/MarketPlace/ViewItem';
+import NotFound from './pages/NotFound/NotFound';
 
 
 const Router = () => {
@@ -52,6 +53,9 @@ const Router = () => {
         </Route>
         <Route exact path='/asciid'>
           <Asciid />
+        </Route>
+        <Route path='*'>
+          <NotFound />
         </Route>
       </Switch>
       <Footer />
