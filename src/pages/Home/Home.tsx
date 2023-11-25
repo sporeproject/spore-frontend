@@ -153,11 +153,11 @@ const Home = () => {
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
               <p>
-                Summer 2021 <i className='fa fa-check'></i>
+                2021 <i className='fa fa-check'></i>
               </p>
               <span className='roadmap-text'>Brand building</span><br />
-              <span className='roadmap-text'>1 Quadrillion SPORE giveaway</span><br />
-              <span className='roadmap-text'>Built liquidity via exchange incentives</span><br />
+              <span className='roadmap-text'>1 Quadrillion SPORE giveaway (1% of the supply)</span><br />
+              <span className='roadmap-text'>Built liquidity via exchange incentives (Pangolin and Olive)</span><br />
               <span className='roadmap-text'>Strategic partnerships</span>
             </div>
 
@@ -184,11 +184,12 @@ const Home = () => {
             </div>
             <div className='col-6'>
               <p>
-                Fall 2021
+                2022 <i className='fa fa-check'></i>
               </p>
-              <span className='roadmap-text'>Special NFT events</span><br />
-              <span className='roadmap-text'>Legal entity registration</span><br />
-              <span className='roadmap-text'>New strategic partnerships</span>
+              <span className='roadmap-text'>Spore Forum (closed)</span><br />
+              <span className='roadmap-text'>Off-Chain Governance </span><br />
+              <span className='roadmap-text'>Spore Projects Crowdfunding </span><br />
+
             </div>
           </div>
 
@@ -207,19 +208,48 @@ const Home = () => {
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
               <p>
-                Future
+                2023
               </p>
-              <span className='roadmap-text'>NFT Prediction Market </span><br />
-              <span className='roadmap-text'>TBA products and services </span><br />
-              <span className='roadmap-text'>CEX listing </span><br />
-              <span className='roadmap-text'>Fiat onramp </span><br />
-              <span className='roadmap-text'>Governance </span>
+              <span className='roadmap-text'>Spore API</span><br />
+              <span className='roadmap-text'>New server hosting</span><br />
+              <span className='roadmap-text'>NOSTR relay spore.ws and paid.spore.ws </span><br />
 
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>6</div>
             </div>
           </div>
+
+
+          <div className='row timeline'>
+            <div className='col-2'>
+              <div className='corner right-bottom'></div>
+            </div>
+            <div className='col-8'>
+              <hr />
+            </div>
+            <div className='col-2'>
+              <div className='corner top-left'></div>
+            </div>
+          </div>
+
+          <div className='row align-items-center how-it-works d-flex'>
+            <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
+              <div className='circle font-weight-bold'>5</div>
+            </div>
+            <div className='col-6'>
+              <p>
+                Future
+              </p>
+              <span className='roadmap-text'>Open source IPFS forum and Governance </span><br />
+              <span className='roadmap-text'>Spore Analytics </span><br />
+              <span className='roadmap-text'>TBA products and services </span><br />
+              <span className='roadmap-text'>CEX listing </span><br />
+
+            </div>
+          </div>
+
+          
         </div>
       </section>
       
