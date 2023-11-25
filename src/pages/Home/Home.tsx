@@ -235,7 +235,7 @@ const Home = () => {
 
           <div className='row align-items-center how-it-works d-flex'>
             <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
-              <div className='circle font-weight-bold'>5</div>
+              <div className='circle font-weight-bold'>7</div>
             </div>
             <div className='col-6'>
               <p>
