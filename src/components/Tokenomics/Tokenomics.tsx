@@ -10,6 +10,9 @@ import { ContractAddesses } from '../../utils/addresses';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
+//to test api on local environment just load the .env file with the REACT_APP_API_URL variable set on localhost:5001
+const API_URL = process.env.REACT_APP_API_URL || "https://frontend-api.sporeproject.org";
+
 
 const Tokenomics = () => {
   const win = window as any
@@ -115,12 +118,9 @@ const Tokenomics = () => {
   const getTokenHolders = async () => {
     console.log("getting token holders avax")
     try {
-      const res = await axios.get(
-        'https://frontend-api.sporeproject.org/avax-holders'
-      )
-
-
-
+      const endpoint = '/avax-holders'; // Endpoint path
+      const url = `${API_URL}${endpoint}`; // Construct the full URL
+      const res = await axios.get(url); // Send the request to the API
 
       setTotalTokenHolders(res.data)
 

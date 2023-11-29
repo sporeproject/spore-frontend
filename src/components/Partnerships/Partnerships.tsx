@@ -11,7 +11,7 @@ export const Partnerships = () => {
           </div>
         </div>
         <PartnersWrapper className='row py-5'>
-          <div className='col-md-8 py-3 text-left'>
+          <div className='col-md-12 py-3 text-center'>
             <a href="https://pangolin.exchange/">
               <img src={pangolinExchangeLogo} alt="Pangolin Exchange" />
             </a>

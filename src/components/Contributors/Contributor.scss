@@ -7,6 +7,12 @@
   color: #6B4E3B;
   font-size: 1.5em;
 }
+.contributors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* This ensures wrapping for smaller screens */
+}
 .contributor-style{
   display: inline-block;
   margin: 1em;

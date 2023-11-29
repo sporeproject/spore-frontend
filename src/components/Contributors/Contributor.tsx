@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Contributor.scss';
 
+const API_URL = process.env.REACT_APP_API_URL || "https://frontend-api.sporeproject.org";
+
+
 export const Contributors = () => {
   const [contrib, setContributors] = useState([]);
 
@@ -12,13 +15,23 @@ export const Contributors = () => {
     getContributors()
   }, [])
 
-  const getContributorsJson = () => {
-    axios.get(
-      'https://api.github.com/repos/sporeproject/Spore-frontend/contributors'
-    ).then(res => {
-      setContributors(res.data);
-    });
+  const getContributorsJson = async ()  => {
+
+    try {
+      const endpoint = '/contributors'; // Endpoint path
+      const url = `${API_URL}${endpoint}`; // Construct the full URL
+      const res = await axios.get(url); // Send the request to the API
+
+      setContributors(res.data)
+
+    }
+    catch (err) {
+      console.log("errror getting contributors", err)
+    }
+    
   }
+
+  console.log("contrib" ,contrib)
   
   var coreContributors = contrib.map ((data:any) => {if (data.contributions >13) {return data} else {return null} })
   coreContributors = coreContributors.filter((data:any) => {return data !== null})
@@ -32,7 +45,7 @@ export const Contributors = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col-md-12'>
+          <div className='col-md-12 contributors-container'>
             {
               coreContributors.map((data: any) => {
                 
