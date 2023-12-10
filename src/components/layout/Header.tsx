@@ -25,11 +25,7 @@ const Header = () => {
             <ul className='navbar-nav ml-auto'>
 
               <li className='nav-item fire-container'>
-                <a href='https://forum.sporeproject.org' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
 
-
-
-                  <span className='nav-link font-weight-bold' title='Spore Forum'>Web 5 Forum</span></a>
 
                 <div className="fire">
                   <div className="particle"></div>

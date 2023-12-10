@@ -10,7 +10,6 @@ import Charter from './pages/NFT/Gallery/Charter';
 import Asciid from './pages/NFT/Gallery/Asciid';
 import SporeFairy from './pages/SporeFairy/SporeFairy';
 import MyParticles from './components/Particles/Particles';
-import ComingSoon from './components/ComingSoon/ComingSoon';
 import Vote from './components/Vote/Vote';
 import { ViewItem } from './pages/NFT/MarketPlace/ViewItem';
 import NotFound from './pages/NotFound/NotFound';
@@ -41,9 +40,6 @@ const Router = () => {
         </Route>
         <Route exact path='/charter'>
           <Charter/>
-        </Route>
-        <Route exact path='/coming-soon'>
-          <ComingSoon />
         </Route>
         <Route exact path='/vote'>
           <Vote />
