@@ -144,7 +144,7 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <a href='https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
+                    <a href='https://pancakeswap.finance/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c' target='_blank' rel="noreferrer" style={{ textDecoration: 'none' }}>
                       <span className='nav-link'>Binance Smart Chain <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain" className="imagenespeciada"></img></span>
                     </a>
                   </li>

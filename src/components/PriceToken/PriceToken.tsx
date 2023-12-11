@@ -88,7 +88,7 @@ const PriceToken = () => {
     <>
       <div className='col-md-6 text-left'>
         <dl className='lead ' >
-          <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_256.png' /> $SPORE live price: </h3>
+          <h3><img width="52px" height="52px" className='img-fluid' alt='Burn Token' src='spore_128.png' /> $SPORE live price: </h3>
         </dl>
 
         <div className='lead larger burnbox'>
