@@ -172,11 +172,6 @@ const Header = () => {
                       <span className='nav-link'>Gallery</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link to='/coming-soon' style={{ textDecoration: 'none' }}>
-                      <span className='nav-link'>Giveaway</span>
-                    </Link>
-                  </li>
                 </ul>
               </li>
 
@@ -185,20 +180,21 @@ const Header = () => {
                   className="dropdown-toggle nav-link font-weight-bold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Charts <span className="caret"></span>
                 </a>
-                <ul className="dropdown-menu dropdown-menu--chart">
+                <ul className="dropdown-menu">
+                  
                   <li>
-                    <a href='https://metamorphosis.chartex.pro/?symbol=AVAX_PANGOLIN%3ASPORE.0x0a63179a8838b5729E79D239940d7e29e40A0116&interval=240&theme=dark' target='_blank' rel='noopener noreferrer'>
-                      Chartex (Avalanche)
+                    <a className='nav-link' href='https://coinmarketcap.com/currencies/spore/' target='_blank' rel='noopener noreferrer'>
+                      CoinMarketCap
                     </a>
                   </li>
-                  <li>
-                    <a href='https://charts.bogged.finance/?token=0x33A3d962955A3862C8093D1273344719f03cA17C' target='_blank' rel='noopener noreferrer'>
-                      Bogged (BSC)
+                  <li >
+                    <a className='nav-link' href='https://www.coingecko.com/en/coins/spore' target='_blank' rel='noopener noreferrer'>
+                      CoinGecko
                     </a>
                   </li>
-                  <li>
-                    <a href='https://dex.guru/token/0x33a3d962955a3862c8093d1273344719f03ca17c-bsc' target='_blank' rel='noopener noreferrer'>
-                      DexGuru (BSC)
+                  <li >
+                    <a className='nav-link' href='https://dexscreener.com/avalanche/0x0a63179a8838b5729e79d239940d7e29e40a0116' target='_blank' rel='noopener noreferrer'>
+                      DEX Screener
                     </a>
                   </li>
                 </ul>

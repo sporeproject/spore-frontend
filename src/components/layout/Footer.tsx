@@ -1,5 +1,7 @@
 import React from 'react';
 import './Footer.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXTwitter, faReddit, faTelegram , faDiscord, faFacebook, faInstagram, faTiktok, faYoutube, faMediumM, faGithub} from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -11,82 +13,93 @@ const Footer = () => {
             href='https://twitter.com/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-twitter'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='Twitter'
           >
-          </a>
-          <a
-            href='https://www.reddit.com/r/sporeproject/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-reddit'
-            aria-label='Reddit'
-          >
+             <FontAwesomeIcon icon={faXTwitter} />
           </a>
           <a
             href='https://t.me/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fas fa-paper-plane'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='Telegram'
           >
-          </a>
-          <a
-            href='https://discord.gg/hYDnmyadJC'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-discord'
-            aria-label='Discord'
-          >
-          </a>
-          <a
-            href='https://www.facebook.com/sporeearth'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-facebook'
-            aria-label='Facebook'
-          >
+            <FontAwesomeIcon icon={faTelegram} />
           </a>
           <a
             href='https://www.instagram.com/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-instagram'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='Instagram'
           >
+            <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a
             href='https://tiktok.com/@sporeproject'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-tiktok'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='TikTok'
           >
+            <FontAwesomeIcon icon={faTiktok} />
           </a>
           <a
-            href='https://www.youtube.com/sporeproject'
+            href='https://www.facebook.com/sporeearth'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-youtube'
-            aria-label='YouTube'
+            className='btn btn-primary mx-1 mb-2'
+            aria-label='Facebook'
           >
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a
+            href='https://discord.gg/hYDnmyadJC'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn btn-primary mx-1 mb-2'
+            aria-label='Discord'
+          >
+            <FontAwesomeIcon icon={faDiscord} />
+          </a>
+          <a
+            href='https://www.reddit.com/r/sporeproject/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn btn-primary mx-1 mb-2'
+            aria-label='Reddit'
+          >
+            <FontAwesomeIcon icon={faReddit} />
           </a>
           <a
             href='https://sporeproject.medium.com'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-medium-m'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='Medium'
           >
+            <FontAwesomeIcon icon={faMediumM} />
+          </a>
+          <a
+            href='https://www.youtube.com/sporeproject'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn btn-primary mx-1 mb-2'
+            aria-label='YouTube'
+          >
+            <FontAwesomeIcon icon={faYoutube} />
           </a>
           <a
             href='https://github.com/sporeproject'
             target='_blank'
             rel='noopener noreferrer'
-            className='btn btn-primary mx-1 mb-2 fab fa-github'
+            className='btn btn-primary mx-1 mb-2'
             aria-label='Github'
           >
+            <FontAwesomeIcon icon={faGithub} />
           </a>
+
         </div>
         </div>
         <div className='row'>
