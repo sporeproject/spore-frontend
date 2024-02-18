@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { ContractAddesses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
 import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
-
-import { useHistory } from "react-router-dom";
-
-
-
-const win = window as any;
+import { useNavigate } from 'react-router-dom';
+import { readContract } from "@wagmi/core";
+import { wagmiConfig } from '../../../wagmi-config';
 
 export interface MarketplaceItem {
   itemId: number;
-  price: number;
+  price: bigint;
   URI: string;
 }
 
@@ -23,14 +20,14 @@ type Props = {
   onSelected: (itemId: number) => void;
 };
 
-export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
+export const MarketPlaceView = ({ bazaar }: Props) => {
   const [marketPlaceItems, setMarketPlaceItems] = useState<
     Array<MarketplaceItem>
   >([]);
   const isLtMd = useMedia('(max-width: 600px)');
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
-  
+  const history = useNavigate();
+
 
   const findimage = (itemId: number) => {
     var item = Number(itemId) + 1;
@@ -45,17 +42,13 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
   useEffect(() => {
     const buildMarketPlace = async () => {
       setLoading(true);
-      const SporeMarketv1 = new win.ava.eth.Contract(
-        SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_MAINNET
-      );
       var builder = new Array<MarketplaceItem>();
-      for (let i = 0; i <= 72 - 1; i++) {
-        if (bazaar[i] !== undefined && bazaar[i].price > 0) {
-          const URI = await SporeMarketv1.methods.tokenURI(i).call();
+      for (let i = 0; i < 72; i++) {
+        if (bazaar[i] !== undefined && bazaar[i][1] > 0) {
+          const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
           builder.push({
             itemId: i,
-            price: bazaar[i].price / 10 ** 18,
+            price: bazaar[i][1] / 10n ** 18n,
             URI: URI,
           } as MarketplaceItem);
         }
@@ -67,41 +60,39 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
     // eslint-disable-next-line
   }, [bazaar]);
 
-  const nFormatter = (num: number, digits: number) => {
+  const nFormatter = (num: bigint, digits: number): string => {
     const lookup = [
-      { value: 1, symbol: '' },
-      { value: 1e3, symbol: 'k' },
-      { value: 1e6, symbol: 'M' },
-      { value: 1e9, symbol: 'G' },
-      { value: 1e12, symbol: 'T' },
-      { value: 1e15, symbol: 'P' },
-      { value: 1e18, symbol: 'E' },
+      { value: BigInt(1), symbol: '' },
+      { value: BigInt(1e3), symbol: 'k' },
+      { value: BigInt(1e6), symbol: 'M' },
+      { value: BigInt(1e9), symbol: 'G' },
+      { value: BigInt(1e12), symbol: 'T' },
+      { value: BigInt(1e15), symbol: 'P' },
+      { value: BigInt(1e18), symbol: 'E' },
     ];
     const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    var item = lookup
+    const numBigInt = BigInt(num);
+    const item = lookup
       .slice()
       .reverse()
       .find(function (item) {
-        return num >= item.value;
+        return numBigInt >= item.value;
       });
     return item
-      ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol
+      ? (Number(numBigInt / item.value).toFixed(digits).replace(rx, '$1') + item.symbol)
       : '0';
   };
 
   if (loading) {
     return <div className='loader'> Loading...</div>;
   }
-  
+
 
   return (
     <>
       {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem) => (
         <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
-
-
-
-          <ItemNFT onClick={() => history.push("/nft/"+item.itemId )}>
+          <ItemNFT onClick={() => history("/nft/" + item.itemId)}>
             <div className="image-wrapper">
               <img src={findimage(item.itemId)} alt="Reload your page" />
             </div>
@@ -109,7 +100,7 @@ export const MarketPlaceView = ({ bazaar, onSelected }: Props) => {
               <span  >ID: {item.itemId}</span>
               {isLtMd && (<TagPrice>{nFormatter(item.price, 2)} AVAX</TagPrice>)}
               {!isLtMd && (
-                <TagPrice>{item.price.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>
+                <TagPrice>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>
               )}
             </div>
           </ItemNFT>

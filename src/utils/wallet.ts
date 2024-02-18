@@ -1,4 +1,3 @@
-import { ethers } from 'ethers';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from './SporeAbis';
 import { ContractAddesses } from './addresses';
 
@@ -7,23 +6,6 @@ const win = window as any;
 export const getAccount = async () => {
   const accounts = await win.web3.eth.getAccounts();
   return accounts[0];
-};
-
-export const approveContract = async (
-  tokenAddress: string,
-  tokenABI: any,
-  toApproveAddress: string,
-  amount: ethers.BigNumber
-) => {
-  const contract = new win.web3.eth.Contract(tokenABI, tokenAddress);
-  const account = await getAccount();
-  try {
-    await contract.methods
-      .approve(toApproveAddress, amount)
-      .send({ from: account, gasPrice: 225000000000 });
-  } catch (error: any) {
-    alert(error.message);
-  }
 };
 
 export const getSporesInWallet = async (isOnAvax: boolean) => {

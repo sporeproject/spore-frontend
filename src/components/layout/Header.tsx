@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
@@ -181,7 +180,7 @@ const Header = () => {
                   Charts <span className="caret"></span>
                 </a>
                 <ul className="dropdown-menu">
-                  
+
                   <li>
                     <a className='nav-link' href='https://coinmarketcap.com/currencies/spore/' target='_blank' rel='noopener noreferrer'>
                       CoinMarketCap
@@ -216,7 +215,6 @@ const Header = () => {
                   </li>
                 </ul>
               </li>
-
               {/*<li className='nav-item'>
                 <a
                   className='btn btn-outline-light'

@@ -1,4 +1,3 @@
-import React from 'react';
 import Web3 from 'web3';
 import './SporeFairy.css';
 import { useState, useEffect } from 'react';
@@ -98,7 +97,7 @@ const getFairyBalance = async () => {
   }
 }
 
-const SporeFairy = (props: any) => {
+const SporeFairy = () => {
   const [fairyBalance, setFairyBalance] = useState(0);
 
   useEffect(() => {

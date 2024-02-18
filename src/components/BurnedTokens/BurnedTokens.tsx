@@ -1,10 +1,9 @@
-import React from 'react';
 import './BurnedTokens.scss';
 
 interface BurnedTokensInterfaceProps {
-  supplyAVA: number,
-  supplyBSC: number,
-  burnedTotal: number,
+  supplyAVA: bigint,
+  supplyBSC: bigint,
+  burnedTotal: bigint,
   totalTokenHolders:number,
 }
 
@@ -14,22 +13,25 @@ const BurnedTokens = ({
   burnedTotal,
   totalTokenHolders,
 }: BurnedTokensInterfaceProps) => {
-  
  
   const numberWithCommas = (x: number) => {
-    return x.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    return Number(x).toFixed(0).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
+
+  const numberWithCommasB = (x: bigint) => {
+    return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   }
 
   return (
     <>
       <div className="alert alert-dark" role="alert">
-        Circulating Supply on Avalanche:<br></br>  <b>{numberWithCommas(supplyAVA)}</b> 
+        Circulating Supply on Avalanche:<br></br>  <b>{numberWithCommasB(supplyAVA)}</b> 
       </div>
       <div className="alert alert-dark" role="alert">
-        Circulating Supply on BSC: <br></br> <b>{numberWithCommas(supplyBSC)}</b> 
+        Circulating Supply on BSC: <br></br> <b>{numberWithCommasB(supplyBSC)}</b> 
       </div>
       <div className="alert alert-dark" role="alert">
-        Total burned:<br></br> <b>{numberWithCommas(burnedTotal)}</b>
+        Total burned:<br></br> <b>{numberWithCommasB(burnedTotal)}</b>
       </div>
      
       <div className="alert alert-dark" role="alert">
