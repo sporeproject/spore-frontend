@@ -1,51 +1,31 @@
-import React, { ChangeEvent, useState } from 'react';
-import Web3 from 'web3';
+import { ChangeEvent, useEffect, useState } from 'react';
 //@ts-ignore
-import { ethers } from 'ethers';
-
+import { ethers, toBigInt } from 'ethers';
 import './BSCBridge.scss';
-import { useEffect } from 'react';
 import { CardBridge, TransferButton } from './BSCBridge.style';
 import { Helmet } from 'react-helmet';
-import { AVAX_NETWORK_RPC } from '../../utils/constants';
 import { AvaxBridgeABI, BscBridgeABI, SporeABI } from '../../utils/abis';
-
-import AccountInfo from '../../components/Connect/Header';
-import Web3Modal from 'web3modal';
-import ConnectButton from '../../components/Connect/ConnectButton';
-import { getChainData } from '../../utils/utilities';
 // @ts-ignore
-import WalletConnectProvider from '@walletconnect/web3-provider';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount, useChainId } from 'wagmi';
+import { readContract, writeContract, switchChain } from "@wagmi/core";
+import { wagmiConfig } from '../../wagmi-config';
 
 const docu = document as any;
-
-function initWeb3(provider: any) {
-  const web3: any = new Web3(provider);
-
-  web3.eth.extend({
-    methods: [
-      {
-        name: 'chainId',
-        call: 'eth_chainId',
-        outputFormatter: web3.utils.hexToNumber,
-      },
-    ],
-  });
-
-  return web3;
-}
 
 const SporeAddress = '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985';
 const AvaxBridgeAdress = '0x1aFCEF48379ECad5a6D790cE85ad1c87458C0f07';
 const SporeAddressBSC = '0x33A3d962955A3862C8093D1273344719f03cA17C';
 
+const BSCChainId = 56;
+const AvaxChainId = 43114;
+
 const BSCBridge = () => {
-  const [address, setAddress] = useState('');
-  const [web3, setWeb3] = useState<any>({});
-  const [connected, setConnected] = useState(false);
-  const [chainId, setChainId] = useState(1);
-  const [numberOfSporeAVAX, setNumberOfSporeAVAX] = useState(0);
-  const [numberOfSporeBSC, setNumberOfSporeBSC] = useState(0);
+  const { address: userAddress } = useAccount();
+  const chainId = useChainId();
+  const SporeAddressByChainId = chainId === AvaxChainId ? SporeAddress : SporeAddressBSC;
+  // const provider = getEthersProvider(wagmiConfig);
+  const [balanceOfSpore, setBalanceOfSpore] = useState(0n);
   const [checkTenPercentageBSC, setCheckTenPercentageBSC] = useState(false);
 
   const feesBNB = 0.005;
@@ -53,264 +33,261 @@ const BSCBridge = () => {
 
   const [sporeValue, setSporeValue] = useState('');
 
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const balance = await readContract(wagmiConfig, { abi: SporeABI, address: SporeAddressByChainId, functionName: 'balanceOf', args: [userAddress] })
+        setBalanceOfSpore(balance as bigint / 10n ** 9n);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    load();
+  }, [chainId, userAddress])
+
+
   const approve = async () => {
-    if (!connected) return;
     if (sporeValue === '' || !Boolean(sporeValue)) {
       alert('Please enter a valid spore value');
       return;
     }
-    const SporeContract = new web3.eth.Contract(SporeABI, SporeAddress);
-    var amount = ethers.BigNumber.from(sporeValue).mul(10 ** 9);
+    var amount = BigInt(sporeValue) * 10n ** 9n;
     try {
-      await SporeContract.methods
-        .approve(AvaxBridgeAdress, amount)
-        .send({ from: address, gasPrice: 225000000000 });
+      await writeContract(wagmiConfig, {
+        abi: SporeABI,
+        address: SporeAddress,
+        functionName: 'approve',
+        args: [
+          AvaxBridgeAdress,
+          amount
+        ],
+      })
     } catch (error: any) {
       alert(error.message);
     }
   };
 
   const swapFromAVAX = async () => {
-    if (!connected) return;
     if (sporeValue === '' || !Boolean(sporeValue)) {
       alert('Please enter a valid spore value');
       return;
     }
-    const AvaxBridgeContract = new web3.eth.Contract(
-      AvaxBridgeABI,
-      AvaxBridgeAdress
-    );
-    var amount = ethers.BigNumber.from(sporeValue).mul(10 ** 9);
-    var fees = ethers.BigNumber.from('30000000000000000');
+
+    var amount = BigInt(sporeValue) * 10n ** 9n;
+    var fees = 30000000000000000n;
     try {
-      await AvaxBridgeContract.methods
-        .burn(amount)
-        .send({ from: address, gasPrice: 225000000000, value: fees });
+      await writeContract(wagmiConfig, {
+        abi: AvaxBridgeABI,
+        address: AvaxBridgeAdress,
+        functionName: 'burn',
+        args: [
+          amount
+        ],
+        value: fees,
+      })
     } catch (error: any) {
       alert(error.message);
     }
   };
   //7:38
   const swapFromBSC = async () => {
-    if (!connected) return;
     console.log({ sporeValue });
     if (sporeValue === '' || !Boolean(sporeValue)) {
       alert('Please enter a valid spore value');
       return;
     }
     const BscBridgeAdress = '0x638E8FE7AD4D9C05735Ecb6b9c66013679276651';
-    const BscBridgeContract = new web3.eth.Contract(
-      BscBridgeABI,
-      BscBridgeAdress
-    );
-    var amount = ethers.BigNumber.from(sporeValue).mul(10 ** 9);
-    var fees = ethers.BigNumber.from('5000000000000000');
+    var amount = BigInt(sporeValue) * 10n ** 9n;
+    var fees = 5000000000000000n;
     try {
       if (docu.getElementById('checkbox').checked) {
         var percent = 10;
-        await BscBridgeContract.methods
-          .burnAndSwap(address, amount, percent)
-          .send({ from: address, value: fees });
+
+        await writeContract(wagmiConfig, {
+          abi: BscBridgeABI,
+          address: BscBridgeAdress,
+          functionName: 'burnAndSwap',
+          args: [
+            userAddress,
+            amount,
+            percent
+          ],
+          value: fees,
+        })
       } else {
-        await BscBridgeContract.methods
-          .burn(address, amount)
-          .send({ from: address, value: fees });
+        await writeContract(wagmiConfig, {
+          abi: BscBridgeABI,
+          address: BscBridgeAdress,
+          functionName: 'burn',
+          args: [
+            userAddress,
+            amount
+          ],
+          value: fees,
+        })
       }
     } catch (error: any) {
       alert(error.message);
     }
   };
 
-  const addBSCRPC = async () => {
-    if (!connected) return;
-    const chainId = '0x38';
-    const chaindName = 'BSC';
-    const nativeCurrency = {
-      name: 'BNB',
-      symbol: 'BNB',
-      decimals: 18,
-    };
-    const rpcUrl = ['https://bsc-dataseed.binance.org/'];
-    const blockExplorerUrl = ['https://bscscan.com'];
-    const nid = web3.currentProvider.chainId;
-    if (nid !== '0x38') {
-      try {
-        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-        const wasAdded = await web3.currentProvider.sendAsync({
-          method: 'wallet_addEthereumChain',
-          params: [
-            {
-              chainId: chainId,
-              chainName: chaindName,
-              nativeCurrency: nativeCurrency,
-              rpcUrls: rpcUrl,
-              blockExplorerUrls: blockExplorerUrl, // A string url of the token logo
-            },
-          ],
-        });
+  // const addBSCRPC = async () => {
+  //   const chainId = '0x38';
+  //   const chaindName = 'BSC';
+  //   const nativeCurrency = {
+  //     name: 'BNB',
+  //     symbol: 'BNB',
+  //     decimals: 18,
+  //   };
+  //   const rpcUrl = ['https://bsc-dataseed.binance.org/'];
+  //   const blockExplorerUrl = ['https://bscscan.com'];
+  //   const nid = provider.chainId;
+  //   if (nid !== '0x38') {
+  //     try {
+  //       // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+  //       const wasAdded = await provider.sendAsync({
+  //         method: 'wallet_addEthereumChain',
+  //         params: [
+  //           {
+  //             chainId: chainId,
+  //             chainName: chaindName,
+  //             nativeCurrency: nativeCurrency,
+  //             rpcUrls: rpcUrl,
+  //             blockExplorerUrls: blockExplorerUrl, // A string url of the token logo
+  //           },
+  //         ],
+  //       });
 
-        if (wasAdded === null) {
-          console.log('Thanks for your interest!');
-        } else {
-          console.log('Your loss!');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('You are on the BSC!');
-    }
-  };
+  //       if (wasAdded === null) {
+  //         console.log('Thanks for your interest!');
+  //       } else {
+  //         console.log('Your loss!');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log('You are on the BSC!');
+  //   }
+  // };
 
-  const addAVAXRPC = async () => {
-    if (!connected) return;
-    const chainId = '0xa86a';
-    const chaindName = 'Avalanche';
-    const nativeCurrency = {
-      name: 'AVAX',
-      symbol: 'AVAX',
-      decimals: 18,
-    };
-    const rpcUrl = [AVAX_NETWORK_RPC];
-    const blockExplorerUrl = ['https://cchain.explorer.avax.network/'];
-    const nid = web3.currentProvider.chainId;
-    if (nid !== '0xa86a') {
-      try {
-        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-        const wasAdded = await web3.currentProvider.sendAsync({
-          method: 'wallet_addEthereumChain',
-          params: [
-            {
-              chainId: chainId,
-              chainName: chaindName,
-              nativeCurrency: nativeCurrency,
-              rpcUrls: rpcUrl,
-              blockExplorerUrls: blockExplorerUrl, // A string url of the token logo
-            },
-          ],
-        });
+  // const addAVAXRPC = async () => {
+  //   if (!connected) return;
+  //   const chainId = '0xa86a';
+  //   const chaindName = 'Avalanche';
+  //   const nativeCurrency = {
+  //     name: 'AVAX',
+  //     symbol: 'AVAX',
+  //     decimals: 18,
+  //   };
+  //   const rpcUrl = [AVAX_NETWORK_RPC];
+  //   const blockExplorerUrl = ['https://cchain.explorer.avax.network/'];
+  //   const nid = provider.chainId;
+  //   if (nid !== '0xa86a') {
+  //     try {
+  //       // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+  //       const wasAdded = await provider.sendAsync({
+  //         method: 'wallet_addEthereumChain',
+  //         params: [
+  //           {
+  //             chainId: chainId,
+  //             chainName: chaindName,
+  //             nativeCurrency: nativeCurrency,
+  //             rpcUrls: rpcUrl,
+  //             blockExplorerUrls: blockExplorerUrl, // A string url of the token logo
+  //           },
+  //         ],
+  //       });
 
-        if (wasAdded === null) {
-          console.log('Thanks for your interest!');
-        } else {
-          console.log('Your loss!');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('You are on the AVALANCHE!');
-    }
-  };
+  //       if (wasAdded === null) {
+  //         console.log('Thanks for your interest!');
+  //       } else {
+  //         console.log('Your loss!');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log('You are on the AVALANCHE!');
+  //   }
+  // };
 
-  const addSporeBSC = async () => {
-    if (!connected) return;
-    const tokenAddress = '0x33a3d962955a3862c8093d1273344719f03ca17c';
-    const tokenSymbol = 'SPORE';
-    const tokenDecimals = 9;
-    const tokenImage =
-      'https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png';
-    const nid = web3.currentProvider.chainId;
-    if (nid === '0x38') {
-      try {
-        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-        const wasAdded = await web3.currentProvider.sendAsync({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20', // Initially only supports ERC20, but eventually more!
-            options: {
-              address: tokenAddress, // The address that the token is at.
-              symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
-              decimals: tokenDecimals, // The number of decimals in the token
-              image: tokenImage, // A string url of the token logo
-            },
-          },
-        });
+  // const addSporeBSC = async () => {
+  //   if (!connected) return;
+  //   const tokenAddress = '0x33a3d962955a3862c8093d1273344719f03ca17c';
+  //   const tokenSymbol = 'SPORE';
+  //   const tokenDecimals = 9;
+  //   const tokenImage =
+  //     'https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png';
+  //   const nid = provider.chainId;
+  //   if (nid === '0x38') {
+  //     try {
+  //       // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+  //       const wasAdded = await provider.sendAsync({
+  //         method: 'wallet_watchAsset',
+  //         params: {
+  //           type: 'ERC20', // Initially only supports ERC20, but eventually more!
+  //           options: {
+  //             address: tokenAddress, // The address that the token is at.
+  //             symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+  //             decimals: tokenDecimals, // The number of decimals in the token
+  //             image: tokenImage, // A string url of the token logo
+  //           },
+  //         },
+  //       });
 
-        if (wasAdded) {
-          console.log('Thanks for your interest!');
-        } else {
-          console.log('Your loss!');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('You are not on the BSC!');
-    }
-  };
+  //       if (wasAdded) {
+  //         console.log('Thanks for your interest!');
+  //       } else {
+  //         console.log('Your loss!');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log('You are not on the BSC!');
+  //   }
+  // };
 
-  const addSporeAvalanche = async () => {
-    if (!connected) return;
-    const tokenAddress = '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985';
-    const tokenSymbol = 'SPORE';
-    const tokenDecimals = 9;
-    const tokenImage =
-      'https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png';
-    const nid = web3.currentProvider.chainId;
-    if (nid === '0xa86a') {
-      try {
-        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
-        const wasAdded = await web3.currentProvider.sendAsync({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20', // Initially only supports ERC20, but eventually more!
-            options: {
-              address: tokenAddress, // The address that the token is at.
-              symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
-              decimals: tokenDecimals, // The number of decimals in the token
-              image: tokenImage, // A string url of the token logo
-            },
-          },
-        });
+  // const addSporeAvalanche = async () => {
+  //   if (!connected) return;
+  //   const tokenAddress = '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985';
+  //   const tokenSymbol = 'SPORE';
+  //   const tokenDecimals = 9;
+  //   const tokenImage =
+  //     'https://raw.githubusercontent.com/sporeproject/spore-frontend/master/public/spore_256.png';
+  //   const nid = provider.chainId;
+  //   if (nid === '0xa86a') {
+  //     try {
+  //       // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+  //       const wasAdded = await provider.sendAsync({
+  //         method: 'wallet_watchAsset',
+  //         params: {
+  //           type: 'ERC20', // Initially only supports ERC20, but eventually more!
+  //           options: {
+  //             address: tokenAddress, // The address that the token is at.
+  //             symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+  //             decimals: tokenDecimals, // The number of decimals in the token
+  //             image: tokenImage, // A string url of the token logo
+  //           },
+  //         },
+  //       });
 
-        if (wasAdded) {
-          console.log('Thanks for your interest!');
-        } else {
-          console.log('Your loss!');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('You are not on the AVALANCHE!');
-    }
-  };
+  //       if (wasAdded) {
+  //         console.log('Thanks for your interest!');
+  //       } else {
+  //         console.log('Your loss!');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log('You are not on the AVALANCHE!');
+  //   }
+  // };
 
-  const getSporeInWalletAVAX = async () => {
-    const SporeContract = new web3.eth.Contract(SporeABI, SporeAddress);
-    try {
-      var spores = await SporeContract.methods.balanceOf(address).call();
-      return spores;
-    } catch (error) {
-      return 0;
-    }
-  };
-
-  const getSporeInWalletBSC = async () => {
-    const SporeContract = new web3.eth.Contract(SporeABI, SporeAddressBSC);
-    try {
-      var spores = await SporeContract.methods.balanceOf(address).call();
-      console.log({ spores });
-      return spores;
-    } catch (error) {
-      console.log(error);
-      return 0;
-    }
-  };
-
-  const setMaxSporeAVAX = async () => {
-    if (!connected) return;
-    var maxSpores = await getSporeInWalletAVAX();
-    const spore = maxSpores / 10 ** 9;
-    setSporeValue(String(spore).split('.')[0]);
-  };
-
-  const setMaxSporeBSC = async () => {
-    if (!connected) return;
-    var maxSpores = await getSporeInWalletBSC();
-    const spore = maxSpores / 10 ** 9;
-    setSporeValue(String(spore).split('.')[0]);
+  const setMaxSpore = async () => {
+    setSporeValue(String(balanceOfSpore).split('.')[0]);
   };
 
   const Metadata = () => (
@@ -320,117 +297,16 @@ const BSCBridge = () => {
         name='description'
         content='Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency.'
       />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-      <link rel="manifest" href="/site.webmanifest"/>
-      <meta name="msapplication-TileColor" content="#da532c"/>
-      <meta name="theme-color" content="#ffffff"/>
-
-      
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="#ffffff" />
     </Helmet>
   );
 
-  const getProviderOptions = () => {
-    const providerOptions = {
-      walletconnect: {
-        package: WalletConnectProvider,
-        options: {
-          infuraId: '3dd9be7637c24ef6938fad45f832b2ce',
-          rpc: {
-            56: 'https://bsc-dataseed.binance.org/',
-            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-            43114: 'https://api.avax.network/ext/bc/C/rpc',
-          },
-        },
-      },
-    };
-    return providerOptions;
-  };
-
-  const getNetwork = () => getChainData(chainId).network;
-
-  const resetApp = async () => {
-    if (web3 && web3.currentProvider && web3.currentProvider.close) {
-      await web3.currentProvider.close();
-    }
-    await web3Modal.clearCachedProvider();
-    setWeb3(null);
-    setAddress('');
-    setChainId(1);
-    setConnected(false);
-  };
-
-  const subscribeProvider = async (provider: any) => {
-    if (!provider.on) {
-      return;
-    }
-
-    provider.on('close', () => resetApp());
-    provider.on('accountsChanged', async (accounts: string[]) => {
-      setAddress(accounts[0]);
-    });
-    provider.on('chainChanged', async (chainId: number) => {
-      setChainId(Number(chainId));
-      console.log({ chainId });
-      web3Modal.clearCachedProvider();
-      web3Modal.toggleModal();
-      onConnect();
-    });
-  };
-
-  const onConnect = async () => {
-    try {
-      const provider = await web3Modal.connect();
-      await subscribeProvider(provider);
-      const web3: any = initWeb3(provider);
-      const accounts = await web3.eth.getAccounts();
-      const address = accounts[0];
-      const chainId = await web3.eth.chainId();
-      setWeb3(web3);
-      setConnected(true);
-      setAddress(address);
-      if (Number(chainId) === 1) {
-        setChainId(0xa86a);
-        return;
-      }
-      setChainId(chainId);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
-
-  const web3Modal = new Web3Modal({
-    network: getNetwork(),
-    cacheProvider: true,
-    providerOptions: getProviderOptions(),
-  });
-
-  useEffect(() => {
-    if (web3Modal.cachedProvider) {
-      onConnect();
-    }
-    // eslint-disable-next-line
-  }, []);
-
-  async function getMaxSporeCountInBalances() {
-    if (isChainIdAvalanche()) {
-      var numberOfSporeAVAX = (await getSporeInWalletAVAX()) / 10 ** 9;
-      setNumberOfSporeAVAX(numberOfSporeAVAX);
-    } else {
-      var numberOfSporeBSC = (await getSporeInWalletBSC()) / 10 ** 9;
-      setNumberOfSporeBSC(numberOfSporeBSC);
-    }
-  }
-
   const isChainIdAvalanche = () => chainId > 431;
-
-  useEffect(() => {
-    if (web3 && address && connected) {
-      getMaxSporeCountInBalances();
-    }
-    // eslint-disable-next-line
-  }, [web3, address, chainId, connected]);
 
   return (
     <>
@@ -443,17 +319,7 @@ const BSCBridge = () => {
                 <h2>AVALANCHE / BSC SPORE BRIDGE</h2>
               </div>
               <div className='col-lg-12 text-right'>
-                <AccountInfo
-                  connected={connected}
-                  address={address}
-                  chainId={chainId}
-                  killSession={resetApp}>
-                  <>
-                    {!connected ? (
-                      <ConnectButton onClick={() => onConnect()} />
-                    ) : null}
-                  </>
-                </AccountInfo>
+                <ConnectButton />
               </div>
             </div>
             <div className='wrapBridge pt-2'>
@@ -467,9 +333,9 @@ const BSCBridge = () => {
                         <h5 className='card-title'>
                           <span>FROM</span> Avalanche{' '}
                         </h5>
-                        <p className='card-text'>
-                          Balance : {numberOfSporeAVAX}
-                        </p>
+                        <div className='card-text'>
+                          Balance : {Number(balanceOfSpore)}
+                        </div>
                         <div className='input-group'>
                           <input
                             type='text'
@@ -484,8 +350,8 @@ const BSCBridge = () => {
                           <div className='input-group-append'>
                             <button
                               className='btn btn-outline-secondary white'
-                              onClick={setMaxSporeAVAX}
-                              disabled={!connected}
+                              onClick={setMaxSpore}
+                              disabled={!userAddress}
                               type='button'>
                               MAX
                             </button>
@@ -494,7 +360,7 @@ const BSCBridge = () => {
                         <div className='offset-lg-3 col-lg-6 text-center py-1'>
                           <button
                             onClick={approve}
-                            disabled={!connected}
+                            disabled={!userAddress}
                             className='btn btn-primary'
                             id='approve-btn'>
                             APPROVE
@@ -523,14 +389,16 @@ const BSCBridge = () => {
                   <button
                     className='btn btn-outline-light'
                     onClick={async () => {
-                      if (!connected) {
+                      if (!userAddress) {
                         alert('Plase connect your wallet');
                         return;
                       }
-                      if (isChainIdAvalanche()) {
-                        await addBSCRPC();
-                      } else {
-                        await addAVAXRPC();
+                      if (switchChain) {
+                        if (isChainIdAvalanche()) {
+                          switchChain(wagmiConfig, { chainId: BSCChainId });
+                        } else {
+                          switchChain(wagmiConfig, { chainId: AvaxChainId });
+                        }
                       }
                       setSporeValue('');
                     }}>
@@ -559,9 +427,9 @@ const BSCBridge = () => {
                         <h5 className='card-title'>
                           <span>FROM</span> Binance Smart Chain{' '}
                         </h5>
-                        <p className='card-text'>
-                          Balance : <span id='balance'>{numberOfSporeBSC}</span>
-                        </p>
+                        <div className='card-text'>
+                          Balance : <span id='balance'>{Number(balanceOfSpore)}</span>
+                        </div>
                         <div className='input-group'>
                           <input
                             type='text'
@@ -577,8 +445,8 @@ const BSCBridge = () => {
                             <button
                               className='btn btn-outline-secondary white'
                               type='button'
-                              disabled={!connected}
-                              onClick={setMaxSporeBSC}>
+                              disabled={!userAddress}
+                              onClick={setMaxSpore}>
                               MAX
                             </button>
                           </div>
@@ -606,7 +474,7 @@ const BSCBridge = () => {
                   <div className='col-lg-12 text-center py-4 col-coin'>
                     <div className='pb-2'>Transfer fees : {feesAVAX} AVAX</div>
                     <TransferButton
-                      disabled={!connected}
+                      disabled={!userAddress}
                       onClick={swapFromAVAX}
                       className='btn btn-primary btn-lg'
                       id='swap-btn'>
@@ -618,7 +486,7 @@ const BSCBridge = () => {
                     <div className='pb-2'>Transfer fees : {feesBNB} BNB</div>
                     <TransferButton
                       onClick={swapFromBSC}
-                      disabled={!connected}
+                      disabled={!userAddress}
                       className='btn btn-primary btn-lg'
                       id='swap-btn'>
                       TRANSFER
@@ -630,19 +498,19 @@ const BSCBridge = () => {
 
             <div className='container'>
               <div className='offset-lg-3 col-lg-6 text-center py-4'>
-                <p className='text-left'>
-                  <p>
+                <div className='text-left'>
+                  <div>
                     <b>Note </b>: The Bridge may encounter occasional delays
                     depending on network conditions.
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     If you encounter issues, ask for help in our{' '}
                     <a href='https://telegram.me/sporefinanceofficial'>
                       Telegram
                     </a>{' '}
                     group.{' '}
-                  </p>
-                </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -652,12 +520,12 @@ const BSCBridge = () => {
 
 
 
-                <p className='text-left'>
+                <div className='text-left'>
 
-                  <p><b>Step 1</b> - Enable Avalanche C-Chain AVAX  🔺 in Trustwallet
+                  <div><b>Step 1</b> - Enable Avalanche C-Chain AVAX  🔺 in Trustwallet
 
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <b>Step 2</b> - Add SPORE token (Avalanche){' '}<br></br>
                     <ul>
                       <li>Network: Avalanche C-Chain</li>
@@ -668,40 +536,40 @@ const BSCBridge = () => {
                     </ul>
 
 
-                  </p>
+                  </div>
 
-                  <p>
+                  <div>
                     <b>Step 3 </b> - Connect to Bridge{' '}<br></br>
                     <ul>
                       <li>click connect button + select Trust</li>
                       <li>select BSC network + connect</li>
                     </ul>
-                  </p>
+                  </div>
 
-                  <p>
+                  <div>
                     <b>Step 4 </b> - Transfer SPORE{' '}<br></br>
                     <ul>
                       <li>set SPORE amount [MAX] </li>
                       <li>click Transfer</li>
                       <li>confirm transaction in Trustwallet</li>
                     </ul>
-                    <p>
-                    <b>Step 5</b> - Congratulations, you bridged your SPORE ;){' '}<br></br>
-                   
-                    </p>
+                    <div>
+                      <b>Step 5</b> - Congratulations, you bridged your SPORE ;){' '}<br></br>
+
+                    </div>
 
 
-                  </p>
-                </p>
+                  </div>
+                </div>
               </div>
             </div>
-
+            {/* 
             <div className='container'>
               <div className='offset-lg-3 col-lg-6 text-center py-4'>
                 <h3>Metamask Steps 🦊 </h3>
 
-                <p className='text-left'>
-                  <p>
+                <div className='text-left'>
+                  <div>
                     <b>Step 1 </b>- Use the Connect button on the top right{' '}
                     and choose to connect to <a
                       target='_blank'
@@ -709,8 +577,8 @@ const BSCBridge = () => {
                       href='https://metamask.io'>
                       MetaMask
                     </a>.
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <b>Step 2 </b>- Add{' '}
                     <button
                       onClick={addAVAXRPC}
@@ -728,8 +596,8 @@ const BSCBridge = () => {
                       {' '}
                       add Avalanche 🔺 Spore🍄
                     </button>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <b>Step 3</b>- Add{' '}
                     <button
                       onClick={addBSCRPC}
@@ -747,17 +615,17 @@ const BSCBridge = () => {
                       add BSC 🔶 Spore 🍄
                     </button>
                     <br></br> <br></br>
-                  </p>
+                  </div>
 
-                  <p>
+                  <div>
                     <b>Step 4 </b>- Refresh the page click on max and transfer{' '}
-                  </p>
-                </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

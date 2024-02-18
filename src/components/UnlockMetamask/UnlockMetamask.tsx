@@ -1,4 +1,3 @@
-import React from "react";
 import { AVAX_NETWORK_RPC } from "../../utils/constants";
 
 const win = window as any

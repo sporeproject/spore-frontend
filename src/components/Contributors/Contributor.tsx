@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Contributor.scss';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://frontend-api.sporeproject.org';
+const API_URL = process.env.VITE__API_URL || 'https://frontend-api.sporeproject.org';
 
 
 export const Contributors = () => {
@@ -31,8 +31,6 @@ export const Contributors = () => {
     
   }
 
-  console.log("contrib" ,contrib)
-  
   var coreContributors = contrib.map ((data:any) => {if (data.contributions >13) {return data} else {return null} })
   coreContributors = coreContributors.filter((data:any) => {return data !== null})
   

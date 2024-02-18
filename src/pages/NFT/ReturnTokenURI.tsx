@@ -1,48 +1,45 @@
-import React, { useState } from "react";
-import Web3 from "web3";
+import { useState } from "react";
 import { useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
 import { ContractAddesses } from '../../utils/addresses';
-import { getAccount } from '../../utils/wallet';
 import { nftmetadata } from '../../utils/nftmetadata';
 import { ItemNFT } from './MarketPlace/MarketPlace.style';
+import { readContract, writeContract, } from "@wagmi/core";
+import { wagmiConfig } from "../../wagmi-config";
+import { formatEther } from "ethers";
 
-const win = window as any
 const docu = document as any
 
 const putNFTForSale = async () => {
-
-  const SporeMarketv1 = new win.web3.eth.Contract(
-    SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_MAINNET
-  );
   var _tokenIDforSale = docu.getElementById("_tokenIDforSale").value;
-  var _price = Web3.utils.toWei(docu.getElementById("_price").value, 'ether');
-  //var _price = docu.getElementById("_price").value;
+  var _price = formatEther(docu.getElementById("_price").value);
 
-  var account = await getAccount()
   try {
-    await SporeMarketv1.methods
-      .setTokenPrice(_tokenIDforSale, _price)
-      .send({ from: account, gasPrice: 225000000000 });
+    await writeContract(wagmiConfig, {
+      abi: SPORE_MARKET_ABI,
+      address: ContractAddesses.AVAX_MARKET_MAINNET,
+      functionName: 'setTokenPrice',
+      args: [
+        _tokenIDforSale,
+        _price
+      ],
+    })
   } catch (error) {
     alert(error);
   }
 }
 
 const cancelNFTForSale = async () => {
-
-  const SporeMarketv1 = new win.web3.eth.Contract(
-    SPORE_MARKET_ABI,
-    ContractAddesses.AVAX_MARKET_MAINNET
-  );
   var _tokenIDforCancel = docu.getElementById("_tokenIDforCancel").value;
-
-  var account = await getAccount()
   try {
-    await SporeMarketv1.methods
-      .cancelTokenSale(_tokenIDforCancel)
-      .send({ from: account, gasPrice: 225000000000 });
+    await writeContract(wagmiConfig, {
+      abi: SPORE_MARKET_ABI,
+      address: ContractAddesses.AVAX_MARKET_MAINNET,
+      functionName: 'cancelTokenSale',
+      args: [
+        _tokenIDforCancel,
+      ],
+    })
   } catch (error) {
     alert(error);
   }
@@ -51,8 +48,6 @@ const cancelNFTForSale = async () => {
 type Props = {
   tokensOfOwner: Array<any>
   chainId: any,
-  web3: any,
-  connected: boolean
   address: string
   onUpdate: Function
 }
@@ -67,15 +62,10 @@ const ReturnTokenURI = (props: Props) => {
 
   useEffect(() => {
     async function startup() {
-      const SporeMarketv1 = new win.web3.eth.Contract(
-        SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_MAINNET
-      );
+
       const promises = [];
       for (let i = 0; i < props.tokensOfOwner.length; i++) {
-        const promisestokenURIs = await SporeMarketv1.methods
-          .tokenURI(props.tokensOfOwner[i])
-          .call();
+        const promisestokenURIs: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
         promises.push(promisestokenURIs);
       }
     }
@@ -86,25 +76,25 @@ const ReturnTokenURI = (props: Props) => {
   const isNetworkAvalanche = () => Boolean(props.chainId === 0xa86a);
 
   async function transferNFT() {
-    const { address, connected, web3 } = props;
+    const { address } = props;
     if (!isNetworkAvalanche()) {
       alert('Please connect to Avalanche Network before buy');
       return;
     }
-    if (!connected || !address) {
+    if (!address) {
       alert('Please connect before your walllet');
       return;
     }
 
-    const SporeMarketv1 = new web3.eth.Contract(
-      SPORE_MARKET_ABI,
-      ContractAddesses.AVAX_MARKET_MAINNET
-    );
-
     try {
-      await SporeMarketv1.methods
-        .safeTransferFrom(address, addressToTransfer, nftToTransfer)
-        .send({ from: address });
+      await writeContract(wagmiConfig, {
+        abi: SPORE_MARKET_ABI,
+        address: ContractAddesses.AVAX_MARKET_MAINNET,
+        functionName: 'safeTransferFrom',
+        args: [
+          address, addressToTransfer, nftToTransfer
+        ],
+      })
       setAddressToTransfer('');
       setNftToTransfer(undefined);
       props.onUpdate()
@@ -112,7 +102,7 @@ const ReturnTokenURI = (props: Props) => {
       alert(error.message);
     }
   }
-
+  console.log({ tokensOfOwner: props.tokensOfOwner })
   return (
     <>
       {
@@ -123,7 +113,7 @@ const ReturnTokenURI = (props: Props) => {
                 <img src={findimage(id)} alt="Reload your page" />
               </div>
               <div className="item-description">
-                <span >ID: {id}</span>
+                <span >ID: {Number(id)}</span>
               </div>
             </ItemNFT>
           </div>

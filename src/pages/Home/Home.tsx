@@ -3,8 +3,8 @@ import { Contracts } from '../../components/Contracts/Contracts';
 import { Contributors } from '../../components/Contributors/Contributor';
 import { Partnerships } from '../../components/Partnerships/Partnerships';
 import PriceToken from '../../components/PriceToken/PriceToken';
-import Tokenomics from '../../components/Tokenomics/Tokenomics';
 import './Home.scss';
+import Tokenomics from '../../components/Tokenomics/Tokenomics';
 
 const Home = () => {
   const Metadata = () => (
@@ -20,8 +20,6 @@ const Home = () => {
       <link rel="manifest" href="/site.webmanifest"/>
       <meta name="msapplication-TileColor" content="#da532c"/>
       <meta name="theme-color" content="#ffffff"/>
-
-      
     </Helmet>
   )
   

@@ -8,7 +8,7 @@ import { AVAX_NETWORK_RPC } from "../../utils/constants";
 const win = window as any
 win.ava = new Web3(AVAX_NETWORK_RPC)
 
-const Vote = (props: any) => {
+const Vote = () => {
 
   const [forVotes, setforVotes] = useState(0);
   const [againstVotes, setagainstVotes] = useState(0);
@@ -105,7 +105,7 @@ const Vote = (props: any) => {
                 </div>
 
                 <div className="col-md-12 text-center py-5">
-                  <h4>Countdown: <p id="demo">{x} </p></h4>
+                  <h4>Countdown: <p id="demo">{Number(x)} </p></h4>
                 </div>
               </div>
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 const InstallMetamask = () => {
   return (
     <div className="modal is-active">

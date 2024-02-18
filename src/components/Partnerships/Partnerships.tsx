@@ -1,6 +1,6 @@
-import React from 'react';
 import { PartnersWrapper } from './Information.style';
-import pangolinExchangeLogo from '../../assets/pangolin-exchange.svg';
+import pangolinExchangeLogo from '../../assets/pangolin-exchange.png';
+
 export const Partnerships = () => {
   return (
     <section className='bg-white-darker pb-6'>

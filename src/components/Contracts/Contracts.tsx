@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Contracts = () => {
   return (
     <div className='container information py-5'>

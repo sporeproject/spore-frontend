@@ -1,19 +1,17 @@
-import React from "react";
-
 import MyParticles from "../../../components/Particles/Particles";
 
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import 'swiper/components/navigation/navigation.min.css';
-import 'swiper/components/pagination/pagination.min.css';
-import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
+// import 'swiper/swiper-bundle.min.css';
+// import 'swiper/swiper.min.css';
+// import 'swiper/components/navigation/navigation.min.css';
+// import 'swiper/components/pagination/pagination.min.css';
+// import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
 import '../NFT.scss';
-
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import SwiperCore from 'swiper';
 import { Helmet } from "react-helmet";
 SwiperCore.use([Navigation, Pagination]);
 
-const FirstGeneration = (props: any) => {
+const FirstGeneration = () => {
     const Metadata = () => (
         <Helmet>
             <title>Spore NFT Gallery - Spore</title>
@@ -29,8 +27,8 @@ const FirstGeneration = (props: any) => {
 
                 <div className='container overflow-hidden position-relative'>
 
-                 
-                        <MyParticles />
+
+                    <MyParticles />
 
 
 

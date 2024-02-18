@@ -5,7 +5,7 @@ html {
 
 body {
   overflow-x: hidden;
-  color:#fff;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   background-color: #9C7456;
   background-size: 75% auto;
@@ -16,10 +16,12 @@ body {
 .btn {
   text-decoration: none;
 }
+
 .btn-primary {
   background-color: #6B4E3B;
   border-color: #6B4E3B;
 }
+
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
@@ -27,6 +29,7 @@ body {
   border-color: #EBD5C7;
   color: #6B4E3B;
 }
+
 .main {
   position: relative;
 }
@@ -62,6 +65,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -70,8 +74,8 @@ body {
 .scroll-to-top {
   position: fixed;
   z-index: 10;
-  bottom:2%;
-  right:1%;
+  bottom: 2%;
+  right: 1%;
   transition: .3s;
   cursor: pointer;
   display: none;
@@ -112,10 +116,14 @@ body {
   .swiper-slide {
     opacity: 0.5;
     transition: all 0.1s ease-in;
-  
+
     &.swiper-slide-active {
       opacity: 1;
       transform: scale(1.05);
     }
   }
+}
+
+a {
+  color: white;
 }
