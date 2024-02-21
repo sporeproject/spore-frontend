@@ -8,6 +8,26 @@ The ultra-deflationary inter-blockchain token that gives you frictionless reward
 
 This section outlines key considerations and steps for setting up and using this repository in conjunction with the Spore API.
 
+
+### About the SporeAPI™ and how to run it locally
+
+- By default, this repository is configured to use the Spore API hosted at `api.sporeproject.org`. Its main use is to retrieve some information that needs to be processed by the chain or other static data for the better display on the site and CMC/CoinGecko data requirements.
+
+- **Using a local API Instance**:
+
+  1. **Spore API Repository**: If you prefer to run your own instance of the Spore API, clone the [spore-api repository](https://github.com/sporeproject/spore-api) and follow the instructions.
+  
+  
+  2. **Running the Application with Local API**:
+     - Rename the `.env.example` file to `.env`.
+     - **Only if you want to run your own local instance of SporeAPI**: Ensure the following lines exist in the `.env` file to point to your local API instance (default doesnt need the .env file to exist):
+       ```
+       VITE_API_URL=http://localhost:5001
+       API_URL=http://localhost:5001
+       ```
+
+
+
 ### Prerequisites and Local Setup
 
 1. **Node and Yarn Installation**: Ensure that [Node.js](https://nodejs.org/) `v18.19.0`is installed in your system. Install the application by cloning this repo and installing the packages:
@@ -20,30 +40,6 @@ This section outlines key considerations and steps for setting up and using this
     ```
      npm run dev
     ```
-
-### API Configuration
-
-- **CoinGecko and CoinMarkeCap API** The api is embedded in the website, and its accessed through spore.earth/api or in the case of a local deployment at localhost:3000/api. It will return the required information.
-
-- **SporeAPI™** By default, this repository is configured to use the Spore API hosted at `api.sporeproject.org`. Its main use is to retrieve some information that needs to be processed by the chain or other static data for the better display on the site.
-
-- **Using a Custom API Instance**:
-  1. **Spore API Repository**: If you prefer to run your own instance of the Spore API, clone the [spore-api repository](https://github.com/sporeproject/spore-api).
-  2. **Running the Spore API**:
-     - Navigate to the cloned `spore-api` directory.
-     - Run the API using Python version 3.10.9:
-       ```
-       python spore-api.py
-       ```
-  3. **Environment Configuration**:
-     - Rename the `.env.example` file to `.env`.
-     - Ensure the following line exists in the `.env` file to point to your local API instance:
-       ```
-       VITE_API_URL=http://localhost:5001
-       ```
-  4. **Running the Application with Local API**:
-     - Ensure the above steps are completed.
-     - Run the application as explained above.
 
 
 ## How can we develop things?
