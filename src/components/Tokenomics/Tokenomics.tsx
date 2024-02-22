@@ -11,7 +11,7 @@ import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
 //to test api on local environment just load the .env file with the VITE_API_URL variable set on localhost:5001
-const API_URL = process.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
 
 const Tokenomics = () => {
   const win = window as any

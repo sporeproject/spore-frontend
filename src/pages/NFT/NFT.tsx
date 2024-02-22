@@ -13,8 +13,13 @@ import { useAccount, useChainId } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { readContract, writeContract, } from "@wagmi/core";
 import { wagmiConfig } from '../../wagmi-config';
+import axios from 'axios';
+
+
 
 const AvaxChainId = 43114;
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
+
 
 const NFT = () => {
   const { address } = useAccount();
@@ -24,10 +29,10 @@ const NFT = () => {
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
   const [balance, setBalance] = useState(0);
   const [itemId, setItemId] = useState<number>();
-  const [buysQuantity,] = useState(0);
-  const [sumTotal,] = useState(0);
-  const [bazaarPrices, setBazaarPrices]  = useState<BigInt[]>([]);
+  // const [bazaarPrices, setBazaarPrices]  = useState<BigInt[]>([]);
   const [floorPrice, setFloorPrice] = useState(0);
+  const [lastSale, setLastSale] = useState(0);
+  const [totalVolume, setTotalVolume] = useState(0);
   const [loading, setLoading] = useState(false);
   const [approveFee, setApproveFee] = useState(100000000000);
 
@@ -89,26 +94,74 @@ const NFT = () => {
       const characterForSale: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'Bazaar', args: [i] })
       promises.push(characterForSale);
     }
-    setBazaarPrices([]);
+    // setBazaarPrices([]);
     setBazaar(promises);
-    promises.forEach((values) => {
-      if (values[1] !== 0n) {
-        return setBazaarPrices((previousPrice) => {
-          return [...previousPrice, values[1]];
-        });
-      }
-    });
+    // promises.forEach((values) => {
+    //   if (values[1] !== 0n) {
+    //     return setBazaarPrices((previousPrice) => {
+    //       return [...previousPrice, values[1]];
+    //     });
+    //   }
+    // });
     setLoading(false);
   }
 
+  // useEffect(() => {
+  //   if (bazaarPrices.length > 0) {
+  //     setFloorPrice(Math.min(...bazaarPrices.map(el => Number(el))) / 10 ** 18);
+  //   }
+  // }, [bazaarPrices]);
+
   useEffect(() => {
-    if (bazaarPrices.length > 0) {
-      setFloorPrice(Math.min(...bazaarPrices.map(el => Number(el))) / 10 ** 18);
+    async function getInfos() {
+      await get_floor_price();
+      await get_last_sale();
+      await get_total_volume();
+
+      setInterval(async () => {
+        await update_database();
+        await get_floor_price();
+        await get_last_sale();
+        await get_total_volume();
+      }
+        , 6000000);
     }
-  }, [bazaarPrices]);
+    getInfos();
+    }, []);
+
+  const get_floor_price = async () => {
+    const endpoint = '/nft/get_floor_price';
+    const url = `${API_URL}${endpoint}`;
+    const res = await axios.get(url); 
+    setFloorPrice(res.data.floor_price);
+  }
+
+  const get_last_sale = async () => {
+    const endpoint = '/nft/get_last_sale';
+    const url = `${API_URL}${endpoint}`;
+    const res = await axios.get(url); 
+    setLastSale(res.data.last_sale);
+  }
+
+  const get_total_volume = async () => {
+    const endpoint = '/nft/get_total_volume';
+    const url = `${API_URL}${endpoint}`;
+    const res = await axios.get(url); 
+    setTotalVolume(res.data.total_volume);
+  }
+
+  const update_database = async () => {
+    const endpoint = '/nft/update_nft_db';
+    const url = `${API_URL}${endpoint}`;
+    await axios.get(url); 
+  }
 
 
   const getBalance = async () => {
+    if (!address) {
+      console.log('No address provided');
+      return;
+    }
     //We take the first address in the array of addresses and display it
     const _balance = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'balanceOf', args: [address] })
     const tokensOfOwnerTemp = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokensOfOwner', args: [address] })
@@ -141,6 +194,10 @@ const NFT = () => {
     </Helmet>
   );
 
+  function formatNumber(num:any) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+  }
+
   return (
     <>
       <Metadata />
@@ -153,7 +210,7 @@ const NFT = () => {
             <MarketStat>
               <span>Last traded price:</span>
               <h4>
-                {buysQuantity || 0}{' '}
+                {formatNumber(lastSale)}{' '}
                 <img
                   className='mr-2'
                   id='cur-logo'
@@ -169,7 +226,7 @@ const NFT = () => {
             <MarketStat>
               <span>Floor Price:</span>
               <h4>
-                {floorPrice}{' '}
+                {formatNumber(floorPrice)}{' '}
                 <img
                   className='mr-2'
                   id='cur-logo'
@@ -185,7 +242,7 @@ const NFT = () => {
             <MarketStat>
               <span>Total volume:</span>
               <h4>
-                {sumTotal}{' '}
+                {formatNumber(totalVolume)}{' '}
                 <img
                   className='mr-2'
                   id='cur-logo'
