@@ -44,6 +44,8 @@ export const ItemNFT = styled.div`
   .item-description {
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
+    // align-content: end;
     padding: ${Spacing.Spacing2} 0;
 
     ${MediaQuery.LessThanSmall} {
@@ -53,6 +55,8 @@ export const ItemNFT = styled.div`
 
     span {
       font-weight: bold;
+      color:black;
+      padding: 0 ${Spacing.Spacing1};
     }
   }
 `

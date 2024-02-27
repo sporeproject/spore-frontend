@@ -64,13 +64,6 @@ export const ViewItem = () => {
       const url = `${API_URL}${endpoint}?q=${String(id)}`;
       const res = await axios.get(url); 
       const bazaar = res.data;
-
-
-
-
-
-
-
       // const SporeMarketv1 = new win.ava.eth.Contract(
       //   SPORE_MARKET_ABI,
       //   ContractAddesses.AVAX_MARKET_MAINNET
@@ -92,11 +85,12 @@ export const ViewItem = () => {
               <img src={findimage(Number(id))} alt="Reload your page" />
             </div>
             <div className="item-description">
-              <span  >ID: {itemId}</span>
+             
               {isLtMd && (<TagPrice>{nFormatter(price, 2)} AVAX</TagPrice>)}
               {!isLtMd && (
                 <TagPrice>Price: {Number(price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>
               )}
+              <span  >ID: {itemId}</span>
             </div>
           </ItemNFT>
         </div>
