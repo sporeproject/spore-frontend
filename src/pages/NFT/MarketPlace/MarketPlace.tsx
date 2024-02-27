@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { ContractAddesses } from '../../../utils/addresses';
+// import { ContractAddesses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
-import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
+// import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
 import { useNavigate } from 'react-router-dom';
-import { readContract } from "@wagmi/core";
-import { wagmiConfig } from '../../../wagmi-config';
+// import { readContract } from "@wagmi/core";
+// import { wagmiConfig } from '../../../wagmi-config';
 
 export interface MarketplaceItem {
   itemId: number;
   price: bigint;
-  URI: string;
+  // URI: string;
 }
 
 type Props = {
@@ -43,16 +43,18 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
     const buildMarketPlace = async () => {
       setLoading(true);
       var builder = new Array<MarketplaceItem>();
-      for (let i = 0; i < 72; i++) {
-        if (bazaar[i] !== undefined && bazaar[i][1] > 0) {
-          const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
+      for (let i = 0; i < bazaar.length; i++) {
+
+        // if (bazaar[i] !== undefined && bazaar[i][1] > 0) {
+          // const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
+          // console.log("item ID?",bazaar[i][0])
           builder.push({
-            itemId: i,
-            price: bazaar[i][1] / 10n ** 18n,
-            URI: URI,
+            itemId: bazaar[i][0],
+            price: BigInt(bazaar[i][1]) / 10n ** 18n,
+            // URI: URI,
           } as MarketplaceItem);
         }
-      }
+      // }
       setMarketPlaceItems(builder);
       setLoading(false);
     };

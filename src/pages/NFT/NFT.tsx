@@ -85,17 +85,29 @@ const NFT = () => {
 
   const isNetworkAvalanche = () => Boolean(chainId === AvaxChainId);
 
+
+
   async function startup() {
     setLoading(true);
-    const totalCharacters = 72;
-
-    const promises = [];
-    for (let i = 0; i <= totalCharacters - 1; i++) {
-      const characterForSale: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'Bazaar', args: [i] })
-      promises.push(characterForSale);
+    const get_nft_data = async () => {
+      const endpoint = '/nft/get_data';
+      const url = `${API_URL}${endpoint}`;
+      const res = await axios.get(url); 
+      setBazaar(res.data);
     }
-    // setBazaarPrices([]);
-    setBazaar(promises);
+    // const totalCharacters = 72;
+    await get_nft_data();
+
+    // const promises = [];
+    // for (let i = 0; i <= totalCharacters - 1; i++) {
+    //   const characterForSale: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'Bazaar', args: [i] })
+    //   promises.push(characterForSale);
+    // }
+    // // setBazaarPrices([]);
+    // console.log("promises")
+    // console.log(promises)
+    
+    // setBazaar(promises);
     // promises.forEach((values) => {
     //   if (values[1] !== 0n) {
     //     return setBazaarPrices((previousPrice) => {
@@ -114,6 +126,7 @@ const NFT = () => {
 
   useEffect(() => {
     async function getInfos() {
+      
       await get_floor_price();
       await get_last_sale();
       await get_total_volume();
@@ -128,6 +141,7 @@ const NFT = () => {
     }
     getInfos();
     }, []);
+
 
   const get_floor_price = async () => {
     const endpoint = '/nft/get_floor_price';

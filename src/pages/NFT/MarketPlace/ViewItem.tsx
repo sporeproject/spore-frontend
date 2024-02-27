@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { ContractAddesses } from '../../../utils/addresses';
+// import { ContractAddesses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
-import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
+// import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 import { ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
 
-const win = window as any;
+// const win = window as any;
 
 type ViewItemParams = {
   itemId: string,
@@ -37,7 +39,7 @@ const nFormatter = (num: bigint, digits: number): string => {
 };
 
 const findimage = (itemId: number) => {
-  var item = Number(itemId) + 1;
+  var item = itemId + 1;
   return nftmetadata
     .filter((x) => x.id === item.toString())
     .map((ext) => {
@@ -52,18 +54,29 @@ const findimage = (itemId: number) => {
 export const ViewItem = () => {
 
   let { itemId } = useParams<ViewItemParams>();
-  const id = Number(itemId);
+  const id = itemId;
   const [price, setPrice] = useState<bigint>(0n);
   const isLtMd = useMedia('(max-width: 600px)');
 
   useEffect(() => {
     const findPrice = async () => {
-      const SporeMarketv1 = new win.ava.eth.Contract(
-        SPORE_MARKET_ABI,
-        ContractAddesses.AVAX_MARKET_MAINNET
-      );
-      const bazaar = await SporeMarketv1.methods.Bazaar(id).call();
-      setPrice(bazaar[1] / 10n ** 18n);
+      const endpoint = '/nft/get_data';
+      const url = `${API_URL}${endpoint}?q=${String(id)}`;
+      const res = await axios.get(url); 
+      const bazaar = res.data;
+
+
+
+
+
+
+
+      // const SporeMarketv1 = new win.ava.eth.Contract(
+      //   SPORE_MARKET_ABI,
+      //   ContractAddesses.AVAX_MARKET_MAINNET
+      // );
+      // const bazaar = await SporeMarketv1.methods.Bazaar(id).call();
+      setPrice(BigInt(bazaar[1]) / 10n ** 18n);
     };
     findPrice();
   }, [id, price]);
@@ -76,7 +89,7 @@ export const ViewItem = () => {
         <div key={itemId} className="col-12 col-sm-12 col-md-12 col-lg-4">
           <ItemNFT>
             <div className="image-wrapper">
-              <img src={findimage(id)} alt="Reload your page" />
+              <img src={findimage(Number(id))} alt="Reload your page" />
             </div>
             <div className="item-description">
               <span  >ID: {itemId}</span>
