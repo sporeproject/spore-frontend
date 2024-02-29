@@ -4,7 +4,7 @@ import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddesses } from '../../utils/addresses';
 import { MarketPlaceView } from './MarketPlace/MarketPlace';
-import { MarketStat } from './NFT.style';
+import { MarketStat, UpdateBox } from './NFT.style';
 import MyParticles from '../../components/Particles/Particles';
 import UnlockMetamask from '../../components/UnlockMetamask/UnlockMetamask';
 import InstallMetamask from '../../components/InstallMetamask/InstallMetamask';
@@ -13,6 +13,7 @@ import { useAccount, useChainId } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { readContract, writeContract, } from "@wagmi/core";
 import { wagmiConfig } from '../../wagmi-config';
+
 import axios from 'axios';
 
 
@@ -272,7 +273,10 @@ const NFT = () => {
 
       <section className='bg-white-darker'>
         <div className='container information py-5'>
+        <div className='row pb-5'>
           <ConnectButton />
+          <UpdateBox>Last Block Updated</UpdateBox>
+          </div>
           <div className='row py-5'>
             <div className='col-md-12'>
               <div className='row pb-5'>
