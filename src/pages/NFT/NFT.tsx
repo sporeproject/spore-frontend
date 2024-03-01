@@ -22,6 +22,20 @@ const AvaxChainId = 43114;
 const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
 
 
+const NFTDatabaseStatus = {
+  indexing: "yellow",
+  ["up to date"]: "green",
+  ["reload"]: "red",
+  ["not connected"]: "#848484"
+}
+
+const NFTDatabaseTexts = {
+  indexing: "Indexing",
+  ["up to date"]: "Last Block Updated",
+  ["reload"]: "Last Block Updated",
+  ["not connected"]: "Not connected"
+}
+
 const NFT = () => {
   const { address } = useAccount();
   const chainId = useChainId();
@@ -36,6 +50,8 @@ const NFT = () => {
   const [totalVolume, setTotalVolume] = useState(0);
   const [loading, setLoading] = useState(false);
   const [approveFee, setApproveFee] = useState(100000000000);
+  const [colorStatus, setColorStatus] = useState(NFTDatabaseStatus["not connected"]);
+  const [textStatus, setTextStatus] = useState(NFTDatabaseTexts["not connected"])
 
   async function approve() {
     const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
@@ -82,58 +98,50 @@ const NFT = () => {
     }
   }
 
-
-
   const isNetworkAvalanche = () => Boolean(chainId === AvaxChainId);
 
-
+  const update_nft_db = async (update = false) => {
+    try {
+      const endpoint = '/nft/update_nft_db' + (!update ? "?q=consult" : "");
+      const url = `${API_URL}${endpoint}`;
+      const res = await axios.get(url);
+      const status = res.data.status as keyof typeof NFTDatabaseStatus
+      setColorStatus(NFTDatabaseStatus[status]);
+      setTextStatus(NFTDatabaseTexts[status]);
+    } catch (error) {
+      setColorStatus(NFTDatabaseStatus["not connected"]);
+      setTextStatus(NFTDatabaseTexts["not connected"]);
+    }
+  }
 
   async function startup() {
     setLoading(true);
     const get_nft_data = async () => {
       const endpoint = '/nft/get_data';
       const url = `${API_URL}${endpoint}`;
-      const res = await axios.get(url); 
+      const res = await axios.get(url);
       setBazaar(res.data);
     }
-    // const totalCharacters = 72;
     await get_nft_data();
+    await update_nft_db();
 
-    // const promises = [];
-    // for (let i = 0; i <= totalCharacters - 1; i++) {
-    //   const characterForSale: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'Bazaar', args: [i] })
-    //   promises.push(characterForSale);
-    // }
-    // // setBazaarPrices([]);
-    // console.log("promises")
-    // console.log(promises)
-    
-    // setBazaar(promises);
-    // promises.forEach((values) => {
-    //   if (values[1] !== 0n) {
-    //     return setBazaarPrices((previousPrice) => {
-    //       return [...previousPrice, values[1]];
-    //     });
-    //   }
-    // });
+    const interval = setInterval(async () => {
+      await update_nft_db();
+    }, 25000);
+
     setLoading(false);
-  }
 
-  // useEffect(() => {
-  //   if (bazaarPrices.length > 0) {
-  //     setFloorPrice(Math.min(...bazaarPrices.map(el => Number(el))) / 10 ** 18);
-  //   }
-  // }, [bazaarPrices]);
+    return () => clearInterval(interval);
+  }
 
   useEffect(() => {
     async function getInfos() {
-      
+
       await get_floor_price();
       await get_last_sale();
       await get_total_volume();
 
       setInterval(async () => {
-        await update_database();
         await get_floor_price();
         await get_last_sale();
         await get_total_volume();
@@ -141,36 +149,29 @@ const NFT = () => {
         , 6000000);
     }
     getInfos();
-    }, []);
+  }, []);
 
 
   const get_floor_price = async () => {
     const endpoint = '/nft/get_floor_price';
     const url = `${API_URL}${endpoint}`;
-    const res = await axios.get(url); 
+    const res = await axios.get(url);
     setFloorPrice(res.data.floor_price);
   }
 
   const get_last_sale = async () => {
     const endpoint = '/nft/get_last_sale';
     const url = `${API_URL}${endpoint}`;
-    const res = await axios.get(url); 
+    const res = await axios.get(url);
     setLastSale(res.data.last_sale);
   }
 
   const get_total_volume = async () => {
     const endpoint = '/nft/get_total_volume';
     const url = `${API_URL}${endpoint}`;
-    const res = await axios.get(url); 
+    const res = await axios.get(url);
     setTotalVolume(res.data.total_volume);
   }
-
-  const update_database = async () => {
-    const endpoint = '/nft/update_nft_db';
-    const url = `${API_URL}${endpoint}`;
-    await axios.get(url); 
-  }
-
 
   const getBalance = async () => {
     if (!address) {
@@ -209,7 +210,7 @@ const NFT = () => {
     </Helmet>
   );
 
-  function formatNumber(num:any) {
+  function formatNumber(num: any) {
     return Math.round((num + Number.EPSILON) * 100) / 100;
   }
 
@@ -273,9 +274,11 @@ const NFT = () => {
 
       <section className='bg-white-darker'>
         <div className='container information py-5'>
-        <div className='row pb-5'>
-          <ConnectButton />
-          <UpdateBox>Last Block Updated</UpdateBox>
+          <div className='row pb-5 buttons-wrap'>
+            <div>
+              <ConnectButton />
+            </div>
+            <UpdateBox onClick={() => update_nft_db(true)} circleColor={colorStatus} >{textStatus}</UpdateBox>
           </div>
           <div className='row py-5'>
             <div className='col-md-12'>

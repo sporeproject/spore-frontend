@@ -46,14 +46,14 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
       for (let i = 0; i < bazaar.length; i++) {
 
         // if (bazaar[i] !== undefined && bazaar[i][1] > 0) {
-          // const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
-          // console.log("item ID?",bazaar[i][0])
-          builder.push({
-            itemId: bazaar[i][0],
-            price: BigInt(bazaar[i][1]) / 10n ** 18n,
-            // URI: URI,
-          } as MarketplaceItem);
-        }
+        // const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
+        // console.log("item ID?",bazaar[i][0])
+        builder.push({
+          itemId: bazaar[i][0],
+          price: BigInt(bazaar[i][1]) / 10n ** 18n,
+          // URI: URI,
+        } as MarketplaceItem);
+      }
       // }
       setMarketPlaceItems(builder);
       setLoading(false);
@@ -96,7 +96,14 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
         <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
           <ItemNFT onClick={() => history("/nft/" + item.itemId)}>
             <div className="image-wrapper">
-              <img src={findimage(item.itemId)} alt="Reload your page" />
+              <img style={
+                {
+                  width: "100%",
+                  maxWidth: "100%",
+                  aspectRatio: 1,
+                  objectFit: "cover",
+                }
+              } src={findimage(item.itemId)} alt="Reload your page" />
             </div>
             <div className="item-description">
               <span  >ID: {item.itemId}</span>
