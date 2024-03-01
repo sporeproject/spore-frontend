@@ -24,15 +24,17 @@ const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproje
 
 const NFTDatabaseStatus = {
   indexing: "yellow",
-  ["up to date"]: "green",
-  ["reload"]: "red",
+  indexed: "green",
+  reload: "red",
+  ["connecting"]: "#848484",
   ["not connected"]: "#848484"
 }
 
 const NFTDatabaseTexts = {
   indexing: "Indexing",
-  ["up to date"]: "Last Block Updated",
-  ["reload"]: "Last Block Updated",
+  indexed: "Indexed",
+  reload: "reload",
+  ["connecting"]: "connecting...",
   ["not connected"]: "Not connected"
 }
 
@@ -50,8 +52,10 @@ const NFT = () => {
   const [totalVolume, setTotalVolume] = useState(0);
   const [loading, setLoading] = useState(false);
   const [approveFee, setApproveFee] = useState(100000000000);
-  const [colorStatus, setColorStatus] = useState(NFTDatabaseStatus["not connected"]);
-  const [textStatus, setTextStatus] = useState(NFTDatabaseTexts["not connected"])
+  const [colorStatus, setColorStatus] = useState(NFTDatabaseStatus["connecting"]);
+  const [textStatus, setTextStatus] = useState(NFTDatabaseTexts["connecting"])
+  // const [lastBlockUpdated, setLastBlockUpdated] = useState(0);
+  // const [durrentBlock, setCurrentBlock] = useState(0);
 
   async function approve() {
     const SporeAddress = ContractAddesses.AVAX_SPORE_MAINNET;
