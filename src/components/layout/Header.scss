@@ -41,53 +41,55 @@
   }
 }
 
-.navbar-nav{
+.navbar-nav {
   margin-right: 7%;
 }
 
-.navbar-brand h1{
+.navbar-brand h1 {
   font-size: 32px;
 }
 
 .imagenespeciada {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
-.dropdown {
-  background-color: #6B4E3B;
-}
-
-.dropdown-menu {
-  background-color: #6B4E3B;
-  padding: 15px;
-  border: 1px solid white;
-
-  li {
-    margin: 2px;
+.header {
+  .dropdown {
+    background-color: #6B4E3B;
   }
-}
 
-.divider {
-  border: 1px solid white;
-}
-
-@media (max-width: 360px) {
   .dropdown-menu {
-    width: 100%;
-  }
-}
+    background-color: #6B4E3B;
+    padding: 15px;
+    border: 1px solid white;
 
-@media (min-width: 768px) {
-  .dropdown-menu.dropdown-menu--buy-spore {
-    width: 262px;
+    li {
+      margin: 2px;
+    }
   }
-  
-  .dropdown-menu.dropdown-menu--chart {
-    width: 205px;
+
+  .divider {
+    border: 1px solid white;
   }
-  
-  .dropdown-menu.dropdown-menu--how-to-buy {
-    width: 198px;
+
+  @media (max-width: 360px) {
+    .dropdown-menu {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .dropdown-menu.dropdown-menu--buy-spore {
+      width: 262px;
+    }
+
+    .dropdown-menu.dropdown-menu--chart {
+      width: 205px;
+    }
+
+    .dropdown-menu.dropdown-menu--how-to-buy {
+      width: 198px;
+    }
   }
 }
 
@@ -102,41 +104,43 @@ $partSize: 2;
 
 
 .fire {
-	font-size: 5px;
-	filter: blur($blur);
-	-webkit-filter: blur($blur);
-	position: relative;
-	width: 6em;
-	height: 4em;
+  font-size: 5px;
+  filter: blur($blur);
+  -webkit-filter: blur($blur);
+  position: relative;
+  width: 6em;
+  height: 4em;
   margin-left: -15px;
 }
 
 .fire2 {
-	font-size: 5px;
-	filter: blur($blur);
-	-webkit-filter: blur($blur);
-	position: relative;
-	width: 10em;
-	height: 4em;
+  font-size: 5px;
+  filter: blur($blur);
+  -webkit-filter: blur($blur);
+  position: relative;
+  width: 10em;
+  height: 4em;
   margin-left: -80px;
 }
+
 .particle {
-	animation: rise $dur ease-in infinite;
-	background-image: radial-gradient($fireColor 40%,$fireColorT 60%);
-	border-radius: 50%;
-	mix-blend-mode: screen;
-	opacity: 0;
+  animation: rise $dur ease-in infinite;
+  background-image: radial-gradient($fireColor 40%, $fireColorT 60%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  opacity: 0;
   position: absolute;
-	bottom: 0;
-	width: $partSize;
-	height: $partSize;
-	// spread particles out in time and x-position to get desired effect
-	@for $p from 0 through $parts {
-		&:nth-of-type(#{$p}) {
-			animation-delay: $dur * random();
-			left: calc((10% - #{$partSize}) * #{ calc(($p - 1) / $parts)});
-		}
-	}
+  bottom: 0;
+  width: $partSize;
+  height: $partSize;
+
+  // spread particles out in time and x-position to get desired effect
+  @for $p from 0 through $parts {
+    &:nth-of-type(#{$p}) {
+      animation-delay: $dur * random();
+      left: calc((10% - #{$partSize}) * #{ calc(($p - 1) / $parts)});
+    }
+  }
 }
 
 .fire-container {
@@ -145,15 +149,17 @@ $partSize: 2;
 
 
 @keyframes rise {
-	from {
-		opacity: 0;
-		transform: translateY(0) scale(1);
-	}
-	95% {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-		transform: translateY(-3em) scale(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-3em) scale(0);
+  }
 }

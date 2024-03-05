@@ -1,6 +1,6 @@
 
 
-export enum ContractAddesses {
+export enum ContractAddresses {
     AVAX_SPORE_MAINNET = "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985",
     // AVAX_SPORE_FUJI = "0x75e6fb313df2c9429457722e4adf89e2a9b39cff",
     AVAX_SPORE_FUJI = "0x53D88eF1e79b26E59f1e1852134B619078EF309C",

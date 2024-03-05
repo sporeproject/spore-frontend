@@ -6,7 +6,7 @@ import Web3 from 'web3'
 import { useEffect } from 'react';
 import './Tokenomics.css'
 import BurnedTokens from '../BurnedTokens/BurnedTokens';
-import { ContractAddesses } from '../../utils/addresses';
+import { ContractAddresses } from '../../utils/addresses';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
@@ -51,10 +51,10 @@ const Tokenomics = () => {
     try {
       const SporeContract = new web3.eth.Contract(
         BSC_SPORE_ABI,
-        ContractAddesses.BSC_SPORE_MAINNET
+        ContractAddresses.BSC_SPORE_MAINNET
       );
 
-      const bscburn = await SporeContract.methods.balanceOf(ContractAddesses.BSC_SPORE_MAINNET).call() as bigint;
+      const bscburn = await SporeContract.methods.balanceOf(ContractAddresses.BSC_SPORE_MAINNET).call() as bigint;
       setBscBurned(bscburn / (10n ** 9n));
     }
     catch (err) {
@@ -66,10 +66,10 @@ const Tokenomics = () => {
     try {
       const SporeContract = new ava.eth.Contract(
         AVAX_SPORE_ABI,
-        ContractAddesses.AVAX_SPORE_MAINNET
+        ContractAddresses.AVAX_SPORE_MAINNET
       );
 
-      const avaburn = await SporeContract.methods.balanceOf(ContractAddesses.DEAD_ADDRESS).call() as bigint;
+      const avaburn = await SporeContract.methods.balanceOf(ContractAddresses.DEAD_ADDRESS).call() as bigint;
       setAvaBurned(avaburn / (10n ** 9n));
 
     }
@@ -82,10 +82,10 @@ const Tokenomics = () => {
     try {
       const SporeContract = new win.ava.eth.Contract(
         AVAX_SPORE_ABI,
-        ContractAddesses.AVAX_SPORE_MAINNET
+        ContractAddresses.AVAX_SPORE_MAINNET
       );
 
-      const avaxbridge = await SporeContract.methods.balanceOf(ContractAddesses.AVAX_BRIDGE_MAINNET).call() as bigint;
+      const avaxbridge = await SporeContract.methods.balanceOf(ContractAddresses.AVAX_BRIDGE_MAINNET).call() as bigint;
       setAvaxBridge(avaxbridge / (10n ** 9n));
 
     }
@@ -98,7 +98,7 @@ const Tokenomics = () => {
     try {
       const SporeContract = new web3.eth.Contract(
         BSC_SPORE_ABI,
-        ContractAddesses.BSC_SPORE_MAINNET
+        ContractAddresses.BSC_SPORE_MAINNET
       );
 
       const bsctotalsupply = await SporeContract.methods.totalSupply().call() as bigint;

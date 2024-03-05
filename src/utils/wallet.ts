@@ -1,5 +1,5 @@
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from './SporeAbis';
-import { ContractAddesses } from './addresses';
+import { ContractAddresses } from './addresses';
 
 const win = window as any;
 
@@ -13,12 +13,12 @@ export const getSporesInWallet = async (isOnAvax: boolean) => {
   if (isOnAvax) {
     SporeContract = new win.web3.eth.Contract(
       AVAX_SPORE_ABI,
-      ContractAddesses.AVAX_SPORE_MAINNET
+      ContractAddresses.AVAX_SPORE_MAINNET
     );
   } else {
     SporeContract = new win.web3.eth.Contract(
       BSC_SPORE_ABI,
-      ContractAddesses.BSC_SPORE_MAINNET
+      ContractAddresses.BSC_SPORE_MAINNET
     );
   }
   var account = await win.web3.eth.getAccounts();

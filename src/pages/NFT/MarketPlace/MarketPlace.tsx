@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useState } from 'react';
-// import { ContractAddesses } from '../../../utils/addresses';
+// import { ContractAddresses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
 // import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
-import { EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
+import { BoxOrderBy, EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
-import { useNavigate } from 'react-router-dom';
-// import { readContract } from "@wagmi/core";
-// import { wagmiConfig } from '../../../wagmi-config';
+import { wagmiConfig } from '../../../wagmi-config';
+import { SporeABI } from '../../../utils/abis';
+import { ContractAddresses } from '../../../utils/addresses';
+import { useAccount, useChainId } from 'wagmi';
+import { readContract, writeContract, connect } from "@wagmi/core";
+import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 
 export interface MarketplaceItem {
   itemId: number;
@@ -17,17 +20,97 @@ export interface MarketplaceItem {
 
 type Props = {
   bazaar: Array<any>;
+  isLoading: boolean;
   onSelected: (itemId: number) => void;
 };
 
-export const MarketPlaceView = ({ bazaar }: Props) => {
+const AvaxChainId = 43114;
+const SporeAddress = '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985';
+const SporeAddressBSC = '0x33A3d962955A3862C8093D1273344719f03cA17C';
+
+const textOrderBy = {
+  "id": "ID",
+  "low": "Low Price",
+  "high": "High Price",
+}
+
+export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
+  const { address: userAddress } = useAccount();
   const [marketPlaceItems, setMarketPlaceItems] = useState<
     Array<MarketplaceItem>
   >([]);
-  const isLtMd = useMedia('(max-width: 600px)');
-  const [loading, setLoading] = useState(false);
-  const history = useNavigate();
+  const chainId = useChainId();
+  const [loading, setLoading] = useState(isLoading);
+  const [isSporeApproved, setIsSporeApproved] = useState(false);
+  const [orderBy, setOrderBy] = useState<keyof typeof textOrderBy>("id");
 
+  const isNetworkAvalanche = () => Boolean(chainId === AvaxChainId);
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading])
+
+  const SporeAddressByChainId = chainId === AvaxChainId ? SporeAddress : SporeAddressBSC;
+
+  useEffect(() => {
+    const load = async () => {
+      if (isNetworkAvalanche()) {
+        const allowance = await readContract(wagmiConfig, { abi: SporeABI, address: SporeAddressByChainId, functionName: 'allowance', args: [userAddress, ContractAddresses.AVAX_MARKET_MAINNET] })
+        const permitAllowance = 100000000000n;
+        setIsSporeApproved(allowance as bigint >= permitAllowance)
+      }
+    }
+    load()
+  }, [chainId, userAddress])
+
+  const approveSporeToMarketplace = async () => {
+    const SporeAddress = ContractAddresses.AVAX_SPORE_MAINNET;
+    const SporeNFTMarketaddress = ContractAddresses.AVAX_MARKET_MAINNET;
+    const approveFee = 100000000000n;
+    var amount = BigInt(approveFee) * 10n ** 9n;
+    try {
+      await writeContract(wagmiConfig, {
+        abi: SporeABI,
+        address: SporeAddress,
+        functionName: 'approve',
+        args: [
+          SporeNFTMarketaddress,
+          amount
+        ]
+      })
+      const allowance = await readContract(wagmiConfig, { abi: SporeABI, address: SporeAddressByChainId, functionName: 'allowance', args: [userAddress, ContractAddresses.AVAX_MARKET_MAINNET] })
+      const permitAllowance = 100000000000n;
+      setIsSporeApproved(allowance as bigint >= permitAllowance)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function NFTbuy(itemId: number) {
+
+    if (!userAddress) {
+    }
+
+    if (!isNetworkAvalanche()) {
+      alert('Please connect to Avalanche Network before buy');
+      return;
+    }
+
+    const bazaar: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddresses.AVAX_MARKET_MAINNET, functionName: 'Bazaar', args: [itemId] })
+    try {
+      await writeContract(wagmiConfig, {
+        abi: SPORE_MARKET_ABI,
+        address: ContractAddresses.AVAX_MARKET_MAINNET,
+        functionName: 'buy',
+        args: [
+          itemId
+        ],
+        value: bazaar[1]
+      })
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
 
   const findimage = (itemId: number) => {
     var item = Number(itemId) + 1;
@@ -46,7 +129,7 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
       for (let i = 0; i < bazaar.length; i++) {
 
         // if (bazaar[i] !== undefined && bazaar[i][1] > 0) {
-        // const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
+        // const URI: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddresses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
         // console.log("item ID?",bazaar[i][0])
         builder.push({
           itemId: bazaar[i][0],
@@ -62,39 +145,46 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
     // eslint-disable-next-line
   }, [bazaar]);
 
-  const nFormatter = (num: bigint, digits: number): string => {
-    const lookup = [
-      { value: BigInt(1), symbol: '' },
-      { value: BigInt(1e3), symbol: 'k' },
-      { value: BigInt(1e6), symbol: 'M' },
-      { value: BigInt(1e9), symbol: 'G' },
-      { value: BigInt(1e12), symbol: 'T' },
-      { value: BigInt(1e15), symbol: 'P' },
-      { value: BigInt(1e18), symbol: 'E' },
-    ];
-    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    const numBigInt = BigInt(num);
-    const item = lookup
-      .slice()
-      .reverse()
-      .find(function (item) {
-        return numBigInt >= item.value;
-      });
-    return item
-      ? (Number(numBigInt / item.value).toFixed(digits).replace(rx, '$1') + item.symbol)
-      : '0';
-  };
+  const handleChangeOrder = (event: any) => {
+    setOrderBy(event.target.value)
+  }
+
+  const marketList = useMemo(() => {
+    return marketPlaceItems.slice().sort((itemPrev, itemNext) => {
+      if (orderBy === "id") {
+        return parseInt(String(itemPrev.itemId)) - parseInt(String(itemNext.itemId));
+      } else if (orderBy === "low") {
+        return parseFloat(String(itemPrev.price)) - parseFloat(String(itemNext.price));
+      } else if (orderBy === "high") {
+        return parseFloat(String(itemNext.price)) - parseFloat(String(itemPrev.price));
+      } else {
+        // Default case, sort by price descending
+        return parseFloat(String(itemNext.price)) - parseFloat(String(itemPrev.price));
+      }
+    });
+  }, [marketPlaceItems, orderBy]);
 
   if (loading) {
     return <div className='loader'> Loading...</div>;
   }
-
-
+  console.log("orderBy", orderBy)
   return (
     <>
-      {marketPlaceItems.length > 0 && marketPlaceItems.map((item: MarketplaceItem) => (
+      <BoxOrderBy className='col-12'>
+        Order by
+        <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {textOrderBy[orderBy]}
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+            {Array.from(Object.keys(textOrderBy)).map((key) => (<button className="dropdown-item" type="button" onClick={() => setOrderBy(key as keyof typeof textOrderBy)} >{textOrderBy[key as keyof typeof textOrderBy]}</button>))}
+          </div>
+        </div>
+
+      </BoxOrderBy>
+      {marketList.length > 0 && marketList.map((item: MarketplaceItem) => (
         <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
-          <ItemNFT onClick={() => history("/nft/" + item.itemId)}>
+          <ItemNFT>
             <div className="image-wrapper">
               <img style={
                 {
@@ -106,11 +196,21 @@ export const MarketPlaceView = ({ bazaar }: Props) => {
               } src={findimage(item.itemId)} alt="Reload your page" />
             </div>
             <div className="item-description">
-              <span  >ID: {item.itemId}</span>
-              {isLtMd && (<TagPrice>{nFormatter(item.price, 2)} AVAX</TagPrice>)}
-              {!isLtMd && (
-                <TagPrice>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</TagPrice>
-              )}
+              <div>ID {item.itemId}</div>
+              <div>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</div>
+            </div>
+            <div className='button-wrapper'>
+              {!isSporeApproved ?
+                <button className='nft-buy-button approve' onClick={() => approveSporeToMarketplace()} >
+                  Approve
+                </button> :
+                <button className='nft-buy-button buy' onClick={() => NFTbuy(item.itemId)} >
+                  Buy now
+                </button>
+              }
+              <button className='nft-buy-button'>
+                Buy
+              </button>
             </div>
           </ItemNFT>
         </div>
