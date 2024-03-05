@@ -14,7 +14,7 @@ dist-ssr
 
 # Sensitive files
 .env
-
+*.sh
 
 # Editor directories and files
 .vscode/*

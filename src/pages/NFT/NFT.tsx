@@ -1,6 +1,6 @@
 import ReturnTokenURI from './ReturnTokenURI';
 import './NFT.scss';
-import { AVAX_SPORE_ABI, SPORE_MARKET_ABI } from '../../utils/SporeAbis';
+import { SPORE_MARKET_ABI } from '../../utils/SporeAbis';
 import { useState, useEffect } from 'react';
 import { ContractAddresses } from '../../utils/addresses';
 import { MarketPlaceView } from './MarketPlace/MarketPlace';
@@ -11,7 +11,7 @@ import InstallMetamask from '../../components/InstallMetamask/InstallMetamask';
 import { Helmet } from 'react-helmet';
 import { useAccount, useChainId } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { readContract, writeContract, } from "@wagmi/core";
+import { readContract  } from "@wagmi/core";
 import { wagmiConfig } from '../../wagmi-config';
 
 import axios from 'axios';
@@ -265,7 +265,7 @@ const NFT = () => {
                 <MarketPlaceView
                   bazaar={bazaar}
                   isLoading={loading}
-                  onSelected={(nftId: number) => setItemId(nftId)}
+                
                 />
               </div>
               <p className='text-muted'>

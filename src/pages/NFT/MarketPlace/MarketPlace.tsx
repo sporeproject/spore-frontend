@@ -21,7 +21,7 @@ export interface MarketplaceItem {
 type Props = {
   bazaar: Array<any>;
   isLoading: boolean;
-  onSelected: (itemId: number) => void;
+  // onSelected: (itemId: number) => void;
 };
 
 const AvaxChainId = 43114;
