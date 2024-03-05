@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from 'react';
 import { SPORE_MARKET_ABI } from "../../utils/SporeAbis";
-import { ContractAddesses } from '../../utils/addresses';
+import { ContractAddresses } from '../../utils/addresses';
 import { nftmetadata } from '../../utils/nftmetadata';
 import { ItemNFT } from './MarketPlace/MarketPlace.style';
 import { readContract, writeContract, } from "@wagmi/core";
@@ -17,7 +17,7 @@ const putNFTForSale = async () => {
   try {
     await writeContract(wagmiConfig, {
       abi: SPORE_MARKET_ABI,
-      address: ContractAddesses.AVAX_MARKET_MAINNET,
+      address: ContractAddresses.AVAX_MARKET_MAINNET,
       functionName: 'setTokenPrice',
       args: [
         _tokenIDforSale,
@@ -34,7 +34,7 @@ const cancelNFTForSale = async () => {
   try {
     await writeContract(wagmiConfig, {
       abi: SPORE_MARKET_ABI,
-      address: ContractAddesses.AVAX_MARKET_MAINNET,
+      address: ContractAddresses.AVAX_MARKET_MAINNET,
       functionName: 'cancelTokenSale',
       args: [
         _tokenIDforCancel,
@@ -65,7 +65,7 @@ const ReturnTokenURI = (props: Props) => {
 
       const promises = [];
       for (let i = 0; i < props.tokensOfOwner.length; i++) {
-        const promisestokenURIs: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddesses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
+        const promisestokenURIs: any = await readContract(wagmiConfig, { abi: SPORE_MARKET_ABI, address: ContractAddresses.AVAX_MARKET_MAINNET, functionName: 'tokenURI', args: [i] })
         promises.push(promisestokenURIs);
       }
     }
@@ -89,7 +89,7 @@ const ReturnTokenURI = (props: Props) => {
     try {
       await writeContract(wagmiConfig, {
         abi: SPORE_MARKET_ABI,
-        address: ContractAddesses.AVAX_MARKET_MAINNET,
+        address: ContractAddresses.AVAX_MARKET_MAINNET,
         functionName: 'safeTransferFrom',
         args: [
           address, addressToTransfer, nftToTransfer

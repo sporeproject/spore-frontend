@@ -24,7 +24,6 @@ const BSCBridge = () => {
   const { address: userAddress } = useAccount();
   const chainId = useChainId();
   const SporeAddressByChainId = chainId === AvaxChainId ? SporeAddress : SporeAddressBSC;
-  // const provider = getEthersProvider(wagmiConfig);
   const [balanceOfSpore, setBalanceOfSpore] = useState(0n);
   const [checkTenPercentageBSC, setCheckTenPercentageBSC] = useState(false);
 

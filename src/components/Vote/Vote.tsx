@@ -2,7 +2,7 @@ import Web3 from "web3";
 import './Vote.css';
 import { useState, useEffect } from 'react';
 import { GOVERNOR_ALPHA_ABI } from "../../utils/SporeAbis";
-import { ContractAddesses } from "../../utils/addresses";
+import { ContractAddresses } from "../../utils/addresses";
 import { AVAX_NETWORK_RPC } from "../../utils/constants";
 
 const win = window as any
@@ -19,7 +19,7 @@ const Vote = () => {
     async function startup() {
       const GovernorContract = new win.ava.eth.Contract(
         GOVERNOR_ALPHA_ABI,
-        ContractAddesses.AVAX_MAINNET_GOVERNORALPHA
+        ContractAddresses.AVAX_MAINNET_GOVERNORALPHA
       );
 
       const proposals = await GovernorContract.methods

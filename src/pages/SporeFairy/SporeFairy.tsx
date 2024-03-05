@@ -2,7 +2,7 @@ import Web3 from 'web3';
 import './SporeFairy.css';
 import { useState, useEffect } from 'react';
 import { nftmetadata } from '../../utils/nftmetadata';
-import { ContractAddesses } from '../../utils/addresses';
+import { ContractAddresses } from '../../utils/addresses';
 import { SPORE_FAIRY_ABI } from '../../utils/SporeAbis';
 import { AVAX_NETWORK_RPC } from '../../utils/constants';
 
@@ -61,7 +61,7 @@ const claimAirdrop = async (e: any) => {
   const ABI = SPORE_FAIRY_ABI;
   const fairyContract = new win.web3.eth.Contract(
     ABI,
-    ContractAddesses.SPORE_FAIRY
+    ContractAddresses.SPORE_FAIRY
   );
   var account = await win.web3.eth.getAccounts();
   account = account[0];
@@ -86,7 +86,7 @@ const getFairyBalance = async () => {
   const ABI = SPORE_FAIRY_ABI;
   const fairyContract = new win.ava.eth.Contract(
     ABI,
-    ContractAddesses.SPORE_FAIRY)
+    ContractAddresses.SPORE_FAIRY)
   try {
     var contractBalance = await fairyContract.methods.balance().call();
     console.log(contractBalance)
