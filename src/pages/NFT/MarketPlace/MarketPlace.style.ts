@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MediaQuery, Spacing } from "../../../css-in-js";
+import {  Spacing } from "../../../css-in-js";
 
 export const MarketStat = styled.div`
   text-align: center; 

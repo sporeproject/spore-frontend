@@ -3,13 +3,13 @@ import { useState } from 'react';
 // import { ContractAddresses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
 // import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
-import { BoxOrderBy, EmptyNFTWrapper, ItemNFT, TagPrice } from './MarketPlace.style';
-import { useMedia } from 'react-use';
+import { BoxOrderBy, EmptyNFTWrapper, ItemNFT } from './MarketPlace.style';
+// import { useMedia } from 'react-use';
 import { wagmiConfig } from '../../../wagmi-config';
 import { SporeABI } from '../../../utils/abis';
 import { ContractAddresses } from '../../../utils/addresses';
 import { useAccount, useChainId } from 'wagmi';
-import { readContract, writeContract, connect } from "@wagmi/core";
+import { readContract, writeContract,  } from "@wagmi/core";
 import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 
 export interface MarketplaceItem {
@@ -145,9 +145,9 @@ export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
     // eslint-disable-next-line
   }, [bazaar]);
 
-  const handleChangeOrder = (event: any) => {
-    setOrderBy(event.target.value)
-  }
+  // const handleChangeOrder = (event: any) => {
+  //   setOrderBy(event.target.value)
+  // }
 
   const marketList = useMemo(() => {
     return marketPlaceItems.slice().sort((itemPrev, itemNext) => {

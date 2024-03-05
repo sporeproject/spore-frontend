@@ -45,36 +45,36 @@ const NFT = () => {
   const [bazaar, setBazaar] = useState(new Array<any>());
   const [tokensOfOwner, setTokensOfOwner] = useState(new Array<any>());
   const [balance, setBalance] = useState(0);
-  const [itemId, setItemId] = useState<number>();
+  // const [itemId, setItemId] = useState<number>();
   // const [bazaarPrices, setBazaarPrices]  = useState<BigInt[]>([]);
   const [floorPrice, setFloorPrice] = useState(0);
   const [lastSale, setLastSale] = useState(0);
   const [totalVolume, setTotalVolume] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [approveFee, setApproveFee] = useState(100000000000);
+  // const [approveFee, setApproveFee] = useState(100000000000);
   const [colorStatus, setColorStatus] = useState(NFTDatabaseStatus["connecting"]);
   const [textStatus, setTextStatus] = useState(NFTDatabaseTexts["connecting"])
   // const [lastBlockUpdated, setLastBlockUpdated] = useState(0);
   // const [durrentBlock, setCurrentBlock] = useState(0);
 
-  async function approve() {
-    const SporeAddress = ContractAddresses.AVAX_SPORE_MAINNET;
-    const SporeNFTMarketaddress = ContractAddresses.AVAX_MARKET_MAINNET;
-    var amount = BigInt(approveFee) * 10n ** 9n;
-    try {
-      await writeContract(wagmiConfig, {
-        abi: AVAX_SPORE_ABI,
-        address: SporeAddress,
-        functionName: 'approve',
-        args: [
-          SporeNFTMarketaddress,
-          amount
-        ],
-      })
-    } catch (error: any) {
-      alert(error.message);
-    }
-  }
+  // async function approve() {
+  //   const SporeAddress = ContractAddresses.AVAX_SPORE_MAINNET;
+  //   const SporeNFTMarketaddress = ContractAddresses.AVAX_MARKET_MAINNET;
+  //   var amount = BigInt(approveFee) * 10n ** 9n;
+  //   try {
+  //     await writeContract(wagmiConfig, {
+  //       abi: AVAX_SPORE_ABI,
+  //       address: SporeAddress,
+  //       functionName: 'approve',
+  //       args: [
+  //         SporeNFTMarketaddress,
+  //         amount
+  //       ],
+  //     })
+  //   } catch (error: any) {
+  //     alert(error.message);
+  //   }
+  // }
 
 
   const isNetworkAvalanche = () => Boolean(chainId === AvaxChainId);
