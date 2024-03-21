@@ -225,9 +225,7 @@ export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
         </div>
         <div className="item-description">
           <div>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-            <span>
-              <img width="20px" src="avalanche-logo.png" alt="Avalanche Logo" />
-            </span>
+            <img style={{ marginLeft: "5px" }} width="20px" src="avalanche-logo.png" alt="Avalanche Logo" />
           </div>
         </div>
         <div className='button-wrapper'>
