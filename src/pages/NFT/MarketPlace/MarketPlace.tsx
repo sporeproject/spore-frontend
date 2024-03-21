@@ -2,15 +2,16 @@ import { useEffect, useMemo } from 'react';
 import { useState } from 'react';
 // import { ContractAddresses } from '../../../utils/addresses';
 import { nftmetadata } from '../../../utils/nftmetadata';
-// import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
-import { BoxOrderBy, EmptyNFTWrapper, ItemNFT } from './MarketPlace.style';
-// import { useMedia } from 'react-use';
+import { BoxOrderBy, EmptyNFTWrapper, GridIcon, ItemNFT, OptionsButtons } from './MarketPlace.style';
 import { wagmiConfig } from '../../../wagmi-config';
 import { SporeABI } from '../../../utils/abis';
 import { ContractAddresses } from '../../../utils/addresses';
 import { useAccount, useChainId } from 'wagmi';
-import { readContract, writeContract,  } from "@wagmi/core";
+import { readContract, writeContract, } from "@wagmi/core";
 import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export interface MarketplaceItem {
   itemId: number;
@@ -34,6 +35,11 @@ const textOrderBy = {
   "high": "High Price",
 }
 
+const iconsViewType = {
+  "grid": "grid",
+  "list": "list",
+}
+
 export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
   const { address: userAddress } = useAccount();
   const [marketPlaceItems, setMarketPlaceItems] = useState<
@@ -42,8 +48,8 @@ export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
   const chainId = useChainId();
   const [loading, setLoading] = useState(isLoading);
   const [isSporeApproved, setIsSporeApproved] = useState(false);
-  const [orderBy, setOrderBy] = useState<keyof typeof textOrderBy>("id");
-
+  const [orderBy, setOrderBy] = useState<keyof typeof textOrderBy>("low");
+  const [viewType, setViewType] = useState<keyof typeof iconsViewType>("grid");
   const isNetworkAvalanche = () => Boolean(chainId === AvaxChainId);
 
   useEffect(() => {
@@ -167,10 +173,104 @@ export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
   if (loading) {
     return <div className='loader'> Loading...</div>;
   }
-  console.log("orderBy", orderBy)
+
+  const renderNFTGridItem = (item: MarketplaceItem) => {
+    return (
+      <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
+        <ItemNFT>
+          <div className="image-wrapper">
+            <img style={
+              {
+                width: "100%",
+                maxWidth: "100%",
+                aspectRatio: 1,
+                objectFit: "cover",
+              }
+            } src={findimage(item.itemId)} alt="Reload your page" />
+          </div>
+          <div className="item-description">
+            <div>ID {item.itemId}</div>
+            <div>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} <img width="20px" src="avalanche-logo.png" alt="Avalanche Logo" /></div>
+          </div>
+          <div className='button-wrapper'>
+            {userAddress ? (
+              <>
+                {
+                  !isSporeApproved ?
+                    <button className='nft-buy-button approve' onClick={() => approveSporeToMarketplace()} >
+                      Approve
+                    </button> :
+                    <button className='nft-buy-button buy' onClick={() => NFTbuy(item.itemId)} >
+                      Buy now
+                    </button>
+                }
+                <button className='nft-buy-button'>
+                  Buy
+                </button>
+              </>
+            ) : <ConnectButton />
+            }
+          </div>
+        </ItemNFT>
+      </div>
+    )
+  }
+
+  const renderNFTLisItem = (item: MarketplaceItem) => {
+    return (
+      <div key={item.itemId} className="col-12 nft-list-item">
+        <div className="image-wrapper">
+          <img src={findimage(item.itemId)} alt="Reload your page" />
+          <div>ID {item.itemId}</div>
+        </div>
+        <div className="item-description">
+          <div>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+            <span>
+              <img width="20px" src="avalanche-logo.png" alt="Avalanche Logo" />
+            </span>
+          </div>
+        </div>
+        <div className='button-wrapper'>
+          {userAddress ? (
+            !isSporeApproved ?
+              <button className='nft-buy-button approve' onClick={() => approveSporeToMarketplace()} >
+                Approve
+              </button> :
+              <button className='nft-buy-button buy' onClick={() => NFTbuy(item.itemId)} >
+                Buy now
+              </button>
+          ) : <ConnectButton />
+          }
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <BoxOrderBy className='col-12'>
+        <div>
+          <OptionsButtons>
+            <button className={(["button-item", viewType === "list" ? "active" : ""].join(" "))} onClick={(event) => {
+              event.preventDefault();
+              setViewType("list")
+            }}
+            >
+              <FontAwesomeIcon icon={faList} />
+            </button>
+            <button onClick={(event) => {
+              event.preventDefault();
+              setViewType("grid")
+            }} className={(["button-item", viewType === "grid" ? "active" : ""].join(" "))} >
+              <GridIcon>
+                <div className="grid-box"></div>
+                <div className="grid-box"></div>
+                <div className="grid-box"></div>
+                <div className="grid-box"></div>
+              </GridIcon>
+            </button>
+          </OptionsButtons>
+        </div>
         Order by
         <div className="dropdown">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -180,41 +280,20 @@ export const MarketPlaceView = ({ bazaar, isLoading }: Props) => {
             {Array.from(Object.keys(textOrderBy)).map((key) => (<button className="dropdown-item" type="button" onClick={() => setOrderBy(key as keyof typeof textOrderBy)} >{textOrderBy[key as keyof typeof textOrderBy]}</button>))}
           </div>
         </div>
-
       </BoxOrderBy>
-      {marketList.length > 0 && marketList.map((item: MarketplaceItem) => (
-        <div key={item.itemId} className="col-6 col-sm-4 col-md-4 col-lg-3">
-          <ItemNFT>
-            <div className="image-wrapper">
-              <img style={
-                {
-                  width: "100%",
-                  maxWidth: "100%",
-                  aspectRatio: 1,
-                  objectFit: "cover",
-                }
-              } src={findimage(item.itemId)} alt="Reload your page" />
-            </div>
-            <div className="item-description">
-              <div>ID {item.itemId}</div>
-              <div>{Number(item.price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} AVAX</div>
-            </div>
-            <div className='button-wrapper'>
-              {!isSporeApproved ?
-                <button className='nft-buy-button approve' onClick={() => approveSporeToMarketplace()} >
-                  Approve
-                </button> :
-                <button className='nft-buy-button buy' onClick={() => NFTbuy(item.itemId)} >
-                  Buy now
-                </button>
-              }
-              <button className='nft-buy-button'>
-                Buy
-              </button>
-            </div>
-          </ItemNFT>
+      {viewType === "list" && (
+        <div className='col-12 list-header'>
+          <div>Item</div>
+          <div>Current Price</div>
+          <div>Buy</div>
         </div>
-      ))}
+      )}
+      {marketList.length > 0 && marketList.map((item: MarketplaceItem) => {
+        if (viewType === "grid") {
+          return renderNFTGridItem(item);
+        }
+        return renderNFTLisItem(item);
+      })}
 
       {marketPlaceItems.length === 0 && (
         <EmptyNFTWrapper>

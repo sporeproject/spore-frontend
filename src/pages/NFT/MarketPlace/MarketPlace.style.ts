@@ -15,7 +15,8 @@ export const BoxOrderBy = styled.div`
   gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
-
+  width: 100%;
+  
   .dropdown .btn{
     background-color: #E8334F;
     border: none;
@@ -45,6 +46,24 @@ export const ItemNFT = styled.div`
     width: 100%;
     height: 40px;
     
+
+    button {
+      background-color: #E8334F;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px;
+      position: relative;
+      width: 100%;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: all .4s;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+    }
+
     .nft-buy-button{
       background-color: #E8334F;
       border: none;
@@ -138,5 +157,42 @@ export const EmptyNFTWrapper = styled.div`
   h4 {
     color: #6B4E3B;
     font-weight: bold;
+  }
+`
+
+export const GridIcon = styled.div`
+width: 1em;
+height: 1em;
+display: grid;
+grid-template-columns:  repeat(2, 1fr);
+gap: 2px;
+
+.grid-box{
+  background-color: currentColor;
+  width: 6px;
+  border: none;
+  height: 6px;
+}
+`
+
+export const OptionsButtons = styled.div`
+  display: grid;
+  grid-template-columns: 3rem 3rem;
+  height: 2rem;
+  background-color: white;
+
+  .button-item{
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+
+    &.active{
+      background-color: #E8334F;
+      color: white;
+    }
   }
 `

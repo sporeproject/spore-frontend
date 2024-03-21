@@ -291,3 +291,103 @@
 .buttons-wrap {
   justify-content: space-between;
 }
+
+.list-header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 2fr 1fr 3fr;
+  font-weight: bold;
+  margin-bottom: 1rem;
+
+  div:last-child {
+    text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 2fr 2fr 2fr;
+  }
+}
+
+.nft-list-item {
+  grid-template-columns: 2fr 1fr 3fr;
+  display: grid;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px 0px;
+  padding: 0.6rem 1.2rem 0.6rem 2.4rem;
+  border-radius: 16px;
+  transition: box-shadow .3s;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &:hover {
+    box-shadow: rgba(83, 83, 83, 0.3) 0px 4px 20px 0px;
+  }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+
+    img {
+      width: 100%;
+      max-width: 40px;
+      height: 40px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin-right: 1rem;
+      border-radius: 4px;
+    }
+  }
+
+  .item-description {
+    display: flex;
+    align-items: center;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .nft-buy-button {
+      height: 40px;
+      width: 120px;
+      background-color: #E8334F;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px 0px;
+      transition: all .4s;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 4px;
+
+      @media (max-width: 500px) {
+        width: 80px;
+      }
+    }
+  }
+
+  .hide-desktop {
+    display: none;
+
+    img {
+      margin-left: 0.5rem;
+    }
+
+    @media (max-width: 500px) {
+      display: inline;
+    }
+
+  }
+
+  .hide-mobile {
+    display: inline;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
+
+  }
+
+}
