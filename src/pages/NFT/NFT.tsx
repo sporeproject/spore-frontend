@@ -51,7 +51,7 @@ const NFT = () => {
   const [lastSale, setLastSale] = useState(0);
   const [totalVolume, setTotalVolume] = useState(0);
   const [loading, setLoading] = useState(false);
-  // const [approveFee, setApproveFee] = useState(100000000000);
+  // const [approveFee] = useState(100000000000);
   const [colorStatus, setColorStatus] = useState(NFTDatabaseStatus["connecting"]);
   const [textStatus, setTextStatus] = useState(NFTDatabaseTexts["connecting"])
   // const [lastBlockUpdated, setLastBlockUpdated] = useState(0);
