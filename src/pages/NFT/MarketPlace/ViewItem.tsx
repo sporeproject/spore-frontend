@@ -7,7 +7,7 @@ import { ItemNFT, TagPrice } from './MarketPlace.style';
 import { useMedia } from 'react-use';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.org";
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.spore.ws";
 
 // const win = window as any;
 

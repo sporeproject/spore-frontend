@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Contributor.scss';
 
-const API_URL = process.env.VITE__API_URL || 'https://frontend-api.sporeproject.org';
+const API_URL = process.env.VITE__API_URL || 'https://frontend-api.spore.ws';
 
 
 export const Contributors = () => {

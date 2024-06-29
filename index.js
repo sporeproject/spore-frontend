@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/dist'));
 
 app.get('/api', async (req, res) => {
   
-  const apiUrl = process.env.API_URL || 'https://frontend-api.sporeproject.org/api';
+  const apiUrl = process.env.API_URL || 'https://frontend-api.spore.ws/api';
   try {
     const query = req.query.q;
     const response = await fetch(query ? `${apiUrl}?q=${query}` : apiUrl);

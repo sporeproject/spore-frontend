@@ -11,7 +11,7 @@ This section outlines key considerations and steps for setting up and using this
 
 ### About the SporeAPI™ and how to run it locally
 
-- By default, this repository is configured to use the Spore API hosted at `api.sporeproject.org`. Its main use is to retrieve some information that needs to be processed by the chain or other static data for the better display on the site and CMC/CoinGecko data requirements.
+- By default, this repository is configured to use the Spore API hosted at `frontend-api.spore.ws`. Its main use is to retrieve some information that needs to be processed by the chain or other static data for the better display on the site and CMC/CoinGecko data requirements.
 
 - **Using a local API Instance**:
 

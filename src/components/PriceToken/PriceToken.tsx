@@ -110,7 +110,7 @@ const PriceToken = () => {
               className='btn btn-primary mx-1 mb-2 larger'
               href={currency === 'avax'
                 ? "https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985"
-                : "https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c"}>
+                : "https://pancakeswap.finance/swap?outputCurrency=0x33A3d962955A3862C8093D1273344719f03cA17C&chainId=56"}>
               {currency === 'bnb' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="binance-logo.png" alt="Binance"></img>)}
               {currency === 'avax' && (<img className="mr-2" id="cur-logo" height="24px" width="24px" src="avalanche-logo.png" alt="Avalanche Network"></img>)}
               {currency === 'usd' ? `💲` + usd.price : currency === 'avax' ? avax.price : bnb.price}
