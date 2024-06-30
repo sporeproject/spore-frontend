@@ -9,10 +9,10 @@ import { wagmiConfig } from '../../../wagmi-config';
 import { SporeABI } from '../../../utils/abis';
 import { ContractAddresses } from '../../../utils/addresses';
 import { useAccount, useChainId } from 'wagmi';
-import { readContract, writeContract, connect } from "@wagmi/core";
+import { readContract, writeContract } from "@wagmi/core";
 import { SPORE_MARKET_ABI } from '../../../utils/SporeAbis';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faList } from '@fortawesome/free-solid-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export interface MarketplaceItem {
