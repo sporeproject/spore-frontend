@@ -57,8 +57,8 @@ const Home = () => {
             <div className="lead larger"> <b>On every Avalanche  <img height="30px" width="30px"
               src='avalanche-logo.png' alt='Avalanche Network'></img> transaction:</b> </div>
             <ul>
-              <li>4.6% is burned</li>
-              <li>1.4% is redistributed to hodlers</li>
+              <li>5.3% is burned</li>
+              <li>0.7% is redistributed to hodlers</li>
             </ul>
             <div className="lead larger mt-3"> <b>On every BSC  <img height="30px" width="30px" src='binance-logo.png' alt="Binance Smart Chain">
             </img> transaction: </b></div>

@@ -2,9 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './PriceToken.scss';
 
+
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.spore.ws";
+
+
 const PriceToken = () => {
-  const [data, setData] = useState({ avaxPrice: '0.00', bnbPrice: '0.00', priceDiff: '0.00' });
-  const [marketCap, setMarketCap] = useState('0');
+  const [data, setData] = useState({ avaxPrice: '0.00', bnbPrice: '0.00', priceDiff: '0.00' , marketCap: '0'});
 
 
 
@@ -12,13 +15,19 @@ const PriceToken = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        await getMarketCap()
-        const response = await axios.get('https://frontend-api.spore.ws/token/prices');
-        const { AvaxSporePrice, BscSporePrice, PriceDiff } = response.data;
+
+        const endpoint = '/token/prices'; // Endpoint path
+        const url = `${API_URL}${endpoint}`; // Construct the full URL
+        const response = await axios.get(url); // Send the request to the API
+
+        const { AvaxSporePrice, BscSporePrice, PriceDiff, MarketCap } = response.data;
+        console.log("response data")
+        console.log(response.data)
         setData({
           avaxPrice: parseFloat(AvaxSporePrice).toFixed(2),
           bnbPrice: parseFloat(BscSporePrice).toFixed(2),
           priceDiff: parseFloat(PriceDiff).toFixed(2),
+          marketCap: MarketCap
         });
       } catch (error) {
         console.error('Error fetching price data:', error);
@@ -31,18 +40,7 @@ const PriceToken = () => {
   }, []);
 
 
-  const getMarketCap = async () => {
-    await axios.get('https://api.coingecko.com/api/v3/coins/spore/market_chart?vs_currency=usd&days=1&interval=daily')
-      .then(res => {
-        const { data = null } = res
-        if (data) {
-          const currentMarketCap = data.market_caps[data.market_caps.length - 1][data.market_caps[data.market_caps.length - 1].length - 1].toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-          setMarketCap(currentMarketCap)
-        }
-      }).catch(error => {
-        console.error(error)
-      })
-  }
+
 
 
   return (
@@ -67,7 +65,7 @@ const PriceToken = () => {
         <h4>Price Difference: {data.priceDiff}% </h4>
       </dl>
       <dl className='lead larger mt-3' >
-          <h4>Market Cap: {marketCap}$ </h4>
+          <h4>Market Cap: {data.marketCap}$ </h4>
         </dl>
     </div>
   );
