@@ -16,7 +16,7 @@ This section outlines key considerations and steps for setting up and using this
 - **Using a local API Instance**:
 
   1. **Spore API Repository**: If you prefer to run your own instance of the Spore API, clone the [spore-api repository](https://github.com/sporeproject/spore-api) and follow the instructions.
-  
+
   
   2. **Running the Application with Local API**:
      - Rename the `.env.example` file to `.env`.
