@@ -4,10 +4,15 @@ import './PriceToken.scss';
 
 const PriceToken = () => {
   const [data, setData] = useState({ avaxPrice: '0.00', bnbPrice: '0.00', priceDiff: '0.00' });
+  const [marketCap, setMarketCap] = useState('0');
+
+
+
 
   useEffect(() => {
     async function fetchData() {
       try {
+        await getMarketCap()
         const response = await axios.get('https://frontend-api.spore.ws/token/prices');
         const { AvaxSporePrice, BscSporePrice, PriceDiff } = response.data;
         setData({
@@ -24,6 +29,21 @@ const PriceToken = () => {
     const interval = setInterval(fetchData, 300000); // Refresh every 5 minutes
     return () => clearInterval(interval);
   }, []);
+
+
+  const getMarketCap = async () => {
+    await axios.get('https://api.coingecko.com/api/v3/coins/spore/market_chart?vs_currency=usd&days=1&interval=daily')
+      .then(res => {
+        const { data = null } = res
+        if (data) {
+          const currentMarketCap = data.market_caps[data.market_caps.length - 1][data.market_caps[data.market_caps.length - 1].length - 1].toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+          setMarketCap(currentMarketCap)
+        }
+      }).catch(error => {
+        console.error(error)
+      })
+  }
+
 
   return (
     <div className='col-md-6 text-left'>
@@ -43,9 +63,12 @@ const PriceToken = () => {
         <strong> 1 TRIL:</strong> ${data.bnbPrice} &nbsp;
         <a  href="https://pancakeswap.finance/?outputCurrency=0x33a3d962955a3862c8093d1273344719f03ca17c" target="_blank" rel="noreferrer">&lt;buy on BNB &gt;</a>
       </div>
-      <div className='lead larger mt-3'>
-        <strong>Price Difference:</strong> {data.priceDiff}%
-      </div>
+      <dl className='lead larger mt-3'>
+        <h4>Price Difference: {data.priceDiff}% </h4>
+      </dl>
+      <dl className='lead larger mt-3' >
+          <h4>Market Cap: {marketCap}$ </h4>
+        </dl>
     </div>
   );
 };
