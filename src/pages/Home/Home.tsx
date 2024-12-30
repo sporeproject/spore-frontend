@@ -195,8 +195,8 @@ const Home = () => {
                 2022 <i className='fa fa-check'></i>
               </p>
               <span className='roadmap-text'>Spore Forum (closed)</span><br />
-              <span className='roadmap-text'>Off-Chain Governance </span><br />
-              <span className='roadmap-text'>Spore Projects Crowdfunding </span><br />
+              <span className='roadmap-text'>Off-chain governance </span><br />
+              <span className='roadmap-text'>Spore Projects crowdfunding </span><br />
 
             </div>
           </div>
@@ -220,7 +220,7 @@ const Home = () => {
               </p>
               <span className='roadmap-text'>Spore API</span><br />
               <span className='roadmap-text'>New server hosting</span><br />
-              <span className='roadmap-text'>NOSTR relay spore.ws and paid.spore.ws </span><br />
+              <span className='roadmap-text'>NOSTR relay spore.ws and paid.spore.ws (closed) </span><br />
 
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
@@ -247,6 +247,30 @@ const Home = () => {
             </div>
             <div className='col-6'>
               <p>
+                2024
+              </p>
+              <span className='roadmap-text'>Open source website and API </span><br />
+              <span className='roadmap-text'> CMC strategic positioning </span><br />
+              <span className='roadmap-text'> Establishment and growth of brand equity </span><br />
+
+            </div>
+          </div>
+
+          <div className='row timeline'>
+            <div className='col-2'>
+              <div className='corner top-right'></div>
+            </div>
+            <div className='col-8'>
+              <hr />
+            </div>
+            <div className='col-2'>
+              <div className='corner left-bottom'></div>
+            </div>
+          </div>
+
+          <div className='row align-items-center justify-content-end how-it-works d-flex'>
+            <div className='col-6 text-right'>
+              <p>
                 Future
               </p>
               <span className='roadmap-text'>Open source IPFS forum and Governance </span><br />
@@ -254,6 +278,9 @@ const Home = () => {
               <span className='roadmap-text'>TBA products and services </span><br />
               <span className='roadmap-text'>CEX listing </span><br />
 
+            </div>
+            <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
+              <div className='circle font-weight-bold'>8</div>
             </div>
           </div>
 
