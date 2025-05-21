@@ -119,9 +119,9 @@ const supportedChains: IChainData[] = [
     chain_id: '0xa86a',
     chainId: '0xa86a',
     network_id: '0xa86a',
-    rpc_url: 'https://bsc-dataseed1.defibit.io/',
-    rpcUrl: 'https://bsc-dataseed1.defibit.io/',
-    blockExploreURL: 'https://cchain.explorer.avax.network/',
+    rpc_url: 'https://api.avax.network/ext/bc/C/rpc',
+    rpcUrl: 'https://api.avax.network/ext/bc/C/rpc',
+    blockExploreURL: 'https://snowscan.xyz/',
     native_currency: {
       name: 'AVAX',
       symbol: 'AVAX',

@@ -8,14 +8,14 @@ import './Tokenomics.css'
 import BurnedTokens from '../BurnedTokens/BurnedTokens';
 import { ContractAddresses } from '../../utils/addresses';
 import { AVAX_SPORE_ABI, BSC_SPORE_ABI } from '../../utils/SporeAbis';
-import { AVAX_NETWORK_RPC } from '../../utils/constants';
+import { AVAX_NETWORK_RPC, BSC_NETWORK_RPC } from '../../utils/constants';
 
 //to test api on local environment just load the .env file with the VITE_API_URL variable set on localhost:5001
 const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.spore.ws";
 
 const Tokenomics = () => {
   const win = window as any
-  const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
+  const web3 = new Web3(BSC_NETWORK_RPC);
   const ava = new Web3(AVAX_NETWORK_RPC);
   const [bscBurned, setBscBurned] = useState(0n)
   const [avaBurned, setAvaBurned] = useState(0n)

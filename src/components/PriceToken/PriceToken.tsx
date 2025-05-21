@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './PriceToken.scss';
 
 
-const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.spore.ws";
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.com";
 
 
 const PriceToken = () => {
@@ -58,7 +58,7 @@ const PriceToken = () => {
         <img height="30px" width="30px"
               src='avalanche-logo.png' alt='Avalanche Network'></img>
         <strong> 1 TRIL = </strong> ${data.avaxPrice} &nbsp;
-        <a href="https://app.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985" target="_blank" rel="noopener noreferrer">&lt;buy on Avalanche&gt;</a>
+        <a href="https://legacy.pangolin.exchange/#/swap?inputCurrency=0x6e7f5c0b9f4432716bdd0a77a3601291b9d9e985" target="_blank" rel="noopener noreferrer">&lt;buy on Avalanche&gt;</a>
         <dl className='lead'>&nbsp; &nbsp; Liquidity: ${data.liquidityAvax} ({data.percentLiqAvax}%)</dl>
       </div>
       <div className='lead larger  nav-link'>
