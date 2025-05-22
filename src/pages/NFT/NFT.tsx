@@ -19,7 +19,7 @@ import axios from 'axios';
 
 
 const AvaxChainId = 43114;
-const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.spore.ws";
+const API_URL = import.meta.env.VITE_API_URL || "https://frontend-api.sporeproject.com";
 
 
 const NFTDatabaseStatus = {
