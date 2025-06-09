@@ -227,7 +227,7 @@ The only thing that grows is what survives the fire. 🍄</p>
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
               <p>
-                2023
+                2023 <i className='fa fa-check'></i>
               </p>
               <span className='roadmap-text'>Spore API</span><br />
               <span className='roadmap-text'>New server hosting</span><br />
@@ -258,7 +258,7 @@ The only thing that grows is what survives the fire. 🍄</p>
             </div>
             <div className='col-6'>
               <p>
-                2024
+                2024 <i className='fa fa-check'></i>
               </p>
               <span className='roadmap-text'>Open source website and API </span><br />
               <span className='roadmap-text'> CMC strategic positioning </span><br />
