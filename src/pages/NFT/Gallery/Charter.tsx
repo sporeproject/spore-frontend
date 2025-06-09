@@ -17,7 +17,7 @@ const FirstGeneration = () => {
   const Metadata = () => (
     <Helmet>
       <title>Spore NFT Gallery - Spore</title>
-      <meta name="description" content="Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency." />
+      <meta name="description" content="Spore is a decentralized global community and the developer of the hyperdeflationary SPORE currency." />
       <meta name="keywords" content="Spore, NFT, Avalanche, BSC" />
     </Helmet>
   )
