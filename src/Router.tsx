@@ -12,6 +12,7 @@ import SporeFairy from './pages/SporeFairy/SporeFairy';
 import Vote from './components/Vote/Vote';
 import { ViewItem } from './pages/NFT/MarketPlace/ViewItem';
 import NotFound from './pages/NotFound/NotFound';
+import Identity from './pages/identity/Identity'
 
 
 const Router = () => {
@@ -33,7 +34,9 @@ const Router = () => {
                 <Route path='/vote' element={(<Vote />)} />
                 <Route path='/airdrop' element={(<SporeFairy />)} />
                 <Route path='/asciid' element={(<Asciid />)} />
+                <Route path='/identity' element={(<Identity />)} />
                 <Route path='*' element={(<NotFound />)} />
+
             </Routes>
             <Footer />
         </ReactRouter>

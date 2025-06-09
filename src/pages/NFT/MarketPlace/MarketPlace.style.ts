@@ -155,7 +155,7 @@ export const EmptyNFTWrapper = styled.div`
   width: 100%;
 
   h4 {
-    color: #6B4E3B;
+    color: #2C3158;
     font-weight: bold;
   }
 `

@@ -14,105 +14,174 @@ const MyParticles = () => {
 		});
 	}, []);
 
-	const options = useMemo(
-		() => ({
-			backgroundMode: {
-				enable: true,
-				zIndex: 0
-			},
-			background: {
-				color: "transparent"
-			},
-			fpsLimit: 60,
-			interactivity: {
-				detectsOn: "canvas",
-				events: {
-					onClick: { enable: true, mode: "repulse" },
-					onHover: {
-						enable: true,
-						mode: "bubble",
+	// const options = useMemo(
+	// 	() => ({
+	// 		backgroundMode: {
+	// 			enable: true,
+	// 			zIndex: 0
+	// 		},
+	// 		background: {
+	// 			color: "transparent"
+	// 		},
+	// 		fpsLimit: 60,
+	// 		interactivity: {
+	// 			detectsOn: "canvas",
+	// 			events: {
+	// 				onClick: { enable: true, mode: "repulse" },
+	// 				onHover: {
+	// 					enable: true,
+	// 					mode: "bubble",
 
-					},
-					resize: false
-				},
-				modes: {
-					bubble: {
-						distance: 400,
-						duration: 0.3,
-						opacity: 0.1,
-						size: 4,
+	// 				},
+	// 				resize: false
+	// 			},
+	// 			modes: {
+	// 				bubble: {
+	// 					distance: 400,
+	// 					duration: 0.3,
+	// 					opacity: 0.1,
+	// 					size: 4,
 
-					},
-					grab: { distance: 400, line_linked: { opacity: 0.5 } },
-					push: { particles_nb: 4 },
-					remove: { particles_nb: 2 },
-					repulse: { distance: 200, duration: 0.4 }
-				}
-			},
-			particles: {
-				color: {
-					value: "#FFF",
-				},
-				links: {
-					blink: false,
-					color: {
-						value: "#fff",
-					},
-					consent: false,
-					distance: 250,
-					enable: false,
-					opacity: 0,
-					shadow: {
-						blur: 5,
-						color: {
-							value: "lime",
-						},
-						enable: false,
-					},
-					width: 2,
-				},
-				move: {
-					attract: { enable: true, rotateX: 600, rotateY: 1200 },
-					direction: "top",
-					enable: true,
-					outMode: "out",
-					random: false,
-					size: true,
-					speed: 1,
-					straight: false
+	// 				},
+	// 				grab: { distance: 400, line_linked: { opacity: 0.5 } },
+	// 				push: { particles_nb: 4 },
+	// 				remove: { particles_nb: 2 },
+	// 				repulse: { distance: 200, duration: 0.4 }
+	// 			}
+	// 		},
+	// 		particles: {
+	// 			color: {
+	// 				value: "#FFF",
+	// 			},
+	// 			links: {
+	// 				blink: false,
+	// 				color: {
+	// 					value: "#fff",
+	// 				},
+	// 				consent: false,
+	// 				distance: 250,
+	// 				enable: false,
+	// 				opacity: 0,
+	// 				shadow: {
+	// 					blur: 5,
+	// 					color: {
+	// 						value: "lime",
+	// 					},
+	// 					enable: false,
+	// 				},
+	// 				width: 2,
+	// 			},
+	// 			move: {
+	// 				attract: { enable: true, rotateX: 600, rotateY: 1200 },
+	// 				direction: "top",
+	// 				enable: true,
+	// 				outMode: "out",
+	// 				random: false,
+	// 				size: true,
+	// 				speed: 1,
+	// 				straight: false
 
-				},
-				collisions: {
-					enable: true,
-				},
-				number: {
-					value: 160,
-				},
-				opacity: {
-					animation: {
-						enable: true,
-						speed: 1,
-						sync: false,
-					},
-					value: {
-						min: 0.1,
-						max: 0.5,
-					},
-				},
-				shape: {
-					type: "circle",
-				},
-				size: {
-					value: {
-						min: 1,
-						max: 10,
-					},
-				},
-			},
-			detectRetina: true
-		}),
-		[],
-	);
+	// 			},
+	// 			collisions: {
+	// 				enable: true,
+	// 			},
+	// 			number: {
+	// 				value: 160,
+	// 			},
+	// 			opacity: {
+	// 				animation: {
+	// 					enable: true,
+	// 					speed: 1,
+	// 					sync: false,
+	// 				},
+	// 				value: {
+	// 					min: 0.1,
+	// 					max: 0.5,
+	// 				},
+	// 			},
+	// 			shape: {
+	// 				type: "circle",
+	// 			},
+	// 			size: {
+	// 				value: {
+	// 					min: 1,
+	// 					max: 10,
+	// 				},
+	// 			},
+	// 		},
+	// 		detectRetina: true
+	// 	}),
+	// 	[],
+	// );
+
+	const options = useMemo(() => ({
+  backgroundMode: {
+    enable: true,
+    zIndex: 0,
+  },
+  background: {
+    color: "transparent",
+  },
+  fpsLimit: 60,
+  pauseOnBlur: true,
+  pauseOnOutsideViewport: true,
+  interactivity: {
+    detectsOn: "canvas",
+    events: {
+      onClick: { enable: true, mode: "repulse" },
+      onHover: {
+        enable: true,
+        mode: "bubble",
+      },
+      resize: false,
+    },
+    modes: {
+      bubble: {
+        distance: 400,
+        duration: 0.3,
+        opacity: 0.1,
+        size: 4,
+      },
+      repulse: { distance: 200, duration: 0.4 },
+    },
+  },
+  particles: {
+    color: { value: "#FFF" },
+    move: {
+      enable: true,
+      direction: "top",
+      speed: 1,
+      random: false,
+      straight: false,
+      outMode: "bounce",
+      attract: {
+        enable: true,
+        rotateX: 600,
+        rotateY: 1200,
+      },
+    },
+    number: {
+      value: 160,
+    },
+    opacity: {
+      animation: {
+        enable: true,
+        speed: 1,
+        sync: false,
+      },
+      value: { min: 0.1, max: 0.5 },
+    },
+    shape: { type: "circle" },
+    size: {
+      value: { min: 1, max: 10 },
+    },
+    collisions: {
+      enable: true,
+    },
+  },
+  detectRetina: true,
+}), []);
+
 
 	if (init) {
 		return (

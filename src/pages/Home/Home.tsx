@@ -5,6 +5,7 @@ import { Partnerships } from '../../components/Partnerships/Partnerships';
 import PriceToken from '../../components/PriceToken/PriceToken';
 import './Home.scss';
 import Tokenomics from '../../components/Tokenomics/Tokenomics';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const Metadata = () => (
@@ -34,19 +35,29 @@ const Home = () => {
               What is <span>Spore</span>?
             </h1>
             <p className='lead'>
-              Spore™ is an NFT platform on the Avalanche network and the developer of the hyperdeflationary SPORE currency.
+              Spore is a decentralized community fueled by the passion of those who build freely — and for free — since 2021.
             </p>
 
-            <p className='lead'>Our products include
-              the first mass-adopted cross-chain bridge from Avalanche to Binance Smart Chain, NFT collections to commemorate special
-              events, a next-generation NFT prediction market (in development), and several yet-to-be-announced services that will stand at the
-              intersection of blockspace and physical events and help transition the planet to decentralized living.
-            </p>
+            <p className='lead'> Milestones include the first widely adopted Avalanche-to-BNB Chain bridge, NFT collections honoring community artists, and decentralized experiments born from global collaboration.
+             </p>
+            <p className='lead'>Future developments explore NFT prediction tools, community-driven games, governance experiments, and anything else that emerges from those who choose to build.
+              
+               </p>
+            <p className='lead'> Spore endures not because it was owned — but because it resists ownership.
+The only thing that grows is what survives the fire. 🍄</p>
+           
+
+
+
           </div>
 
           <div className='col-md-5 text-right'>
-            <img className='img-fluid' alt='Mushroom' src='mushroom.png' />
-          </div>
+            <br></br>
+            <br></br>
+
+<Link to="/identity">
+    <img className='img-fluid' alt='Mushroom' src='mushroom.png' style={{ cursor: 'pointer' }} />
+  </Link>          </div>
         </div>
 
         <div className='row py-5'>
@@ -271,16 +282,42 @@ const Home = () => {
           <div className='row align-items-center justify-content-end how-it-works d-flex'>
             <div className='col-6 text-right'>
               <p>
-                Future
+                2025
               </p>
-              <span className='roadmap-text'>Open source IPFS forum and Governance </span><br />
+              <span className='roadmap-text'>Return to the original logo </span><br />
               <span className='roadmap-text'>Spore Analytics </span><br />
-              <span className='roadmap-text'>TBA products and services </span><br />
-              <span className='roadmap-text'>CEX listing </span><br />
-
+      
             </div>
             <div className='col-2 text-center full d-inline-flex justify-content-center align-items-center'>
               <div className='circle font-weight-bold'>8</div>
+            </div>
+          </div>
+
+
+           <div className='row timeline'>
+            <div className='col-2'>
+              <div className='corner right-bottom'></div>
+            </div>
+            <div className='col-8'>
+              <hr />
+            </div>
+            <div className='col-2'>
+              <div className='corner top-left'></div>
+            </div>
+          </div>
+
+          <div className='row align-items-center how-it-works d-flex'>
+            <div className='col-2 text-center full-left d-inline-flex justify-content-center align-items-center'>
+              <div className='circle font-weight-bold'>9</div>
+            </div>
+             <div className='col-6 text-right'>
+              <p>
+                Future
+              </p>
+              <span className='roadmap-text'>Open source IPFS forum and Governance </span><br />
+              <span className='roadmap-text'>TBA products and services </span><br />
+              <span className='roadmap-text'>CEX listing </span><br />
+
             </div>
           </div>
 

@@ -1,0 +1,43 @@
+.identity-page {
+  text-align: center;
+  // color: #212121;
+
+  .identity-title {
+    font-size: 48px;
+    font-weight: bold;
+    // color: #6B4E3B;
+    margin-bottom: 20px;
+  }
+
+  .identity-description {
+    font-size: 1.25rem;
+    margin: 20px auto;
+    max-width: 700px;
+  }
+
+  .identity-download-text {
+    font-size: 1rem;
+    font-style: italic;
+    // color: #4B5626;
+  }
+
+  .identity-downloads .btn {
+    background-color: #4B5626;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #3f4d1e;
+    }
+  }
+
+  .identity-preview {
+    max-width: 300px;
+    margin-top: 30px;
+  }
+
+  .caption {
+    font-size: 0.9rem;
+    color: #777;
+  }
+}
