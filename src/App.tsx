@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import Router from './Router';
 import "./App.scss";
+import DisclaimerBanner from './components/DisclaimerBanner/DisclaimerBanner';
 
 function App() {
   const scrollTopRef = useRef<any>()
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div className='main'>
+       <DisclaimerBanner />
       <Router />
       <div className="scroll-to-top" ref={scrollTopRef} onClick={handleScrollToTop}>
         <i className="fas fa-angle-double-up"></i>
