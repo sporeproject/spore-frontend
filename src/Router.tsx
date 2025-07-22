@@ -13,7 +13,7 @@ import Vote from './components/Vote/Vote';
 import { ViewItem } from './pages/NFT/MarketPlace/ViewItem';
 import NotFound from './pages/NotFound/NotFound';
 import Identity from './pages/identity/Identity'
-
+import IpfsPage from './pages/ipfs';
 
 const Router = () => {
     return (
@@ -36,6 +36,8 @@ const Router = () => {
                 <Route path='/asciid' element={(<Asciid />)} />
                 <Route path='/identity' element={(<Identity />)} />
                 <Route path='*' element={(<NotFound />)} />
+                <Route path="/ipfs" element={<IpfsPage />} />
+
 
             </Routes>
             <Footer />

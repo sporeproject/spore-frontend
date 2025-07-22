@@ -1,0 +1,42 @@
+.dashboard {
+  padding: 2rem;
+
+  .dashboard-panels {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .panel {
+      flex: 1 1 45%;
+      min-width: 300px;
+      padding: 1.5rem;
+
+      border-radius: 8px;
+
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  button {
+    margin-left: 0.5rem;
+  }
+
+  .message {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-panels {
+      flex-direction: column;
+    }
+  }
+}
