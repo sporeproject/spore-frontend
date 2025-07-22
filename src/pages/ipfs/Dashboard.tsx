@@ -90,7 +90,7 @@ export default function Dashboard() {
 
   const percentUsed = ((userInfo.used / userInfo.quota) * 100).toFixed(1);
   const freeSpace = (userInfo.quota - userInfo.used).toFixed(2);
-
+  console.log(userInfo)
 return (
   <div className="dashboard">
     <h2>IPFS Dashboard</h2>
@@ -99,11 +99,11 @@ return (
       {/* Left Panel */}
       <div className="panel panel-info">
         <p><strong>Total uploads:</strong> {userInfo.num_objects}</p>
-        <p><strong>Node space used:</strong> {userInfo.repo_size_mb} MB / {userInfo.storage_max_mb} MB</p>
+        <p><strong>Global node space used:</strong> {userInfo.repo_size_mb} MB / {userInfo.storage_max_mb} MB</p>
 
         <p><strong>Wallet:</strong> {userInfo.wallet}</p>
         <p><strong>Eligible for upload:</strong> {userInfo.eligible ? "✅ Yes" : "❌ No"}</p>
-        <p><strong>SPORE balance:</strong> {userInfo.spore_balance}</p>
+        <p><strong>SPORE balance:</strong> {userInfo.total_spore_balance_T}</p>
         <p><strong>NFTs owned:</strong> {userInfo.nft_balance}</p>
 
         <p>
