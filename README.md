@@ -51,6 +51,6 @@ We are developing constantly in a completely organic manner, in Spore there is n
 Join us in our [Discord][Discord] or [Telegram][Telegram] and discover how we as a collective can push blockchain technology to the next level.
 
 [Discord]: https://discord.gg/n5P7n7DBhh
-[Spore]: https://spore.earth
+[Spore]: https://sporeproject.com
 [Telegram]: https://t.me/sporeproject
 
